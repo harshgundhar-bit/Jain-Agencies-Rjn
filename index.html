@@ -186,6 +186,104 @@ html, body {
 *, *::before, *::after { box-sizing: border-box; }
 img, video, iframe { max-width: 100%; height: auto; }
 
+
+<!-- ██ LOCKED STYLES — DO NOT MODIFY THESE BLOCKS ██ -->
+<style id="locked-fab-styles">
+/* === FAB STACK: two separate circles, vertical column, right side === */
+#fabStack {
+  position: fixed !important;
+  bottom: 88px !important;
+  right: 14px !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: 200 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 52px !important;
+  pointer-events: none !important;
+}
+#fabStack button {
+  pointer-events: all !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  flex-basis: auto !important;
+}
+#specialOrderFab {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  max-height: 46px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: linear-gradient(135deg,#f97316,#fb923c) !important;
+  color: #fff !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.45) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: static !important;
+}
+#cartFab {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  max-width: 50px !important;
+  max-height: 50px !important;
+  border-radius: 50% !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(0,137,123,0.45) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  background: linear-gradient(135deg,#00897b,#26a69a) !important;
+  border: none !important;
+}
+
+/* === CART HEADER: back button vertically centered, not pushed up === */
+.cart-header {
+  background: linear-gradient(135deg,#00897b,#26a69a) !important;
+  padding: 14px 16px !important;
+  padding-top: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1) !important;
+  flex-shrink: 0 !important;
+  min-height: 60px !important;
+}
+.cart-back-btn {
+  background: rgba(255,255,255,0.2) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  align-self: center !important;
+  margin-top: 0 !important;
+  position: static !important;
+}
+</style>
+<!-- ██ END LOCKED STYLES ██ -->
 </style>
 <script>
 (function() {
@@ -453,19 +551,13 @@ if (FB_OK) {
 <!-- Profit Calculator FAB — above special order FAB -->
 <!-- FAB Stack — clean pill buttons, no overlap -->
 <div class="bottom-nav" id="mainBottomNav" style="z-index:200"><button class="nav-btn" id="navHome" onclick="navTo('search-view',this)"><span>🏠</span><span class="nav-label active">Home</span></button><button class="nav-btn" id="navOrders" onclick="openMyOrders()" style="position:relative"><span>📦</span><span class="orders-nav-dot" id="ordersNavDot"></span><span class="nav-label">Orders</span></button><button class="nav-btn" id="navSchemes" onclick="openSchemeView(this)"><span>🎁</span><span class="nav-label">Schemes</span></button><button class="nav-btn" id="navCalc" onclick="openProfitCalc()"><span>🧮</span><span class="nav-label">Calculator</span></button><button class="nav-btn" id="adminNavBtn" onclick="goToAdmin()" style="display:none"><span>⚙️</span><span class="nav-label">Admin</span></button><button class="nav-btn" id="countBtn" onclick="toggleFilters()"><span>🏪</span><span class="nav-label" id="countLabel">Catalogue</span></button></div>
-<div id="fabStack" style="position:fixed;bottom:88px;right:14px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+<div id="fabStack">
 
-  <!-- Special / Bulk Order — sits above cart -->
-  <button id="specialOrderFab" onclick="openSpecialOrderModal()" title="Special / Bulk Order Request"
-    style="display:block;width:46px;height:46px;border-radius:50%;border:none;background:linear-gradient(135deg,#f97316,#fb923c);color:#fff;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(249,115,22,0.45);font-size:22px;line-height:46px;text-align:center">
-    📋
-  </button>
+  <button id="specialOrderFab" onclick="openSpecialOrderModal()" title="Special Order">📋</button>
 
-  <!-- Cart FAB — bottommost -->
-  <button class="cart-fab" id="cartFab" onclick="openCart()"
-    style="display:block;position:relative;width:50px;height:50px;border-radius:50%;font-family:inherit;font-size:24px;line-height:50px;text-align:center;box-shadow:0 4px 16px rgba(0,137,123,0.45)">
+  <button class="cart-fab" id="cartFab" onclick="openCart()">
     🛒
-    <span class="cart-count" id="cartCount" style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;font-size:10px;border-radius:9px;display:none;align-items:center;justify-content:center">0</span>
+    <span class="cart-count" id="cartCount" style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;font-size:10px;border-radius:9px;display:none;align-items:center;justify-content:center;background:#ef4444;color:#fff;font-weight:900;border:2px solid rgba(255,255,255,0.6)">0</span>
   </button>
 
 </div>
