@@ -254,23 +254,22 @@ img, video, iframe { max-width: 100%; height: auto; }
   border: none !important;
 }
 
-/* === CART HEADER: back button vertically centered, not pushed up === */
+/* === CART HEADER: back button pulled down for easy thumb reach === */
 .cart-header {
   background: linear-gradient(135deg,#00897b,#26a69a) !important;
-  padding: 14px 16px !important;
-  padding-top: 14px !important;
+  padding: 8px 16px 16px !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-end !important;
   gap: 12px !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.1) !important;
   flex-shrink: 0 !important;
-  min-height: 60px !important;
+  min-height: 72px !important;
 }
 .cart-back-btn {
   background: rgba(255,255,255,0.2) !important;
   border: none !important;
-  border-radius: 10px !important;
-  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
   color: #fff !important;
   font-size: 20px !important;
   cursor: pointer !important;
@@ -278,7 +277,8 @@ img, video, iframe { max-width: 100%; height: auto; }
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  align-self: center !important;
+  align-self: flex-end !important;
+  margin-bottom: 0 !important;
   margin-top: 0 !important;
   position: static !important;
 }
@@ -553,12 +553,12 @@ if (FB_OK) {
 <div class="bottom-nav" id="mainBottomNav" style="z-index:200"><button class="nav-btn" id="navHome" onclick="navTo('search-view',this)"><span>🏠</span><span class="nav-label active">Home</span></button><button class="nav-btn" id="navOrders" onclick="openMyOrders()" style="position:relative"><span>📦</span><span class="orders-nav-dot" id="ordersNavDot"></span><span class="nav-label">Orders</span></button><button class="nav-btn" id="navSchemes" onclick="openSchemeView(this)"><span>🎁</span><span class="nav-label">Schemes</span></button><button class="nav-btn" id="navCalc" onclick="openProfitCalc()"><span>🧮</span><span class="nav-label">Calculator</span></button><button class="nav-btn" id="adminNavBtn" onclick="goToAdmin()" style="display:none"><span>⚙️</span><span class="nav-label">Admin</span></button><button class="nav-btn" id="countBtn" onclick="toggleFilters()"><span>🏪</span><span class="nav-label" id="countLabel">Catalogue</span></button></div>
 <div id="fabStack">
 
-  <button id="specialOrderFab" onclick="openSpecialOrderModal()" title="Special Order">📋</button>
-
   <button class="cart-fab" id="cartFab" onclick="openCart()">
     🛒
     <span class="cart-count" id="cartCount" style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;font-size:10px;border-radius:9px;display:none;align-items:center;justify-content:center;background:#ef4444;color:#fff;font-weight:900;border:2px solid rgba(255,255,255,0.6)">0</span>
   </button>
+
+  <button id="specialOrderFab" onclick="openSpecialOrderModal()" title="Special Order">📋</button>
 
 </div>
 <button class="request-fab" id="requestFab" onclick="openRequestModal()" title="Request a medicine" style="display:none!important">
@@ -11725,6 +11725,7 @@ function closeCart() {
   if (nav) nav.style.display = "";
   var fabs = document.getElementById("fabStack");
   if (fabs) fabs.style.display = "";
+  if (typeof positionFabStack === 'function') positionFabStack();
 }
 
 function clearCart() {
@@ -14525,6 +14526,22 @@ function showPWABanner() {
     showIOSInstallGuide();
   }
 }
+</script>
+
+<script>
+/* FAB right-side positioning: anchor to #app container right edge */
+function positionFabStack() {
+  var fab = document.getElementById('fabStack');
+  if (!fab) return;
+  fab.style.setProperty('right', '14px', 'important');
+  fab.style.setProperty('left', 'auto', 'important');
+}
+/* Run immediately, after paint, and on resize */
+positionFabStack();
+requestAnimationFrame(function(){ requestAnimationFrame(positionFabStack); });
+window.addEventListener('resize', positionFabStack);
+document.addEventListener('DOMContentLoaded', positionFabStack);
+window.addEventListener('load', positionFabStack);
 </script>
 
 <div class="scanner-overlay" id="scannerOverlay">
