@@ -651,6 +651,26 @@ if (FB_OK) {
 <div class="dispatch-modal-overlay" id="dispatchModal"><div class="dispatch-modal-box"><div class="dispatch-title">🚚 How will it be dispatched?</div><div class="dispatch-sub">Select the transport medium for <strong id="dispatchOrderId"></strong></div><div class="dispatch-grid"><button class="dispatch-option" onclick="selectDispatchMedium('bus')" id="dm-bus"><div class="dispatch-option-icon">🚌</div><div class="dispatch-option-label">Bus</div><div class="dispatch-option-sub">State/private bus service</div></button><button class="dispatch-option" onclick="selectDispatchMedium('auto')" id="dm-auto"><div class="dispatch-option-icon">🛺</div><div class="dispatch-option-label">Auto / Taxi</div><div class="dispatch-option-sub">Local auto or cab</div></button><button class="dispatch-option" onclick="selectDispatchMedium('transport')" id="dm-transport"><div class="dispatch-option-icon">🚛</div><div class="dispatch-option-label">Transport</div><div class="dispatch-option-sub">Courier / logistics</div></button><button class="dispatch-option" onclick="selectDispatchMedium('own')" id="dm-own"><div class="dispatch-option-icon">🏍️</div><div class="dispatch-option-label">Own Delivery</div><div class="dispatch-option-sub">Our staff delivers</div></button></div><input class="dispatch-details-input" id="dispatchDetails" placeholder="Details — e.g. Bus no., Driver name, Tracking no." /><input class="dispatch-details-input" id="dispatchETA" placeholder="Expected delivery time — e.g. By 5 PM today" /><button class="dispatch-confirm-btn" onclick="confirmDispatch()">🚚 Confirm Dispatch</button></div>
 </div>
 
+<!-- ── ADMIN LOGIN MODAL ───────────────────────────────────── -->
+<div class="modal-overlay" id="adminLoginModal" style="display:none;z-index:400">
+  <div class="modal-box" style="max-width:360px">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:44px;margin-bottom:8px">⚙️</div>
+      <div class="modal-title" style="text-align:center;color:#1A6B5A">Admin Login</div>
+      <div class="modal-sub" style="text-align:center">Enter admin password to continue</div>
+    </div>
+    <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Password</div>
+    <input class="modal-input" id="adminPwdInput" type="password" placeholder="Admin password"
+      style="font-size:16px;text-align:center;margin-bottom:14px;letter-spacing:2px"
+      onkeydown="if(event.key==='Enter')checkAdminLogin()" />
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeAdminLogin()">Cancel</button>
+      <button class="modal-ok" onclick="checkAdminLogin()" style="background:linear-gradient(135deg,#1A6B5A,#2D9D7C)">🔓 Login</button>
+    </div>
+    <div class="modal-hint">Contact Jain Agencies if you forgot the password</div>
+  </div>
+</div>
+
 <!-- ── SR LOGIN MODAL ─────────────────────────────────────── -->
 <div class="modal-overlay" id="srLoginModal" style="display:none;z-index:300">
   <div class="modal-box" style="max-width:360px">
@@ -9797,11 +9817,12 @@ function toggleStockFromDetail() {
 // ═══════════════════════════════════════════════════════════
 function openAdminLogin() {
   if (isAdmin) { goToAdmin(); return; }
-  document.getElementById("adminLoginModal").classList.add("open");
+  const m = document.getElementById("adminLoginModal");
+  m.style.display = "flex";
   setTimeout(() => document.getElementById("adminPwdInput").focus(), 100);
 }
 function closeAdminLogin() {
-  document.getElementById("adminLoginModal").classList.remove("open");
+  document.getElementById("adminLoginModal").style.display = "none";
   document.getElementById("adminPwdInput").value = "";
 }
 function checkAdminLogin() {
@@ -9844,11 +9865,11 @@ function saveSRList(list) {
 function openSRLoginModal() {
   document.getElementById("srCodeInput").value = "";
   document.getElementById("srLoginError").textContent = "";
-  document.getElementById("srLoginModal").classList.add("open");
+  document.getElementById("srLoginModal").style.display = "flex";
   setTimeout(() => document.getElementById("srCodeInput").focus(), 150);
 }
 function closeSRLoginModal() {
-  document.getElementById("srLoginModal").classList.remove("open");
+  document.getElementById("srLoginModal").style.display = "none";
 }
 function checkSRLogin() {
   const code = document.getElementById("srCodeInput").value.trim().toUpperCase();
