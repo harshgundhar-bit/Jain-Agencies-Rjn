@@ -536,8 +536,18 @@ if (FB_OK) {
  Browse Catalogue →
  </button><div class="splash-footer">41 Companies · 8,460 Products · Since 1979 · Rajnandgaon</div>
 </div>
-<div id="search-view"><div class="header"><div class="header-top"><div><div class="brand-sub">Jain Agencies · Rajnandgaon &nbsp;<span id="fbStatusDot" title="Sync status" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#94A3B8;vertical-align:middle"></span></div><div class="brand-main" id="headerStoreName">Medicine Catalog</div></div><div style="display:flex;gap:8px;align-items:center"><button class="notif-bell-btn" onclick="openNotifCentre()" title="Notifications">🔔
- <span class="notif-bell-dot" id="bellDot"></span></button><button class="admin-btn" id="retailerMenuBtn" onclick="showRetailerMenu()" style="display:none">🏪</button><button class="dark-toggle-btn" onclick="toggleDarkMode()" id="darkToggleBtn" title="Toggle dark mode">🌙<span class="dark-toggle-tooltip" id="darkToggleTip">Try dark mode!</span></button><button class="admin-btn" onclick="openAdminLogin()">⚙️ Admin</button><button class="admin-btn" id="srLoginBtn" onclick="srMode ? openSRShopModal() : openSRLoginModal()" style="background:rgba(99,102,241,0.25);border-color:rgba(99,102,241,0.4);display:none">🧑‍💼 SR</button></div></div><div class="search-wrap"><span class="search-icon">🔍</span></span><input class="search-input" id="searchInput" type="search" placeholder="Search medicine…" oninput="handleSearch()" autocomplete="off" inputmode="search" enterkeyhint="search" /><div class="search-actions"><div class="search-action-divider"></div><button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Voice search">🎤</button><button class="scanner-btn" id="scannerBtn" onclick="openScanner()" title="Scan barcode">📷</button><button class="filter-toggle" onclick="toggleFilters()" title="Filters" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0">🔽 <span id="filterBadge"></span></button><button class="clear-btn" id="clearBtn" onclick="clearSearch()" style="display:none">✕</button></div></div></div><div class="filters-panel" id="filtersPanel"><div class="filter-label">Category</div><div class="cat-chips" id="catChips"></div><div class="filter-label">Company</div><select class="company-select" id="companySelect" onchange="handleSearch()" autocomplete="off"><option value="All">All Companies</option></select><br><button class="scheme-filter-chip" id="schemesOnlyBtn" onclick="toggleSchemesOnly()">🎁 Schemes Only</button><br><button class="clear-filters" onclick="clearFilters()">✕ Clear All Filters</button></div><div id="outstandingBanner" style="display:none;margin:0 12px 10px;background:linear-gradient(135deg,#7f1d1d,#b91c1c);border-radius:14px;padding:12px 16px;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(185,28,28,0.3)"><span style="font-size:22px;flex-shrink:0">💸</span><div style="flex:1"><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Outstanding Balance</div><div style="font-size:20px;font-weight:900;color:#fff" id="outstandingAmt">₹0</div></div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;text-align:right;line-height:1.5">Please clear<br>before ordering</div></div><div class="home-section-wrap" id="homeSectionsWrap"><div class="scheme-section" id="schemeSection"><div class="scheme-header"><div class="scheme-header-left"><span class="scheme-fire">🔥</span><div style="flex:1;min-width:0"><div class="scheme-title-text">🎁 Hot Deals</div><div class="scheme-ticker-wrap" id="schemeTicker"><div class="scheme-ticker-inner" id="schemeTickerInner"><div class="scheme-ticker-item">Loading offers…</div></div></div></div></div></div><div class="scheme-scroll-wrap" id="schemeList"></div></div><div class="favs-section" id="favsSection"><div class="favs-section-head"><span class="favs-section-label">⭐ My Favourites</span><span class="favs-section-clear" onclick="clearFavourites()">Clear all</span></div><div class="favs-scroll" id="favsScroll"></div></div><div class="retailer-dash" id="retailerDash" style="display:none"><div class="retailer-dash-head"><span class="retailer-dash-title">📊 My Dashboard</span><span id="retailerDashName" style="font-size:11px;color:#00897b;font-weight:700"></span></div><div id="retailerDashBody"></div></div><div class="recent-section" id="recentSection"><div class="recent-head"><span class="recent-label">🕐 Recently Viewed</span><span class="recent-clear" onclick="clearRecent()">Clear</span></div><div class="recent-scroll" id="recentScroll"></div></div><div class="notice-banner" id="noticeBanner"><div class="notice-section-head"><span class="notice-section-label">📢 Announcements</span><span class="notice-view-all" onclick="openAllNotices()">View All →</span></div><div class="notice-scroll" id="noticeScroll"></div></div><div class="order-history-section" id="orderHistorySection"><div class="order-history-head"><span class="order-history-label">🧾 Recent Orders</span><span class="order-history-clear" onclick="clearOrderHistory()">Clear</span></div><div class="order-history-list" id="orderHistoryList"></div></div></div><div class="results-info" id="resultsInfo"></div><div class="product-list" id="productList"></div>
+<div id="search-view"><div class="header"><div class="header-top"><div><div class="brand-sub">Jain Agencies · Rajnandgaon &nbsp;<span id="fbStatusDot" title="Sync status" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#94A3B8;vertical-align:middle"></span></div><div class="brand-main" id="headerStoreName">Medicine Catalog</div></div><div style="display:flex;gap:8px;align-items:center">
+  <button class="notif-bell-btn" onclick="openNotifCentre()" title="Notifications">🔔<span class="notif-bell-dot" id="bellDot"></span></button>
+  <button class="admin-btn" id="retailerMenuBtn" onclick="showRetailerMenu()" style="display:none">🏪</button>
+  <div style="position:relative">
+    <button id="headerMenuBtn" onclick="toggleHeaderMenu()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:8px 11px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px" title="More options">⋮</button>
+    <div id="headerMenuDropdown" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);min-width:180px;overflow:hidden;z-index:999;border:1px solid #E2E8F0">
+      <button onclick="toggleDarkMode();closeHeaderMenu()" id="darkToggleBtn" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">🌙 Dark Mode<span id="darkToggleTip" style="display:none"></span></button>
+      <button onclick="openAdminLogin();closeHeaderMenu()" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">⚙️ Admin Login</button>
+      <button id="srLoginBtn" onclick="(srMode ? openSRShopModal() : openSRLoginModal());closeHeaderMenu()" style="display:none;width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#6366f1;display:flex;align-items:center;gap:10px;text-align:left">🧑‍💼 SR Login</button>
+    </div>
+  </div>
+</div></div><div class="search-wrap"><span class="search-icon">🔍</span></span><input class="search-input" id="searchInput" type="search" placeholder="Search medicine…" oninput="handleSearch()" autocomplete="off" inputmode="search" enterkeyhint="search" /><div class="search-actions"><div class="search-action-divider"></div><button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Voice search">🎤</button><button class="scanner-btn" id="scannerBtn" onclick="openScanner()" title="Scan barcode">📷</button><button class="filter-toggle" onclick="toggleFilters()" title="Filters" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0">🔽 <span id="filterBadge"></span></button><button class="clear-btn" id="clearBtn" onclick="clearSearch()" style="display:none">✕</button></div></div></div><div class="filters-panel" id="filtersPanel"><div class="filter-label">Category</div><div class="cat-chips" id="catChips"></div><div class="filter-label">Company</div><select class="company-select" id="companySelect" onchange="handleSearch()" autocomplete="off"><option value="All">All Companies</option></select><br><button class="scheme-filter-chip" id="schemesOnlyBtn" onclick="toggleSchemesOnly()">🎁 Schemes Only</button><br><button class="clear-filters" onclick="clearFilters()">✕ Clear All Filters</button></div><div id="outstandingBanner" style="display:none;margin:0 12px 10px;background:linear-gradient(135deg,#7f1d1d,#b91c1c);border-radius:14px;padding:12px 16px;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(185,28,28,0.3)"><span style="font-size:22px;flex-shrink:0">💸</span><div style="flex:1"><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Outstanding Balance</div><div style="font-size:20px;font-weight:900;color:#fff" id="outstandingAmt">₹0</div></div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;text-align:right;line-height:1.5">Please clear<br>before ordering</div></div><div class="home-section-wrap" id="homeSectionsWrap"><div class="scheme-section" id="schemeSection"><div class="scheme-header"><div class="scheme-header-left"><span class="scheme-fire">🔥</span><div style="flex:1;min-width:0"><div class="scheme-title-text">🎁 Hot Deals</div><div class="scheme-ticker-wrap" id="schemeTicker"><div class="scheme-ticker-inner" id="schemeTickerInner"><div class="scheme-ticker-item">Loading offers…</div></div></div></div></div></div><div class="scheme-scroll-wrap" id="schemeList"></div></div><div class="favs-section" id="favsSection"><div class="favs-section-head"><span class="favs-section-label">⭐ My Favourites</span><span class="favs-section-clear" onclick="clearFavourites()">Clear all</span></div><div class="favs-scroll" id="favsScroll"></div></div><div class="retailer-dash" id="retailerDash" style="display:none"><div class="retailer-dash-head"><span class="retailer-dash-title">📊 My Dashboard</span><span id="retailerDashName" style="font-size:11px;color:#00897b;font-weight:700"></span></div><div id="retailerDashBody"></div></div><div class="recent-section" id="recentSection"><div class="recent-head"><span class="recent-label">🕐 Recently Viewed</span><span class="recent-clear" onclick="clearRecent()">Clear</span></div><div class="recent-scroll" id="recentScroll"></div></div><div class="notice-banner" id="noticeBanner"><div class="notice-section-head"><span class="notice-section-label">📢 Announcements</span><span class="notice-view-all" onclick="openAllNotices()">View All →</span></div><div class="notice-scroll" id="noticeScroll"></div></div><div class="order-history-section" id="orderHistorySection"><div class="order-history-head"><span class="order-history-label">🧾 Recent Orders</span><span class="order-history-clear" onclick="clearOrderHistory()">Clear</span></div><div class="order-history-list" id="orderHistoryList"></div></div></div><div class="results-info" id="resultsInfo"></div><div class="product-list" id="productList"></div>
 </div>
 <div id="qtyPickerModal" onclick="if(event.target===this)closeQtyPicker()"><div class="qty-picker-sheet"><div class="qty-picker-handle"></div><div id="qtyPickerBody"></div></div>
 </div>
@@ -547,12 +557,24 @@ if (FB_OK) {
 <!-- FAB Stack — clean pill buttons, no overlap -->
 <div class="bottom-nav" id="mainBottomNav" style="z-index:200"><button class="nav-btn" id="navHome" onclick="navTo('search-view',this)"><span>🏠</span><span class="nav-label active">Home</span></button><button class="nav-btn" id="navOrders" onclick="openMyOrders()" style="position:relative"><span>📦</span><span class="orders-nav-dot" id="ordersNavDot"></span><span class="nav-label">Orders</span></button><button class="nav-btn" id="navSchemes" onclick="openSchemeView(this)"><span>🎁</span><span class="nav-label">Schemes</span></button><button class="nav-btn" id="navCalc" onclick="openProfitCalc()"><span>🧮</span><span class="nav-label">Calculator</span></button><button class="nav-btn" id="adminNavBtn" onclick="goToAdmin()" style="display:none"><span>⚙️</span><span class="nav-label">Admin</span></button><button class="nav-btn" id="navAccount" onclick="openAccountView(this)"><span>👤</span><span class="nav-label">Account</span></button></div>
 <div id="fabStack">
-
-  <button class="cart-fab" id="cartFab" onclick="openCart()">
+  <!-- Cart pill bar — compact teal -->
+  <div id="cartPillBar" onclick="openCart()" style="display:none;position:fixed;bottom:76px;left:50%;transform:translateX(-50%);z-index:190;width:auto;max-width:220px;background:linear-gradient(135deg,#00897b,#26a69a);border-radius:50px;padding:0 4px 0 12px;height:32px;align-items:center;justify-content:space-between;cursor:pointer;box-shadow:0 4px 14px rgba(0,137,123,0.4);gap:8px">
+    <div style="display:flex;align-items:center;gap:7px;flex:1;min-width:0">
+      <span style="font-size:13px">🛒</span>
+      <div style="min-width:0">
+        <div id="cartPillCount" style="color:#fff;font-size:11px;font-weight:900;white-space:nowrap;line-height:1.2">0 Items</div>
+        <div id="cartPillTotal" style="color:rgba(255,255,255,0.85);font-size:10px;font-weight:700;line-height:1.1">₹0.00</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <span style="color:#00897b;font-size:14px;font-weight:900;line-height:1">›</span>
+    </div>
+  </div>
+  <!-- Hidden old FAB (kept for JS compatibility) -->
+  <button class="cart-fab" id="cartFab" onclick="openCart()" style="display:none!important;visibility:hidden;pointer-events:none;position:absolute;width:1px;height:1px;opacity:0">
     🛒
-    <span class="cart-count" id="cartCount" style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;font-size:10px;border-radius:9px;display:none;align-items:center;justify-content:center;background:#ef4444;color:#fff;font-weight:900;border:2px solid rgba(255,255,255,0.6)">0</span>
+    <span class="cart-count" id="cartCount" style="display:none">0</span>
   </button>
-
 </div>
 
 <div class="dispatch-modal-overlay" id="dispatchModal"><div class="dispatch-modal-box"><div class="dispatch-title">🚚 How will it be dispatched?</div><div class="dispatch-sub">Select the transport medium for <strong id="dispatchOrderId"></strong></div><div class="dispatch-grid"><button class="dispatch-option" onclick="selectDispatchMedium('bus')" id="dm-bus"><div class="dispatch-option-icon">🚌</div><div class="dispatch-option-label">Bus</div><div class="dispatch-option-sub">State/private bus service</div></button><button class="dispatch-option" onclick="selectDispatchMedium('auto')" id="dm-auto"><div class="dispatch-option-icon">🛺</div><div class="dispatch-option-label">Auto / Taxi</div><div class="dispatch-option-sub">Local auto or cab</div></button><button class="dispatch-option" onclick="selectDispatchMedium('transport')" id="dm-transport"><div class="dispatch-option-icon">🚛</div><div class="dispatch-option-label">Transport</div><div class="dispatch-option-sub">Courier / logistics</div></button><button class="dispatch-option" onclick="selectDispatchMedium('own')" id="dm-own"><div class="dispatch-option-icon">🏍️</div><div class="dispatch-option-label">Own Delivery</div><div class="dispatch-option-sub">Our staff delivers</div></button></div><input class="dispatch-details-input" id="dispatchDetails" placeholder="Details — e.g. Bus no., Driver name, Tracking no." /><input class="dispatch-details-input" id="dispatchETA" placeholder="Expected delivery time — e.g. By 5 PM today" /><button class="dispatch-confirm-btn" onclick="confirmDispatch()">🚚 Confirm Dispatch</button></div>
@@ -11632,6 +11654,7 @@ function saveSchemes() {
 // ─── Improvement 1: Scheme lookup index ──────────────────────
 // Built once, O(1) lookup instead of O(N) find() on every product render
 let _schemeIndex = {}; // UPPERCASE_MED_NAME → scheme object
+let _productByName = {}; // UPPERCASE_NAME → product (built alongside scheme index)
 
 function _buildSchemeIndex() {
   _schemeIndex = {};
@@ -11639,6 +11662,9 @@ function _buildSchemeIndex() {
   allSchemes.forEach(s => {
     if (s.med) _schemeIndex[s.med.toUpperCase()] = s;
   });
+  // Fix 5: Also rebuild product name map for O(1) lookup in schemeCardClick
+  _productByName = {};
+  products.forEach(p => { if (p.name) _productByName[p.name.toUpperCase()] = p; });
 }
 
 // Fast O(1) lookup — checks exact key first, then partial match fallback
@@ -11673,10 +11699,10 @@ function updateSchemeTicker() {
     inner.innerHTML = '<div class="scheme-ticker-item">No active deals right now</div>';
     return;
   }
-  // Show up to 3 scheme names in ticker
+  // Show up to 3 scheme names in ticker — duplicate only if enough items for loop to make sense
   const items = schemes.slice(0,3).map(s =>
     `<div class="scheme-ticker-item">🎁 ${s.med} — ${s.deal}</div>`
-  ).join("") + (schemes.length > 1
+  ).join("") + (schemes.length > 3
     ? schemes.slice(0,3).map(s => `<div class="scheme-ticker-item">🎁 ${s.med} — ${s.deal}</div>`).join("")
     : "");
   inner.innerHTML = items;
@@ -11728,8 +11754,15 @@ function formatDate(d) {
 function schemeCardClick(id) {
   const s = schemes.find(x => x.id === id) || DEFAULT_SCHEMES.find(x => x.id === id);
   if (!s) return;
-  // Find matching product
-  const p = products.find(x => x.name.toUpperCase().includes(s.med.toUpperCase()));
+  // Fix 2: Block expired schemes
+  if (s.validity && s.validity < new Date().toISOString().slice(0,10)) {
+    showToast("⚠️ Scheme expired", "error");
+    return;
+  }
+  // Fix 1+5: Exact match via O(1) index first, then startsWith fallback
+  const med = s.med.toUpperCase();
+  const p = _productByName[med]
+         || products.find(x => x.name.toUpperCase().startsWith(med));
   if (p) {
     const inCart = cart.some(c => c.id === p.id);
     if (inCart) {
@@ -11826,6 +11859,7 @@ function closeSchemeModal() {
 }
 
 function saveScheme() {
+  if (!isAdmin) { showToast("⛔ Admin only", "error"); return; }
   const med = document.getElementById("sMedName").value.trim();
   const deal = document.getElementById("sDeal").value.trim();
   if (!med) { showToast("Medicine name required!", "error"); return; }
@@ -11843,8 +11877,8 @@ function saveScheme() {
     if (idx !== -1) {
       schemes[idx] = { ...schemes[idx], ...schemeData };
     } else {
-      // Was a DEFAULT_SCHEME — add as custom override
-      schemes.push({ id: parseInt(editId), ...schemeData });
+      // Was a DEFAULT_SCHEME — add as custom override (Fix 3: Number() to avoid type mismatch)
+      schemes.push({ id: Number(editId), ...schemeData });
     }
     showToast("✅ Scheme updated!");
   } else {
@@ -11888,18 +11922,32 @@ function updateCartUI() {
   const count = cart.length;
   const countEl = document.getElementById("cartCount");
   const fab = document.getElementById("cartFab");
+  const pill = document.getElementById("cartPillBar");
+  const pillCount = document.getElementById("cartPillCount");
+  const pillTotal = document.getElementById("cartPillTotal");
+
+  // Calculate total qty for pill label
+  const totalQty = cart.reduce((s, c) => s + c.qty, 0);
+
   if (count > 0) {
-    const prev = countEl.textContent;
+    // Update old hidden fab for compat
     countEl.textContent = count;
     countEl.classList.add("show");
-    if (String(count) !== prev) {
-      countEl.classList.remove("bump");
-      void countEl.offsetWidth; // reflow to restart
-      countEl.classList.add("bump");
+    // Show pill bar
+    if (pill) {
+      pill.style.display = "flex";
+      pillCount.textContent = `${totalQty} Item's`;
+      // Try to show a ₹ total if PTR available
+      let rupeeTotal = 0;
+      cart.forEach(item => {
+        const p = products.find(x => x.id === item.id);
+        if (p && p.ptr) rupeeTotal += p.ptr * item.qty;
+      });
+      pillTotal.textContent = rupeeTotal > 0 ? `₹${rupeeTotal.toFixed(2)}` : `${count} product${count !== 1 ? 's' : ''}`;
     }
-    fab.style.background = "linear-gradient(135deg,#00897b,#26a69a)";
   } else {
     countEl.classList.remove("show");
+    if (pill) pill.style.display = "none";
   }
 }
 
@@ -12179,6 +12227,19 @@ function changeQty(productId, delta) {
   else totalLabel = `${totalQty} strips`;
   document.getElementById("cartTotalQty").textContent = totalLabel;
   document.getElementById("cartSubtitle").textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} · ${totalLabel}`;
+  // Update pill bar too
+  const pill = document.getElementById("cartPillBar");
+  const pillCount = document.getElementById("cartPillCount");
+  const pillTotal = document.getElementById("cartPillTotal");
+  if (pill && pillCount) {
+    pillCount.textContent = `${totalQty} Item's`;
+    let rupeeTotal = 0;
+    cart.forEach(item => {
+      const p = products.find(x => x.id === item.id);
+      if (p && p.ptr) rupeeTotal += p.ptr * item.qty;
+    });
+    if (pillTotal) pillTotal.textContent = rupeeTotal > 0 ? `₹${rupeeTotal.toFixed(2)}` : `${cart.length} product${cart.length !== 1 ? 's' : ''}`;
+  }
 }
 
 function removeCartItem(productId) {
@@ -15118,6 +15179,28 @@ function showPWABanner() {
 
 <script>
 /* FAB right-side positioning: anchor to #app container right edge */
+function toggleHeaderMenu() {
+  const dd = document.getElementById("headerMenuDropdown");
+  if (!dd) return;
+  const isOpen = dd.style.display !== "none";
+  dd.style.display = isOpen ? "none" : "block";
+  if (!isOpen) {
+    // Close when clicking outside
+    setTimeout(() => {
+      document.addEventListener("click", function closeMenu(e) {
+        if (!document.getElementById("headerMenuBtn").contains(e.target)) {
+          dd.style.display = "none";
+          document.removeEventListener("click", closeMenu);
+        }
+      });
+    }, 10);
+  }
+}
+function closeHeaderMenu() {
+  const dd = document.getElementById("headerMenuDropdown");
+  if (dd) dd.style.display = "none";
+}
+
 function positionFabStack() {
   var fab = document.getElementById('fabStack');
   var app = document.getElementById('app');
