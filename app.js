@@ -1,7 +1,7 @@
-﻿(function(){
+(function(){
   var _q = [];
   window.showToast = function(msg, type) { _q.push([msg, type || "success"]); };
-  // Called once the real showToast loads — drains queue via _showToastImpl
+  // Called once the real showToast loads � drains queue via _showToastImpl
   window._flushToastQueue = function() {
     _q.forEach(function(a){
       if (typeof _showToastImpl === "function") _showToastImpl(a[0], a[1]);
@@ -14,7 +14,7 @@
   var s = document.createElement("script");
   s.src = "https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js";
   s.onerror = function() {
-    // Primary CDN failed — try unpkg fallback
+    // Primary CDN failed � try unpkg fallback
     var f = document.createElement("script");
     f.src = "https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js";
     document.head.appendChild(f);
@@ -22,12 +22,12 @@
   document.head.appendChild(s);
 })();
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // PRODUCT DATABASE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
+// �����������������������������������������������������������
 // CATEGORY COLORS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 const CAT_COLORS = {
   Tablet:"#2D7DD2",Capsule:"#7B2FBE",Syrup:"#F18F01",Injection:"#E63946",
   Cream:"#52B788",Ointment:"#6B705C",Gel:"#4CC9F0",Drops:"#F77F00",
@@ -36,14 +36,14 @@ const CAT_COLORS = {
 };
 const CAT_ICONS = {
   Tablet:"💊",Capsule:"💊",Syrup:"🧪",Injection:"💉",Cream:"🧴",Ointment:"🧴",
-  Gel:"🧴",Drops:"💧",Inhaler:"ðŸŒ¬ï¸",Suspension:"🧪",Powder:"âš—ï¸",Solution:"🧪",
-  Liquid:"🧪",Soap:"🧼",Rotacap:"ðŸŒ¬ï¸",Device:"âš•ï¸"
+  Gel:"🧴",Drops:"💧",Inhaler:"🌬�",Suspension:"🧪",Powder:"⚗�",Solution:"🧪",
+  Liquid:"🧪",Soap:"🧼",Rotacap:"🌬�",Device:"⚕�"
 };
 const CATS = ["All","Tablet","Capsule","Syrup","Injection","Cream","Ointment","Gel","Drops","Inhaler","Suspension","Powder","Solution","Liquid","Soap","Rotacap","Device"];
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // STATE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 let products = [];
 let isAdmin = false;
 let srMode = false;           // SR mode active
@@ -56,10 +56,10 @@ let deleteTargetId = null;
 let formStockValue = true;
 let _adminCompanyFilter = "";
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ���������������������������������������������������
 
 // DARK MODE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ���������������������������������������������������
 function initDarkMode() {
   const saved = localStorage.getItem("ja_theme");
   if (saved) {
@@ -98,7 +98,7 @@ function updateDarkBtn(theme) {
   if (!btn) return;
   // Update only the emoji text node, preserve tooltip span
   const tip = document.getElementById("darkToggleTip");
-  btn.textContent = theme === "dark" ? "â˜€ï¸" : "🌙";
+  btn.textContent = theme === "dark" ? "☀�" : "🌙";
   if (tip) btn.appendChild(tip);
 }
 
@@ -125,9 +125,9 @@ function saveData() {
   try { localStorage.setItem("ja_products", JSON.stringify(products)); } catch {}
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // TOAST
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 let toastTimer;
 function showToast(msg, type="success") {
   // On first real call: replace stub on window, then flush queued early messages
@@ -150,9 +150,9 @@ function _showToastImpl(msg, type="success") {
   toastTimer = setTimeout(() => t.classList.remove("show"), 2500);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // INIT
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
 
 function enterFromGate() {
@@ -161,7 +161,7 @@ function enterFromGate() {
   const city = (document.getElementById("gateCity").value||"").trim();
   const address = (document.getElementById("gateAddress").value||"").trim();
   if (!store || !mobile || !city) {
-    document.getElementById("gateErr").textContent = "âš ï¸ Store name, mobile and city are required";
+    document.getElementById("gateErr").textContent = "⚠� Store name, mobile and city are required";
     document.getElementById("gateErr").style.display = "block";
     return;
   }
@@ -209,7 +209,7 @@ function init() {
   buildSearchIndex();
   buildCatChips();
   buildCompanySelect();
-  // Always start fresh — no stale filters
+  // Always start fresh � no stale filters
   filterCat = "All";
   const _s = document.getElementById("companySelect"); if (_s) _s.value = "All";
   const _i = document.getElementById("searchInput");   if (_i) _i.value  = "";
@@ -221,7 +221,7 @@ function init() {
   updateCountBtn();
   if (isAdmin) {
     document.getElementById("adminNavBtn").style.display = "flex";
-    document.querySelector(".admin-btn").textContent = "âš™ï¸ Admin ✓";
+    document.querySelector(".admin-btn").textContent = "⚙� Admin ✓";
   }
   // Restore SR session
   const savedSR = localStorage.getItem("ja_sr_session");
@@ -238,7 +238,7 @@ function init() {
   if (srBtnEl) {
     const hasSRs = loadSRList().length > 0 || srMode;
     if (hasSRs) srBtnEl.style.display = "flex";
-    if (srMode) srBtnEl.textContent = "ðŸ§‘â€💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR");
+    if (srMode) srBtnEl.textContent = "🧑�💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR");
   }
   // Show Firebase sync status
   setTimeout(() => {
@@ -247,7 +247,7 @@ function init() {
     const ok = window._fb && window._fb.FB_OK;
     if (dot) {
       dot.style.background = ok ? "#22c55e" : "#f97316";
-      dot.title = ok ? "🔥 Live sync ON" : "âš ï¸ Offline — local only";
+      dot.title = ok ? "🔥 Live sync ON" : "⚠� Offline � local only";
     }
     if (banner && ok) banner.style.display = "none";
   }, 1800);
@@ -286,7 +286,7 @@ function populateFormDropdowns(selectedCompany, selectedFormula) {
       ...products.map(p => p.company),
       ...customCompanies
     ])].filter(Boolean).sort((a,b) => a.localeCompare(b));
-    coSel.innerHTML = '<option value="">— Select Company —</option>' +
+    coSel.innerHTML = '<option value="">� Select Company �</option>' +
       allCos.map(c => `<option value="${c}"${c === selectedCompany ? ' selected' : ''}>${c}</option>`).join("");
   }
   // Formula datalist
@@ -337,13 +337,13 @@ function updateFilterBadge() {
   const parts = [];
   if (filterCat !== "All") parts.push(filterCat);
   if (compVal !== "All") parts.push(compVal.split(" ")[0]);
-  if (_schemesOnlyFilter) parts.push("ðŸŽ Schemes");
+  if (_schemesOnlyFilter) parts.push("� Schemes");
   document.getElementById("filterBadge").textContent = parts.length ? `(${parts.join(", ")})` : "";
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // SEARCH & RENDER
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 function handleSearch() {
   updateFilterBadge();
   renderProductList();
@@ -355,12 +355,12 @@ function clearSearch() {
   renderProductList();
 }
 
-// â”€â”€ Fuse.js fuzzy search â”€â”€
+// ── Fuse.js fuzzy search ──
 let _fuse = null;
 function buildSearchIndex() {
   const fuseOptions = {
     includeScore: true,
-    threshold: 0.35,          // 0=exact, 1=anything — 0.35 is comfortably fuzzy
+    threshold: 0.35,          // 0=exact, 1=anything � 0.35 is comfortably fuzzy
     ignoreLocation: true,     // search anywhere in string, not just start
     minMatchCharLength: 2,
     keys: [
@@ -391,7 +391,7 @@ function getFiltered() {
   if (!q) {
     results = products;
   } else if (_fuse) {
-    // Fuse.js fuzzy search — returns scored results
+    // Fuse.js fuzzy search � returns scored results
     results = _fuse.search(q).map(r => r.item);
   } else {
     // Fallback substring search if Fuse didn't load
@@ -412,10 +412,10 @@ function getFiltered() {
   });
 }
 
-// â”€â”€ Search Analytics â”€â”€
+// ── Search Analytics ──
 const _searchDebounceMap = {};
 function trackSearch(q) {
-  // Debounce per-query — only record after 800ms without change (user paused)
+  // Debounce per-query � only record after 800ms without change (user paused)
   clearTimeout(_searchDebounceMap._t);
   _searchDebounceMap._t = setTimeout(() => {
     try {
@@ -433,7 +433,7 @@ function trackSearch(q) {
   }, 800);
 }
 
-// â”€â”€ Skeleton helper â”€â”€
+// ── Skeleton helper ──
 function makeSkeleton(n) {
   return Array.from({length:n}, () =>
     `<div class="skel-card">
@@ -451,7 +451,7 @@ function makeSkeleton(n) {
     </div>`).join("");
 }
 
-// â”€â”€ Virtual scroll state â”€â”€
+// ── Virtual scroll state ──
 const VS_ITEM_H = 90;   // estimated card height px
 const VS_PAGE   = 30;   // cards rendered per chunk
 let vsFiltered  = [];
@@ -470,7 +470,7 @@ function cardHTML(p) {
     const [mm, yy] = p.expiry.split("/").map(Number);
     const daysLeft = Math.floor((new Date(2000+yy, mm-1, 1) - new Date()) / 86400000);
     if (daysLeft < 0)       expiryBadge = `<span class="tag" style="background:#FEE2E2;color:#be123c">⛔ EXPIRED</span>`;
-    else if (daysLeft <= 90) expiryBadge = `<span class="tag" style="background:#FEF9C3;color:#b45309">âš ï¸ Exp ${p.expiry}</span>`;
+    else if (daysLeft <= 90) expiryBadge = `<span class="tag" style="background:#FEF9C3;color:#b45309">⚠� Exp ${p.expiry}</span>`;
   }
 
   // MOQ badge
@@ -485,12 +485,12 @@ function cardHTML(p) {
     <div class="product-card" onclick="openDetail(${p.id})" style="align-items:center" data-id="${p.id}">
       <div class="cat-icon" style="background:${color}22">${CAT_ICONS[p.category]||"💊"}</div>
       <div style="flex:1;min-width:0">
-        <div class="prod-name" style="display:flex;align-items:center;gap:6px">${p.name}${isFav?' <span style="font-size:12px">â­</span>':'' }</div>
+        <div class="prod-name" style="display:flex;align-items:center;gap:6px">${p.name}${isFav?' <span style="font-size:12px">�</span>':'' }</div>
         <div class="prod-company">${p.company}</div>
         <div class="tags">
           <span class="tag" style="background:${color}22;color:${color}">${p.category}</span>
           <span class="tag tag-pack">${p.packing}</span>
-          <span class="tag ${p.stock?"tag-stock-in":"tag-stock-out"}">${p.stock?"✓ In Stock":"âœ— Unavailable"}</span>
+          <span class="tag ${p.stock?"tag-stock-in":"tag-stock-out"}">${p.stock?"✓ In Stock":"✗ Unavailable"}</span>
           ${expiryBadge}${moqBadge}
         </div>
         ${schemeBar}
@@ -546,7 +546,7 @@ function renderProductList() {
   // Show skeletons instantly while debouncing
   if (q.length > 0) {
     list.innerHTML = makeSkeleton(5);
-    ri.innerHTML   = "Searching…";
+    ri.innerHTML   = "Searching�";
   }
   clearTimeout(_debTimer);
   _debTimer = setTimeout(() => {
@@ -557,14 +557,14 @@ function renderProductList() {
 
     list.innerHTML = "";
     if (!vsFiltered.length) {
-      list.innerHTML = `<div class="empty"><div class="emoji">ðŸ”</div><h3>No medicines found</h3><p>Try a different name or formula</p></div>`;
+      list.innerHTML = `<div class="empty"><div class="emoji">�</div><h3>No medicines found</h3><p>Try a different name or formula</p></div>`;
       return;
     }
     // Render first chunk
     renderChunk(list, vsFiltered, 0, VS_PAGE);
     vsOffset = VS_PAGE;
 
-    // Infinite scroll — load more as user scrolls
+    // Infinite scroll � load more as user scrolls
     if (_vsScrollEl) _vsScrollEl.removeEventListener("scroll", vsScroll);
     _vsScrollEl = document.getElementById("search-view");
     _vsScrollEl.addEventListener("scroll", vsScroll, {passive:true});
@@ -583,12 +583,12 @@ function vsScroll() {
 }
 
 function updateCountBtn() {
-  // Catalogue button removed — no-op
+  // Catalogue button removed � no-op
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // DETAIL VIEW
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 function openDetail(id) {
   trackRecent(id);
   const p = products.find(x => x.id === id);
@@ -600,11 +600,11 @@ function openDetail(id) {
   document.getElementById("dName").textContent = p.name;
   document.getElementById("dCompany").textContent = p.company;
   const sb = document.getElementById("dStock");
-  sb.textContent = p.stock ? "✓ In Stock" : "âœ— Out of Stock";
+  sb.textContent = p.stock ? "✓ In Stock" : "✗ Out of Stock";
   sb.style.background = p.stock ? "rgba(255,255,255,0.25)" : "rgba(239,68,68,0.4)";
 
   // Expiry status
-  let expiryDisplay = "—";
+  let expiryDisplay = "�";
   let expiryWarn = "";
   if (p.expiry) {
     const [mm, yy] = p.expiry.split("/").map(Number);
@@ -615,7 +615,7 @@ function openDetail(id) {
       expiryDisplay = `⛔ EXPIRED (${p.expiry})`;
       expiryWarn = "expired";
     } else if (daysLeft <= 90) {
-      expiryDisplay = `âš ï¸ ${p.expiry} — ${Math.ceil(daysLeft/30)}M left`;
+      expiryDisplay = `⚠� ${p.expiry} � ${Math.ceil(daysLeft/30)}M left`;
       expiryWarn = "short";
     } else {
       expiryDisplay = p.expiry;
@@ -634,21 +634,21 @@ function openDetail(id) {
 
   const rows = [
     {icon:"💊",label:"Medicine Name",val:p.name},
-    {icon:"ðŸ¢",label:"Company",val:p.company},
-    {icon:"ðŸ·ï¸",label:"Division",val:p.division||"—"},
-    {icon:"🧪",label:"Formula / Composition",val:p.formula||"—"},
+    {icon:"��",label:"Company",val:p.company},
+    {icon:"���",label:"Division",val:p.division||"�"},
+    {icon:"🧪",label:"Formula / Composition",val:p.formula||"�"},
     {icon:"📦",label:"Packing",val:p.packing},
-    {icon:"ðŸ”–",label:"Category",val:p.category},
+    {icon:"🔖",label:"Category",val:p.category},
     {icon:"₹",label:"MRP",val:p.mrp?`₹${p.mrp}`:"Contact Agency"},
     {icon:"💰",label:"PTR / Trade Price",val:p.ptr?`₹${p.ptr}`:"Contact Agency"},
     ...(p.moq > 1 ? [{icon:"📋",label:"Min. Order Qty (MOQ)",val:`${p.moq} strips`}] : []),
-    {icon:"ðŸ·ï¸",label:"HSN Code",val:p.hsn||"—"},
-    {icon:"📊",label:"GST",val:p.gst ? `${p.gst}%` : "—"},
-    {icon:"🔢",label:"Batch No.",val:p.batch||"—"},
+    {icon:"���",label:"HSN Code",val:p.hsn||"�"},
+    {icon:"📊",label:"GST",val:p.gst ? `${p.gst}%` : "�"},
+    {icon:"🔢",label:"Batch No.",val:p.batch||"�"},
     {icon:"📅",label:"Expiry Date",val:expiryDisplay, warn: expiryWarn},
   ];
 
-  // Build scheme banner separately — big and prominent
+  // Build scheme banner separately � big and prominent
   const schemeBanner = getSchemeHTML(p, false);
 
   document.getElementById("detailCard").innerHTML =
@@ -663,7 +663,7 @@ function openDetail(id) {
 
   // Fav button
   const favBtn = document.getElementById("detailFavBtn");
-  if (favBtn) favBtn.textContent = isFavourite(id) ? "â­" : "☆";
+  if (favBtn) favBtn.textContent = isFavourite(id) ? "�" : "☆";
 
   // Cart vs Notify button based on stock
   const cartBtn = document.getElementById("detailCartBtn");
@@ -672,14 +672,14 @@ function openDetail(id) {
     const inCart = cart.some(c => c.id === id);
     cartBtn.style.display = "block";
     notifyBtn.style.display = "none";
-    cartBtn.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
+    cartBtn.textContent = inCart ? "✓ In Cart � Remove" : "+ Add to Cart";
     cartBtn.style.background = inCart ? "#00897b" : "#fff";
     cartBtn.style.color = inCart ? "#fff" : "#00897b";
   } else {
     cartBtn.style.display = "none";
     notifyBtn.style.display = "block";
     const watching = isWatching(id);
-    notifyBtn.textContent = watching ? "🔔 Watching — Unwatch" : "🔔 Notify Me When In Stock";
+    notifyBtn.textContent = watching ? "🔔 Watching � Unwatch" : "🔔 Notify Me When In Stock";
     notifyBtn.style.background = watching ? "#fff7ed" : "#fff";
     notifyBtn.style.color = watching ? "#c2410c" : "#c2410c";
     notifyBtn.style.borderColor = watching ? "#c2410c" : "#f97316";
@@ -713,9 +713,9 @@ function toggleStockFromDetail() {
   openDetail(currentDetailId);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
-// â”€â”€ SR MODE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SR MODE ──────────────────────────────────────────────────────────────────
 
 function loadSRList() {
   try { return JSON.parse(localStorage.getItem("ja_sr_list") || "[]"); } catch { return []; }
@@ -739,7 +739,7 @@ function checkSRLogin() {
   const list = loadSRList();
   const sr = list.find(s => s.code.toUpperCase() === code);
   if (!sr) {
-    document.getElementById("srLoginError").textContent = "âŒ SR code not found. Contact Admin.";
+    document.getElementById("srLoginError").textContent = "�� SR code not found. Contact Admin.";
     return;
   }
   currentSR = sr;
@@ -749,7 +749,7 @@ function checkSRLogin() {
   closeSRLoginModal();
   updateSRBanner();
   openSRShopModal();
-  showToast(`Welcome, ${sr.name}! ðŸ§‘â€💼`);
+  showToast(`Welcome, ${sr.name}! 🧑�💼`);
 }
 
 function srLogout() {
@@ -761,7 +761,7 @@ function srLogout() {
   updateSRBanner();
   const srBtn = document.getElementById("srLoginBtn");
   if (srBtn) {
-    srBtn.textContent = "ðŸ§‘â€💼 SR";
+    srBtn.textContent = "🧑�💼 SR";
     // Hide if no SRs configured
     if (!loadSRList().length) srBtn.style.display = "none";
   }
@@ -770,7 +770,7 @@ function srLogout() {
 
 function openSRShopModal() {
   if (!currentSR) { openSRLoginModal(); return; }
-  document.getElementById("srShopModalName").textContent = `${currentSR.name} · ${currentSR.code}`;
+  document.getElementById("srShopModalName").textContent = `${currentSR.name} � ${currentSR.code}`;
   document.getElementById("srShopSearch").value = "";
   renderSRShopList();
   const modal = document.getElementById("srShopModal");
@@ -788,7 +788,7 @@ function renderSRShopList() {
   const filtered = shops.filter(s => s.toLowerCase().includes(q));
   const el = document.getElementById("srShopList");
   if (!shops.length) {
-    el.innerHTML = `<div style="text-align:center;padding:32px 20px;color:#94A3B8"><div style="font-size:36px;margin-bottom:10px">ðŸª</div><div style="font-size:14px;font-weight:700">No shops assigned yet</div><div style="font-size:12px;margin-top:4px">Ask Admin to add your route shops</div></div>`;
+    el.innerHTML = `<div style="text-align:center;padding:32px 20px;color:#94A3B8"><div style="font-size:36px;margin-bottom:10px">��</div><div style="font-size:14px;font-weight:700">No shops assigned yet</div><div style="font-size:12px;margin-top:4px">Ask Admin to add your route shops</div></div>`;
     return;
   }
   if (!filtered.length) {
@@ -798,12 +798,12 @@ function renderSRShopList() {
   el.innerHTML = filtered.map((shop, i) => {
     const isActive = srActiveShop === shop;
     return `<div onclick="selectSRShop('${shop.replace(/'/g,"\\'")}') " style="background:${isActive ? 'linear-gradient(135deg,#eef2ff,#e0e7ff)' : '#fff'};border:${isActive ? '2px solid #6366f1' : '1.5px solid #F1F5F9'};border-radius:14px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.15s">
-      <div style="width:40px;height:40px;border-radius:12px;background:${isActive ? '#6366f1' : '#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${isActive ? '✅' : 'ðŸª'}</div>
+      <div style="width:40px;height:40px;border-radius:12px;background:${isActive ? '#6366f1' : '#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${isActive ? '✅' : '��'}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:14px;font-weight:900;color:${isActive ? '#4338ca' : '#1E293B'};margin-bottom:2px">${shop}</div>
         <div style="font-size:11px;color:${isActive ? '#6366f1' : '#94A3B8'};font-weight:600">${isActive ? '✓ Currently ordering for this shop' : 'Tap to select'}</div>
       </div>
-      ${isActive ? `<div style="font-size:18px">âž¡ï¸</div>` : ''}
+      ${isActive ? `<div style="font-size:18px">➡�</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -813,7 +813,7 @@ function selectSRShop(shop) {
   updateSRBanner();
   // Log visit
   logSRVisit(shop);
-  showToast(`Now ordering for: ${shop} ðŸª`);
+  showToast(`Now ordering for: ${shop} ��`);
   // Pre-fill retailer name in cart if visible
   const ri = document.getElementById("retailerName");
   if (ri) ri.value = shop;
@@ -838,13 +838,13 @@ function updateSRBanner() {
     }
   }
   banner.style.display = "flex";
-  banner.innerHTML = `<span style="font-size:16px">ðŸ§‘â€💼</span><div style="flex:1;min-width:0"><div style="font-weight:900;font-size:12px">${currentSR ? currentSR.name : 'SR'} · ${currentSR ? currentSR.code : ''}</div><div style="color:rgba(255,255,255,0.75);font-size:11px">Ordering for: <strong>${srActiveShop}</strong> · Tap to switch shop</div></div><div onclick="event.stopPropagation();srLogout()" style="background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:6px 10px;color:#fff;font-size:11px;font-weight:800;cursor:pointer">Logout</div>`;
+  banner.innerHTML = `<span style="font-size:16px">🧑�💼</span><div style="flex:1;min-width:0"><div style="font-weight:900;font-size:12px">${currentSR ? currentSR.name : 'SR'} � ${currentSR ? currentSR.code : ''}</div><div style="color:rgba(255,255,255,0.75);font-size:11px">Ordering for: <strong>${srActiveShop}</strong> � Tap to switch shop</div></div><div onclick="event.stopPropagation();srLogout()" style="background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:6px 10px;color:#fff;font-size:11px;font-weight:800;cursor:pointer">Logout</div>`;
   // Update header SR button
   const srBtn = document.getElementById("srLoginBtn");
-  if (srBtn) { srBtn.style.display = "flex"; srBtn.textContent = "ðŸ§‘â€💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR"); }
+  if (srBtn) { srBtn.style.display = "flex"; srBtn.textContent = "🧑�💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR"); }
 }
 
-// â”€â”€ SR VISIT LOG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SR VISIT LOG ──────────────────────────────────────────────────────────────
 
 function loadSRVisits() {
   try { return JSON.parse(localStorage.getItem("ja_sr_visits") || "[]"); } catch { return []; }
@@ -876,7 +876,7 @@ function getSROrdersToday(srCode) {
   return getOrders().filter(o => o.srCode === srCode && o.timestamp && o.timestamp.includes(today.split("/").join("/")));
 }
 
-// â”€â”€ SR TARGETS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SR TARGETS ────────────────────────────────────────────────────────────────
 
 function loadSRTargets() {
   try { return JSON.parse(localStorage.getItem("ja_sr_targets") || "{}"); } catch { return {}; }
@@ -909,7 +909,7 @@ function getSRMonthProgress(srCode) {
   };
 }
 
-// â”€â”€ SR DASHBOARD BOTTOM SHEET â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SR DASHBOARD BOTTOM SHEET ────────────────────────────────────────────────
 
 function openSRDashboard() {
   if (!currentSR) return;
@@ -959,14 +959,14 @@ function renderSRDashboard() {
   header.innerHTML = `
     <div style="color:rgba(255,255,255,0.6);font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px">SR Dashboard</div>
     <div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">${sr.name}</div>
-    <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600">${sr.code}${sr.area ? ' · '+sr.area : ''} · ${today}</div>`;
+    <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600">${sr.code}${sr.area ? ' � '+sr.area : ''} � ${today}</div>`;
 
   const body = document.getElementById("srDashBody");
   body.innerHTML = `
     <!-- Today's stats row -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
       ${[
-        { icon:"ðŸª", val: visitedShops.length, label:"Shops\nVisited" },
+        { icon:"��", val: visitedShops.length, label:"Shops\nVisited" },
         { icon:"📦", val: todayOrders.length, label:"Orders\nToday" },
         { icon:"💊", val: todayQty, label:"Units\nToday" }
       ].map(s => `
@@ -992,20 +992,20 @@ function renderSRDashboard() {
       <div style="font-size:11px;color:#94A3B8;font-weight:700">${progressVal}% achieved this month ${progressVal>=100?'🎉':''}</div>
     </div>` : `
     <div style="background:#EEF2FF;border-radius:14px;padding:12px 16px;margin-bottom:12px;border:1.5px solid #C7D2FE;font-size:12px;color:#4338ca;font-weight:700">
-      🎯 No target set yet — ask Admin to set your monthly target
+      🎯 No target set yet � ask Admin to set your monthly target
     </div>`}
 
     <!-- Today's route -->
-    <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:8px">ðŸ“ Today's Route (${allShops.length} shops)</div>
+    <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:8px">� Today's Route (${allShops.length} shops)</div>
     ${allShops.length ? allShops.map(shop => {
       const visits = todayVisits.filter(v => v.shop === shop);
       const visited = visits.length > 0;
       const shopOrders = todayOrders.filter(o => o.srShop === shop || o.retailer === shop);
       return `<div style="background:#fff;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:1.5px solid ${visited?'#C7D2FE':'#F1F5F9'};display:flex;align-items:center;gap:10px;cursor:pointer" onclick="selectSRShopFromDash('${shop.replace(/'/g,"\\'")}')">
-        <div style="width:32px;height:32px;border-radius:8px;background:${visited?'#6366f1':'#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">${visited?'✅':'ðŸª'}</div>
+        <div style="width:32px;height:32px;border-radius:8px;background:${visited?'#6366f1':'#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">${visited?'✅':'��'}</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:13px;font-weight:800;color:${visited?'#4338ca':'#1E293B'}">${shop}</div>
-          <div style="font-size:11px;font-weight:600;color:#94A3B8">${visited ? `Visited ${visits.length}x · ${shopOrders.length} order(s)` : 'Not yet visited'}</div>
+          <div style="font-size:11px;font-weight:600;color:#94A3B8">${visited ? `Visited ${visits.length}x � ${shopOrders.length} order(s)` : 'Not yet visited'}</div>
         </div>
         <div style="font-size:10px;font-weight:800;color:${visited?'#6366f1':'#CBD5E1'}">${visited?'DONE':'PENDING'}</div>
       </div>`;
@@ -1019,7 +1019,7 @@ function renderSRDashboard() {
         <div style="font-size:18px;flex-shrink:0">📦</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:13px;font-weight:800;color:#1E293B">${o.retailer || o.srShop || 'Unknown'}</div>
-          <div style="font-size:11px;color:#94A3B8;font-weight:600">${o.items ? o.items.length+' items' : ''} · Qty: ${o.totalQty||0} · ${o.status}</div>
+          <div style="font-size:11px;color:#94A3B8;font-weight:600">${o.items ? o.items.length+' items' : ''} � Qty: ${o.totalQty||0} � ${o.status}</div>
         </div>
         <div style="font-size:10px;font-weight:800;padding:4px 8px;border-radius:8px;background:${o.status==='WhatsApp Sent'?'#D1FAE5':'#DBEAFE'};color:${o.status==='WhatsApp Sent'?'#065F46':'#1e40af'}">${o.status==='WhatsApp Sent'?'WA':'DIR'}</div>
       </div>`).join('')}` : ''}
@@ -1030,7 +1030,7 @@ function selectSRShopFromDash(shop) {
   selectSRShop(shop);
 }
 
-// â”€â”€ ADMIN SR PANEL (Phase 2) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── ADMIN SR PANEL (Phase 2) ──────────────────────────────────────────────────
 
 function adminAddSR() {
   const name  = document.getElementById("srAddName").value.trim();
@@ -1072,7 +1072,7 @@ function renderSRAdminPanel() {
   const el = document.getElementById("srAdminList");
   if (!el) return;
   if (!list.length) {
-    el.innerHTML = `<div style="text-align:center;padding:32px 20px;background:#fff;border-radius:16px;border:1.5px solid #E2E8F0"><div style="font-size:44px;margin-bottom:12px">ðŸ§‘â€💼</div><div style="font-size:15px;font-weight:800;color:#64748B;margin-bottom:6px">No SRs added yet</div><div style="font-size:13px;color:#94A3B8">Add your first sales representative above</div></div>`;
+    el.innerHTML = `<div style="text-align:center;padding:32px 20px;background:#fff;border-radius:16px;border:1.5px solid #E2E8F0"><div style="font-size:44px;margin-bottom:12px">🧑�💼</div><div style="font-size:15px;font-weight:800;color:#64748B;margin-bottom:6px">No SRs added yet</div><div style="font-size:13px;color:#94A3B8">Add your first sales representative above</div></div>`;
     return;
   }
   const today = new Date().toLocaleDateString("en-IN");
@@ -1090,20 +1090,20 @@ function renderSRAdminPanel() {
     <div style="background:#fff;border-radius:16px;padding:0;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 6px rgba(0,0,0,0.04);overflow:hidden">
       <!-- SR Header -->
       <div style="background:linear-gradient(135deg,#4338ca,#6366f1);padding:14px 16px;display:flex;align-items:center;gap:12px">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">ðŸ§‘â€💼</div>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🧑�💼</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:15px;font-weight:900;color:#fff">${sr.name}</div>
           <div style="display:flex;gap:6px;margin-top:3px;flex-wrap:wrap">
             <span style="background:rgba(255,255,255,0.2);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;letter-spacing:1px">${sr.code}</span>
-            ${sr.area ? `<span style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px">ðŸ“ ${sr.area}</span>` : ''}
+            ${sr.area ? `<span style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px">� ${sr.area}</span>` : ''}
           </div>
         </div>
-        <button onclick="adminDeleteSR(${sr.id})" style="background:rgba(239,68,68,0.25);border:1px solid rgba(239,68,68,0.4);border-radius:10px;padding:7px 10px;color:#fca5a5;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">ðŸ—‘ï¸</button>
+        <button onclick="adminDeleteSR(${sr.id})" style="background:rgba(239,68,68,0.25);border:1px solid rgba(239,68,68,0.4);border-radius:10px;padding:7px 10px;color:#fca5a5;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">🗑�</button>
       </div>
       <!-- Today's activity stats -->
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid #F1F5F9">
         ${[
-          { icon:"ðŸª", val: visitedToday, label:"Shops\nToday", color:"#4338ca" },
+          { icon:"��", val: visitedToday, label:"Shops\nToday", color:"#4338ca" },
           { icon:"📦", val: allOrders.length, label:"Total\nOrders", color:"#059669" },
           { icon:"🎯", val: progressVal + "%", label:"Monthly\nTarget", color: progressVal>=100?"#059669":progressVal>=60?"#f97316":"#6366f1" },
         ].map((s,i) => `
@@ -1144,7 +1144,7 @@ function renderSRAdminPanel() {
           ${sr.shops && sr.shops.length ? sr.shops.map(s => {
             const visited = todayVisits.some(v => v.shop === s);
             return `<div style="font-size:12px;font-weight:700;color:${visited?'#4338ca':'#475569'};padding:3px 0;border-bottom:1px solid #F8FAFC;display:flex;align-items:center;gap:6px">
-              <span>${visited?'✅':'ðŸª'}</span>${s}${visited?` <span style="font-size:10px;color:#6366f1;font-weight:700;margin-left:auto">visited</span>`:''}
+              <span>${visited?'✅':'��'}</span>${s}${visited?` <span style="font-size:10px;color:#6366f1;font-weight:700;margin-left:auto">visited</span>`:''}
             </div>`;
           }).join('') : `<div style="font-size:12px;color:#CBD5E1;font-weight:600">No shops assigned</div>`}
         </div>
@@ -1172,7 +1172,7 @@ function goToAdmin() {
   showView("admin-view");
 }
 
-// â”€â”€ Special / Bulk Order Request â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ── Special / Bulk Order Request ─────────────────────────────
 let _spSelectedType = "Bulk Order";
 
 function openSpecialOrderModal() {
@@ -1207,7 +1207,7 @@ function spMedSearch(val) {
 
   if (!q) { dd.style.display = "none"; return; }
 
-  // Starts-with first, then contains — better ranking
+  // Starts-with first, then contains � better ranking
   var starts = [], contains = [];
   for (var i = 0; i < products.length; i++) {
     var n = products[i].name.toUpperCase();
@@ -1222,7 +1222,7 @@ function spMedSearch(val) {
   for (var j = 0; j < matches.length; j++) {
     var prod = matches[j];
     var subLine = (prod.company || prod.packing)
-      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + (prod.company || "") + (prod.packing ? " · " + prod.packing : "") + "</div>"
+      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + (prod.company || "") + (prod.packing ? " � " + prod.packing : "") + "</div>"
       : "";
     html += '<div data-idx="' + j + '" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9" onmouseover="this.style.background=\'#f8fafc\'" onmouseout="this.style.background=\'\'">'
       + '<div style="font-size:13px;font-weight:800;color:var(--text,#0f172a)">' + prod.name + "</div>"
@@ -1256,7 +1256,7 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// â”€â”€ Profit Calculator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Profit Calculator ────────────────────────────────────────
 function openProfitCalc() {
   document.getElementById("calcMRP").value = "";
   document.getElementById("calcPTR").value = "";
@@ -1284,7 +1284,7 @@ function calcProfit() {
     resultEl.style.display = "none";
     tipEl.style.display = "block";
     if (mrp > 0 && ptr > 0 && ptr >= mrp) {
-      tipEl.textContent = "âš ï¸ PTR should be less than MRP";
+      tipEl.textContent = "⚠� PTR should be less than MRP";
       tipEl.style.color = "#ef4444";
     } else {
       tipEl.textContent = "Enter MRP and PTR above to calculate";
@@ -1296,7 +1296,7 @@ function calcProfit() {
   if (ptr >= mrp) {
     resultEl.style.display = "none";
     tipEl.style.display = "block";
-    tipEl.textContent = "âš ï¸ PTR should be less than MRP";
+    tipEl.textContent = "⚠� PTR should be less than MRP";
     tipEl.style.color = "#ef4444";
     return;
   }
@@ -1310,7 +1310,7 @@ function calcProfit() {
   if (margin >= 30) { bg = "linear-gradient(135deg,#16a34a,#15803d)"; label = "🔥 Excellent margin!"; }
   else if (margin >= 20) { bg = "linear-gradient(135deg,#0891b2,#0e7490)"; label = "✅ Good margin"; }
   else if (margin >= 12) { bg = "linear-gradient(135deg,#d97706,#b45309)"; label = "⚡ Average margin"; }
-  else { bg = "linear-gradient(135deg,#dc2626,#b91c1c)"; label = "âš ï¸ Low margin — negotiate better PTR"; }
+  else { bg = "linear-gradient(135deg,#dc2626,#b91c1c)"; label = "⚠� Low margin � negotiate better PTR"; }
 
   document.getElementById("calcResultBg").style.background = bg;
   document.getElementById("calcProfitVal").textContent = "₹" + profit.toFixed(profit % 1 === 0 ? 0 : 2);
@@ -1360,7 +1360,7 @@ function submitSpecialOrder() {
   const waNum = typeof JAIN_WA_NUMBER !== "undefined" ? JAIN_WA_NUMBER : "919086291862";
   window.open(`https://wa.me/${waNum}?text=${encoded}`, "_blank");
   closeSpecialOrderModal();
-  showToast("✅ Opening WhatsApp…");
+  showToast("✅ Opening WhatsApp�");
 }
 
 
@@ -1370,9 +1370,9 @@ function openSchemeView(btn) {
   renderSchemeView();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // ACCOUNT VIEW
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
 function openAccountView(btn) {
   navTo("account-view", btn || document.getElementById("navAccount"));
@@ -1380,7 +1380,7 @@ function openAccountView(btn) {
 }
 
 function renderAccountView() {
-  // â”€â”€ Header profile card â”€â”€
+  // ── Header profile card ──
   const r = currentRetailer;
   const nameEl   = document.getElementById("accProfileName");
   const shopEl   = document.getElementById("accProfileShop");
@@ -1390,12 +1390,12 @@ function renderAccountView() {
   if (r) {
     const initials = (r.name || "?").split(" ").map(w => w[0]).slice(0,2).join("").toUpperCase();
     avatarEl.textContent = initials;
-    nameEl.textContent   = r.name || "—";
-    shopEl.textContent   = r.shop || r.city || "—";
+    nameEl.textContent   = r.name || "�";
+    shopEl.textContent   = r.shop || r.city || "�";
     const statusMap = {
       approved: { text:"✓ APPROVED", bg:"rgba(22,163,74,0.25)", color:"#86efac" },
-      pending:  { text:"â³ PENDING",  bg:"rgba(234,179,8,0.25)",  color:"#fde68a" },
-      rejected: { text:"âœ— REJECTED", bg:"rgba(239,68,68,0.25)",  color:"#fca5a5" }
+      pending:  { text:"�� PENDING",  bg:"rgba(234,179,8,0.25)",  color:"#fde68a" },
+      rejected: { text:"✗ REJECTED", bg:"rgba(239,68,68,0.25)",  color:"#fca5a5" }
     };
     const s = statusMap[r.status] || { text:"GUEST", bg:"rgba(255,255,255,0.15)", color:"rgba(255,255,255,0.7)" };
     badge.textContent = s.text;
@@ -1410,15 +1410,15 @@ function renderAccountView() {
     badge.style.color       = "rgba(255,255,255,0.7)";
   }
 
-  // â”€â”€ Profile rows â”€â”€
+  // ── Profile rows ──
   const fields = [
-    { icon:"ðŸª", label:"Shop Name",  val: r?.shop    || "—" },
-    { icon:"👤", label:"Your Name",  val: r?.name    || "—" },
-    { icon:"📱", label:"Mobile",     val: r?.mobile  || "—" },
-    { icon:"âœ‰ï¸", label:"Email",      val: r?.email   || "—" },
-    { icon:"ðŸ“", label:"Address",    val: r?.address || r?.city || "—" },
-    { icon:"💊", label:"DL Number",  val: r?.dl      || "—" },
-    { icon:"📋", label:"GST Number", val: r?.gst     || "—" },
+    { icon:"��", label:"Shop Name",  val: r?.shop    || "�" },
+    { icon:"👤", label:"Your Name",  val: r?.name    || "�" },
+    { icon:"📱", label:"Mobile",     val: r?.mobile  || "�" },
+    { icon:"✉�", label:"Email",      val: r?.email   || "�" },
+    { icon:"�", label:"Address",    val: r?.address || r?.city || "�" },
+    { icon:"💊", label:"DL Number",  val: r?.dl      || "�" },
+    { icon:"📋", label:"GST Number", val: r?.gst     || "�" },
   ];
   document.getElementById("accProfileRows").innerHTML = fields.map((f, i) =>
     `<div style="padding:12px 16px;display:flex;align-items:center;gap:12px;${i < fields.length-1 ? "border-bottom:1px solid var(--border,#F1F5F9)" : ""}">
@@ -1430,7 +1430,7 @@ function renderAccountView() {
     </div>`
   ).join("");
 
-  // â”€â”€ Document badges â”€â”€
+  // ── Document badges ──
   const docs = JSON.parse(localStorage.getItem("ja_acc_docs") || "{}");
   _renderDocBadge("dl",  docs.dl);
   _renderDocBadge("gst", docs.gst);
@@ -1534,7 +1534,7 @@ function saveEditProfile() {
       Object.assign(currentRetailer, updates);
     }
   } else {
-    // Guest — save locally so fields persist across sessions
+    // Guest � save locally so fields persist across sessions
     const guest = { id: "guest_" + Date.now(), status: "guest", ...updates };
     currentRetailer = guest;
     saveRetailerSession(guest);
@@ -1559,7 +1559,7 @@ function copyToClipboard(text, label) {
     document.body.appendChild(el);
     el.focus(); el.select();
     try { document.execCommand("copy"); showToast(msg); }
-    catch(e) { showToast("âš ï¸ Copy failed — select & copy manually"); }
+    catch(e) { showToast("⚠� Copy failed � select & copy manually"); }
     document.body.removeChild(el);
   }
   if (navigator.clipboard && window.isSecureContext) {
@@ -1571,7 +1571,7 @@ function copyToClipboard(text, label) {
 
 
 
-// â”€â”€─ Scheme View State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── Scheme View State ───────────────────────────────────────
 let _svActiveTab = "all";
 
 function renderSchemeView() {
@@ -1584,15 +1584,15 @@ function renderSchemeView() {
 
   if (!activeSchemes.length) {
     body.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94A3B8">
-      <div style="font-size:48px;margin-bottom:12px">ðŸŽ</div>
+      <div style="font-size:48px;margin-bottom:12px">�</div>
       <div style="font-size:16px;font-weight:800">No active schemes</div>
       <div style="font-size:13px;margin-top:6px">Admin can add schemes from Admin → Schemes</div>
     </div>`;
     return;
   }
 
-  // ⚡ Improvement 1 — use index for O(1) scheme lookup per product
-  // ⚡ Improvement 2 — lazy render: collect all rows but render first 15, append more on scroll
+  // ⚡ Improvement 1 � use index for O(1) scheme lookup per product
+  // ⚡ Improvement 2 � lazy render: collect all rows but render first 15, append more on scroll
   function findProducts(medName) {
     const upper = medName.toUpperCase();
     const result = [];
@@ -1608,7 +1608,7 @@ function renderSchemeView() {
     return { ...s, _type: st ? st.type : "other", _st: st, _products: findProducts(s.med) };
   });
 
-  // â”€â”€ Sidebar tab definitions (matching reference exactly) â”€â”€
+  // ── Sidebar tab definitions (matching reference exactly) ──
   // In the reference: "View All", "Buy 1 Get 1 Free (28)", "Buy 2 Get 1 Free (20)" etc.
   // We auto-generate these from the actual scheme data grouped by deal text pattern
 
@@ -1650,13 +1650,13 @@ function renderSchemeView() {
   // Sort tabs by product count descending
   const sortedTabs = Object.keys(tabMap).sort((a, b) => tabProductCount[b] - tabProductCount[a]);
 
-  // â”€â”€ Get filtered schemes for current tab â”€â”€
+  // ── Get filtered schemes for current tab ──
   const filteredSchemes = _svActiveTab === "all"
     ? enriched
     : (tabMap[_svActiveTab] || []);
 
-  // â”€â”€ SIDEBAR HTML â”€â”€
-  // Sidebar tab builder — uses data-tab attribute to avoid quote escaping issues in onclick
+  // ── SIDEBAR HTML ──
+  // Sidebar tab builder � uses data-tab attribute to avoid quote escaping issues in onclick
   const buildSidebarItem = (label, count, isActive) => {
     const escaped = label.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
     return `<div data-svtab="${escaped}" style="
@@ -1676,7 +1676,7 @@ function renderSchemeView() {
     sidebarHtml += buildSidebarItem(lbl, tabProductCount[lbl], _svActiveTab === lbl);
   });
 
-  // â”€â”€ PRODUCT ROWS HTML â”€â”€
+  // ── PRODUCT ROWS HTML ──
   // Matches reference: [icon box] | [name + company + badges + PTR/MRP] | [Add button]
   // Icon box = square rounded with medicine emoji or category letter, light colored bg
 
@@ -1716,7 +1716,7 @@ function renderSchemeView() {
       rowsHtml += `
       <div style="background:#fff;border-bottom:1px solid #f1f5f9;padding:14px 12px 14px 14px;display:flex;align-items:center;gap:12px">
 
-        <!-- Icon thumbnail (no image — styled box) -->
+        <!-- Icon thumbnail (no image � styled box) -->
         <div style="width:70px;height:70px;min-width:70px;border-radius:10px;background:${bg};display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:1px solid rgba(0,0,0,0.06)">
           <div style="font-size:11px;font-weight:900;color:${fg};text-align:center;padding:4px;line-height:1.2;word-break:break-all">${initials}</div>
           <div style="font-size:18px;margin-top:2px">💊</div>
@@ -1738,10 +1738,10 @@ function renderSchemeView() {
             ${ptr ? `<span style="font-size:13px;font-weight:800;color:#111827">PTR : ₹${ptr}</span>` : ""}
             ${mrp ? `<span style="font-size:12px;color:#9ca3af;font-weight:500;text-decoration:line-through">₹${mrp}</span>` : ""}
           </div>
-          ${inCart ? `<div style="font-size:11px;color:#16a34a;font-weight:800;margin-top:4px">✓ In cart — Qty: ${cartItem.qty}</div>` : ""}
+          ${inCart ? `<div style="font-size:11px;color:#16a34a;font-weight:800;margin-top:4px">✓ In cart � Qty: ${cartItem.qty}</div>` : ""}
         </div>
 
-        <!-- Add button — outlined, right side -->
+        <!-- Add button � outlined, right side -->
         <button onclick="openQtyPicker(${p.id})" style="
           background:#fff;
           color:${inCart ? "#16a34a" : "#00897b"};
@@ -1772,18 +1772,18 @@ function renderSchemeView() {
 
   if (!visibleCount && !filteredSchemes.some(s => !s._products.length)) {
     rowsHtml = `<div style="text-align:center;padding:60px 20px;color:#9ca3af">
-      <div style="font-size:44px;margin-bottom:12px">ðŸŽ</div>
+      <div style="font-size:44px;margin-bottom:12px">�</div>
       <div style="font-size:14px;font-weight:800">No products in this category</div>
     </div>`;
   }
 
-  // â”€â”€ RENDER â”€â”€
+  // ── RENDER ──
   body.style.padding = "0";
   body.style.overflow = "hidden";
   body.innerHTML = `
     <div style="display:flex;height:100%;overflow:hidden">
 
-      <!-- LEFT SIDEBAR — event delegation handles tab clicks -->
+      <!-- LEFT SIDEBAR � event delegation handles tab clicks -->
       <div id="svSidebar" onclick="var t=event.target.closest('[data-svtab]');if(t){window._svSetTab(t.getAttribute('data-svtab'));}" style="
         width:95px;min-width:95px;
         background:#fff;
@@ -1843,7 +1843,7 @@ function switchAdminTab(tab) {
   if (tab === "sr") { renderSRAdminPanel(); }
 }
 
-// â”€â”€─ DASHBOARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── DASHBOARD ────────────────────────────────────────────────────────────
 function renderDashboard() {
   // Time
   const now = new Date();
@@ -1864,9 +1864,9 @@ function renderDashboard() {
   const statsGrid = document.getElementById("dashStatsGrid");
   if (statsGrid) statsGrid.innerHTML = [
     { label:"Total Products", val: products.length, sub: `${inStock} in stock`, icon:"💊", cls:"" },
-    { label:"Total Retailers", val: approved, sub: `${pending} pending approval`, icon:"ðŸª", cls:"blue" },
+    { label:"Total Retailers", val: approved, sub: `${pending} pending approval`, icon:"��", cls:"blue" },
     { label:"Orders Today", val: orders.length, sub: "All time total", icon:"📦", cls:"green" },
-    { label:"Out of Stock", val: outStock, sub: "Need restocking", icon:"âš ï¸", cls: outStock > 0 ? "red" : "" },
+    { label:"Out of Stock", val: outStock, sub: "Need restocking", icon:"⚠�", cls: outStock > 0 ? "red" : "" },
   ].map(s => `
     <div class="dash-stat-card ${s.cls}" data-icon="${s.icon}">
       <div class="dash-stat-label">${s.label}</div>
@@ -1884,10 +1884,10 @@ function renderDashboard() {
         <div class="dash-order-row">
           <span class="dash-order-icon">${o.status === "WhatsApp Sent" ? "💬" : "📋"}</span>
           <div style="flex:1">
-            <div class="dash-order-shop">ðŸª ${o.retailer}</div>
-            <div class="dash-order-meta">${o.items.length} items · ${o.totalQty} strips · ${o.timestamp}</div>
+            <div class="dash-order-shop">�� ${o.retailer}</div>
+            <div class="dash-order-meta">${o.items.length} items � ${o.totalQty} strips � ${o.timestamp}</div>
           </div>
-          <span class="dash-order-badge ${o.status === "WhatsApp Sent" ? "wa" : "pending"}">${o.status === "WhatsApp Sent" ? "💬 WA" : "â³ Pending"}</span>
+          <span class="dash-order-badge ${o.status === "WhatsApp Sent" ? "wa" : "pending"}">${o.status === "WhatsApp Sent" ? "💬 WA" : "�� Pending"}</span>
         </div>`).join("");
     }
   }
@@ -1898,14 +1898,14 @@ function renderDashboard() {
     const freq = {};
     orders.forEach(o => o.items.forEach(i => { freq[i.name] = (freq[i.name]||0) + i.qty; }));
     const hot = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,5);
-    const medals = ["🥇","🥈","🥉","4ï¸⃣","5ï¸⃣"];
+    const medals = ["🥇","🥈","🥉","4�⃣","5�⃣"];
     if (!hot.length) {
       hotEl.innerHTML = '<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px;font-weight:600">Place some orders to see hot products!</div>';
     } else {
       hotEl.innerHTML = hot.map(([name, qty], i) => {
         const p = products.find(x => x.name === name);
         return `<div class="hot-product-row">
-          <span class="hot-rank">${medals[i]||"•"}</span>
+          <span class="hot-rank">${medals[i]||"�"}</span>
           <div style="flex:1"><div class="hot-name">${name}</div><div class="hot-company">${p ? p.company : ""}</div></div>
           <span class="hot-orders">${qty} strips ordered</span>
         </div>`;
@@ -1922,16 +1922,16 @@ function renderDashboard() {
     } else {
       pendEl.innerHTML = pendingR.slice(0,3).map(r => `
         <div class="dash-order-row">
-          <span class="dash-order-icon">ðŸª</span>
+          <span class="dash-order-icon">��</span>
           <div style="flex:1">
-            <div class="dash-order-shop">${r.name} · ${r.shop}</div>
-            <div class="dash-order-meta">DL: ${r.dl} · GST: ${r.gst}</div>
+            <div class="dash-order-shop">${r.name} � ${r.shop}</div>
+            <div class="dash-order-meta">DL: ${r.dl} � GST: ${r.gst}</div>
           </div>
           <button style="padding:7px 12px;border:none;border-radius:8px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:11px;font-weight:900;cursor:pointer;font-family:inherit" onclick="approveRetailer('${r.id}');renderDashboard()">✅ Approve</button>
         </div>`).join("") + (pendingR.length > 3 ? `<div style="text-align:center;padding:8px;font-size:12px;color:#00897b;font-weight:800;cursor:pointer" onclick="switchAdminTab('retailers')">+ ${pendingR.length - 3} more →</div>` : "");
     }
   }
-  // â”€â”€ Analytics: Today's Searches + Top Terms â”€â”€
+  // ── Analytics: Today's Searches + Top Terms ──
   const analyticsEl = document.getElementById("dashAnalytics");
   if (analyticsEl) {
     try {
@@ -1948,7 +1948,7 @@ function renderDashboard() {
       const topTerms = Object.entries(allTerms).sort((a,b)=>b[1]-a[1]).slice(0,5);
 
       analyticsEl.innerHTML = `
-        <div class="dash-section-title">ðŸ” Search Analytics</div>
+        <div class="dash-section-title">� Search Analytics</div>
         <div class="dash-analytics-row">
           <div class="dash-analytics-card">
             <div class="dash-analytics-num">${todayTotal}</div>
@@ -1967,9 +1967,9 @@ function renderDashboard() {
         <div class="dash-section-title" style="margin-top:12px">🔥 Top Searched Medicines</div>
         ${topTerms.map(([term,count],i) => {
           const pct = Math.round((count / (topTerms[0][1]||1)) * 100);
-          const medals = ["🥇","🥈","🥉","4ï¸⃣","5ï¸⃣"];
+          const medals = ["🥇","🥈","🥉","4�⃣","5�⃣"];
           return `<div class="dash-search-bar-row">
-            <span style="font-size:14px;flex-shrink:0">${medals[i]||"•"}</span>
+            <span style="font-size:14px;flex-shrink:0">${medals[i]||"�"}</span>
             <div style="flex:1;min-width:0">
               <div style="display:flex;justify-content:space-between;margin-bottom:3px">
                 <span style="font-size:12px;font-weight:800;color:#1E293B;text-transform:capitalize">${term}</span>
@@ -2000,7 +2000,7 @@ function renderAdminListV2() {
   if (bannerEl) {
     if (coFilter) {
       bannerEl.style.display = "flex";
-      bannerEl.innerHTML = `<span>ðŸ¢ Filtering: <strong>${coFilter}</strong> — ${filtered.length} products</span><button onclick="_adminCompanyFilter='';renderAdminListV2()" style="background:none;border:none;color:#dc2626;font-size:16px;cursor:pointer;font-weight:900">✕</button>`;
+      bannerEl.innerHTML = `<span>�� Filtering: <strong>${coFilter}</strong> � ${filtered.length} products</span><button onclick="_adminCompanyFilter='';renderAdminListV2()" style="background:none;border:none;color:#dc2626;font-size:16px;cursor:pointer;font-weight:900">✕</button>`;
     } else {
       bannerEl.style.display = "none";
     }
@@ -2015,16 +2015,16 @@ function renderAdminListV2() {
         <div class="admin-cat-dot" style="background:${color(p)}22">${CAT_ICONS[p.category]||"💊"}</div>
         <div style="flex:1;min-width:0">
           <div class="admin-card-name-v2">${p.name}</div>
-          <div class="admin-card-co">${p.company} · ${p.packing}${p.mrp ? " · ₹"+p.mrp : ""}</div>
+          <div class="admin-card-co">${p.company} � ${p.packing}${p.mrp ? " � ₹"+p.mrp : ""}</div>
         </div>
       </div>
       <div class="admin-card-v2-foot">
-        <span class="admin-tag-stock ${p.stock?"in":"out"}">${p.stock?"â— In Stock":"â—‹ Out"}</span>
-        ${p.scheme ? `<span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px">ðŸŽ ${p.scheme}</span>` : ""}
+        <span class="admin-tag-stock ${p.stock?"in":"out"}">${p.stock?"� In Stock":"○ Out"}</span>
+        ${p.scheme ? `<span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px">� ${p.scheme}</span>` : ""}
         <div class="admin-card-v2-actions">
-          <button class="adm-btn adm-btn-stock ${p.stock?"active":""}" onclick="toggleStockAdmin(${p.id})">${p.stock?"✓ In":"âœ— Out"}</button>
-          <button class="adm-btn adm-btn-edit" onclick="openEditFormById(${p.id})">âœï¸</button>
-          <button class="adm-btn adm-btn-del" onclick="openConfirmDel(${p.id})">ðŸ—‘ï¸</button>
+          <button class="adm-btn adm-btn-stock ${p.stock?"active":""}" onclick="toggleStockAdmin(${p.id})">${p.stock?"✓ In":"✗ Out"}</button>
+          <button class="adm-btn adm-btn-edit" onclick="openEditFormById(${p.id})">��</button>
+          <button class="adm-btn adm-btn-del" onclick="openConfirmDel(${p.id})">🗑�</button>
         </div>
       </div>
     </div>`).join("");
@@ -2034,7 +2034,7 @@ function renderAdminListV2() {
 function renderAdminList() { renderAdminListV2(); }
 function renderAdminStats() { if (currentAdminTab === "dashboard") renderDashboard(); }
 
-// â”€â”€─ SCHEMES (admin) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── SCHEMES (admin) ──────────────────────────────────────────────────────
 function renderAdminSchemes() {
   const el = document.getElementById("adminSchemesList");
   if (!el) return;
@@ -2049,21 +2049,21 @@ function renderAdminSchemes() {
     const expired = s.validity && s.validity < today;
     const isDefault = DEFAULT_SCHEMES.find(d => d.id === s.id) && !schemes.find(x => x.id === s.id);
     return `<div class="scheme-admin-card">
-      <span style="font-size:24px;flex-shrink:0">${expired ? "âš ï¸" : "🔥"}</span>
+      <span style="font-size:24px;flex-shrink:0">${expired ? "⚠�" : "🔥"}</span>
       <div class="scheme-admin-info">
         <div class="scheme-admin-name">${s.med} ${isDefault ? '<span style="font-size:10px;background:#e0f2fe;color:#0369a1;padding:2px 6px;border-radius:6px;font-weight:700">DEFAULT</span>' : ''}</div>
-        <div class="scheme-admin-deal">ðŸŽ ${s.deal}</div>
-        <div class="scheme-admin-meta">${s.company || "—"}${s.validity ? " · Valid till " + s.validity : " · No expiry"}</div>
+        <div class="scheme-admin-deal">� ${s.deal}</div>
+        <div class="scheme-admin-meta">${s.company || "�"}${s.validity ? " � Valid till " + s.validity : " � No expiry"}</div>
       </div>
       <div class="scheme-admin-actions" style="display:flex;flex-direction:column;gap:6px">
-        <button class="adm-btn" style="background:#e0f2fe;color:#0369a1;border:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer" onclick="openSchemeModal(${s.id})">âœï¸ Edit</button>
-        <button class="adm-btn adm-btn-del" onclick="deleteScheme(${s.id});renderAdminSchemes();renderSchemes()">ðŸ—‘ï¸</button>
+        <button class="adm-btn" style="background:#e0f2fe;color:#0369a1;border:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer" onclick="openSchemeModal(${s.id})">�� Edit</button>
+        <button class="adm-btn adm-btn-del" onclick="deleteScheme(${s.id});renderAdminSchemes();renderSchemes()">🗑�</button>
       </div>
     </div>`;
   }).join("");
 }
 
-// â”€â”€─ COMPANIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── COMPANIES ────────────────────────────────────────────────────────────
 let customCompanies = [];
 function loadCustomCompanies() {
   try { customCompanies = JSON.parse(localStorage.getItem("ja_companies") || "[]"); } catch { customCompanies = []; }
@@ -2084,7 +2084,7 @@ function addCompany() {
   input.value = "";
   renderCompaniesList();
   buildCompanySelect();
-  showToast("✅ Company added — " + name);
+  showToast("✅ Company added � " + name);
 }
 
 function renderCompaniesList() {
@@ -2098,12 +2098,12 @@ function renderCompaniesList() {
     const count = products.filter(p => p.company === co).length;
     const isCustomOnly = customOnly.includes(co);
     return `<div class="company-card" onclick="filterAdminByCompany('${co.replace(/'/g,"\\'")}')">
-      <div class="company-card-icon">ðŸ¢</div>
+      <div class="company-card-icon">��</div>
       <div style="flex:1">
         <div class="company-card-name">${co}</div>
-        <div class="company-card-count">${count} product${count !== 1 ? "s" : ""} · <span style="color:#00897b;font-weight:800">Tap to view</span></div>
+        <div class="company-card-count">${count} product${count !== 1 ? "s" : ""} � <span style="color:#00897b;font-weight:800">Tap to view</span></div>
       </div>
-      ${isCustomOnly ? `<button class="company-card-del" onclick="event.stopPropagation();deleteCustomCompany('${co.replace(/'/g,"\\'")}')">✕</button>` : '<span style="font-size:16px">›</span>'}
+      ${isCustomOnly ? `<button class="company-card-del" onclick="event.stopPropagation();deleteCustomCompany('${co.replace(/'/g,"\\'")}')">✕</button>` : '<span style="font-size:16px">�</span>'}
     </div>`;
   }).join("");
 }
@@ -2124,7 +2124,7 @@ function deleteCustomCompany(name) {
   buildCompanySelect();
 }
 
-// â”€â”€─ EXCEL IMPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── EXCEL IMPORT ─────────────────────────────────────────────────────────
 let excelParsedRows = [];
 
 function handleExcelFile(input) {
@@ -2153,7 +2153,7 @@ function handleExcelFile(input) {
   if (file.name.endsWith(".csv")) {
     reader.readAsText(file);
   } else {
-    // For xlsx — basic fallback message
+    // For xlsx � basic fallback message
     reader.readAsText(file);
     showToast("For .xlsx files, please save as .csv first for best results", "error");
   }
@@ -2185,9 +2185,9 @@ function showExcelPreview(rows, headers) {
       ${preview.map(r => `
         <div class="excel-preview-row">
           <span style="font-weight:900;color:#1E293B">${r.name || r["medicine name"] || "?"}</span>
-          <span>·</span>
+          <span>�</span>
           <span>${r.company || "?"}</span>
-          <span>·</span>
+          <span>�</span>
           <span style="color:#94A3B8">${r.packing || r.pack || ""}</span>
         </div>`).join("")}
       ${rows.length > 5 ? `<div style="font-size:11px;color:#94A3B8;padding:5px 0;font-weight:700">+ ${rows.length-5} more rows...</div>` : ""}
@@ -2286,9 +2286,9 @@ function confirmDelete() {
   showToast("Product deleted");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // FORM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 function openAddForm() {
   editingId = null;
   document.getElementById("formTitle").textContent = "Add New Product";
@@ -2348,14 +2348,14 @@ function saveProduct() {
   if (!name) { showToast("Medicine name required!", "error"); return; }
   if (!company) { showToast("Company name required!", "error"); return; }
 
-  // Expiry validation — must be MM/YY and not already expired
+  // Expiry validation � must be MM/YY and not already expired
   const expiryRaw = document.getElementById("fExpiry").value.trim();
   if (expiryRaw) {
     const expiryOk = /^\d{2}\/\d{2}$/.test(expiryRaw);
     if (!expiryOk) { showToast("Expiry must be MM/YY (e.g. 06/26)", "error"); return; }
     const [mm, yy] = expiryRaw.split("/").map(Number);
     const expDate = new Date(2000 + yy, mm - 1, 1);
-    if (expDate < new Date()) { showToast("âš ï¸ This batch is already expired!", "error"); return; }
+    if (expDate < new Date()) { showToast("⚠� This batch is already expired!", "error"); return; }
   }
 
   const prod = {
@@ -2399,9 +2399,9 @@ function closeForm() {
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // VIEW MANAGER
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 function showView(viewId) {
   document.getElementById("cart-view").classList.remove("show");
   ["search-view","detail-view","admin-view","form-view","orders-view","scheme-view","account-view"].forEach(id => {
@@ -2456,10 +2456,10 @@ window.addEventListener("popstate", function(e) {
   }
 });
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // SCHEME HIGHLIGHT SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// â”€â”€ Scheme calculation helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// �����������������������������������������������������������
+// ── Scheme calculation helpers ──────────────────────────────
 function parseSchemeRatio(deal) {
   if (!deal) return null;
   // Format 1: "100+30 Free" or "10+2"
@@ -2474,7 +2474,7 @@ function parseSchemeRatio(deal) {
 function calcScheme(deal, qty) {
   if (!deal || qty <= 0) return null;
 
-  // Type 1: Free qty — "100+30 Free" or "Buy 5 Get 1 Free"
+  // Type 1: Free qty � "100+30 Free" or "Buy 5 Get 1 Free"
   const r = parseSchemeRatio(deal);
   if (r) {
     const freeQty = Math.floor(qty * r.free / r.base);
@@ -2482,7 +2482,7 @@ function calcScheme(deal, qty) {
     return `${qty}+${freeQty} Free`;
   }
 
-  // Type 2: PTR X% — "PTR 15%" → show saving per strip
+  // Type 2: PTR X% � "PTR 15%" → show saving per strip
   const ptrMatch = deal.match(/ptr\s*([\d.]+)\s*%?/i);
   if (ptrMatch) {
     const pct = parseFloat(ptrMatch[1]);
@@ -2502,25 +2502,25 @@ function calcScheme(deal, qty) {
     return `Flat ₹${flatMatch[1]} off`;
   }
 
-  // Fallback — show deal text as-is
+  // Fallback � show deal text as-is
   return deal;
 }
 
-// â”€â”€ Scheme Type Parser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Scheme Type Parser ──────────────────────────────────────────
 function parseSchemeType(deal) {
   if (!deal) return null;
   const d = deal.trim();
   // 100+30 Free / 10+2 Free
   if (/\d+\s*\+\s*\d+\s*(free|bonus)/i.test(d)) {
     const m = d.match(/(\d+)\s*\+\s*(\d+)/);
-    return { type:"free", icon:"ðŸŽ", label:"FREE with Order",
+    return { type:"free", icon:"�", label:"FREE with Order",
       short: `${m[1]}+${m[2]} Free`,
       css:"sh-type-free" };
   }
   // Buy X Get Y / Buy 10 Get 2
   if (/buy\s*\d+\s*get\s*\d+/i.test(d)) {
     const m = d.match(/buy\s*(\d+)\s*get\s*(\d+)/i);
-    return { type:"buy", icon:"ðŸ›ï¸", label:"Buy-Get Offer",
+    return { type:"buy", icon:"��", label:"Buy-Get Offer",
       short: `Buy ${m[1]} Get ${m[2]} Free`,
       css:"sh-type-buy" };
   }
@@ -2534,7 +2534,7 @@ function parseSchemeType(deal) {
   // 20% Scheme / 15% off / Extra 10%
   if (/([\d.]+)\s*%/i.test(d)) {
     const m = d.match(/([\d.]+)\s*%/);
-    return { type:"percent", icon:"ðŸ·ï¸", label:"% Discount",
+    return { type:"percent", icon:"���", label:"% Discount",
       short: `${m[1]}% Off`,
       css:"sh-type-percent" };
   }
@@ -2547,7 +2547,7 @@ function parseSchemeType(deal) {
   }
   // Anything else
   return { type:"other", icon:"✨", label:"Special Offer",
-    short: d.length > 22 ? d.slice(0,20)+"…" : d,
+    short: d.length > 22 ? d.slice(0,20)+"�" : d,
     css:"sh-type-other" };
 }
 
@@ -2583,11 +2583,11 @@ let _schemesOnlyFilter = false;
 
 function getProductScheme(p) {
   if (!p) return null;
-  // ⚡ Improvement 1 — O(1) index lookup instead of O(N) .find() on every call
+  // ⚡ Improvement 1 � O(1) index lookup instead of O(N) .find() on every call
   const s = _schemeForProduct(p);
   return s ? s.deal : (p.scheme || null);
 }
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ────────────────────────────────────────────────────────────
 
 const DEFAULT_SCHEMES = [
   {id:1, med:"VERMISOL 50", company:"Khandelwal Labs", deal:"100+30 Free", validity:""},
@@ -2609,7 +2609,7 @@ function loadSchemes() {
 
 function saveSchemes() {
   try { localStorage.setItem("ja_schemes", JSON.stringify(schemes)); } catch {}
-  // ⚡ Improvement 3 — single batch write instead of N individual writes
+  // ⚡ Improvement 3 � single batch write instead of N individual writes
   if (window._fb && window._fb.FB_OK) {
     window._fb.saveSchemesBatch(schemes);
   }
@@ -2617,7 +2617,7 @@ function saveSchemes() {
   _buildSchemeIndex();
 }
 
-// â”€â”€─ Improvement 1: Scheme lookup index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Improvement 1: Scheme lookup index ──────────────────────
 // Built once, O(1) lookup instead of O(N) find() on every product render
 let _schemeIndex = {}; // UPPERCASE_MED_NAME → scheme object
 let _productByName = {}; // UPPERCASE_NAME → product (built alongside scheme index)
@@ -2633,13 +2633,13 @@ function _buildSchemeIndex() {
   products.forEach(p => { if (p.name) _productByName[p.name.toUpperCase()] = p; });
 }
 
-// Fast O(1) lookup — checks exact key first, then partial match fallback
+// Fast O(1) lookup � checks exact key first, then partial match fallback
 function _schemeForProduct(p) {
   if (!p) return null;
   const name = p.name.toUpperCase();
   // 1. Exact match
   if (_schemeIndex[name]) return _schemeIndex[name];
-  // 2. Partial match — check if any scheme med is contained in product name
+  // 2. Partial match � check if any scheme med is contained in product name
   for (const key of Object.keys(_schemeIndex)) {
     if (name.includes(key)) return _schemeIndex[key];
   }
@@ -2665,11 +2665,11 @@ function updateSchemeTicker() {
     inner.innerHTML = '<div class="scheme-ticker-item">No active deals right now</div>';
     return;
   }
-  // Show up to 3 scheme names in ticker — duplicate only if enough items for loop to make sense
+  // Show up to 3 scheme names in ticker � duplicate only if enough items for loop to make sense
   const items = schemes.slice(0,3).map(s =>
-    `<div class="scheme-ticker-item">ðŸŽ ${s.med} — ${s.deal}</div>`
+    `<div class="scheme-ticker-item">� ${s.med} � ${s.deal}</div>`
   ).join("") + (schemes.length > 3
-    ? schemes.slice(0,3).map(s => `<div class="scheme-ticker-item">ðŸŽ ${s.med} — ${s.deal}</div>`).join("")
+    ? schemes.slice(0,3).map(s => `<div class="scheme-ticker-item">� ${s.med} � ${s.deal}</div>`).join("")
     : "");
   inner.innerHTML = items;
 }
@@ -2693,7 +2693,7 @@ function renderSchemes() {
     const isExpired = s.validity && s.validity < today;
     const badgeLabel = isExpired ? "Expired" : "HOT DEAL";
     const validityText = s.validity
-      ? (isExpired ? "âš ï¸ Expired" : "â³ Valid till " + formatDate(s.validity))
+      ? (isExpired ? "⚠� Expired" : "�� Valid till " + formatDate(s.validity))
       : "🟢 Active Now";
     const isCustom = schemes.find(x => x.id === s.id);
     return `
@@ -2703,7 +2703,7 @@ function renderSchemes() {
         <div class="scheme-card-name">${s.med}</div>
         <div class="scheme-card-company">${s.company}</div>
         <div class="scheme-card-deal">
-          <span class="scheme-deal-icon">ðŸŽ</span>
+          <span class="scheme-deal-icon">�</span>
           <span class="scheme-deal-text">${s.deal}</span>
         </div>
         <div class="scheme-card-validity">${validityText}</div>
@@ -2722,7 +2722,7 @@ function schemeCardClick(id) {
   if (!s) return;
   // Fix 2: Block expired schemes
   if (s.validity && s.validity < new Date().toISOString().slice(0,10)) {
-    showToast("âš ï¸ Scheme expired", "error");
+    showToast("⚠� Scheme expired", "error");
     return;
   }
   // Fix 1+5: Exact match via O(1) index first, then startsWith fallback
@@ -2732,9 +2732,9 @@ function schemeCardClick(id) {
   if (p) {
     const inCart = cart.some(c => c.id === p.id);
     if (inCart) {
-      // Already in cart — go to cart
+      // Already in cart � go to cart
       openCart();
-      showToast("Already in order — adjust qty in cart");
+      showToast("Already in order � adjust qty in cart");
     } else {
       // Open qty picker directly
       openQtyPicker(p.id);
@@ -2759,7 +2759,7 @@ function openSchemeModal(editId) {
     document.getElementById("sCompany").value = s.company || "";
     document.getElementById("sDeal").value = s.deal;
     document.getElementById("sValidity").value = s.validity || "";
-    titleEl.textContent = "âœï¸ Edit Scheme";
+    titleEl.textContent = "�� Edit Scheme";
     saveBtn.textContent = "💾 Save Changes";
   } else {
     document.getElementById("sMedName").value = "";
@@ -2793,7 +2793,7 @@ function sMedSearch(val) {
   for (var j = 0; j < matches.length; j++) {
     var prod = matches[j];
     var subLine = prod.company
-      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + prod.company + (prod.packing ? " · " + prod.packing : "") + "</div>"
+      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + prod.company + (prod.packing ? " � " + prod.packing : "") + "</div>"
       : "";
     html += '<div data-idx="' + j + '" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9">'
       + '<div style="font-size:13px;font-weight:800;color:var(--text,#0f172a)">' + prod.name + "</div>"
@@ -2843,7 +2843,7 @@ function saveScheme() {
     if (idx !== -1) {
       schemes[idx] = { ...schemes[idx], ...schemeData };
     } else {
-      // Was a DEFAULT_SCHEME — add as custom override (Fix 3: Number() to avoid type mismatch)
+      // Was a DEFAULT_SCHEME � add as custom override (Fix 3: Number() to avoid type mismatch)
       schemes.push({ id: Number(editId), ...schemeData });
     }
     showToast("✅ Scheme updated!");
@@ -2865,9 +2865,9 @@ function deleteScheme(id) {
   showToast("Deal removed");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // CART & ORDER SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 let cart = []; // [{id, name, company, packing, qty}]
 const JAIN_WA_NUMBER = "919086291862"; // 91 + 90862-91862
 
@@ -2931,7 +2931,7 @@ function updateCartUI() {
 function toggleCart(productId) {
   const existing = cart.findIndex(c => c.id === productId);
   if (existing !== -1) {
-    // Already in cart — remove it
+    // Already in cart � remove it
     cart.splice(existing, 1);
     saveCart();
     updateCartUI();
@@ -2943,7 +2943,7 @@ function toggleCart(productId) {
   }
 }
 
-// â”€â”€ Qty Picker â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ── Qty Picker ───────────────────────────────────────────────
 let _qtyPickerProductId = null;
 
 function openQtyPicker(productId) {
@@ -2959,8 +2959,8 @@ function openQtyPicker(productId) {
   let html = `
     <div style="padding:0 4px 8px">
       <div style="font-size:16px;font-weight:900;color:#1E293B;margin-bottom:2px">${p.name}</div>
-      <div style="font-size:12px;color:#64748B;font-weight:600;margin-bottom:${deal ? '10px' : '16px'}">${p.company} · ${p.packing}</div>
-      ${deal ? `<div style="background:#fef3c7;color:#92400e;font-size:13px;font-weight:800;padding:8px 12px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;gap:6px;"><span>ðŸŽ</span> Scheme: ${deal}</div>` : ""}
+      <div style="font-size:12px;color:#64748B;font-weight:600;margin-bottom:${deal ? '10px' : '16px'}">${p.company} � ${p.packing}</div>
+      ${deal ? `<div style="background:#fef3c7;color:#92400e;font-size:13px;font-weight:800;padding:8px 12px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;gap:6px;"><span>�</span> Scheme: ${deal}</div>` : ""}
     </div>`;
 
   if (isTablet) {
@@ -3008,7 +3008,7 @@ function updatePickerScheme() {
   const qty = parseInt(inp.value) || 0;
   const schemeText = calcScheme(getProductScheme(p), qty);
   infoEl.innerHTML = schemeText
-    ? `<span style="background:#fef3c7;color:#92400e;font-size:13px;font-weight:800;padding:5px 14px;border-radius:20px">ðŸŽ ${schemeText}</span>`
+    ? `<span style="background:#fef3c7;color:#92400e;font-size:13px;font-weight:800;padding:5px 14px;border-radius:20px">� ${schemeText}</span>`
     : "";
 }
 
@@ -3037,7 +3037,7 @@ function confirmQtyPicker(boxQty, unit) {
   updateCartUI();
   updateCardBtn(p.id, true);
   closeQtyPicker();
-  showToast(`✓ ${p.name.substring(0,20)} added — ${qty} ${itemUnit === "box" ? (qty===1?"box":"boxes") : "strips"}${schemeText ? " · " + schemeText : ""}`);
+  showToast(`✓ ${p.name.substring(0,20)} added � ${qty} ${itemUnit === "box" ? (qty===1?"box":"boxes") : "strips"}${schemeText ? " � " + schemeText : ""}`);
   const fab = document.getElementById("cartFab");
   fab.classList.add("has-items");
   setTimeout(() => fab.classList.remove("has-items"), 500);
@@ -3064,7 +3064,7 @@ function updateCardBtn(id, inCart) {
   if (typeof currentDetailId !== "undefined" && currentDetailId === id) {
     const db = document.getElementById("detailCartBtn");
     if (db) {
-      db.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
+      db.textContent = inCart ? "✓ In Cart � Remove" : "+ Add to Cart";
       db.style.background = inCart ? "#00897b" : "#fff";
       db.style.color = inCart ? "#fff" : "#00897b";
     }
@@ -3077,7 +3077,7 @@ function toggleCartFromDetail() {
   // refresh detail button
   const inCart = cart.some(c => c.id === currentDetailId);
   const btn = document.getElementById("detailCartBtn");
-  btn.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
+  btn.textContent = inCart ? "✓ In Cart � Remove" : "+ Add to Cart";
   btn.style.background = inCart ? "#00897b" : "#fff";
   btn.style.color = inCart ? "#fff" : "#00897b";
 }
@@ -3126,7 +3126,7 @@ function renderCartItems() {
   if (boxItems > 0 && stripItems > 0) totalLabel = `${stripItems} strips + ${boxItems} boxes`;
   else if (boxItems > 0) totalLabel = `${boxItems} ${boxItems === 1 ? "box" : "boxes"}`;
   else totalLabel = `${totalQty} strips`;
-  subtitleEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} · ${totalLabel}`;
+  subtitleEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} � ${totalLabel}`;
   totalItemsEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""}`;
   totalQtyEl.textContent = totalLabel;
 
@@ -3149,15 +3149,15 @@ function renderCartItems() {
     <div class="cart-item-card" id="cartItem_${item.id}">
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-meta">${item.company} · ${item.packing}</div>
-        ${schemeText ? `<div style="margin-top:4px;display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">ðŸŽ ${schemeText}</div>` : ""}
+        <div class="cart-item-meta">${item.company} � ${item.packing}</div>
+        ${schemeText ? `<div style="margin-top:4px;display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">� ${schemeText}</div>` : ""}
       </div>
       <div class="qty-stepper">
         <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
         <span class="qty-val" id="qty_${item.id}">${item.qty}</span>
         <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
       </div>
-      <button class="cart-item-remove" onclick="removeCartItem(${item.id})">ðŸ—‘ï¸</button>
+      <button class="cart-item-remove" onclick="removeCartItem(${item.id})">🗑�</button>
     </div>`;
   }).join("");
 }
@@ -3189,7 +3189,7 @@ function changeQty(productId, delta) {
         badgeEl.style.cssText = "margin-top:4px;display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;";
         cardEl.querySelector(".cart-item-info").appendChild(badgeEl);
       }
-      badgeEl.textContent = "ðŸŽ " + schemeText;
+      badgeEl.textContent = "� " + schemeText;
     } else if (badgeEl) {
       badgeEl.remove();
     }
@@ -3203,7 +3203,7 @@ function changeQty(productId, delta) {
   else if (boxItems > 0) totalLabel = `${boxItems} ${boxItems === 1 ? "box" : "boxes"}`;
   else totalLabel = `${totalQty} strips`;
   document.getElementById("cartTotalQty").textContent = totalLabel;
-  document.getElementById("cartSubtitle").textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} · ${totalLabel}`;
+  document.getElementById("cartSubtitle").textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} � ${totalLabel}`;
   // Update pill bar too
   const pill = document.getElementById("cartPillBar");
   const pillCount = document.getElementById("cartPillCount");
@@ -3227,7 +3227,7 @@ function removeCartItem(productId) {
   renderProductList();
 }
 
-// â”€â”€─ ORDER SENDING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── ORDER SENDING ──────────────────────────────────────────
 function openOrderOptions() {
   if (!cart.length) { showToast("Add items to your order first!", "error"); return; }
   document.getElementById("orderOptionsOverlay").classList.add("open");
@@ -3260,11 +3260,11 @@ function buildOrderText() {
   const totalQty = cart.reduce((s, c) => s + c.qty, 0);
   const addrPart = address ? ` | Addr: ${address}` : "";
   const srPart = (srMode && currentSR && srActiveShop)
-    ? `\nðŸ§‘â€💼 SR: ${currentSR.name} (${currentSR.code}) — ordering for *${srActiveShop}*`
+    ? `\n🧑�💼 SR: ${currentSR.name} (${currentSR.code}) � ordering for *${srActiveShop}*`
     : "";
 
   const noteEl = document.getElementById("cartOrderNote");
-  const notePart = noteEl && noteEl.value.trim() ? `\n\nðŸ“ *Note:* ${noteEl.value.trim()}` : "";
+  const notePart = noteEl && noteEl.value.trim() ? `\n\n� *Note:* ${noteEl.value.trim()}` : "";
   return `================================\n  JAIN AGENCIES - RAJNANDGAON\n================================\n*${store}*\nMo: ${mobile}${addrPart}\nDate: ${date}${srPart}\n\n*NEW ORDER*\n--------------------------------\n${itemLines}\n--------------------------------\nItems: ${cart.length} | Total Qty: ${totalQty}${notePart}\nPlease confirm this order!`;
 }
 
@@ -3322,7 +3322,7 @@ function sendDirectOrder() {
   showOrderSuccess(
     "✅",
     "Order Placed!",
-    `Order #${orderData.id}\nRecorded for ${name}\n${orderData.items.length} items · ${orderData.totalQty} strips\n\nJain Agencies will confirm shortly.`
+    `Order #${orderData.id}\nRecorded for ${name}\n${orderData.items.length} items � ${orderData.totalQty} strips\n\nJain Agencies will confirm shortly.`
   );
   // Clear cart after direct order
   cart = [];
@@ -3343,9 +3343,9 @@ function closeOrderSuccess() {
   renderProductList();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // REORDER LAST ORDER SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
 function getOrders() {
   try { return JSON.parse(localStorage.getItem("ja_orders") || "[]"); } catch { return []; }
@@ -3367,7 +3367,7 @@ function updateReorderBanner() {
   banner.classList.add("show");
   document.getElementById("reorderName").textContent = last.retailer || "Your Shop";
   document.getElementById("reorderMeta").textContent =
-    `${last.items.length} items · ${last.totalQty} strips · ${last.timestamp}`;
+    `${last.items.length} items � ${last.totalQty} strips � ${last.timestamp}`;
 }
 
 function reorderLast() {
@@ -3423,7 +3423,7 @@ function renderHistoryList() {
     const itemsHtml = shown.map(i =>
       `<div class="history-item-row">
         <span class="history-item-name">${i.name}</span>
-        <span class="history-item-qty">Ã—${i.qty}</span>
+        <span class="history-item-qty">×${i.qty}</span>
       </div>`
     ).join("") + (extra > 0
       ? `<div style="font-size:11px;color:#94A3B8;font-weight:700;padding:5px 0">+ ${extra} more item${extra>1?"s":""}</div>`
@@ -3434,11 +3434,11 @@ function renderHistoryList() {
         <div class="history-order-head">
           <div>
             <div class="history-order-id">${order.id}</div>
-            <div class="history-order-retailer">ðŸª ${order.retailer}</div>
+            <div class="history-order-retailer">�� ${order.retailer}</div>
           </div>
           <div>
             <div class="history-order-time">${order.timestamp}</div>
-            <div class="history-order-meta">${order.items.length} items · ${order.totalQty} strips</div>
+            <div class="history-order-meta">${order.items.length} items � ${order.totalQty} strips</div>
           </div>
         </div>
         <div class="history-order-items">${itemsHtml}</div>
@@ -3446,7 +3446,7 @@ function renderHistoryList() {
           <button class="history-reorder-btn" onclick="reorderFromHistory('${order.id}')">
             ↺ Reorder This
           </button>
-          <div class="history-status-badge">â³ ${order.status || "Pending"}</div>
+          <div class="history-status-badge">�� ${order.status || "Pending"}</div>
         </div>
       </div>`;
   }).join("");
@@ -3474,9 +3474,9 @@ function reorderFromHistory(orderId) {
   setTimeout(() => fab.classList.remove("has-items"), 500);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // STOCK ALERT SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
 let watchList = [];      // product ids being watched
 let stockAlerts = [];    // past alert notifications
@@ -3492,7 +3492,7 @@ function loadStockAlerts() {
   updateBellDot();
 }
 
-// â”€â”€ FCM PUSH NOTIFICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ── FCM PUSH NOTIFICATIONS ─────────────────────────────────────────────────
 
 // Add a push notification into the in-app notification centre
 function addInAppNotification(title, body, type) {
@@ -3584,7 +3584,7 @@ function toggleWatchFromDetail() {
   if (!p) return;
   const btn = document.getElementById("detailNotifyBtn");
   const watching = isWatching(currentDetailId);
-  btn.textContent = watching ? "🔔 Watching — Unwatch" : "🔔 Notify Me When In Stock";
+  btn.textContent = watching ? "🔔 Watching � Unwatch" : "🔔 Notify Me When In Stock";
   btn.style.background = watching ? "#fff7ed" : "#fff";
 }
 
@@ -3619,12 +3619,12 @@ function fireStockAlert(product) {
   renderProductList();
 }
 
-// â”€â”€─ PUSH NOTIFICATION BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── PUSH NOTIFICATION BANNER ───────────────────────────────
 function showPushNotif(product, timeStr) {
   pendingPushProductId = product.id;
   document.getElementById("pushTitle").textContent = product.name + " is back in stock! 🎉";
   document.getElementById("pushSub").textContent =
-    `${product.company} · ${product.packing} · Available now`;
+    `${product.company} � ${product.packing} � Available now`;
   document.getElementById("pushTime").textContent = timeStr || "just now";
 
   const notif = document.getElementById("stockPushNotif");
@@ -3650,7 +3650,7 @@ function pushAddToCart() {
   closePushNotif();
 }
 
-// â”€â”€─ BELL DOT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── BELL DOT ────────────────────────────────────────────────
 function updateBellDot() {
   const unread = stockAlerts.filter(a => a.unread).length;
   const dot = document.getElementById("bellDot");
@@ -3658,7 +3658,7 @@ function updateBellDot() {
   else dot.classList.remove("show");
 }
 
-// â”€â”€─ NOTIFICATION CENTRE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── NOTIFICATION CENTRE ─────────────────────────────────────
 function openNotifCentre() {
   stockAlerts.forEach(a => a.unread = false);
   saveStockAlerts();
@@ -3697,8 +3697,8 @@ function renderNotifCentre() {
         <div class="notif-item-icon">✅</div>
         <div class="notif-item-text">
           <div class="notif-item-title">${a.productName} is back in stock!</div>
-          <div class="notif-item-sub">${a.company} · ${a.packing}</div>
-          <div class="notif-item-time">ðŸ• ${a.time}</div>
+          <div class="notif-item-sub">${a.company} � ${a.packing}</div>
+          <div class="notif-item-time">� ${a.time}</div>
         </div>
         <button class="notif-item-remove" onclick="removeAlert(${a.id})">✕</button>
       </div>`).join("");
@@ -3709,7 +3709,7 @@ function renderNotifCentre() {
     if (!watched.length) {
       wrap.innerHTML = `
         <div class="notif-empty">
-          <div class="notif-empty-icon">ðŸ‘ï¸</div>
+          <div class="notif-empty-icon">��</div>
           <div class="notif-empty-text">Not watching any products.<br>Tap 🔔 Notify Me on<br>out-of-stock items!</div>
         </div>`;
       return;
@@ -3740,21 +3740,21 @@ function removeWatch(productId) {
   showToast("Removed from watchlist");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // RETAILER VERIFICATION & AUTH SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
 let currentRetailer = null;   // logged-in retailer object
 let dlUploaded = false;
 let gstUploaded = false;
 
-// â”€â”€─ Storage helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── Storage helpers ─────────────────────────────────────────
 function getRetailers() {
   try { return JSON.parse(localStorage.getItem("ja_retailers") || "[]"); } catch { return []; }
 }
 function saveRetailers(list) {
   try { localStorage.setItem("ja_retailers", JSON.stringify(list)); } catch {}
-  // Firebase sync — write each changed retailer
+  // Firebase sync � write each changed retailer
   if (window._fb && window._fb.FB_OK) {
     list.forEach(r => window._fb.saveRetailer(r));
   }
@@ -3770,14 +3770,14 @@ function saveRetailerSession(r) {
   }
 }
 
-// â”€â”€─ Boot: check if retailer is already logged in â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── Boot: check if retailer is already logged in ─────────────
 function checkRetailerAuth() {
-  // TRIAL MODE: no login required — always allow access
+  // TRIAL MODE: no login required � always allow access
   document.getElementById("retailer-gate").style.display = "none";
   return true;
 }
 
-// â”€â”€─ Gate tab switcher â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Gate tab switcher ────────────────────────────────────────
 function switchGateTab(tab) {
   document.getElementById("gateTabLogin").classList.toggle("active", tab === "login");
   document.getElementById("gateTabRegister").classList.toggle("active", tab === "register");
@@ -3794,7 +3794,7 @@ function showGateLoginPanel() {
   document.getElementById("gateTabRegister").classList.remove("active");
 }
 
-// â”€â”€─ FILE UPLOAD HANDLER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── FILE UPLOAD HANDLER ──────────────────────────────────────
 function handleFileUpload(type, input) {
   const file = input.files[0];
   if (!file) return;
@@ -3813,7 +3813,7 @@ function handleFileUpload(type, input) {
   }
 }
 
-// â”€â”€─ REGISTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── REGISTER ─────────────────────────────────────────────────
 function doRetailerRegister() {
   const errEl = document.getElementById("regError");
   errEl.classList.remove("show");
@@ -3832,16 +3832,16 @@ function doRetailerRegister() {
   const gst     = document.getElementById("regGST").value.trim().toUpperCase();
   const consent = document.getElementById("regConsent").checked;
 
-  // No mandatory fields — only need a name to identify the retailer
+  // No mandatory fields � only need a name to identify the retailer
   if (!name) {
-    errEl.textContent = "âš ï¸ Please enter your name to continue.";
+    errEl.textContent = "⚠� Please enter your name to continue.";
     errEl.classList.add("show"); return;
   }
 
   const retailers = getRetailers();
   // Only block duplicate mobile if user actually filled it in
   if (mobile && retailers.find(r => r.mobile === mobile)) {
-    errEl.textContent = "âš ï¸ This mobile is already registered — please login instead.";
+    errEl.textContent = "⚠� This mobile is already registered � please login instead.";
     errEl.classList.add("show"); return;
   }
 
@@ -3865,7 +3865,7 @@ function doRetailerRegister() {
   retailers.push(retailer);
   // Save locally first (instant)
   try { localStorage.setItem("ja_retailers", JSON.stringify(retailers)); } catch {}
-  // Push to Firestore — admin sees it immediately on their device
+  // Push to Firestore � admin sees it immediately on their device
   if (window._fb && window._fb.FB_OK) {
     window._fb.saveRetailer(retailer).then(() => {
       // Signal pending screen to switch to Firebase polling
@@ -3888,31 +3888,31 @@ function doRetailerRegister() {
   showToast("Registration submitted! Awaiting approval.");
 }
 
-// â”€â”€─ LOGIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── LOGIN ────────────────────────────────────────────────────
 function doRetailerLogin() {
   const errEl = document.getElementById("loginError");
   errEl.classList.remove("show");
   const id  = document.getElementById("loginId").value.trim();
   const pwd = document.getElementById("loginPwd").value.trim();
 
-  // â”€â”€ Field validation â”€â”€
+  // ── Field validation ──
   if (!id) {
-    errEl.textContent = "âš ï¸ Please enter your mobile number or email.";
+    errEl.textContent = "⚠� Please enter your mobile number or email.";
     errEl.classList.add("show");
     document.getElementById("loginId").focus();
     return;
   }
-  // Basic format check — must be 10-digit number or contain @
+  // Basic format check � must be 10-digit number or contain @
   const isMobile = /^\d{10}$/.test(id);
   const isEmail  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(id);
   if (!isMobile && !isEmail) {
-    errEl.textContent = "âš ï¸ Enter a valid 10-digit mobile or email address.";
+    errEl.textContent = "⚠� Enter a valid 10-digit mobile or email address.";
     errEl.classList.add("show");
     document.getElementById("loginId").focus();
     return;
   }
   if (!pwd) {
-    errEl.textContent = "âš ï¸ Please enter your password.";
+    errEl.textContent = "⚠� Please enter your password.";
     errEl.classList.add("show");
     document.getElementById("loginPwd").focus();
     return;
@@ -3922,7 +3922,7 @@ function doRetailerLogin() {
   const r = retailers.find(x => (x.mobile === id || x.email === id) && x.pwd === pwd);
 
   if (!r) {
-    errEl.textContent = "âŒ Invalid mobile/email or password.";
+    errEl.textContent = "�� Invalid mobile/email or password.";
     errEl.classList.add("show"); return;
   }
 
@@ -3944,7 +3944,7 @@ function doRetailerLogin() {
   }
 }
 
-// â”€â”€─ LOGOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── LOGOUT ───────────────────────────────────────────────────
 function doRetailerLogout() {
   saveRetailerSession(null);
   currentRetailer = null;
@@ -3954,7 +3954,7 @@ function doRetailerLogout() {
   document.getElementById("loginPwd").value = "";
 }
 
-// â”€â”€─ PENDING SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── PENDING SCREEN ───────────────────────────────────────────
 function showGatePending(r) {
   document.getElementById("retailer-gate").classList.add("show");
   document.getElementById("gatePanelLogin").style.display = "none";
@@ -3963,12 +3963,12 @@ function showGatePending(r) {
 
   document.getElementById("pendingDetailsCard").innerHTML = `
     <div class="gate-pending-row"><span class="gate-pending-key">Name</span><span class="gate-pending-val">${r.name}</span></div>
-    <div class="gate-pending-row"><span class="gate-pending-key">Shop</span><span class="gate-pending-val">${r.shop||"—"}</span></div>
-    <div class="gate-pending-row"><span class="gate-pending-key">Mobile</span><span class="gate-pending-val">${r.mobile||"—"}</span></div>
+    <div class="gate-pending-row"><span class="gate-pending-key">Shop</span><span class="gate-pending-val">${r.shop||"�"}</span></div>
+    <div class="gate-pending-row"><span class="gate-pending-key">Mobile</span><span class="gate-pending-val">${r.mobile||"�"}</span></div>
     <div class="gate-pending-row"><span class="gate-pending-key">Submitted</span><span class="gate-pending-val">${r.submittedAt}</span></div>
   `;
 
-  // Auto-poll every 3s — dismiss immediately when admin approves
+  // Auto-poll every 3s � dismiss immediately when admin approves
   clearInterval(window._pendingPoller);
   window._pendingPoller = setInterval(() => {
     const list  = getRetailers();
@@ -3993,17 +3993,17 @@ function showGateRejected(r) {
   document.getElementById("gatePanelLogin").style.display = "none";
   document.getElementById("gatePanelRegister").style.display = "none";
   document.getElementById("gatePendingScreen").classList.add("show");
-  document.getElementById("gatePendingScreen").querySelector(".gate-pending-icon").textContent = "âŒ";
+  document.getElementById("gatePendingScreen").querySelector(".gate-pending-icon").textContent = "��";
   document.getElementById("gatePendingScreen").querySelector(".gate-pending-title").textContent = "Application Rejected";
   document.getElementById("gatePendingScreen").querySelector(".gate-pending-sub").textContent =
     (r.rejectionReason || "Your application was not approved.") + " Please contact Jain Agencies.";
   document.querySelector(".gate-pending-badge").style.background = "rgba(239,68,68,0.2)";
   document.querySelector(".gate-pending-badge").style.borderColor = "rgba(239,68,68,0.4)";
   document.querySelector(".gate-pending-badge").style.color = "#fca5a5";
-  document.querySelector(".gate-pending-badge").textContent = "âŒ Application Rejected";
+  document.querySelector(".gate-pending-badge").textContent = "�� Application Rejected";
 }
 
-// â”€â”€─ ADMIN: Retailer Requests â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── ADMIN: Retailer Requests ────────────────────────────────
 function renderRetailerRequests() {
   const section = document.getElementById("retailerRequestsSection");
   const listEl = document.getElementById("rrList");
@@ -4034,23 +4034,23 @@ function renderRetailerRequests() {
       <div class="rr-card-head">
         <div>
           <div class="rr-name">👤 ${r.name}</div>
-          <div class="rr-shop">ðŸª ${r.shop}</div>
+          <div class="rr-shop">�� ${r.shop}</div>
         </div>
         <span class="rr-status-pill ${r.status}">${
-          r.status === "pending" ? "â³ Pending" :
-          r.status === "approved" ? "✅ Approved" : "âŒ Rejected"
+          r.status === "pending" ? "�� Pending" :
+          r.status === "approved" ? "✅ Approved" : "�� Rejected"
         }</span>
       </div>
       <div class="rr-card-body">
-        <div class="rr-detail-row"><span class="rr-detail-key">Mobile</span><span class="rr-detail-val">${r.mobile}${r.email ? ' · ' + r.email : ''}</span></div>
+        <div class="rr-detail-row"><span class="rr-detail-key">Mobile</span><span class="rr-detail-val">${r.mobile}${r.email ? ' � ' + r.email : ''}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Address</span><span class="rr-detail-val">${r.address}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Drug Lic.</span><span class="rr-detail-val">${r.dl}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">GST No.</span><span class="rr-detail-val">${r.gst}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Submitted</span><span class="rr-detail-val">${r.submittedAt}</span></div>
         ${r.approvedAt ? `<div class="rr-detail-row"><span class="rr-detail-key">Approved</span><span class="rr-detail-val">${r.approvedAt}</span></div>` : ""}
         <div class="rr-docs">
-          <span class="rr-doc-chip ${r.dlUploaded ? 'uploaded' : ''}">📑 Drug License ${r.dlUploaded ? '✓ Uploaded' : '— Not uploaded'}</span>
-          <span class="rr-doc-chip ${r.gstUploaded ? 'uploaded' : ''}">🧾 GST Cert ${r.gstUploaded ? '✓ Uploaded' : '— Not uploaded'}</span>
+          <span class="rr-doc-chip ${r.dlUploaded ? 'uploaded' : ''}">📑 Drug License ${r.dlUploaded ? '✓ Uploaded' : '� Not uploaded'}</span>
+          <span class="rr-doc-chip ${r.gstUploaded ? 'uploaded' : ''}">🧾 GST Cert ${r.gstUploaded ? '✓ Uploaded' : '� Not uploaded'}</span>
         </div>
         
         <div class="rr-b2b-row">
@@ -4062,7 +4062,7 @@ function renderRetailerRequests() {
               title="Current outstanding dues for this retailer" />
           </div>
           <div class="rr-b2b-field">
-            <div class="rr-b2b-label">ðŸ—ºï¸ Beat / Route</div>
+            <div class="rr-b2b-label">🗺� Beat / Route</div>
             <input class="rr-b2b-input" type="text" value="${r.beat || ''}" placeholder="e.g. Gandhi Nagar"
               onchange="setRetailerField('${r.id}','beat',this.value.trim())" />
           </div>
@@ -4075,13 +4075,13 @@ function renderRetailerRequests() {
       </div>
       <div class="rr-card-foot">
         ${r.status !== "approved" ? `<button class="rr-approve-btn" onclick="approveRetailer('${r.id}')">✅ Approve</button>` : ""}
-        ${r.status !== "rejected" ? `<button class="rr-reject-btn" onclick="rejectRetailer('${r.id}')">âŒ Reject</button>` : ""}
+        ${r.status !== "rejected" ? `<button class="rr-reject-btn" onclick="rejectRetailer('${r.id}')">�� Reject</button>` : ""}
         ${r.status !== "pending" ? `<button class="rr-revoke-btn" onclick="revokeRetailer('${r.id}')">↩ Reset</button>` : ""}
       </div>
     </div>`).join("");
 }
 
-// â”€â”€─ Set a single field on a retailer (outstanding, beat, salesman) â”€â”€â”€â”€â”€â”€─
+// ─── Set a single field on a retailer (outstanding, beat, salesman) ───────
 function setRetailerField(id, field, value) {
   const retailers = getRetailers();
   const r = retailers.find(x => x.id === id);
@@ -4097,7 +4097,7 @@ function setRetailerField(id, field, value) {
   showToast(`Retailer ${field} updated`);
 }
 
-// â”€â”€─ Outstanding banner shown to logged-in retailer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── Outstanding banner shown to logged-in retailer ───────────────────────
 function renderOutstandingBanner() {
   const sess = getRetailerSession();
   const banner = document.getElementById("outstandingBanner");
@@ -4122,7 +4122,7 @@ function approveRetailer(id) {
   r.approvedAt = new Date().toLocaleString("en-IN");
   // Save locally
   try { localStorage.setItem("ja_retailers", JSON.stringify(retailers)); } catch {}
-  // Firebase — direct field update (fast, triggers onSnapshot on all devices)
+  // Firebase � direct field update (fast, triggers onSnapshot on all devices)
   if (window._fb && window._fb.FB_OK) {
     window._fb.updateRetailer(id, { status: "approved", approvedAt: r.approvedAt });
   } else {
@@ -4136,7 +4136,7 @@ function approveRetailer(id) {
   try { localStorage.setItem("ja_approval_ping", id + "_" + Date.now()); } catch {}
   renderRetailerRequests();
   if (typeof renderDashboard === "function") renderDashboard();
-  showToast("✅ Retailer approved — " + r.name);
+  showToast("✅ Retailer approved � " + r.name);
   triggerApprovalWA(r);
 }
 
@@ -4156,7 +4156,7 @@ function rejectRetailer(id) {
     saveRetailers(retailers);
   }
   renderRetailerRequests();
-  showToast("Retailer rejected — " + r.name);
+  showToast("Retailer rejected � " + r.name);
 }
 
 function revokeRetailer(id) {
@@ -4169,7 +4169,7 @@ function revokeRetailer(id) {
   r.rejectionReason = "";
   saveRetailers(retailers);
   renderRetailerRequests();
-  showToast("Reset to pending — " + r.name);
+  showToast("Reset to pending � " + r.name);
 }
 
 function showRetailerMenu() {
@@ -4178,17 +4178,17 @@ function showRetailerMenu() {
   if (choice) doRetailerLogout();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // ORDER STATUS TRACKER
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 const ORDER_STATUSES = ["Pending","Confirmed","Packed","Dispatched","Delivered"];
-const STATUS_EMOJIS  = { Pending:"â³", Confirmed:"✅", Packed:"📦", Dispatched:"🚚", Delivered:"🎉", "WhatsApp Sent":"💬" };
+const STATUS_EMOJIS  = { Pending:"��", Confirmed:"✅", Packed:"📦", Dispatched:"🚚", Delivered:"🎉", "WhatsApp Sent":"💬" };
 const STATUS_CSS     = { Pending:"pending", Confirmed:"confirmed", Packed:"packed", Dispatched:"dispatched", Delivered:"delivered", "WhatsApp Sent":"wa" };
 
 function saveOrders(orders) {
   try { localStorage.setItem("ja_orders", JSON.stringify(orders.slice(0,50))); } catch {}
-  // Firebase — sync all orders (individual writes handled in send functions)
+  // Firebase � sync all orders (individual writes handled in send functions)
 }
 
 async function fbSaveOrder(order) {
@@ -4225,7 +4225,7 @@ function updateOrderStatus(orderId, newStatus) {
   o.status = newStatus;
   o.statusUpdatedAt = new Date().toLocaleString("en-IN");
   saveOrders(orders); // localStorage cache
-  // Firebase live update — retailer sees status change instantly
+  // Firebase live update � retailer sees status change instantly
   if (window._fb && window._fb.FB_OK) {
     window._fb.updateOrder(orderId, { status: newStatus, statusUpdatedAt: o.statusUpdatedAt });
   }
@@ -4300,10 +4300,10 @@ function buildOrderCard(o, adminMode) {
       <div class="order-status-head">
         <div>
           <div class="order-status-id">${o.id}</div>
-          <div class="order-status-shop">ðŸª ${o.retailer}</div>
-          <div class="order-status-meta">${o.items.length} items · ${o.totalQty} strips · ${o.timestamp}</div>
+          <div class="order-status-shop">�� ${o.retailer}</div>
+          <div class="order-status-meta">${o.items.length} items � ${o.totalQty} strips � ${o.timestamp}</div>
         </div>
-        <span class="status-pill ${STATUS_CSS[o.status]||"pending"}">${STATUS_EMOJIS[o.status]||"â³"} ${o.status}</span>
+        <span class="status-pill ${STATUS_CSS[o.status]||"pending"}">${STATUS_EMOJIS[o.status]||"��"} ${o.status}</span>
       </div>
       ${isWA ? "" : `<div class="order-stepper">${stepsHtml}</div>`}
       ${o.dispatch ? `
@@ -4312,15 +4312,15 @@ function buildOrderCard(o, adminMode) {
         <div style="flex:1">
           <div class="dispatch-info-text">Dispatched via ${o.dispatch.label}</div>
           ${o.dispatch.details ? `<div class="dispatch-info-detail">📋 ${o.dispatch.details}</div>` : ""}
-          ${o.dispatch.eta ? `<div class="dispatch-info-detail">â° ETA: ${o.dispatch.eta}</div>` : ""}
-          <div class="dispatch-info-detail">ðŸ• ${o.dispatch.dispatchedAt}</div>
+          ${o.dispatch.eta ? `<div class="dispatch-info-detail">�� ETA: ${o.dispatch.eta}</div>` : ""}
+          <div class="dispatch-info-detail">� ${o.dispatch.dispatchedAt}</div>
         </div>
       </div>` : ""}
       <div class="order-items-toggle" onclick="toggleOrderItems('${itemsId}')">
-        📋 ${o.items.length} items <span id="arr_${itemsId}" style="font-size:14px">â–¼</span>
+        📋 ${o.items.length} items <span id="arr_${itemsId}" style="font-size:14px">▼</span>
       </div>
       <div class="order-items-list" id="${itemsId}">
-        ${o.items.map(i => `<div class="order-item-row"><span class="order-item-name">${i.name}</span><span class="order-item-qty">Ã—${i.qty}</span></div>`).join("")}
+        ${o.items.map(i => `<div class="order-item-row"><span class="order-item-name">${i.name}</span><span class="order-item-qty">×${i.qty}</span></div>`).join("")}
       </div>
       ${adminStatusHtml}
       <div class="order-card-foot">
@@ -4335,15 +4335,15 @@ function toggleOrderItems(id) {
   const arr = document.getElementById("arr_" + id);
   if (!el) return;
   const open = el.classList.toggle("open");
-  if (arr) arr.textContent = open ? "â–²" : "â–¼";
+  if (arr) arr.textContent = open ? "▲" : "▼";
 }
 
 // Admin orders tab
 
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // PDF INVOICE GENERATOR
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 let currentInvoiceOrderId = null;
 
@@ -4372,12 +4372,12 @@ function openInvoice(orderId) {
     if (ptr) { subtotal += lineAmt; totalGST += lineGST; }
     const half   = (lineGST / 2).toFixed(2);
     return `<tr>
-      <td style="font-weight:700">${i+1}. ${item.name}${p.batch ? `<br><span style="font-size:9px;color:#94A3B8;font-weight:600">Batch: ${p.batch} · Exp: ${p.expiry||"—"}</span>` : ""}</td>
+      <td style="font-weight:700">${i+1}. ${item.name}${p.batch ? `<br><span style="font-size:9px;color:#94A3B8;font-weight:600">Batch: ${p.batch} � Exp: ${p.expiry||"�"}</span>` : ""}</td>
       <td>${item.qty}</td>
-      <td>${p.packing || item.packing || "—"}</td>
-      <td style="font-size:10px">${p.hsn || "—"}</td>
-      <td>${ptr ? "₹" + ptr.toFixed(2) : "—"}</td>
-      <td style="font-weight:800">${ptr ? "₹" + lineAmt.toFixed(2) : "—"}</td>
+      <td>${p.packing || item.packing || "�"}</td>
+      <td style="font-size:10px">${p.hsn || "�"}</td>
+      <td>${ptr ? "₹" + ptr.toFixed(2) : "�"}</td>
+      <td style="font-weight:800">${ptr ? "₹" + lineAmt.toFixed(2) : "�"}</td>
     </tr>`;
   }).join("");
 
@@ -4385,7 +4385,7 @@ function openInvoice(orderId) {
 
   // Get retailer GST from session
   const sess = getRetailerSession();
-  const buyerGST = sess?.gst || "—";
+  const buyerGST = sess?.gst || "�";
   const buyerName = o.retailer;
 
   const invoiceHTML = `
@@ -4393,9 +4393,9 @@ function openInvoice(orderId) {
       <div class="inv-letterhead">
         <div>
           <div class="inv-brand-name">Jain Agencies</div>
-          <div class="inv-brand-tagline">Pharmaceutical Distributors · Rajnandgaon (C.G.)</div>
-          <div style="font-size:10px;color:#64748B;font-weight:700;margin-top:3px">GST: 22XXXXX0000X1ZX &nbsp;·&nbsp; DL No.: CG/DL/2024/XXXX</div>
-          <div style="font-size:9px;color:#94A3B8;margin-top:2px">ðŸ“ Kila Para, Near Digvijay College, Rajnandgaon (C.G.) &nbsp;·&nbsp; 📞 90862-91862</div>
+          <div class="inv-brand-tagline">Pharmaceutical Distributors � Rajnandgaon (C.G.)</div>
+          <div style="font-size:10px;color:#64748B;font-weight:700;margin-top:3px">GST: 22XXXXX0000X1ZX &nbsp;�&nbsp; DL No.: CG/DL/2024/XXXX</div>
+          <div style="font-size:9px;color:#94A3B8;margin-top:2px">� Kila Para, Near Digvijay College, Rajnandgaon (C.G.) &nbsp;�&nbsp; 📞 90862-91862</div>
         </div>
         <div style="text-align:right">
           <div style="font-size:9px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px">Tax Invoice</div>
@@ -4432,9 +4432,9 @@ function openInvoice(orderId) {
       </div>`}
 
       <div class="inv-footer">
-        E. &amp; O.E. · Subject to Rajnandgaon jurisdiction · Payment due within 15 days<br>
+        E. &amp; O.E. � Subject to Rajnandgaon jurisdiction � Payment due within 15 days<br>
         Goods once sold will not be taken back except for genuine quality complaints<br>
-        <strong>Jain Agencies · Rajnandgaon · 90862-91862</strong>
+        <strong>Jain Agencies � Rajnandgaon � 90862-91862</strong>
       </div>
     </div>`;
 
@@ -4451,17 +4451,17 @@ function shareInvoiceWA() {
   const orders = getOrders();
   const o = orders.find(x => x.id === currentInvoiceOrderId);
   if (!o) return;
-  const lines = o.items.map(i => `${i.name} Ã— ${i.qty}`).join("\n");
-  const text = `🧾 Invoice from Jain Agencies\n\nBill To: ${o.retailer}\nOrder: ${o.id}\nDate: ${o.timestamp}\n\n${lines}\n\nTotal: ${o.items.length} items · ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862\nðŸ“ Kila Para, Rajnandgaon`;
+  const lines = o.items.map(i => `${i.name} × ${i.qty}`).join("\n");
+  const text = `🧾 Invoice from Jain Agencies\n\nBill To: ${o.retailer}\nOrder: ${o.id}\nDate: ${o.timestamp}\n\n${lines}\n\nTotal: ${o.items.length} items � ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862\n� Kila Para, Rajnandgaon`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // ANNOUNCEMENTS / NOTICE BOARD
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 const ANN_COLORS  = { info:"#3b82f6", warning:"#f59e0b", success:"#059669", urgent:"#ef4444" };
-const ANN_EMOJIS  = { info:"â„¹ï¸", warning:"âš ï¸", success:"✅", urgent:"🔴" };
+const ANN_EMOJIS  = { info:"ℹ�", warning:"⚠�", success:"✅", urgent:"🔴" };
 let selectedAnnType = "info";
 let announcements = [];
 
@@ -4564,13 +4564,13 @@ function renderAdminAnnList() {
         ${a.body ? `<div class="ann-existing-body">${a.body}</div>` : ""}
         <div class="ann-existing-meta">${a.timestamp}</div>
       </div>
-      <button class="ann-del-btn" onclick="deleteAnnouncement(${a.id})">ðŸ—‘ï¸</button>
+      <button class="ann-del-btn" onclick="deleteAnnouncement(${a.id})">🗑�</button>
     </div>`).join("");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // WHATSAPP AUTO-NOTIFICATION SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 let waSettings = { approve: true, order: true, ann: false };
 let waPendingAction = null; // { type, phone, name, message }
@@ -4600,14 +4600,14 @@ function toggleWASetting(key) {
   showToast(waSettings[key] ? `💬 WA ${key} notifications ON` : `WA ${key} notifications OFF`);
 }
 
-// â”€â”€─ Core WA preview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Core WA preview ──────────────────────────────────────────────────
 function showWAPreview({ sub, recipientName, recipientPhone, message, onConfirm }) {
   const now = new Date().toLocaleTimeString("en-IN", { hour:"2-digit", minute:"2-digit" });
   document.getElementById("waPreviewSub").textContent   = sub || "Preview before sending";
   document.getElementById("waRecipientName").textContent = recipientName || "Retailer";
   document.getElementById("waRecipientNum").textContent  = recipientPhone ? "📞 " + recipientPhone : "No number on file";
   document.getElementById("waBubbleText").textContent    = message;
-  document.getElementById("waBubbleTime").textContent    = now + " âœ“âœ“";
+  document.getElementById("waBubbleTime").textContent    = now + " ✓✓";
   waPendingAction = { phone: recipientPhone, message, onConfirm };
   document.getElementById("waPreviewOverlay").classList.add("open");
 }
@@ -4627,7 +4627,7 @@ function confirmSendWA() {
   if (onConfirm) onConfirm();
 }
 
-// â”€â”€─ BUILD MESSAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── BUILD MESSAGES ────────────────────────────────────────────────────
 function buildApprovalMessage(retailer) {
   return `✅ *Jain Agencies - Account Approved!*
 
@@ -4636,13 +4636,13 @@ Dear ${retailer.name},
 Your retailer account for *${retailer.shop}* has been verified and approved! 🎉
 
 You now have full access to:
-• Wholesale pricing & PTR rates
-• Hot deals & schemes
-• Direct ordering system
+� Wholesale pricing & PTR rates
+� Hot deals & schemes
+� Direct ordering system
 
 📱 Login with your mobile: *${retailer.mobile}*
 
-ðŸ“ Jain Agencies
+� Jain Agencies
 Kila Para, Near Digvijay College
 Rajnandgaon (C.G.)
 📞 90862-91862`;
@@ -4658,8 +4658,8 @@ function buildOrderStatusMessage(order, newStatus) {
   const base = statusMsg[newStatus] || `📋 Order *${order.id}* status: *${newStatus}*`;
   return `${base}
 
-ðŸª *${order.retailer}*
-📦 ${order.items.length} items · ${order.totalQty} strips
+�� *${order.retailer}*
+📦 ${order.items.length} items � ${order.totalQty} strips
 📅 ${order.timestamp}
 
 📞 Jain Agencies: 90862-91862
@@ -4667,7 +4667,7 @@ _Thank you for choosing Jain Agencies!_`;
 }
 
 function buildAnnouncementMessage(ann) {
-  const emoji = { info:"â„¹ï¸", warning:"âš ï¸", success:"✅", urgent:"🔴" }[ann.type] || "📢";
+  const emoji = { info:"ℹ�", warning:"⚠�", success:"✅", urgent:"🔴" }[ann.type] || "📢";
   return `${emoji} *Jain Agencies - ${ann.title}*
 
 ${ann.body || ""}
@@ -4676,7 +4676,7 @@ ${ann.body || ""}
 📞 90862-91862 | Rajnandgaon`;
 }
 
-// â”€â”€─ TRIGGER POINTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
+// ─── TRIGGER POINTS ───────────────────────────────────────────────────
 
 // Called when admin approves a retailer
 function triggerApprovalWA(retailer) {
@@ -4684,7 +4684,7 @@ function triggerApprovalWA(retailer) {
   const msg = buildApprovalMessage(retailer);
   showWAPreview({
     sub: "Sending approval confirmation to retailer",
-    recipientName: retailer.name + " · " + retailer.shop,
+    recipientName: retailer.name + " � " + retailer.shop,
     recipientPhone: retailer.mobile,
     message: msg
   });
@@ -4715,12 +4715,12 @@ function triggerAnnouncementWA(ann) {
     showToast("No approved retailers with phone numbers yet", "error");
     return;
   }
-  // Show WA for first retailer — admin can repeat for others
+  // Show WA for first retailer � admin can repeat for others
   const r = retailers[0];
   const msg = buildAnnouncementMessage(ann);
   showWAPreview({
     sub: `Sending to ${retailers.length} approved retailer${retailers.length>1?"s":""} (1 at a time)`,
-    recipientName: r.name + " · " + r.shop,
+    recipientName: r.name + " � " + r.shop,
     recipientPhone: r.mobile,
     message: msg,
     onConfirm: () => {
@@ -4732,9 +4732,9 @@ function triggerAnnouncementWA(ann) {
   });
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // FAVOURITE PRODUCTS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 let favourites = []; // array of product ids
 
@@ -4753,7 +4753,7 @@ function toggleFavourite(productId) {
     showToast("Removed from favourites");
   } else {
     favourites.push(productId);
-    showToast("â­ Added to favourites!");
+    showToast("� Added to favourites!");
   }
   saveFavourites();
   renderFavourites();
@@ -4761,7 +4761,7 @@ function toggleFavourite(productId) {
   // Refresh detail page star if open
   if (currentDetailId === productId) {
     const starBtn = document.getElementById("detailFavBtn");
-    if (starBtn) starBtn.textContent = isFavourite(productId) ? "â­ Favourited" : "☆ Add to Favourites";
+    if (starBtn) starBtn.textContent = isFavourite(productId) ? "� Favourited" : "☆ Add to Favourites";
   }
 }
 
@@ -4799,9 +4799,9 @@ function clearFavourites() {
   showToast("Favourites cleared");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // PRODUCT REQUEST SYSTEM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 let productRequests = [];
 
@@ -4826,7 +4826,7 @@ function renderAdminRequests() {
   updateRequestsBadge();
 
   if (!productRequests.length) {
-    el.innerHTML = '<div style="text-align:center;padding:48px 20px;color:#94A3B8"><div style="font-size:44px;margin-bottom:10px">ðŸ”</div><div style="font-size:14px;font-weight:700">No product requests yet</div></div>';
+    el.innerHTML = '<div style="text-align:center;padding:48px 20px;color:#94A3B8"><div style="font-size:44px;margin-bottom:10px">�</div><div style="font-size:14px;font-weight:700">No product requests yet</div></div>';
     return;
   }
 
@@ -4834,18 +4834,18 @@ function renderAdminRequests() {
     <div class="prod-req-card">
       <div class="prod-req-head">
         <div>
-          <div class="prod-req-name">💊 ${r.medName}${r.company ? " · " + r.company : ""}</div>
-          <div class="prod-req-retailer">ðŸª ${r.retailer} · ${r.retailerName} · 📞 ${r.retailerMobile}</div>
+          <div class="prod-req-name">💊 ${r.medName}${r.company ? " � " + r.company : ""}</div>
+          <div class="prod-req-retailer">�� ${r.retailer} � ${r.retailerName} � 📞 ${r.retailerMobile}</div>
         </div>
         <span class="prod-req-badge ${r.status}">${r.status === "new" ? "🆕 New" : "✓ Reviewed"}</span>
       </div>
       ${r.qty ? `<div class="prod-req-note">📦 Qty needed: ${r.qty}</div>` : ""}
-      ${r.notes ? `<div class="prod-req-note">ðŸ“ ${r.notes}</div>` : ""}
+      ${r.notes ? `<div class="prod-req-note">� ${r.notes}</div>` : ""}
       <div class="prod-req-date" style="margin-bottom:10px">📅 ${r.timestamp}</div>
       <div class="prod-req-actions">
         ${r.status === "new" ? `<button class="prod-req-add-btn" onclick="markRequestReviewed('${r.id}')">✓ Mark Reviewed</button>` : ""}
         <button class="prod-req-add-btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7)" onclick="openAddFormFromRequest('${r.id}')">+ Add to Products</button>
-        <button class="prod-req-dismiss-btn" onclick="dismissRequest('${r.id}')">ðŸ—‘ï¸</button>
+        <button class="prod-req-dismiss-btn" onclick="dismissRequest('${r.id}')">🗑�</button>
       </div>
     </div>`).join("");
 }
@@ -4876,15 +4876,15 @@ function openAddFormFromRequest(id) {
   }, 100);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 // DISPATCH MEDIUM
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������������������
 
 const DISPATCH_LABELS = {
   bus:       { icon:"🚌", label:"Bus",         sub:"State/private bus" },
   auto:      { icon:"🛺", label:"Auto / Taxi", sub:"Local auto or cab" },
   transport: { icon:"🚛", label:"Transport",   sub:"Courier / logistics" },
-  own:       { icon:"ðŸï¸", label:"Own Delivery", sub:"Our staff delivers" }
+  own:       { icon:"��", label:"Own Delivery", sub:"Our staff delivers" }
 };
 
 let selectedDispatchMedium = null;
@@ -4952,7 +4952,7 @@ function confirmDispatch() {
     const retailers = getRetailers();
     const r = retailers.find(x => x.shop === o.retailer || x.name === o.retailer);
     const phone = r ? r.mobile : null;
-    const msg = `🚚 *Order Dispatched!*\n\nOrder *${o.id}* for *${o.retailer}* is on its way!\n\n${dm.icon} *Via: ${dm.label}*${details ? "\n📋 Details: " + details : ""}${eta ? "\nâ° ETA: " + eta : ""}\n\n📦 ${o.items.length} items · ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862`;
+    const msg = `🚚 *Order Dispatched!*\n\nOrder *${o.id}* for *${o.retailer}* is on its way!\n\n${dm.icon} *Via: ${dm.label}*${details ? "\n📋 Details: " + details : ""}${eta ? "\n�� ETA: " + eta : ""}\n\n📦 ${o.items.length} items � ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862`;
     if (waSettings.order) {
       showWAPreview({
         sub: `Notifying ${o.retailer} about dispatch`,
@@ -4964,9 +4964,9 @@ function confirmDispatch() {
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // RECENTLY VIEWED
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 const RECENT_MAX = 8;
 let recentIds = []; // newest first
 
@@ -5011,9 +5011,9 @@ function renderRecent() {
   }).join("");
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// 🧾 ORDER HISTORY (customer side — localStorage)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
+// 🧾 ORDER HISTORY (customer side � localStorage)
+// �����������������������������������������������������������
 const ORDER_HISTORY_KEY = "ja_order_history";
 const ORDER_HISTORY_MAX = 20; // keep last 20 items
 
@@ -5061,7 +5061,7 @@ function renderOrderHistory() {
         <div class="order-history-icon">${icon}</div>
         <div style="flex:1;min-width:0">
           <div class="order-history-name">${h.name}</div>
-          <div class="order-history-meta">${h.company || ""} · ${h.time}</div>
+          <div class="order-history-meta">${h.company || ""} � ${h.time}</div>
         </div>
         <div class="order-history-qty">${h.qty} ${h.packing || "strip"}${h.qty > 1 ? "s" : ""}</div>
       </div>`;
@@ -5069,9 +5069,9 @@ function renderOrderHistory() {
   } catch(e) { sec.classList.remove("show"); }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // SWIPE-TO-CART (#7)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 const SWIPE_THRESHOLD = 72;
 
 function attachSwipe(wrapEl) {
@@ -5109,7 +5109,7 @@ function attachSwipe(wrapEl) {
       const p = products.find(x => x.id === id);
       if (p && p.stock && !cart.some(c => c.id === id)) {
         toggleCart(id);
-        showToast(`${p.name.substring(0,22)}… added to cart 🛒`);
+        showToast(`${p.name.substring(0,22)}� added to cart 🛒`);
       }
     }
     card.style.transform = "";
@@ -5121,11 +5121,11 @@ function attachSwipe(wrapEl) {
   card.addEventListener("touchend",   onEnd,   {passive:true});
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // BARCODE / NAME SCANNER (#6)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 
-// â”€â”€ jsQR for barcode scanning â”€â”€
+// ── jsQR for barcode scanning ──
 let _jsQRLoaded = false;
 function loadJsQR(cb) {
   if (window.jsQR) { cb(); return; }
@@ -5151,7 +5151,7 @@ async function openScanner() {
   overlay.classList.add("open");
   document.getElementById("scannerInput").value = "";
 
-  // Detect in-app browser — camera will be blocked
+  // Detect in-app browser � camera will be blocked
   if (isInAppBrowser() || window.location.protocol === "content:") {
     showScannerInAppMsg();
     return;
@@ -5196,9 +5196,9 @@ function showScannerInAppMsg() {
     instr.innerHTML =
       `<div style="color:#00e5cc;font-size:12px;font-weight:900;margin-bottom:6px">HOW TO USE CAMERA</div>` +
       `<div style="color:#fff;font-size:11px;line-height:1.6">` +
-      `1ï¸⃣ Tap <b style="color:#fff">⋮ Menu</b> → <b style="color:#fff">Open in Chrome</b><br>` +
-      `2ï¸⃣ Or save the HTML file → open it from <b style="color:#fff">Files app</b><br>` +
-      `3ï¸⃣ Camera will work in Chrome ✅` +
+      `1�⃣ Tap <b style="color:#fff">⋮ Menu</b> → <b style="color:#fff">Open in Chrome</b><br>` +
+      `2�⃣ Or save the HTML file → open it from <b style="color:#fff">Files app</b><br>` +
+      `3�⃣ Camera will work in Chrome ✅` +
       `</div>`;
     frame.appendChild(instr);
   }
@@ -5261,9 +5261,9 @@ function scannerSearch() {
   }, 300);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 // FIREBASE SETUP WIZARD
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// �����������������������������������������������������������
 function openFbWiz() {
   document.getElementById("fbWizOverlay").classList.add("open");
   document.getElementById("fbWizSuccess").classList.remove("show");
@@ -5308,13 +5308,13 @@ function parseFbConfig() {
   if (!jsonStr) {
     ta.classList.add("err");
     msg.className = "fbwiz-parse-msg err";
-    msg.textContent = "âš ï¸ Could not find a { } config block. Please paste the full text.";
+    msg.textContent = "⚠� Could not find a { } config block. Please paste the full text.";
     return;
   }
 
   let cfg;
   try {
-    // Firebase config uses bare keys — parse safely
+    // Firebase config uses bare keys � parse safely
     // Convert JS object literal → JSON
     const jsonReady = jsonStr
       .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')   // quote keys
@@ -5323,7 +5323,7 @@ function parseFbConfig() {
   } catch(e) {
     ta.classList.add("err");
     msg.className = "fbwiz-parse-msg err";
-    msg.textContent = "âš ï¸ Parse error — make sure you copied the full config block.";
+    msg.textContent = "⚠� Parse error � make sure you copied the full config block.";
     return;
   }
 
@@ -5332,14 +5332,14 @@ function parseFbConfig() {
   if (missing.length) {
     ta.classList.add("err");
     msg.className = "fbwiz-parse-msg err";
-    msg.textContent = "âš ï¸ Missing fields: " + missing.join(", ");
+    msg.textContent = "⚠� Missing fields: " + missing.join(", ");
     return;
   }
 
   if (cfg.apiKey.includes("DEMO") || cfg.apiKey.includes("REPLACE")) {
     ta.classList.add("err");
     msg.className = "fbwiz-parse-msg err";
-    msg.textContent = "âš ï¸ That looks like the placeholder. Please paste your real config.";
+    msg.textContent = "⚠� That looks like the placeholder. Please paste your real config.";
     return;
   }
 
@@ -5350,8 +5350,8 @@ function parseFbConfig() {
 
   rows.innerHTML = [
     ["Project",  cfg.projectId],
-    ["API Key",  cfg.apiKey.slice(0,12) + "…"],
-    ["App ID",   cfg.appId.slice(0,20) + "…"],
+    ["API Key",  cfg.apiKey.slice(0,12) + "�"],
+    ["App ID",   cfg.appId.slice(0,20) + "�"],
   ].map(([k,v]) => `<div class="fbwiz-preview-row">✓ <b>${k}:</b> ${v}</div>`).join("");
   prev.classList.add("show");
 
@@ -5368,7 +5368,7 @@ function saveFbConfig() {
   const cfg = btn._cfg;
   if (!cfg) return;
 
-  // Save to localStorage — app reads this on next load
+  // Save to localStorage � app reads this on next load
   localStorage.setItem("ja_fb_config", JSON.stringify(cfg));
 
   // Update progress
@@ -5409,7 +5409,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!navigator.onLine) {
       banner.classList.add("show");
       dot.className = "offline-dot";
-      msg.textContent = "📡 Offline — showing cached data";
+      msg.textContent = "📡 Offline � showing cached data";
     } else {
       if (banner.classList.contains("show")) {
         dot.className = "offline-dot online-dot";
@@ -5422,7 +5422,7 @@ window.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("online",  updateNetworkStatus);
   updateNetworkStatus();
 
-  // â”€â”€ Real-time admin refresh â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Real-time admin refresh ──────────────────────────────
   // 1. Cross-tab: fires instantly when SAME browser registers in another tab
   window.addEventListener("storage", (e) => {
     if (e.key === "ja_retailers" && isAdmin) {
@@ -5435,7 +5435,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Same-tab polling every 4 seconds — catches registrations from
+  // 2. Same-tab polling every 4 seconds � catches registrations from
   //    the SAME tab (retailer opens same file, registers, admin was already open)
   let _lastRetailerCount = getRetailers().length;
   setInterval(() => {
@@ -5470,16 +5470,16 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ����������������������������������������������������������
 // BROADCAST FEATURE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ����������������������������������������������������������
 
 const BC_TEMPLATES = {
-  scheme: `ðŸŽ *JAIN AGENCIES - NEW SCHEME ALERT*\n\nDear Retailer,\n\nWe have an exciting new scheme available! Contact us now to place your order.\n\n📞 90862-91862\nðŸ“ Kila Para, Near Digvijay College, Rajnandgaon\n\n_Jain Agencies, Rajnandgaon_`,
-  holiday: `ðŸ–ï¸ *JAIN AGENCIES - HOLIDAY NOTICE*\n\nDear Retailer,\n\nPlease note our office will be closed on [DATE] for [HOLIDAY].\n\nFor urgent requirements, contact:\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
-  discount: `💰 *JAIN AGENCIES - SPECIAL DISCOUNT*\n\nDear Retailer,\n\nSpecial cash discount offer available this week! Pay within 7 days and avail extra discount.\n\nHurry — limited period offer!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
-  reminder: `🔔 *JAIN AGENCIES - PAYMENT REMINDER*\n\nDear [SHOP NAME],\n\nKindly clear your outstanding balance at the earliest.\n\nFor any queries:\n📞 90862-91862\nðŸ“ Kila Para, Rajnandgaon\n\nThank you for your business!\n_Jain Agencies_`,
-  restock: `📦 *JAIN AGENCIES - RESTOCK ALERT*\n\nDear Retailer,\n\nGood news! The following products are back in stock:\n\n• [PRODUCT NAME]\n\nPlace your order now before stock runs out!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  scheme: `� *JAIN AGENCIES - NEW SCHEME ALERT*\n\nDear Retailer,\n\nWe have an exciting new scheme available! Contact us now to place your order.\n\n📞 90862-91862\n� Kila Para, Near Digvijay College, Rajnandgaon\n\n_Jain Agencies, Rajnandgaon_`,
+  holiday: `��� *JAIN AGENCIES - HOLIDAY NOTICE*\n\nDear Retailer,\n\nPlease note our office will be closed on [DATE] for [HOLIDAY].\n\nFor urgent requirements, contact:\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  discount: `💰 *JAIN AGENCIES - SPECIAL DISCOUNT*\n\nDear Retailer,\n\nSpecial cash discount offer available this week! Pay within 7 days and avail extra discount.\n\nHurry � limited period offer!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  reminder: `🔔 *JAIN AGENCIES - PAYMENT REMINDER*\n\nDear [SHOP NAME],\n\nKindly clear your outstanding balance at the earliest.\n\nFor any queries:\n📞 90862-91862\n� Kila Para, Rajnandgaon\n\nThank you for your business!\n_Jain Agencies_`,
+  restock: `📦 *JAIN AGENCIES - RESTOCK ALERT*\n\nDear Retailer,\n\nGood news! The following products are back in stock:\n\n� [PRODUCT NAME]\n\nPlace your order now before stock runs out!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
   custom: ``
 };
 
@@ -5545,7 +5545,7 @@ function renderBCRecipients() {
       <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0">${(r.shop||r.name||'?')[0].toUpperCase()}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:13px;font-weight:800;color:#1E293B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${r.shop||r.name||'Unknown'}</div>
-        <div style="font-size:11px;color:#94A3B8;font-weight:600">${r.mobile}${r.city ? ' · '+r.city : ''}</div>
+        <div style="font-size:11px;color:#94A3B8;font-weight:600">${r.mobile}${r.city ? ' � '+r.city : ''}</div>
       </div>
       <div style="font-size:10px;font-weight:800;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:20px">✓</div>
     </div>`).join('');
@@ -5573,7 +5573,7 @@ function startBroadcast() {
   if (!msg) { showToast('Please write a message first', 'error'); return; }
   const recipients = getBCRecipients();
   if (!recipients.length) { showToast('No recipients found', 'error'); return; }
-  if (!confirm(`Send broadcast to ${recipients.length} retailer${recipients.length !== 1 ? 's' : ''}?\n\nWhatsApp will open for each one — tap Send in WhatsApp, then come back to continue.`)) return;
+  if (!confirm(`Send broadcast to ${recipients.length} retailer${recipients.length !== 1 ? 's' : ''}?\n\nWhatsApp will open for each one � tap Send in WhatsApp, then come back to continue.`)) return;
   _bcQueue = recipients;
   _bcQueueIdx = 0;
   document.getElementById('bcSentLog').style.display = 'block';
@@ -5596,8 +5596,8 @@ function sendNextBroadcast(msg) {
   const logEl = document.getElementById('bcSentLogInner');
   const idx = _bcQueueIdx;
   logEl.innerHTML += `<div id="bclog_${idx}" style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #BBF7D0;font-size:12px">
-    <span id="bclog_icon_${idx}">â³</span>
-    <span style="flex:1;font-weight:700;color:#166534">${r.shop||r.name} · ${r.mobile}</span>
+    <span id="bclog_icon_${idx}">��</span>
+    <span style="flex:1;font-weight:700;color:#166534">${r.shop||r.name} � ${r.mobile}</span>
     <span id="bclog_status_${idx}" style="font-size:10px;font-weight:800;color:#64748B">Opening...</span>
   </div>`;
 
@@ -5616,9 +5616,9 @@ function sendNextBroadcast(msg) {
   }, 3000);
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ���������������������������������������������������������������������������
 // 🔔 FCM PUSH NOTIFICATION FUNCTIONS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ���������������������������������������������������������������������������
 
 function loadFCMKeys() {
   return {
@@ -5630,7 +5630,7 @@ function loadFCMKeys() {
 function saveFCMKeys() {
   const vapid     = (document.getElementById("fcmVapidInput")     || {}).value || "";
   const serverKey = (document.getElementById("fcmServerKeyInput") || {}).value || "";
-  if (!vapid || !serverKey) { showToast("âš ï¸ Both keys are required", "error"); return; }
+  if (!vapid || !serverKey) { showToast("⚠� Both keys are required", "error"); return; }
   localStorage.setItem("ja_fcm_vapid",  vapid.trim());
   localStorage.setItem("ja_fcm_srvkey", serverKey.trim());
   // Update VAPID key on the _fb object so next token request uses the right key
@@ -5668,7 +5668,7 @@ async function refreshFCMStatus() {
   if (si && keys.serverKey) si.value = keys.serverKey;
 
   // Count FCM tokens in Firestore
-  let tokenCount = "—";
+  let tokenCount = "�";
   if (fbOk) {
     try {
       const tokens = await window._fb.getAllFCMTokens();
@@ -5680,7 +5680,7 @@ async function refreshFCMStatus() {
 
   const row = (icon, label, ok, note) =>
     `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F1F5F9">
-      <div style="font-size:18px">${ok ? "✅" : "âŒ"}</div>
+      <div style="font-size:18px">${ok ? "✅" : "��"}</div>
       <div style="flex:1"><div style="font-size:12px;font-weight:800;color:#1E293B">${label}</div>
       ${note ? `<div style="font-size:11px;color:#64748B;font-weight:600">${note}</div>` : ""}</div>
     </div>`;
@@ -5688,7 +5688,7 @@ async function refreshFCMStatus() {
   el.innerHTML =
     row("🔥", "Firebase connected", fbOk, fbOk ? "Firestore live" : "Check FB_CONFIG") +
     row("🔑", "VAPID key", !!keys.vapid, keys.vapid ? "Saved ✓" : "Paste in Keys Setup below") +
-    row("ðŸ—ï¸", "Server key", !!keys.serverKey, keys.serverKey ? "Saved ✓" : "Paste in Keys Setup below") +
+    row("��", "Server key", !!keys.serverKey, keys.serverKey ? "Saved ✓" : "Paste in Keys Setup below") +
     row("📄", "Service Worker API", swOk, swOk ? "Supported" : "Requires HTTPS") +
     row("🔔", "Notification API", notifOk, notifOk ? `Permission: ${Notification.permission}` : "Not supported") +
     `<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
@@ -5709,7 +5709,7 @@ function renderFCMPushPanel() {
 }
 
 const PUSH_TEMPLATES = {
-  flash:   { title: "⚡ Flash Sale — Limited Time!",    body: "Exclusive discount on select products for the next 2 hours. Open the app now to order!" },
+  flash:   { title: "⚡ Flash Sale � Limited Time!",    body: "Exclusive discount on select products for the next 2 hours. Open the app now to order!" },
   scheme:  { title: "🔥 New Scheme Available",           body: "Check out the latest hot deals on Alkem, Abbott & more. Valid this week only!" },
   stock:   { title: "📦 Fresh Stock Arrived",            body: "Items you frequently order are back in stock. Place your order now!" },
   payment: { title: "💰 Payment Reminder",               body: "Your outstanding balance is due. Please clear it at your earliest convenience." },
@@ -5738,22 +5738,22 @@ function updatePushPreview() {
 async function sendFCMPush() {
   const keys = loadFCMKeys();
   if (!keys.serverKey) {
-    showToast("âš ï¸ Server key not set — go to Keys Setup", "error");
+    showToast("⚠� Server key not set � go to Keys Setup", "error");
     return;
   }
   const title = (document.getElementById("pushTitle") || {}).value.trim();
   const body  = (document.getElementById("pushBody")  || {}).value.trim();
-  if (!title) { showToast("âš ï¸ Notification title is required", "error"); return; }
+  if (!title) { showToast("⚠� Notification title is required", "error"); return; }
 
   const btn = document.getElementById("fcmSendBtn");
   const resultEl = document.getElementById("fcmSendResult");
-  if (btn) { btn.disabled = true; btn.textContent = "â³ Sending..."; }
+  if (btn) { btn.disabled = true; btn.textContent = "�� Sending..."; }
 
   try {
     // Get all FCM tokens from Firestore
     const tokenDocs = await window._fb.getAllFCMTokens();
     if (!tokenDocs.length) {
-      showToast("â„¹ï¸ No subscribers yet — retailers need to open the app once", "error");
+      showToast("ℹ� No subscribers yet � retailers need to open the app once", "error");
       if (btn) { btn.disabled = false; btn.innerHTML = "🔔 Send Push to All Retailers"; }
       return;
     }
@@ -5807,10 +5807,10 @@ async function sendFCMPush() {
       resultEl.style.border = `1.5px solid ${success ? "#BBF7D0" : "#FECACA"}`;
       resultEl.style.color  = success ? "#166534" : "#991B1B";
       resultEl.textContent = success
-        ? `✅ Push sent! ${sent} delivered · ${failed} failed`
-        : `âŒ All ${failed} sends failed — check server key`;
+        ? `✅ Push sent! ${sent} delivered � ${failed} failed`
+        : `�� All ${failed} sends failed � check server key`;
     }
-    showToast(success ? `🔔 Push sent to ${sent} retailers!` : "âŒ Push failed — check server key", success ? "success" : "error");
+    showToast(success ? `🔔 Push sent to ${sent} retailers!` : "�� Push failed � check server key", success ? "success" : "error");
 
     // Log to Firestore announcements for audit trail
     if (window._fb && window._fb.FB_OK) {
@@ -5818,14 +5818,14 @@ async function sendFCMPush() {
         id: Date.now(),
         type: "info",
         title: `[PUSH] ${title}`,
-        body: `${body} — Sent to ${sent}/${tokens.length} devices`,
+        body: `${body} � Sent to ${sent}/${tokens.length} devices`,
         date: new Date().toLocaleDateString("en-IN")
       });
     }
 
   } catch(e) {
     console.error("FCM sendFCMPush error:", e);
-    showToast("âŒ Error sending push: " + e.message, "error");
+    showToast("�� Error sending push: " + e.message, "error");
   } finally {
     if (btn) { btn.disabled = false; btn.innerHTML = "🔔 Send Push to All Retailers"; }
   }
@@ -5850,7 +5850,7 @@ function startVoiceSearch() {
   document.getElementById("voiceListeningState").style.display = "";
   document.getElementById("voiceBlockedState").style.display = "none";
   document.getElementById("voiceOverlay").classList.add("open");
-  document.getElementById("voiceResult").textContent = "Say a medicine name…";
+  document.getElementById("voiceResult").textContent = "Say a medicine name�";
   document.getElementById("voiceBtn").classList.add("listening");
   _voiceActive = true;
 
@@ -5869,7 +5869,7 @@ function startVoiceSearch() {
       else interim += t;
     }
     const text = final || interim;
-    document.getElementById("voiceResult").textContent = text || "Listening…";
+    document.getElementById("voiceResult").textContent = text || "Listening�";
     if (final) {
       document.getElementById("searchInput").value = final.trim();
       document.getElementById("clearBtn").style.display = "block";
@@ -5885,8 +5885,8 @@ function startVoiceSearch() {
       showVoiceBlocked();
     } else {
       const msgs = {
-        "no-speech"    : "No speech detected — try again",
-        "network"      : "Network error — check connection",
+        "no-speech"    : "No speech detected � try again",
+        "network"      : "Network error � check connection",
         "audio-capture": "Microphone not found on this device"
       };
       showToast(msgs[e.error] || "Voice error: " + e.error, "error");
@@ -5949,7 +5949,7 @@ if ('serviceWorker' in navigator) {
         const w = reg.installing;
         w.addEventListener('statechange', () => {
           if (w.state === 'installed' && navigator.serviceWorker.controller) {
-            showToast('🔄 App updated — reload for latest version');
+            showToast('🔄 App updated � reload for latest version');
           }
         });
       });
@@ -5983,7 +5983,7 @@ async function triggerPWAInstall() {
     _pwaPrompt.prompt();
     const { outcome } = await _pwaPrompt.userChoice;
     if (outcome === "accepted") {
-      showToast("✅ Installing Jain Agencies…");
+      showToast("✅ Installing Jain Agencies�");
       _pwaPrompt = null;
     }
     document.getElementById("pwaBanner").classList.remove("show");
@@ -6004,7 +6004,7 @@ function showIOSInstallGuide() {
   const isAndroid = /Android/.test(navigator.userAgent);
   let msg = "";
   if (isIOS) {
-    msg = "📱 iOS: Tap Share (â–¡↑) → 'Add to Home Screen'";
+    msg = "📱 iOS: Tap Share (□↑) → 'Add to Home Screen'";
   } else if (isAndroid) {
     msg = "📱 Tap Chrome Menu (⋮) → 'Add to Home screen'";
   } else {
@@ -6151,7 +6151,7 @@ function showExcelPreview(rows, headers) {
         <div class="import-row ${item.ok ? 'ok' : 'err'}">
           <div class="import-row-main">
             <strong>${item.name || '?'}</strong>
-            <span>${item.company || '?'}${item.packing ? ' · ' + item.packing : ''}</span>
+            <span>${item.company || '?'}${item.packing ? ' � ' + item.packing : ''}</span>
           </div>
           <div class="import-row-flags">
             ${item.errors.map(e => `<span class="flag err">${e}</span>`).join('')}
@@ -6261,7 +6261,7 @@ function buildOrderCard(o, adminMode) {
   const history = (o.statusHistory || []).slice(-6).map(h => `
     <div class="order-history-step">
       <span class="order-history-dot"></span>
-      <div><strong>${h.status}</strong><small>${h.at || ''}${h.note ? ' · ' + h.note : ''}</small></div>
+      <div><strong>${h.status}</strong><small>${h.at || ''}${h.note ? ' � ' + h.note : ''}</small></div>
     </div>`).join('');
   const html = jaOriginalBuildOrderCard(o, adminMode);
   const timeline = history ? `<div class="order-history-timeline"><div class="order-history-title">Status history</div>${history}</div>` : '';
@@ -6300,10 +6300,10 @@ function jaEnhanceSyncIndicators() {
   if (banner && msg) {
     if (!navigator.onLine) {
       banner.classList.add('show', 'is-offline');
-      msg.textContent = 'Offline — orders and catalog changes are cached on this device';
+      msg.textContent = 'Offline � orders and catalog changes are cached on this device';
     } else if (!fbOk) {
       banner.classList.add('show', 'is-local');
-      msg.textContent = 'Local-only mode — configure Firebase for live sync across devices';
+      msg.textContent = 'Local-only mode � configure Firebase for live sync across devices';
     } else {
       banner.classList.remove('show', 'is-offline', 'is-local');
     }
@@ -7141,8 +7141,8 @@ window.addEventListener('DOMContentLoaded', () => {
 function jaRepairVisibleText(root = document.body) {
   if (!root) return;
   const replacements = [
-    [/ðŸ“¡/g, '📡'], [/ðŸ‘¤/g, '👤'], [/ðŸ /g, '🏠'], [/ðŸ“¦/g, '📦'], [/ðŸ›’/g, '🛒'],
-    [/ðŸŽ/g, '🎁'], [/ðŸ§®/g, '🧮'], [/ðŸŒ™/g, '🌙'], [/â€”/g, '—'], [/â†’/g, '→'], [/Â·/g, '·'], [/Â /g, ' ']
+    [/📡/g, '📡'], [/👤/g, '👤'], [/� /g, '🏠'], [/📦/g, '📦'], [/🛒/g, '🛒'],
+    [/�/g, '🎁'], [/🧮/g, '🧮'], [/🌙/g, '🌙'], [/—/g, '�'], [/→/g, '→'], [/·/g, '�'], [/� /g, ' ']
   ];
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   const nodes = [];

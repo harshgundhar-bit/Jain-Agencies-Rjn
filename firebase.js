@@ -1,4 +1,4 @@
-﻿// â”€â”€ Firebase config (free Spark plan â€” no credit card needed) â”€â”€
+// ── Firebase config (free Spark plan — no credit card needed) ──
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, setDoc, onSnapshot,
          updateDoc, serverTimestamp, query, orderBy, limit,
@@ -7,11 +7,11 @@ import { getFirestore, collection, doc, setDoc, onSnapshot,
 import { getMessaging, getToken, onMessage }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// ðŸ”‘  PASTE YOUR OWN CONFIG HERE (takes 2 min â€” see README)
+// ──────────────────────────────────────────────────────────
+// 🔑  PASTE YOUR OWN CONFIG HERE (takes 2 min — see README)
 //     1. Go to https://console.firebase.google.com
-//     2. Create project â†’ Add Web App â†’ Copy config below
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+//     2. Create project → Add Web App → Copy config below
+// ──────────────────────────────────────────────────────────
 const FB_CONFIG = {
   apiKey:            "AIzaSyBbis6yErteIOHYWt5F6GgvrFcu6X0hcYM",
   authDomain:        "jain-agencies.firebaseapp.com",
@@ -36,16 +36,16 @@ try {
   } catch(me) {
     console.warn("FCM messaging init skipped:", me.message);
   }
-  console.log("ðŸ”¥ Firebase connected â€” jain-agencies");
+  console.log("🔥 Firebase connected — jain-agencies");
 } catch(e) {
-  console.warn("Firebase init failed â€” offline mode", e);
+  console.warn("Firebase init failed — offline mode", e);
 }
 
-// â”€â”€ Expose to global scope for non-module code â”€â”€
+// ── Expose to global scope for non-module code ──
 window._fb = {
   db, FB_OK,
 
-  // â”€â”€ RETAILERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── RETAILERS ──────────────────────────────────────────
   async saveRetailer(r) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "retailers", r.id), { ...r, _ts: serverTimestamp() }); }
@@ -73,7 +73,7 @@ window._fb = {
     return unsub;
   },
 
-  // â”€â”€ ORDERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── ORDERS ─────────────────────────────────────────────
   async saveOrder(order) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "orders", order.id), { ...order, _ts: serverTimestamp() }); }
@@ -130,7 +130,7 @@ window._fb = {
     );
     return unsub;
   },
-  // SCHEMES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // SCHEMES ────────────────────────────────────────────
   async saveScheme(scheme) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "schemes", String(scheme.id)), { ...scheme, _ts: serverTimestamp() }); }
@@ -172,7 +172,7 @@ window._fb = {
     return unsub;
   },
 
-  // â”€â”€ ANNOUNCEMENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── ANNOUNCEMENTS ──────────────────────────────────────
   async saveAnnouncement(ann) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "announcements", String(ann.id)), { ...ann, _ts: serverTimestamp() }); }
@@ -199,8 +199,8 @@ window._fb = {
     return unsub;
   },
 
-  // â”€â”€ FCM PUSH TOKENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  // VAPID key from Firebase Console â†’ Project Settings â†’ Cloud Messaging â†’ Web Push certificates
+  // ── FCM PUSH TOKENS ────────────────────────────────────
+  // VAPID key from Firebase Console → Project Settings → Cloud Messaging → Web Push certificates
   // Replace the placeholder below with your actual VAPID key
   VAPID_KEY: "BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDkBWAVArdpr6mvBY3VKYt5R4bLZk6BKEK_JRMY4yjAY",
 
@@ -217,7 +217,7 @@ window._fb = {
           updatedAt: serverTimestamp(),
           ua: navigator.userAgent.substring(0, 120)
         });
-        console.log("âœ… FCM token saved for", retailerId);
+        console.log("✅ FCM token saved for", retailerId);
       }
       return token;
     } catch(e) {
@@ -244,27 +244,27 @@ window._fb = {
   listenForegroundMessages(cb) {
     if (!_messaging) return;
     onMessage(_messaging, payload => {
-      console.log("ðŸ“¬ FCM foreground message:", payload);
+      console.log("📬 FCM foreground message:", payload);
       cb(payload);
     });
   }
 };
 
-// â”€â”€ Start live listeners as soon as Firebase is ready â”€â”€
+// ── Start live listeners as soon as Firebase is ready ──
 if (FB_OK) {
 
-  // SCHEMES â€” all devices get live scheme updates when admin adds/removes
+  // SCHEMES — all devices get live scheme updates when admin adds/removes
   window._fb.watchSchemes(list => {
     if (typeof schemes !== "undefined") {
       schemes = list;
       try { localStorage.setItem("ja_schemes", JSON.stringify(list)); } catch {}
-      if (typeof _buildSchemeIndex === "function") _buildSchemeIndex(); // âš¡ keep index in sync
+      if (typeof _buildSchemeIndex === "function") _buildSchemeIndex(); // ⚡ keep index in sync
       if (typeof renderSchemes === "function") renderSchemes();
       if (typeof updateSchemeTicker === "function") updateSchemeTicker();
     }
   });
 
-  // Announcements â€” all devices get live announcement updates
+  // Announcements — all devices get live announcement updates
   window._fb.watchAnnouncements(list => {
     if (typeof announcements !== "undefined") {
       announcements = list;
@@ -273,7 +273,7 @@ if (FB_OK) {
     }
   });
 
-  // Retailers â€” updates admin panel + pending screen in real time
+  // Retailers — updates admin panel + pending screen in real time
   window._fb.watchRetailers(list => {
     // Update local state if app is initialized
     if (typeof renderRetailerRequests === "function") {
@@ -292,7 +292,7 @@ if (FB_OK) {
           window.currentRetailer = fresh;
           const gate = document.getElementById("retailer-gate");
           if (gate) gate.style.display = "none";
-          if (typeof showToast === "function") showToast("âœ… Approved! Welcome to Jain Agencies.");
+          if (typeof showToast === "function") showToast("✅ Approved! Welcome to Jain Agencies.");
           // Request push permission now that retailer is approved
           if (typeof onRetailerSessionReady === "function") onRetailerSessionReady(fresh);
         } else if (fresh && fresh.status === "rejected") {
@@ -302,7 +302,7 @@ if (FB_OK) {
     }
   });
 
-  // Orders â€” updates admin orders + retailer my-orders in real time
+  // Orders — updates admin orders + retailer my-orders in real time
   window._fb.watchOrders(list => {
     if (typeof renderAdminOrders === "function" && isAdmin) {
       renderAdminOrders();
@@ -324,13 +324,13 @@ if (FB_OK) {
     try { localStorage.setItem("ja_live_stock", JSON.stringify(list)); } catch {}
     if (typeof mergeLiveStock === "function") mergeLiveStock(list, { fromFirebase: true });
   });
-  // FCM â€” listen for foreground push messages (app is open)
+  // FCM — listen for foreground push messages (app is open)
   window._fb.listenForegroundMessages(payload => {
     const n = payload.notification || {};
     const title = n.title || "Jain Agencies";
     const body  = n.body  || "";
     // Show in-app toast + add to notification centre
-    if (typeof showToast === "function") showToast("ðŸ”” " + title + (body ? ": " + body : ""));
+    if (typeof showToast === "function") showToast("🔔 " + title + (body ? ": " + body : ""));
     if (typeof addInAppNotification === "function") addInAppNotification(title, body, "push");
   });
 }
