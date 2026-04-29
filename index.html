@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <script type="module" src="firebase.js"></script>
 </head>
 <body>
-<div id="app"><div class="offline-banner" id="offlineBanner"><span class="offline-dot" id="offlineDot"></span><span id="offlineMsg">ðŸ“¡ You're offline â€” showing cached data</span>
+<div id="app"><div class="offline-banner" id="offlineBanner"><span class="offline-dot" id="offlineDot"></span><span id="offlineMsg">📡 You're offline — showing cached data</span>
 </div>
 <div id="splash"><div class="splash-logo-ring">
 <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,59 +41,59 @@
   <rect x="33" y="28" width="6" height="16" rx="3" fill="rgba(255,255,255,0.9)"/>
   <rect x="28" y="33" width="16" height="6" rx="3" fill="rgba(255,255,255,0.9)"/>
 </svg>
-</div><div class="splash-brand">Jain Agencies</div><div class="splash-city">Rajnandgaon</div><div class="splash-tagline">Product List</div><div class="splash-divider"></div><div class="splash-info-card"><div class="splash-info-row"><div class="splash-info-icon">ðŸ“</div><div><div class="splash-info-label">Address</div><div class="splash-info-value">Kila Para, Near Digvijay College<br>Rajnandgaon (C.G.)</div></div></div><div class="splash-info-row"><div class="splash-info-icon">ðŸ“ž</div><div><div class="splash-info-label">Phone</div><div class="splash-info-value">90862 - 91862</div></div></div><div class="splash-info-row"><div class="splash-info-icon">ðŸ’³</div><div><div class="splash-info-label">Terms</div><div class="splash-info-value">Cash: Discount on 7-day payment<br>Credit Limit: 15 Days</div></div></div></div><button class="splash-enter-btn" onclick="enterApp()">
- Browse Catalogue â†’
- </button><div class="splash-footer">41 Companies Â· 8,460 Products Â· Since 1979 Â· Rajnandgaon</div>
+</div><div class="splash-brand">Jain Agencies</div><div class="splash-city">Rajnandgaon</div><div class="splash-tagline">Product List</div><div class="splash-divider"></div><div class="splash-info-card"><div class="splash-info-row"><div class="splash-info-icon">�</div><div><div class="splash-info-label">Address</div><div class="splash-info-value">Kila Para, Near Digvijay College<br>Rajnandgaon (C.G.)</div></div></div><div class="splash-info-row"><div class="splash-info-icon">📞</div><div><div class="splash-info-label">Phone</div><div class="splash-info-value">90862 - 91862</div></div></div><div class="splash-info-row"><div class="splash-info-icon">💳</div><div><div class="splash-info-label">Terms</div><div class="splash-info-value">Cash: Discount on 7-day payment<br>Credit Limit: 15 Days</div></div></div></div><button class="splash-enter-btn" onclick="enterApp()">
+ Browse Catalogue →
+ </button><div class="splash-footer">41 Companies · 8,460 Products · Since 1979 · Rajnandgaon</div>
 </div>
-<div id="search-view"><div class="header"><div class="header-top"><div><div class="brand-sub">Jain Agencies Â· Rajnandgaon &nbsp;<span id="fbStatusDot" title="Sync status" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#94A3B8;vertical-align:middle"></span></div><div class="brand-main" id="headerStoreName">Medicine Catalog</div></div><div style="display:flex;gap:8px;align-items:center">
-  <button class="notif-bell-btn" onclick="openNotifCentre()" title="Notifications">ðŸ””<span class="notif-bell-dot" id="bellDot"></span></button>
-  <button class="admin-btn" id="retailerMenuBtn" onclick="showRetailerMenu()" style="display:none">ðŸª</button>
+<div id="search-view"><div class="header"><div class="header-top"><div><div class="brand-sub">Jain Agencies · Rajnandgaon &nbsp;<span id="fbStatusDot" title="Sync status" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#94A3B8;vertical-align:middle"></span></div><div class="brand-main" id="headerStoreName">Medicine Catalog</div></div><div style="display:flex;gap:8px;align-items:center">
+  <button class="notif-bell-btn" onclick="openNotifCentre()" title="Notifications">🔔<span class="notif-bell-dot" id="bellDot"></span></button>
+  <button class="admin-btn" id="retailerMenuBtn" onclick="showRetailerMenu()" style="display:none">��</button>
   <div style="position:relative">
-    <button id="headerMenuBtn" onclick="toggleHeaderMenu()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:8px 11px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px" title="More options">â‹®</button>
+    <button id="headerMenuBtn" onclick="toggleHeaderMenu()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:8px 11px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px" title="More options">⋮</button>
     <div id="headerMenuDropdown" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);min-width:180px;overflow:hidden;z-index:999;border:1px solid #E2E8F0">
-      <button onclick="toggleDarkMode();closeHeaderMenu()" id="darkToggleBtn" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">ðŸŒ™ Dark Mode<span id="darkToggleTip" style="display:none"></span></button>
-      <button onclick="openAdminLogin();closeHeaderMenu()" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">âš™ï¸ Admin Login</button>
-      <button id="srLoginBtn" onclick="(srMode ? openSRShopModal() : openSRLoginModal());closeHeaderMenu()" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#6366f1;display:flex;align-items:center;gap:10px;text-align:left">ðŸ§‘â€ðŸ’¼ SR Login</button>
+      <button onclick="toggleDarkMode();closeHeaderMenu()" id="darkToggleBtn" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">🌙 Dark Mode<span id="darkToggleTip" style="display:none"></span></button>
+      <button onclick="openAdminLogin();closeHeaderMenu()" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#1E293B;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F1F5F9;text-align:left">⚙� Admin Login</button>
+      <button id="srLoginBtn" onclick="(srMode ? openSRShopModal() : openSRLoginModal());closeHeaderMenu()" style="width:100%;padding:13px 16px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:#6366f1;display:flex;align-items:center;gap:10px;text-align:left">🧑�💼 SR Login</button>
     </div>
   </div>
-</div></div><div class="search-wrap"><span class="search-icon">ðŸ”</span></span><input class="search-input" id="searchInput" type="search" placeholder="Search medicineâ€¦" oninput="handleSearch()" autocomplete="off" inputmode="search" enterkeyhint="search" /><div class="search-actions"><div class="search-action-divider"></div><button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Voice search">ðŸŽ¤</button><button class="scanner-btn" id="scannerBtn" onclick="openScanner()" title="Scan barcode">ðŸ“·</button><button class="filter-toggle" onclick="toggleFilters()" title="Filters" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0">ðŸ”½ <span id="filterBadge"></span></button><button class="clear-btn" id="clearBtn" onclick="clearSearch()" style="display:none">âœ•</button></div></div></div><div class="filters-panel" id="filtersPanel"><div class="filter-label">Category</div><div class="cat-chips" id="catChips"></div><div class="filter-label">Company</div><select class="company-select" id="companySelect" onchange="handleSearch()" autocomplete="off"><option value="All">All Companies</option></select><br><button class="scheme-filter-chip" id="schemesOnlyBtn" onclick="toggleSchemesOnly()">ðŸŽ Schemes Only</button><br><button class="clear-filters" onclick="clearFilters()">âœ• Clear All Filters</button></div><div id="outstandingBanner" style="display:none;margin:0 12px 10px;background:linear-gradient(135deg,#7f1d1d,#b91c1c);border-radius:14px;padding:12px 16px;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(185,28,28,0.3)"><span style="font-size:22px;flex-shrink:0">ðŸ’¸</span><div style="flex:1"><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Outstanding Balance</div><div style="font-size:20px;font-weight:900;color:#fff" id="outstandingAmt">â‚¹0</div></div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;text-align:right;line-height:1.5">Please clear<br>before ordering</div></div><div class="home-section-wrap" id="homeSectionsWrap"><div class="scheme-section" id="schemeSection"><div class="scheme-header"><div class="scheme-header-left"><span class="scheme-fire">ðŸ”¥</span><div style="flex:1;min-width:0"><div class="scheme-title-text">ðŸŽ Hot Deals</div><div class="scheme-ticker-wrap" id="schemeTicker"><div class="scheme-ticker-inner" id="schemeTickerInner"><div class="scheme-ticker-item">Loading offersâ€¦</div></div></div></div></div></div><div class="scheme-scroll-wrap" id="schemeList"></div></div><div class="favs-section" id="favsSection"><div class="favs-section-head"><span class="favs-section-label">â­ My Favourites</span><span class="favs-section-clear" onclick="clearFavourites()">Clear all</span></div><div class="favs-scroll" id="favsScroll"></div></div><div class="retailer-dash" id="retailerDash" style="display:none"><div class="retailer-dash-head"><span class="retailer-dash-title">ðŸ“Š My Dashboard</span><span id="retailerDashName" style="font-size:11px;color:#00897b;font-weight:700"></span></div><div id="retailerDashBody"></div></div><div class="recent-section" id="recentSection"><div class="recent-head"><span class="recent-label">ðŸ• Recently Viewed</span><span class="recent-clear" onclick="clearRecent()">Clear</span></div><div class="recent-scroll" id="recentScroll"></div></div><div class="notice-banner" id="noticeBanner"><div class="notice-section-head"><span class="notice-section-label">ðŸ“¢ Announcements</span><span class="notice-view-all" onclick="openAllNotices()">View All â†’</span></div><div class="notice-scroll" id="noticeScroll"></div></div><div class="order-history-section" id="orderHistorySection"><div class="order-history-head"><span class="order-history-label">ðŸ§¾ Recent Orders</span><span class="order-history-clear" onclick="clearOrderHistory()">Clear</span></div><div class="order-history-list" id="orderHistoryList"></div></div></div><div class="results-info" id="resultsInfo"></div><div class="product-list" id="productList"></div>
+</div></div><div class="search-wrap"><span class="search-icon">�</span></span><input class="search-input" id="searchInput" type="search" placeholder="Search medicine…" oninput="handleSearch()" autocomplete="off" inputmode="search" enterkeyhint="search" /><div class="search-actions"><div class="search-action-divider"></div><button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Voice search">🎤</button><button class="scanner-btn" id="scannerBtn" onclick="openScanner()" title="Scan barcode">📷</button><button class="filter-toggle" onclick="toggleFilters()" title="Filters" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0">🔽 <span id="filterBadge"></span></button><button class="clear-btn" id="clearBtn" onclick="clearSearch()" style="display:none">✕</button></div></div></div><div class="filters-panel" id="filtersPanel"><div class="filter-label">Category</div><div class="cat-chips" id="catChips"></div><div class="filter-label">Company</div><select class="company-select" id="companySelect" onchange="handleSearch()" autocomplete="off"><option value="All">All Companies</option></select><br><button class="scheme-filter-chip" id="schemesOnlyBtn" onclick="toggleSchemesOnly()">� Schemes Only</button><br><button class="clear-filters" onclick="clearFilters()">✕ Clear All Filters</button></div><div id="outstandingBanner" style="display:none;margin:0 12px 10px;background:linear-gradient(135deg,#7f1d1d,#b91c1c);border-radius:14px;padding:12px 16px;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(185,28,28,0.3)"><span style="font-size:22px;flex-shrink:0">💸</span><div style="flex:1"><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Outstanding Balance</div><div style="font-size:20px;font-weight:900;color:#fff" id="outstandingAmt">₹0</div></div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;text-align:right;line-height:1.5">Please clear<br>before ordering</div></div><div class="home-section-wrap" id="homeSectionsWrap"><div class="scheme-section" id="schemeSection"><div class="scheme-header"><div class="scheme-header-left"><span class="scheme-fire">🔥</span><div style="flex:1;min-width:0"><div class="scheme-title-text">� Hot Deals</div><div class="scheme-ticker-wrap" id="schemeTicker"><div class="scheme-ticker-inner" id="schemeTickerInner"><div class="scheme-ticker-item">Loading offers…</div></div></div></div></div></div><div class="scheme-scroll-wrap" id="schemeList"></div></div><div class="favs-section" id="favsSection"><div class="favs-section-head"><span class="favs-section-label">� My Favourites</span><span class="favs-section-clear" onclick="clearFavourites()">Clear all</span></div><div class="favs-scroll" id="favsScroll"></div></div><div class="retailer-dash" id="retailerDash" style="display:none"><div class="retailer-dash-head"><span class="retailer-dash-title">📊 My Dashboard</span><span id="retailerDashName" style="font-size:11px;color:#00897b;font-weight:700"></span></div><div id="retailerDashBody"></div></div><div class="recent-section" id="recentSection"><div class="recent-head"><span class="recent-label">� Recently Viewed</span><span class="recent-clear" onclick="clearRecent()">Clear</span></div><div class="recent-scroll" id="recentScroll"></div></div><div class="notice-banner" id="noticeBanner"><div class="notice-section-head"><span class="notice-section-label">📢 Announcements</span><span class="notice-view-all" onclick="openAllNotices()">View All →</span></div><div class="notice-scroll" id="noticeScroll"></div></div><div class="order-history-section" id="orderHistorySection"><div class="order-history-head"><span class="order-history-label">🧾 Recent Orders</span><span class="order-history-clear" onclick="clearOrderHistory()">Clear</span></div><div class="order-history-list" id="orderHistoryList"></div></div></div><div class="results-info" id="resultsInfo"></div><div class="product-list" id="productList"></div>
 </div>
 <div id="qtyPickerModal" onclick="if(event.target===this)closeQtyPicker()"><div class="qty-picker-sheet"><div class="qty-picker-handle"></div><div id="qtyPickerBody"></div></div>
 </div>
 
 
-<!-- Profit Calculator FAB â€” above special order FAB -->
-<!-- FAB Stack â€” clean pill buttons, no overlap -->
-<div class="bottom-nav" id="mainBottomNav" style="z-index:200"><button class="nav-btn" id="navHome" onclick="navTo('search-view',this)"><span>ðŸ </span><span class="nav-label active">Home</span></button><button class="nav-btn" id="navOrders" onclick="openMyOrders()" style="position:relative"><span>ðŸ“¦</span><span class="orders-nav-dot" id="ordersNavDot"></span><span class="nav-label">Orders</span></button><button class="nav-btn" id="navCart" onclick="openCart()" style="position:relative"><span>ðŸ›’</span><span id="navCartBadge" style="display:none;position:absolute;top:2px;right:8px;background:#ef4444;color:#fff;font-size:10px;font-weight:900;min-width:17px;height:17px;padding:0 3px;border-radius:9px;display:none;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(239,68,68,0.5)">0</span><span class="nav-label">Cart</span></button><button class="nav-btn" id="navSchemes" onclick="openSchemeView(this)"><span>ðŸŽ</span><span class="nav-label">Schemes</span></button><button class="nav-btn" id="navCalc" onclick="openProfitCalc()"><span>ðŸ§®</span><span class="nav-label">Calculator</span></button><button class="nav-btn" id="adminNavBtn" onclick="goToAdmin()" style="display:none"><span>âš™ï¸</span><span class="nav-label">Admin</span></button><button class="nav-btn" id="navAccount" onclick="openAccountView(this)"><span>ðŸ‘¤</span><span class="nav-label">Account</span></button></div>
+<!-- Profit Calculator FAB — above special order FAB -->
+<!-- FAB Stack — clean pill buttons, no overlap -->
+<div class="bottom-nav" id="mainBottomNav" style="z-index:200"><button class="nav-btn" id="navHome" onclick="navTo('search-view',this)"><span>��</span><span class="nav-label active">Home</span></button><button class="nav-btn" id="navOrders" onclick="openMyOrders()" style="position:relative"><span>📦</span><span class="orders-nav-dot" id="ordersNavDot"></span><span class="nav-label">Orders</span></button><button class="nav-btn" id="navCart" onclick="openCart()" style="position:relative"><span>🛒</span><span id="navCartBadge" style="display:none;position:absolute;top:2px;right:8px;background:#ef4444;color:#fff;font-size:10px;font-weight:900;min-width:17px;height:17px;padding:0 3px;border-radius:9px;display:none;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(239,68,68,0.5)">0</span><span class="nav-label">Cart</span></button><button class="nav-btn" id="navSchemes" onclick="openSchemeView(this)"><span>�</span><span class="nav-label">Schemes</span></button><button class="nav-btn" id="navCalc" onclick="openProfitCalc()"><span>🧮</span><span class="nav-label">Calculator</span></button><button class="nav-btn" id="adminNavBtn" onclick="goToAdmin()" style="display:none"><span>⚙�</span><span class="nav-label">Admin</span></button><button class="nav-btn" id="navAccount" onclick="openAccountView(this)"><span>👤</span><span class="nav-label">Account</span></button></div>
 <div id="fabStack">
-  <!-- Cart pill bar â€” compact teal -->
+  <!-- Cart pill bar — compact teal -->
   <div id="cartPillBar" onclick="openCart()" style="display:none;position:fixed;bottom:76px;left:50%;transform:translateX(-50%);z-index:190;width:auto;max-width:220px;background:linear-gradient(135deg,#00897b,#26a69a);border-radius:50px;padding:0 4px 0 12px;height:32px;align-items:center;justify-content:space-between;cursor:pointer;box-shadow:0 4px 14px rgba(0,137,123,0.4);gap:8px">
     <div style="display:flex;align-items:center;gap:7px;flex:1;min-width:0">
-      <span style="font-size:13px">ðŸ›’</span>
+      <span style="font-size:13px">🛒</span>
       <div style="min-width:0">
         <div id="cartPillCount" style="color:#fff;font-size:11px;font-weight:900;white-space:nowrap;line-height:1.2">0 Items</div>
-        <div id="cartPillTotal" style="color:rgba(255,255,255,0.85);font-size:10px;font-weight:700;line-height:1.1">â‚¹0.00</div>
+        <div id="cartPillTotal" style="color:rgba(255,255,255,0.85);font-size:10px;font-weight:700;line-height:1.1">₹0.00</div>
       </div>
     </div>
     <div style="background:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-      <span style="color:#00897b;font-size:14px;font-weight:900;line-height:1">â€º</span>
+      <span style="color:#00897b;font-size:14px;font-weight:900;line-height:1">›</span>
     </div>
   </div>
   <!-- Hidden old FAB (kept for JS compatibility) -->
   <button class="cart-fab" id="cartFab" onclick="openCart()" style="display:none!important;visibility:hidden;pointer-events:none;position:absolute;width:1px;height:1px;opacity:0">
-    ðŸ›’
+    🛒
     <span class="cart-count" id="cartCount" style="display:none">0</span>
   </button>
 </div>
 
-<div class="dispatch-modal-overlay" id="dispatchModal"><div class="dispatch-modal-box"><div class="dispatch-title">ðŸšš How will it be dispatched?</div><div class="dispatch-sub">Select the transport medium for <strong id="dispatchOrderId"></strong></div><div class="dispatch-grid"><button class="dispatch-option" onclick="selectDispatchMedium('bus')" id="dm-bus"><div class="dispatch-option-icon">ðŸšŒ</div><div class="dispatch-option-label">Bus</div><div class="dispatch-option-sub">State/private bus service</div></button><button class="dispatch-option" onclick="selectDispatchMedium('auto')" id="dm-auto"><div class="dispatch-option-icon">ðŸ›º</div><div class="dispatch-option-label">Auto / Taxi</div><div class="dispatch-option-sub">Local auto or cab</div></button><button class="dispatch-option" onclick="selectDispatchMedium('transport')" id="dm-transport"><div class="dispatch-option-icon">ðŸš›</div><div class="dispatch-option-label">Transport</div><div class="dispatch-option-sub">Courier / logistics</div></button><button class="dispatch-option" onclick="selectDispatchMedium('own')" id="dm-own"><div class="dispatch-option-icon">ðŸï¸</div><div class="dispatch-option-label">Own Delivery</div><div class="dispatch-option-sub">Our staff delivers</div></button></div><input class="dispatch-details-input" id="dispatchDetails" placeholder="Details â€” e.g. Bus no., Driver name, Tracking no." /><input class="dispatch-details-input" id="dispatchETA" placeholder="Expected delivery time â€” e.g. By 5 PM today" /><button class="dispatch-confirm-btn" onclick="confirmDispatch()">ðŸšš Confirm Dispatch</button></div>
+<div class="dispatch-modal-overlay" id="dispatchModal"><div class="dispatch-modal-box"><div class="dispatch-title">🚚 How will it be dispatched?</div><div class="dispatch-sub">Select the transport medium for <strong id="dispatchOrderId"></strong></div><div class="dispatch-grid"><button class="dispatch-option" onclick="selectDispatchMedium('bus')" id="dm-bus"><div class="dispatch-option-icon">🚌</div><div class="dispatch-option-label">Bus</div><div class="dispatch-option-sub">State/private bus service</div></button><button class="dispatch-option" onclick="selectDispatchMedium('auto')" id="dm-auto"><div class="dispatch-option-icon">🛺</div><div class="dispatch-option-label">Auto / Taxi</div><div class="dispatch-option-sub">Local auto or cab</div></button><button class="dispatch-option" onclick="selectDispatchMedium('transport')" id="dm-transport"><div class="dispatch-option-icon">🚛</div><div class="dispatch-option-label">Transport</div><div class="dispatch-option-sub">Courier / logistics</div></button><button class="dispatch-option" onclick="selectDispatchMedium('own')" id="dm-own"><div class="dispatch-option-icon">��</div><div class="dispatch-option-label">Own Delivery</div><div class="dispatch-option-sub">Our staff delivers</div></button></div><input class="dispatch-details-input" id="dispatchDetails" placeholder="Details — e.g. Bus no., Driver name, Tracking no." /><input class="dispatch-details-input" id="dispatchETA" placeholder="Expected delivery time — e.g. By 5 PM today" /><button class="dispatch-confirm-btn" onclick="confirmDispatch()">🚚 Confirm Dispatch</button></div>
 </div>
 
-<!-- â”€â”€ ADMIN LOGIN MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── ADMIN LOGIN MODAL ───────────────────────────────────── -->
 <div class="modal-overlay" id="adminLoginModal" style="display:none;z-index:400">
   <div class="modal-box" style="max-width:360px">
     <div style="text-align:center;margin-bottom:16px">
-      <div style="font-size:44px;margin-bottom:8px">âš™ï¸</div>
+      <div style="font-size:44px;margin-bottom:8px">⚙�</div>
       <div class="modal-title" style="text-align:center;color:#1A6B5A">Admin Login</div>
       <div class="modal-sub" style="text-align:center">Enter admin password to continue</div>
     </div>
@@ -103,17 +103,17 @@
       onkeydown="if(event.key==='Enter')checkAdminLogin()" />
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeAdminLogin()">Cancel</button>
-      <button class="modal-ok" onclick="checkAdminLogin()" style="background:linear-gradient(135deg,#1A6B5A,#2D9D7C)">ðŸ”“ Login</button>
+      <button class="modal-ok" onclick="checkAdminLogin()" style="background:linear-gradient(135deg,#1A6B5A,#2D9D7C)">🔓 Login</button>
     </div>
     <div class="modal-hint">Contact Jain Agencies if you forgot the password</div>
   </div>
 </div>
 
-<!-- â”€â”€ SR LOGIN MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SR LOGIN MODAL ─────────────────────────────────────── -->
 <div class="modal-overlay" id="srLoginModal" style="display:none;z-index:300">
   <div class="modal-box" style="max-width:360px">
     <div style="text-align:center;margin-bottom:16px">
-      <div style="font-size:44px;margin-bottom:8px">ðŸ§‘â€ðŸ’¼</div>
+      <div style="font-size:44px;margin-bottom:8px">🧑�💼</div>
       <div class="modal-title" style="text-align:center;color:#6366f1">SR Login</div>
       <div class="modal-sub" style="text-align:center">Enter your SR code to continue</div>
     </div>
@@ -122,13 +122,13 @@
     <div id="srLoginError" style="font-size:12px;color:#ef4444;font-weight:700;text-align:center;min-height:18px;margin-bottom:10px"></div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeSRLoginModal()">Cancel</button>
-      <button class="modal-ok" onclick="checkSRLogin()" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">ðŸ”“ Login</button>
+      <button class="modal-ok" onclick="checkSRLogin()" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">🔓 Login</button>
     </div>
-    <div class="modal-hint">SR codes are set by Admin Â· Contact Jain Agencies if you forgot yours</div>
+    <div class="modal-hint">SR codes are set by Admin · Contact Jain Agencies if you forgot yours</div>
   </div>
 </div>
 
-<!-- â”€â”€ SR SHOP SELECTOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SR SHOP SELECTOR ───────────────────────────────────── -->
 <div style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:flex-end;justify-content:center" id="srShopModal">
   <div style="background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:480px;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 -8px 40px rgba(0,0,0,0.25);animation:slide-up 0.3s ease">
     <div style="background:linear-gradient(135deg,#4338ca,#6366f1);padding:20px 18px 16px;border-radius:24px 24px 0 0;flex-shrink:0">
@@ -137,27 +137,27 @@
       <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600">Select a shop from your route to punch order</div>
     </div>
     <div style="padding:14px 16px 8px;flex-shrink:0">
-      <input id="srShopSearch" placeholder="ðŸ” Search your shops..." style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid #E2E8F0;font-size:14px;font-family:inherit;font-weight:600;outline:none;box-sizing:border-box" oninput="renderSRShopList()" onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='#E2E8F0'" />
+      <input id="srShopSearch" placeholder="� Search your shops..." style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid #E2E8F0;font-size:14px;font-family:inherit;font-weight:600;outline:none;box-sizing:border-box" oninput="renderSRShopList()" onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='#E2E8F0'" />
     </div>
     <div id="srShopList" style="overflow-y:auto;flex:1;padding:8px 16px 24px"></div>
     <div style="padding:12px 16px 20px;border-top:1px solid #E2E8F0;flex-shrink:0;display:flex;gap:10px">
-      <button onclick="closeSRShopModal()" style="flex:1;padding:13px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;font-family:inherit;font-size:14px;font-weight:800;color:#64748B;cursor:pointer">â† Back</button>
+      <button onclick="closeSRShopModal()" style="flex:1;padding:13px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;font-family:inherit;font-size:14px;font-weight:800;color:#64748B;cursor:pointer">� Back</button>
       <button onclick="srLogout()" style="padding:13px 16px;border-radius:12px;border:none;background:#FEE2E2;color:#ef4444;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer">Logout SR</button>
     </div>
   </div>
 </div>
 
-<div id="cart-view"><div class="cart-header"><button class="cart-back-btn" onclick="closeCart()">â†</button><div class="cart-header-text"><div class="cart-title">ðŸ›’ My Order</div><div class="cart-subtitle" id="cartSubtitle">0 items selected</div></div><button class="cart-clear-btn" onclick="clearCart()">Clear All</button></div><div class="retailer-bar"><span class="retailer-icon">ðŸª</span><input class="retailer-input" id="retailerName" placeholder="Your shop name (e.g. Gupta Medical)" /></div><div class="reorder-banner" id="reorderBanner"><div class="reorder-banner-inner"><span class="reorder-clock">ðŸ•</span><div class="reorder-text"><div class="reorder-label">Last Order</div><div class="reorder-order-name" id="reorderName">â€”</div><div class="reorder-order-meta" id="reorderMeta">â€”</div></div><button class="reorder-do-btn" onclick="reorderLast()">â†º Reorder</button></div><button class="reorder-history-btn" onclick="openHistory()">ðŸ“‹ View all past orders</button></div><div class="cart-items" id="cartItems"></div>
+<div id="cart-view"><div class="cart-header"><button class="cart-back-btn" onclick="closeCart()">�</button><div class="cart-header-text"><div class="cart-title">🛒 My Order</div><div class="cart-subtitle" id="cartSubtitle">0 items selected</div></div><button class="cart-clear-btn" onclick="clearCart()">Clear All</button></div><div class="retailer-bar"><span class="retailer-icon">��</span><input class="retailer-input" id="retailerName" placeholder="Your shop name (e.g. Gupta Medical)" /></div><div class="reorder-banner" id="reorderBanner"><div class="reorder-banner-inner"><span class="reorder-clock">�</span><div class="reorder-text"><div class="reorder-label">Last Order</div><div class="reorder-order-name" id="reorderName">—</div><div class="reorder-order-meta" id="reorderMeta">—</div></div><button class="reorder-do-btn" onclick="reorderLast()">↺ Reorder</button></div><button class="reorder-history-btn" onclick="openHistory()">📋 View all past orders</button></div><div class="cart-items" id="cartItems"></div>
 
-<div class="cart-footer"><div class="cart-summary"><div><div class="cart-summary-label">TOTAL ITEMS IN ORDER</div><div class="cart-summary-val" id="cartTotalItems">0 items</div></div><div style="text-align:right"><div class="cart-summary-label">TOTAL QTY</div><div class="cart-summary-val" id="cartTotalQty">0 strips</div></div></div><div style="margin-bottom:10px;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;"><span style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;">ðŸ“ Order Notes</span><button onclick="openSpecialOrderModal()" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border:none;border-radius:8px;padding:5px 11px;color:#fff;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;">ðŸ“‹ Special Order</button></div><textarea id="cartOrderNote" placeholder="Any special instructions, substitution notes, urgency, etcâ€¦" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E2E8F0;font-size:13px;font-family:inherit;font-weight:600;color:#1E293B;background:#F8FAFC;outline:none;resize:none;height:62px;line-height:1.45;" onfocus="this.style.borderColor='#00897b'" onblur="this.style.borderColor='#E2E8F0'"></textarea></div><button class="send-order-btn" onclick="openOrderOptions()">
- ðŸ“¤ Send Order
+<div class="cart-footer"><div class="cart-summary"><div><div class="cart-summary-label">TOTAL ITEMS IN ORDER</div><div class="cart-summary-val" id="cartTotalItems">0 items</div></div><div style="text-align:right"><div class="cart-summary-label">TOTAL QTY</div><div class="cart-summary-val" id="cartTotalQty">0 strips</div></div></div><div style="margin-bottom:10px;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;"><span style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;">� Order Notes</span><button onclick="openSpecialOrderModal()" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border:none;border-radius:8px;padding:5px 11px;color:#fff;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;">📋 Special Order</button></div><textarea id="cartOrderNote" placeholder="Any special instructions, substitution notes, urgency, etc…" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E2E8F0;font-size:13px;font-family:inherit;font-weight:600;color:#1E293B;background:#F8FAFC;outline:none;resize:none;height:62px;line-height:1.45;" onfocus="this.style.borderColor='#00897b'" onblur="this.style.borderColor='#E2E8F0'"></textarea></div><button class="send-order-btn" onclick="openOrderOptions()">
+ 📤 Send Order
  </button></div>
 </div>
-<div class="order-options-overlay" id="orderOptionsOverlay"><div class="order-options-box"><div class="order-opt-title">ðŸ“¤ Send Order</div><div class="order-opt-sub">Choose how to send your order to Jain Agencies</div><button class="order-opt-btn whatsapp" onclick="sendWhatsApp()"><span class="order-opt-icon">ðŸ’¬</span><div><div class="order-opt-label">WhatsApp to Jain Agencies</div><div class="order-opt-desc">Opens WhatsApp with pre-filled order message</div></div></button><button class="order-opt-btn direct" onclick="sendDirectOrder()"><span class="order-opt-icon">ðŸ“‹</span><div><div class="order-opt-label">Place Direct Order</div><div class="order-opt-desc">Record order in system for later confirmation</div></div></button><button class="order-opt-cancel" onclick="closeOrderOptions()">Cancel</button></div>
+<div class="order-options-overlay" id="orderOptionsOverlay"><div class="order-options-box"><div class="order-opt-title">📤 Send Order</div><div class="order-opt-sub">Choose how to send your order to Jain Agencies</div><button class="order-opt-btn whatsapp" onclick="sendWhatsApp()"><span class="order-opt-icon">💬</span><div><div class="order-opt-label">WhatsApp to Jain Agencies</div><div class="order-opt-desc">Opens WhatsApp with pre-filled order message</div></div></button><button class="order-opt-btn direct" onclick="sendDirectOrder()"><span class="order-opt-icon">📋</span><div><div class="order-opt-label">Place Direct Order</div><div class="order-opt-desc">Record order in system for later confirmation</div></div></button><button class="order-opt-cancel" onclick="closeOrderOptions()">Cancel</button></div>
 </div>
-<div class="order-success-overlay" id="orderSuccessOverlay"><div class="order-success-box"><div class="order-success-icon" id="successIcon">âœ…</div><div class="order-success-title" id="successTitle">Order Placed!</div><div class="order-success-sub" id="successSub">Your order has been recorded successfully.</div><button class="order-success-ok" onclick="closeOrderSuccess()">Done</button></div>
+<div class="order-success-overlay" id="orderSuccessOverlay"><div class="order-success-box"><div class="order-success-icon" id="successIcon">✅</div><div class="order-success-title" id="successTitle">Order Placed!</div><div class="order-success-sub" id="successSub">Your order has been recorded successfully.</div><button class="order-success-ok" onclick="closeOrderSuccess()">Done</button></div>
 </div>
-<div id="retailer-gate"><div class="gate-logo-wrap" style="text-align:center;padding:48px 24px 24px"><div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#00897b,#26a69a);display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;box-shadow:0 0 40px rgba(0,137,123,0.5);margin-bottom:16px">JA</div><div style="color:#fff;font-size:28px;font-weight:900;letter-spacing:-0.5px">Jain Agencies</div><div style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:4px;font-weight:500">Rajnandgaon Â· Est. 1979</div></div><div style="padding:0 24px 40px"><div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:24px;backdrop-filter:blur(20px)"><div style="color:#fff;font-size:18px;font-weight:800;margin-bottom:4px">ðŸ‘‹ Welcome!</div><div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:20px">Enter your store details to place orders</div><div style="margin-bottom:14px"><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Store / Shop Name *</div><input id="gateStoreName" placeholder="e.g. Sharma Medical Store"
+<div id="retailer-gate"><div class="gate-logo-wrap" style="text-align:center;padding:48px 24px 24px"><div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#00897b,#26a69a);display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;box-shadow:0 0 40px rgba(0,137,123,0.5);margin-bottom:16px">JA</div><div style="color:#fff;font-size:28px;font-weight:900;letter-spacing:-0.5px">Jain Agencies</div><div style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:4px;font-weight:500">Rajnandgaon · Est. 1979</div></div><div style="padding:0 24px 40px"><div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:24px;backdrop-filter:blur(20px)"><div style="color:#fff;font-size:18px;font-weight:800;margin-bottom:4px">👋 Welcome!</div><div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:20px">Enter your store details to place orders</div><div style="margin-bottom:14px"><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Store / Shop Name *</div><input id="gateStoreName" placeholder="e.g. Sharma Medical Store"
  style="width:100%;padding:15px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;font-weight:600;outline:none;box-sizing:border-box;font-family:inherit" /></div><div style="margin-bottom:14px"><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Mobile Number *</div><input id="gateMobile" type="tel" placeholder="e.g. 9876543210" maxlength="10"
  style="width:100%;padding:15px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;font-weight:600;outline:none;box-sizing:border-box;font-family:inherit" /></div><div style="margin-bottom:14px"><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">City / Town <span style="color:rgba(255,255,255,0.25);font-size:10px;font-weight:500">(optional)</span></div><select id="gateCity"
  style="width:100%;padding:15px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;font-weight:600;outline:none;box-sizing:border-box;font-family:inherit;appearance:none"><option value="" style="background:#1a2744;color:#fff">Select your city...</option><option value="Abhanpur">Abhanpur</option>
@@ -209,70 +209,70 @@
 <option value="Tilda">Tilda</option>
 <option value="Tumgaon">Tumgaon</option>
 <option value="Utai">Utai</option></select></div><div style="margin-bottom:20px"><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Address / Area <span style="color:rgba(255,255,255,0.25);font-size:10px;font-weight:500">(optional)</span></div><input id="gateAddress" placeholder="e.g. Main Road, Near Hospital"
- style="width:100%;padding:15px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;font-weight:600;outline:none;box-sizing:border-box;font-family:inherit" /></div><div id="gateErr" style="color:#ff6b6b;font-size:13px;font-weight:600;text-align:center;margin-bottom:10px;display:none">âš ï¸ Store name and mobile number required</div><button onclick="enterFromGate()"
+ style="width:100%;padding:15px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);color:#fff;font-size:16px;font-weight:600;outline:none;box-sizing:border-box;font-family:inherit" /></div><div id="gateErr" style="color:#ff6b6b;font-size:13px;font-weight:600;text-align:center;margin-bottom:10px;display:none">⚠� Store name and mobile number required</div><button onclick="enterFromGate()"
  style="width:100%;padding:18px;border-radius:16px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(0,137,123,0.4);font-family:inherit">
- Start Ordering â†’
+ Start Ordering →
  </button><div style="color:rgba(255,255,255,0.3);font-size:11px;text-align:center;margin-top:14px;line-height:1.6">
- Your info appears in WhatsApp orders<br>so we know who placed the order ðŸ“¦
+ Your info appears in WhatsApp orders<br>so we know who placed the order 📦
  </div></div></div>
 </div>
-<div id="detail-view"><div class="detail-header" id="detailHeader"><div class="detail-cat" id="dCat"></div><div class="detail-name" id="dName"></div><div class="detail-company" id="dCompany"></div><div class="stock-badge" id="dStock"></div><button class="back-btn" onclick="closeDetail()" style="margin-top:12px;padding:8px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px">â† Back</button></div><div class="detail-body"><div class="detail-card" id="detailCard"></div><div class="detail-actions" id="detailActions"><button class="btn-stock" id="detailCartBtn" onclick="toggleCartFromDetail()" style="flex:1;border-radius:14px;border:2px solid #00897b;background:#fff;color:#00897b;font-family:inherit;font-weight:800;cursor:pointer;font-size:14px;padding:14px">+ Add to Cart</button><button class="btn-stock" id="detailNotifyBtn" onclick="toggleWatchFromDetail()" style="display:none;flex:1;border-radius:14px;border:2px solid #f97316;background:#fff;color:#c2410c;font-family:inherit;font-weight:800;cursor:pointer;font-size:14px;padding:14px">ðŸ”” Notify Me</button><button onclick="toggleFavourite(currentDetailId)" id="detailFavBtn" style="padding:14px 16px;border-radius:14px;border:2px solid #F59E0B;background:#fff;color:#92400e;font-family:inherit;font-weight:800;cursor:pointer;font-size:20px;flex-shrink:0">â­</button></div><div class="detail-actions" id="detailAdminActions" style="display:none"><button class="btn-edit" onclick="editFromDetail()">âœï¸ Edit Product</button><button class="btn-stock" id="detailStockBtn" onclick="toggleStockFromDetail()">Toggle Stock</button></div></div>
+<div id="detail-view"><div class="detail-header" id="detailHeader"><div class="detail-cat" id="dCat"></div><div class="detail-name" id="dName"></div><div class="detail-company" id="dCompany"></div><div class="stock-badge" id="dStock"></div><button class="back-btn" onclick="closeDetail()" style="margin-top:12px;padding:8px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px">� Back</button></div><div class="detail-body"><div class="detail-card" id="detailCard"></div><div class="detail-actions" id="detailActions"><button class="btn-stock" id="detailCartBtn" onclick="toggleCartFromDetail()" style="flex:1;border-radius:14px;border:2px solid #00897b;background:#fff;color:#00897b;font-family:inherit;font-weight:800;cursor:pointer;font-size:14px;padding:14px">+ Add to Cart</button><button class="btn-stock" id="detailNotifyBtn" onclick="toggleWatchFromDetail()" style="display:none;flex:1;border-radius:14px;border:2px solid #f97316;background:#fff;color:#c2410c;font-family:inherit;font-weight:800;cursor:pointer;font-size:14px;padding:14px">🔔 Notify Me</button><button onclick="toggleFavourite(currentDetailId)" id="detailFavBtn" style="padding:14px 16px;border-radius:14px;border:2px solid #F59E0B;background:#fff;color:#92400e;font-family:inherit;font-weight:800;cursor:pointer;font-size:20px;flex-shrink:0">�</button></div><div class="detail-actions" id="detailAdminActions" style="display:none"><button class="btn-edit" onclick="editFromDetail()">�� Edit Product</button><button class="btn-stock" id="detailStockBtn" onclick="toggleStockFromDetail()">Toggle Stock</button></div></div>
 </div>
-<div id="admin-view"><div id="fbSetupBanner" style="background:linear-gradient(135deg,#1e3a5f,#1e4d8c);padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12px;color:#fff"><span style="font-size:18px;flex-shrink:0">ðŸ”¥</span><div style="flex:1;min-width:0"><div style="font-weight:900;margin-bottom:2px">Firebase Sync Not Configured</div><div style="color:rgba(255,255,255,0.7);font-size:11px">Orders &amp; retailers are local-only. <a href="https://console.firebase.google.com" target="_blank" style="color:#93c5fd;font-weight:800">Setup Firebase</a> â†’ paste config in HTML â†’ real-time sync works across all devices.</div></div><button onclick="openFbWiz()" style="background:#3b82f6;border:none;border-radius:8px;color:#fff;padding:6px 10px;cursor:pointer;font-size:11px;font-weight:900;flex-shrink:0;white-space:nowrap">âš¡ Setup</button><button onclick="this.parentElement.style.display='none'" style="background:rgba(255,255,255,0.15);border:none;border-radius:6px;color:#fff;padding:4px 8px;cursor:pointer;font-size:11px;flex-shrink:0">âœ•</button></div><div class="admin-header-v2"><div class="admin-topbar"><div class="admin-brand"><div class="admin-brand-icon">âš™ï¸</div><div><div class="admin-brand-name">Admin Panel</div><div class="admin-brand-sub">Jain Agencies</div></div></div><div class="admin-topbar-right"><button onclick="showPWABanner()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:10px;padding:8px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">ðŸ“² Install</button><button class="back-btn" style="margin-bottom:0;padding:8px 12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#fff;font-size:13px;cursor:pointer" onclick="closeAdmin()">â† Exit</button><button class="logout-btn" onclick="adminLogout()">Logout</button></div></div><div class="admin-nav-tabs"><button class="admin-nav-tab active" onclick="switchAdminTab('dashboard')" id="atab-dashboard">ðŸ“Š Dashboard</button><button class="admin-nav-tab" onclick="switchAdminTab('products')" id="atab-products">ðŸ’Š Products</button><button class="admin-nav-tab" onclick="switchAdminTab('schemes')" id="atab-schemes">ðŸ”¥ Schemes</button><button class="admin-nav-tab" onclick="switchAdminTab('retailers')" id="atab-retailers">ðŸª Retailers <span id="rrNavBadge" style="background:#ef4444;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;margin-left:2px;display:none">0</span></button><button class="admin-nav-tab" onclick="switchAdminTab('companies')" id="atab-companies">ðŸ¢ Companies</button><button class="admin-nav-tab" onclick="switchAdminTab('excel')" id="atab-excel">ðŸ“¤ Import</button><button class="admin-nav-tab" onclick="switchAdminTab('orders')" id="atab-orders">ðŸ“¦ Orders</button><button class="admin-nav-tab" onclick="switchAdminTab('announcements')" id="atab-announcements">ðŸ“¢ Notices</button><button class="admin-nav-tab" onclick="switchAdminTab('requests')" id="atab-requests">ðŸ” Requests <span id="reqNavBadge" style="background:#7c3aed;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;margin-left:2px;display:none">0</span></button><button class="admin-nav-tab" onclick="switchAdminTab('database')" id="atab-database">ðŸ—„ï¸ Database</button><button class="admin-nav-tab" onclick="switchAdminTab('broadcast')" id="atab-broadcast">ðŸ“£ Broadcast</button><button class="admin-nav-tab" onclick="switchAdminTab('push')" id="atab-push">ðŸ”” Push</button><button class="admin-nav-tab" onclick="switchAdminTab('sr')" id="atab-sr">ðŸ§‘â€ðŸ’¼ SR Team</button></div></div><div class="admin-body"><div class="admin-tab-panel active" id="apanel-dashboard"><div class="dash-greeting"><div class="dash-greeting-sub">Welcome back</div><div class="dash-greeting-title">Jain Agencies</div><div class="dash-greeting-time" id="dashTime"></div></div><div class="dash-stats-grid" id="dashStatsGrid"></div><div class="dash-section-head"><div class="dash-section-title">ðŸ“¦ Recent Orders</div><div class="dash-section-link" onclick="switchAdminTab('retailers')">See All â†’</div></div><div id="dashOrdersList"></div><div class="dash-section-head" style="margin-top:16px"><div class="dash-section-title">ðŸ”¥ Hot Products (Most Ordered)</div><div class="dash-section-link" onclick="switchAdminTab('products')">Manage â†’</div></div><div id="dashHotProducts"></div><div class="dash-section-head" style="margin-top:16px"><div class="dash-section-title">â³ Pending Retailer Approvals</div><div class="dash-section-link" onclick="switchAdminTab('retailers')">Review â†’</div></div><div id="dashPendingRetailers"></div><div class="dash-analytics-wrap" id="dashAnalytics" style="margin-top:16px"></div></div><div class="admin-tab-panel" id="apanel-products"><div class="prod-toolbar"><input class="prod-search-v2" id="adminSearchV2" placeholder="ðŸ” Search products..." oninput="renderAdminListV2()" /><button class="prod-add-btn" onclick="openAddForm()">âž• Add</button></div><div id="adminCompanyFilterBanner" style="display:none;align-items:center;justify-content:space-between;background:#e0f2fe;border-radius:10px;padding:8px 14px;margin-bottom:8px;font-size:13px;font-weight:700;color:#0369a1"></div><div id="adminListV2"></div></div><div class="admin-tab-panel" id="apanel-schemes"><button class="prod-add-btn" style="width:100%;margin-bottom:14px;padding:14px" onclick="openSchemeModal()">ðŸ”¥ + Add New Scheme</button><div id="adminSchemesList"></div></div><div class="admin-tab-panel" id="apanel-retailers"><div class="retailer-requests-section" id="retailerRequestsSection"><div class="rr-section-title">
- ðŸª Retailer Verification Requests
- <span class="rr-badge" id="rrPendingBadge">0</span></div><div id="rrList"><div class="rr-empty">No requests yet.</div></div></div></div><div class="admin-tab-panel" id="apanel-companies"><div class="add-company-row"><input class="add-company-input" id="newCompanyInput" placeholder="Company name (e.g. Cipla Limited)" onkeydown="if(event.key==='Enter')addCompany()" /><button class="add-company-btn" onclick="addCompany()">+ Add</button></div><div id="companiesList"></div></div><div class="admin-tab-panel" id="apanel-excel"><div class="excel-upload-zone" id="excelZone"><input type="file" class="excel-upload-file-input" id="excelFileInput" accept=".xlsx,.xls,.csv" onchange="handleExcelFile(this)" /><div class="excel-zone-icon" id="excelZoneIcon">ðŸ“Š</div><div class="excel-zone-title" id="excelZoneTitle">Upload Excel / CSV File</div><div class="excel-zone-sub">Drag & drop or tap to choose<br>Supported: .xlsx, .xls, .csv</div><div class="excel-zone-file" id="excelZoneFile"></div></div><div id="excelPreview"></div><button class="excel-template-btn" onclick="downloadTemplate()">â¬‡ï¸ Download Template (.csv)</button><button class="excel-import-btn" id="excelImportBtn" style="display:none" onclick="importExcelData()">âœ… Import Products to App</button><div class="excel-format-card" style="margin-top:14px"><div class="excel-format-title">ðŸ“‹ Required Column Format</div><div class="excel-col-row"><span class="excel-col-name">Name</span><span class="excel-col-req">REQ</span><span class="excel-col-desc">Medicine name</span></div><div class="excel-col-row"><span class="excel-col-name">Company</span><span class="excel-col-req">REQ</span><span class="excel-col-desc">Company / brand name</span></div><div class="excel-col-row"><span class="excel-col-name">Category</span><span class="excel-col-desc">Tablet, Syrup, Injectionâ€¦</span></div><div class="excel-col-row"><span class="excel-col-name">Packing</span><span class="excel-col-desc">e.g. 10T, 100ML</span></div><div class="excel-col-row"><span class="excel-col-name">MRP</span><span class="excel-col-desc">Maximum Retail Price</span></div><div class="excel-col-row"><span class="excel-col-name">PTR</span><span class="excel-col-desc">Price to Retailer</span></div><div class="excel-col-row"><span class="excel-col-name">Formula</span><span class="excel-col-desc">Composition / ingredients</span></div><div class="excel-col-row"><span class="excel-col-name">Scheme</span><span class="excel-col-desc">e.g. 10+1 Free</span></div><div class="excel-col-row"><span class="excel-col-name">Stock</span><span class="excel-col-desc">Yes / No (default: Yes)</span></div></div></div><div class="admin-tab-panel" id="apanel-orders"><div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"><input id="orderSearch" placeholder="ðŸ” Search orders..." oninput="renderAdminOrders()"
+<div id="admin-view"><div id="fbSetupBanner" style="background:linear-gradient(135deg,#1e3a5f,#1e4d8c);padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12px;color:#fff"><span style="font-size:18px;flex-shrink:0">🔥</span><div style="flex:1;min-width:0"><div style="font-weight:900;margin-bottom:2px">Firebase Sync Not Configured</div><div style="color:rgba(255,255,255,0.7);font-size:11px">Orders &amp; retailers are local-only. <a href="https://console.firebase.google.com" target="_blank" style="color:#93c5fd;font-weight:800">Setup Firebase</a> → paste config in HTML → real-time sync works across all devices.</div></div><button onclick="openFbWiz()" style="background:#3b82f6;border:none;border-radius:8px;color:#fff;padding:6px 10px;cursor:pointer;font-size:11px;font-weight:900;flex-shrink:0;white-space:nowrap">⚡ Setup</button><button onclick="this.parentElement.style.display='none'" style="background:rgba(255,255,255,0.15);border:none;border-radius:6px;color:#fff;padding:4px 8px;cursor:pointer;font-size:11px;flex-shrink:0">✕</button></div><div class="admin-header-v2"><div class="admin-topbar"><div class="admin-brand"><div class="admin-brand-icon">⚙�</div><div><div class="admin-brand-name">Admin Panel</div><div class="admin-brand-sub">Jain Agencies</div></div></div><div class="admin-topbar-right"><button onclick="showPWABanner()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:10px;padding:8px 10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">📲 Install</button><button class="back-btn" style="margin-bottom:0;padding:8px 12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#fff;font-size:13px;cursor:pointer" onclick="closeAdmin()">� Exit</button><button class="logout-btn" onclick="adminLogout()">Logout</button></div></div><div class="admin-nav-tabs"><button class="admin-nav-tab active" onclick="switchAdminTab('dashboard')" id="atab-dashboard">📊 Dashboard</button><button class="admin-nav-tab" onclick="switchAdminTab('products')" id="atab-products">💊 Products</button><button class="admin-nav-tab" onclick="switchAdminTab('schemes')" id="atab-schemes">🔥 Schemes</button><button class="admin-nav-tab" onclick="switchAdminTab('retailers')" id="atab-retailers">�� Retailers <span id="rrNavBadge" style="background:#ef4444;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;margin-left:2px;display:none">0</span></button><button class="admin-nav-tab" onclick="switchAdminTab('companies')" id="atab-companies">�� Companies</button><button class="admin-nav-tab" onclick="switchAdminTab('excel')" id="atab-excel">📤 Import</button><button class="admin-nav-tab" onclick="switchAdminTab('orders')" id="atab-orders">📦 Orders</button><button class="admin-nav-tab" onclick="switchAdminTab('announcements')" id="atab-announcements">📢 Notices</button><button class="admin-nav-tab" onclick="switchAdminTab('requests')" id="atab-requests">� Requests <span id="reqNavBadge" style="background:#7c3aed;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;margin-left:2px;display:none">0</span></button><button class="admin-nav-tab" onclick="switchAdminTab('database')" id="atab-database">🗄� Database</button><button class="admin-nav-tab" onclick="switchAdminTab('broadcast')" id="atab-broadcast">📣 Broadcast</button><button class="admin-nav-tab" onclick="switchAdminTab('push')" id="atab-push">🔔 Push</button><button class="admin-nav-tab" onclick="switchAdminTab('sr')" id="atab-sr">🧑�💼 SR Team</button></div></div><div class="admin-body"><div class="admin-tab-panel active" id="apanel-dashboard"><div class="dash-greeting"><div class="dash-greeting-sub">Welcome back</div><div class="dash-greeting-title">Jain Agencies</div><div class="dash-greeting-time" id="dashTime"></div></div><div class="dash-stats-grid" id="dashStatsGrid"></div><div class="dash-section-head"><div class="dash-section-title">📦 Recent Orders</div><div class="dash-section-link" onclick="switchAdminTab('retailers')">See All →</div></div><div id="dashOrdersList"></div><div class="dash-section-head" style="margin-top:16px"><div class="dash-section-title">🔥 Hot Products (Most Ordered)</div><div class="dash-section-link" onclick="switchAdminTab('products')">Manage →</div></div><div id="dashHotProducts"></div><div class="dash-section-head" style="margin-top:16px"><div class="dash-section-title">�� Pending Retailer Approvals</div><div class="dash-section-link" onclick="switchAdminTab('retailers')">Review →</div></div><div id="dashPendingRetailers"></div><div class="dash-analytics-wrap" id="dashAnalytics" style="margin-top:16px"></div></div><div class="admin-tab-panel" id="apanel-products"><div class="prod-toolbar"><input class="prod-search-v2" id="adminSearchV2" placeholder="� Search products..." oninput="renderAdminListV2()" /><button class="prod-add-btn" onclick="openAddForm()">➕ Add</button></div><div id="adminCompanyFilterBanner" style="display:none;align-items:center;justify-content:space-between;background:#e0f2fe;border-radius:10px;padding:8px 14px;margin-bottom:8px;font-size:13px;font-weight:700;color:#0369a1"></div><div id="adminListV2"></div></div><div class="admin-tab-panel" id="apanel-schemes"><button class="prod-add-btn" style="width:100%;margin-bottom:14px;padding:14px" onclick="openSchemeModal()">🔥 + Add New Scheme</button><div id="adminSchemesList"></div></div><div class="admin-tab-panel" id="apanel-retailers"><div class="retailer-requests-section" id="retailerRequestsSection"><div class="rr-section-title">
+ �� Retailer Verification Requests
+ <span class="rr-badge" id="rrPendingBadge">0</span></div><div id="rrList"><div class="rr-empty">No requests yet.</div></div></div></div><div class="admin-tab-panel" id="apanel-companies"><div class="add-company-row"><input class="add-company-input" id="newCompanyInput" placeholder="Company name (e.g. Cipla Limited)" onkeydown="if(event.key==='Enter')addCompany()" /><button class="add-company-btn" onclick="addCompany()">+ Add</button></div><div id="companiesList"></div></div><div class="admin-tab-panel" id="apanel-excel"><div class="excel-upload-zone" id="excelZone"><input type="file" class="excel-upload-file-input" id="excelFileInput" accept=".xlsx,.xls,.csv" onchange="handleExcelFile(this)" /><div class="excel-zone-icon" id="excelZoneIcon">📊</div><div class="excel-zone-title" id="excelZoneTitle">Upload Excel / CSV File</div><div class="excel-zone-sub">Drag & drop or tap to choose<br>Supported: .xlsx, .xls, .csv</div><div class="excel-zone-file" id="excelZoneFile"></div></div><div id="excelPreview"></div><button class="excel-template-btn" onclick="downloadTemplate()">⬇� Download Template (.csv)</button><button class="excel-import-btn" id="excelImportBtn" style="display:none" onclick="importExcelData()">✅ Import Products to App</button><div class="excel-format-card" style="margin-top:14px"><div class="excel-format-title">📋 Required Column Format</div><div class="excel-col-row"><span class="excel-col-name">Name</span><span class="excel-col-req">REQ</span><span class="excel-col-desc">Medicine name</span></div><div class="excel-col-row"><span class="excel-col-name">Company</span><span class="excel-col-req">REQ</span><span class="excel-col-desc">Company / brand name</span></div><div class="excel-col-row"><span class="excel-col-name">Category</span><span class="excel-col-desc">Tablet, Syrup, Injection…</span></div><div class="excel-col-row"><span class="excel-col-name">Packing</span><span class="excel-col-desc">e.g. 10T, 100ML</span></div><div class="excel-col-row"><span class="excel-col-name">MRP</span><span class="excel-col-desc">Maximum Retail Price</span></div><div class="excel-col-row"><span class="excel-col-name">PTR</span><span class="excel-col-desc">Price to Retailer</span></div><div class="excel-col-row"><span class="excel-col-name">Formula</span><span class="excel-col-desc">Composition / ingredients</span></div><div class="excel-col-row"><span class="excel-col-name">Scheme</span><span class="excel-col-desc">e.g. 10+1 Free</span></div><div class="excel-col-row"><span class="excel-col-name">Stock</span><span class="excel-col-desc">Yes / No (default: Yes)</span></div></div></div><div class="admin-tab-panel" id="apanel-orders"><div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"><input id="orderSearch" placeholder="� Search orders..." oninput="renderAdminOrders()"
  style="flex:1;min-width:140px;padding:10px 14px;border-radius:12px;border:1px solid var(--border,#E2E8F0);background:var(--input-bg,#fff);color:var(--text,#0f172a);font-size:13px;font-weight:600;outline:none;font-family:inherit" /><select id="orderStatusFilter" onchange="renderAdminOrders()"
- style="padding:10px 12px;border-radius:12px;border:1px solid var(--border,#E2E8F0);background:var(--input-bg,#fff);color:var(--text,#0f172a);font-size:13px;font-weight:600;outline:none;font-family:inherit"><option value="All">All Status</option><option value="WhatsApp Sent">WhatsApp</option><option value="Pending">Pending</option><option value="Confirmed">Confirmed</option><option value="Dispatched">Dispatched</option><option value="Delivered">Delivered</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px" id="ordersSummaryBar"></div><button onclick="exportOrdersCSV()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:12px;font-family:inherit">ðŸ“¥ Export Orders CSV</button><div id="adminOrdersList"></div></div><div class="admin-tab-panel" id="apanel-announcements"><div class="wa-settings-card"><div class="wa-settings-title">ðŸ’¬ WhatsApp Auto-Notifications</div><div class="wa-settings-sub">Auto-send WhatsApp when these events happen</div><div class="wa-toggle-row"><div><div class="wa-toggle-label">Retailer Approved</div><div class="wa-toggle-sub">Notify retailer when you approve them</div></div><button class="wa-on-off on" id="waToggleApprove" onclick="toggleWASetting('approve')"></button></div><div class="wa-toggle-row"><div><div class="wa-toggle-label">Order Status Updated</div><div class="wa-toggle-sub">Notify retailer on Confirmed / Dispatched / Delivered</div></div><button class="wa-on-off on" id="waToggleOrder" onclick="toggleWASetting('order')"></button></div><div class="wa-toggle-row"><div><div class="wa-toggle-label">New Announcement</div><div class="wa-toggle-sub">Send announcement text to all known retailer numbers</div></div><button class="wa-on-off off" id="waToggleAnn" onclick="toggleWASetting('ann')"></button></div><div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border-radius:10px;font-size:11px;color:#166534;font-weight:600;line-height:1.5">
- ðŸ’¡ WhatsApp opens automatically with the pre-filled message. You can review before tapping Send.
- </div></div><div class="ann-form-card"><div style="font-size:14px;font-weight:900;color:#1E293B;margin-bottom:12px">ðŸ“¢ Post New Announcement</div><div class="ann-type-grid"><button class="ann-type-btn selected" id="annTypeInfo" onclick="selectAnnType('info')">â„¹ï¸ Info</button><button class="ann-type-btn" id="annTypeWarning" onclick="selectAnnType('warning')">âš ï¸ Warning</button><button class="ann-type-btn" id="annTypeSuccess" onclick="selectAnnType('success')">âœ… Good News</button><button class="ann-type-btn" id="annTypeUrgent" onclick="selectAnnType('urgent')">ðŸ”´ Urgent</button></div><input class="ann-field" id="annTitle" placeholder="Title (e.g. Office Closed on Sunday)" /><textarea class="ann-field ann-textarea" id="annBody" placeholder="Message details..."></textarea><button class="ann-post-btn" onclick="postAnnouncement()">ðŸ“¢ Post to All Retailers</button></div><div id="adminAnnList"></div></div><div class="admin-tab-panel" id="apanel-requests"><div id="adminRequestsList"></div></div><div class="admin-tab-panel" id="apanel-database"><div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden"><div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.1">ðŸ—„ï¸</div><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Product Database</div><div style="color:#fff;font-size:26px;font-weight:900" id="dbTotalCount">8,460</div><div style="color:rgba(255,255,255,0.4);font-size:12px">Total products Â· 41 companies</div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px" id="dbQuickStats"></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
- ðŸ¢ By Company
+ style="padding:10px 12px;border-radius:12px;border:1px solid var(--border,#E2E8F0);background:var(--input-bg,#fff);color:var(--text,#0f172a);font-size:13px;font-weight:600;outline:none;font-family:inherit"><option value="All">All Status</option><option value="WhatsApp Sent">WhatsApp</option><option value="Pending">Pending</option><option value="Confirmed">Confirmed</option><option value="Dispatched">Dispatched</option><option value="Delivered">Delivered</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px" id="ordersSummaryBar"></div><button onclick="exportOrdersCSV()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:12px;font-family:inherit">📥 Export Orders CSV</button><div id="adminOrdersList"></div></div><div class="admin-tab-panel" id="apanel-announcements"><div class="wa-settings-card"><div class="wa-settings-title">💬 WhatsApp Auto-Notifications</div><div class="wa-settings-sub">Auto-send WhatsApp when these events happen</div><div class="wa-toggle-row"><div><div class="wa-toggle-label">Retailer Approved</div><div class="wa-toggle-sub">Notify retailer when you approve them</div></div><button class="wa-on-off on" id="waToggleApprove" onclick="toggleWASetting('approve')"></button></div><div class="wa-toggle-row"><div><div class="wa-toggle-label">Order Status Updated</div><div class="wa-toggle-sub">Notify retailer on Confirmed / Dispatched / Delivered</div></div><button class="wa-on-off on" id="waToggleOrder" onclick="toggleWASetting('order')"></button></div><div class="wa-toggle-row"><div><div class="wa-toggle-label">New Announcement</div><div class="wa-toggle-sub">Send announcement text to all known retailer numbers</div></div><button class="wa-on-off off" id="waToggleAnn" onclick="toggleWASetting('ann')"></button></div><div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border-radius:10px;font-size:11px;color:#166534;font-weight:600;line-height:1.5">
+ 💡 WhatsApp opens automatically with the pre-filled message. You can review before tapping Send.
+ </div></div><div class="ann-form-card"><div style="font-size:14px;font-weight:900;color:#1E293B;margin-bottom:12px">📢 Post New Announcement</div><div class="ann-type-grid"><button class="ann-type-btn selected" id="annTypeInfo" onclick="selectAnnType('info')">ℹ� Info</button><button class="ann-type-btn" id="annTypeWarning" onclick="selectAnnType('warning')">⚠� Warning</button><button class="ann-type-btn" id="annTypeSuccess" onclick="selectAnnType('success')">✅ Good News</button><button class="ann-type-btn" id="annTypeUrgent" onclick="selectAnnType('urgent')">🔴 Urgent</button></div><input class="ann-field" id="annTitle" placeholder="Title (e.g. Office Closed on Sunday)" /><textarea class="ann-field ann-textarea" id="annBody" placeholder="Message details..."></textarea><button class="ann-post-btn" onclick="postAnnouncement()">📢 Post to All Retailers</button></div><div id="adminAnnList"></div></div><div class="admin-tab-panel" id="apanel-requests"><div id="adminRequestsList"></div></div><div class="admin-tab-panel" id="apanel-database"><div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden"><div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.1">🗄�</div><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Product Database</div><div style="color:#fff;font-size:26px;font-weight:900" id="dbTotalCount">8,460</div><div style="color:rgba(255,255,255,0.4);font-size:12px">Total products · 41 companies</div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px" id="dbQuickStats"></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
+ �� By Company
  <input id="dbCompanySearch" placeholder="Search..." oninput="renderDbCompanies()"
- style="font-size:12px;padding:4px 10px;border-radius:8px;border:1px solid var(--border,#E2E8F0);background:var(--input-bg,#fff);color:var(--text,#0f172a);width:120px;outline:none" /></div><div id="dbCompanyList" style="max-height:280px;overflow-y:auto;"></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">ðŸ’Š By Category</div><div id="dbCategoryList"></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">âš™ï¸ Actions</div><div style="display:flex;flex-direction:column;gap:10px"><button onclick="dbExportCSV()" style="background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">ðŸ“¥ Export All Products as CSV</button><button onclick="dbResetCache()" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">ðŸ”„ Reset Cache &amp; Reload Catalog</button><button onclick="dbClearOrders()" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">ðŸ—‘ï¸ Clear All Orders History</button></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">ðŸ”¥ Firebase Status</div><div id="dbFirebaseStatus"></div></div></div><div class="admin-tab-panel" id="apanel-broadcast"><div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden"><div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">ðŸ“£</div><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Admin Tool</div><div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">WhatsApp Broadcast</div><div style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:600">Send a message to all approved retailers</div></div><div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 8px rgba(0,0,0,0.04)"><div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:12px;display:flex;align-items:center;gap:8px">âœï¸ Compose Message</div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Quick Templates</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px" id="bcTemplateChips"><button onclick="setBCTemplate('scheme')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸŽ New Scheme</button><button onclick="setBCTemplate('holiday')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ–ï¸ Holiday</button><button onclick="setBCTemplate('discount')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ’° Discount</button><button onclick="setBCTemplate('reminder')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ”” Payment Reminder</button><button onclick="setBCTemplate('restock')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ“¦ Restock Alert</button><button onclick="setBCTemplate('custom')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #7c3aed;background:#F5F3FF;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#7c3aed">âœï¸ Custom</button></div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Message</div><textarea id="bcMessage" rows="6" placeholder="Type your broadcast message here..."
+ style="font-size:12px;padding:4px 10px;border-radius:8px;border:1px solid var(--border,#E2E8F0);background:var(--input-bg,#fff);color:var(--text,#0f172a);width:120px;outline:none" /></div><div id="dbCompanyList" style="max-height:280px;overflow-y:auto;"></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">💊 By Category</div><div id="dbCategoryList"></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">⚙� Actions</div><div style="display:flex;flex-direction:column;gap:10px"><button onclick="dbExportCSV()" style="background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">📥 Export All Products as CSV</button><button onclick="dbResetCache()" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">🔄 Reset Cache &amp; Reload Catalog</button><button onclick="dbClearOrders()" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">🗑� Clear All Orders History</button></div></div><div style="background:var(--card-bg,#fff);border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)"><div style="font-size:13px;font-weight:800;color:var(--text,#0f172a);margin-bottom:12px">🔥 Firebase Status</div><div id="dbFirebaseStatus"></div></div></div><div class="admin-tab-panel" id="apanel-broadcast"><div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden"><div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">📣</div><div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Admin Tool</div><div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">WhatsApp Broadcast</div><div style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:600">Send a message to all approved retailers</div></div><div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 8px rgba(0,0,0,0.04)"><div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:12px;display:flex;align-items:center;gap:8px">�� Compose Message</div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Quick Templates</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px" id="bcTemplateChips"><button onclick="setBCTemplate('scheme')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">� New Scheme</button><button onclick="setBCTemplate('holiday')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">��� Holiday</button><button onclick="setBCTemplate('discount')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">💰 Discount</button><button onclick="setBCTemplate('reminder')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">🔔 Payment Reminder</button><button onclick="setBCTemplate('restock')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">📦 Restock Alert</button><button onclick="setBCTemplate('custom')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #7c3aed;background:#F5F3FF;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#7c3aed">�� Custom</button></div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Message</div><textarea id="bcMessage" rows="6" placeholder="Type your broadcast message here..."
  style="width:100%;padding:12px 14px;border-radius:12px;border:2px solid #E2E8F0;font-family:inherit;font-size:14px;font-weight:600;outline:none;color:#1E293B;background:#F8FAFC;resize:none;box-sizing:border-box"
- oninput="updateBCPreview()"></textarea><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;margin-bottom:14px"><span style="font-size:11px;color:#94A3B8;font-weight:600" id="bcCharCount">0 characters</span><span style="font-size:11px;color:#94A3B8;font-weight:600" id="bcRetailerCount">Loading...</span></div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Send To</div><div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap"><button onclick="setBCFilter('all')" id="bcf-all" style="flex:1;min-width:80px;padding:10px;border-radius:12px;border:2px solid #7c3aed;background:#F5F3FF;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#7c3aed">All Retailers</button><button onclick="setBCFilter('city')" id="bcf-city" style="flex:1;min-width:80px;padding:10px;border-radius:12px;border:2px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569">By City</button></div><div id="bcCityFilter" style="display:none;margin-bottom:14px"><select id="bcCitySelect" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E2E8F0;font-family:inherit;font-size:13px;font-weight:600;color:#1E293B;background:#F8FAFC;outline:none" onchange="updateBCPreview()"><option value="">All Cities</option></select></div></div><div style="background:#ECE5DD;border-radius:16px;padding:16px;margin-bottom:12px"><div style="font-size:11px;font-weight:800;color:#075E54;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Preview</div><div style="background:#fff;border-radius:0 12px 12px 12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,0.12);position:relative"><div style="font-size:11px;font-weight:800;color:#128C7E;margin-bottom:6px">Jain Agencies</div><div id="bcPreviewText" style="font-size:13px;color:#1a1a1a;white-space:pre-wrap;line-height:1.5;font-weight:500;min-height:40px;color:#888;font-style:italic">Your message will appear here...</div></div></div><div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0"><div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center"><span>ðŸ“‹ Recipients</span><span id="bcRecipientBadge" style="background:#7c3aed;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px">0</span></div><div id="bcRecipientList" style="max-height:200px;overflow-y:auto"></div></div><button onclick="startBroadcast()" id="bcSendBtn"
+ oninput="updateBCPreview()"></textarea><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;margin-bottom:14px"><span style="font-size:11px;color:#94A3B8;font-weight:600" id="bcCharCount">0 characters</span><span style="font-size:11px;color:#94A3B8;font-weight:600" id="bcRetailerCount">Loading...</span></div><div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Send To</div><div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap"><button onclick="setBCFilter('all')" id="bcf-all" style="flex:1;min-width:80px;padding:10px;border-radius:12px;border:2px solid #7c3aed;background:#F5F3FF;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#7c3aed">All Retailers</button><button onclick="setBCFilter('city')" id="bcf-city" style="flex:1;min-width:80px;padding:10px;border-radius:12px;border:2px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569">By City</button></div><div id="bcCityFilter" style="display:none;margin-bottom:14px"><select id="bcCitySelect" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E2E8F0;font-family:inherit;font-size:13px;font-weight:600;color:#1E293B;background:#F8FAFC;outline:none" onchange="updateBCPreview()"><option value="">All Cities</option></select></div></div><div style="background:#ECE5DD;border-radius:16px;padding:16px;margin-bottom:12px"><div style="font-size:11px;font-weight:800;color:#075E54;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Preview</div><div style="background:#fff;border-radius:0 12px 12px 12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,0.12);position:relative"><div style="font-size:11px;font-weight:800;color:#128C7E;margin-bottom:6px">Jain Agencies</div><div id="bcPreviewText" style="font-size:13px;color:#1a1a1a;white-space:pre-wrap;line-height:1.5;font-weight:500;min-height:40px;color:#888;font-style:italic">Your message will appear here...</div></div></div><div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0"><div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center"><span>📋 Recipients</span><span id="bcRecipientBadge" style="background:#7c3aed;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px">0</span></div><div id="bcRecipientList" style="max-height:200px;overflow-y:auto"></div></div><button onclick="startBroadcast()" id="bcSendBtn"
  style="width:100%;padding:16px;border-radius:16px;border:none;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,0.35);display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px">
- ðŸ“£ Start WhatsApp Broadcast
- </button><div style="font-size:11px;color:#94A3B8;text-align:center;font-weight:600;margin-bottom:20px">Opens WhatsApp one by one for each retailer Â· You confirm each send</div><div id="bcSentLog" style="display:none;background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:16px;padding:16px;margin-bottom:16px"><div style="font-size:13px;font-weight:900;color:#166534;margin-bottom:8px">âœ… Broadcast Progress</div><div id="bcSentLogInner"></div></div></div></div>
+ 📣 Start WhatsApp Broadcast
+ </button><div style="font-size:11px;color:#94A3B8;text-align:center;font-weight:600;margin-bottom:20px">Opens WhatsApp one by one for each retailer · You confirm each send</div><div id="bcSentLog" style="display:none;background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:16px;padding:16px;margin-bottom:16px"><div style="font-size:13px;font-weight:900;color:#166534;margin-bottom:8px">✅ Broadcast Progress</div><div id="bcSentLogInner"></div></div></div></div>
 
 
-<!-- â”€â”€ FCM PUSH NOTIFICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── FCM PUSH NOTIFICATIONS ──────────────────────────────── -->
 <div class="admin-tab-panel" id="apanel-push" style="padding:14px 12px 80px">
   <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden">
-    <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">ðŸ””</div>
+    <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">🔔</div>
     <div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Firebase Cloud Messaging</div>
-    <div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">ðŸ”” Push Notifications</div>
+    <div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">🔔 Push Notifications</div>
     <div style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:600">Send real lock-screen notifications to retailers' phones</div>
   </div>
 
   <!-- Setup status card -->
   <div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 8px rgba(0,0,0,0.04)">
     <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between">
-      <span>âš™ï¸ FCM Setup Status</span>
-      <button onclick="refreshFCMStatus()" style="background:#F1F5F9;border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;cursor:pointer;color:#475569;font-family:inherit">ðŸ”„ Refresh</button>
+      <span>⚙� FCM Setup Status</span>
+      <button onclick="refreshFCMStatus()" style="background:#F1F5F9;border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;cursor:pointer;color:#475569;font-family:inherit">🔄 Refresh</button>
     </div>
     <div id="fcmStatusInner"><div style="font-size:12px;color:#64748B;font-weight:600">Checking FCM status...</div></div>
   </div>
 
   <!-- VAPID + Server key config -->
   <div style="background:#FFF7ED;border:1.5px solid #FED7AA;border-radius:16px;padding:16px;margin-bottom:12px">
-    <div style="font-size:13px;font-weight:900;color:#92400e;margin-bottom:6px">ðŸ”‘ Keys Setup (Required Once)</div>
-    <div style="font-size:11px;color:#b45309;font-weight:600;margin-bottom:10px;line-height:1.5">Firebase Console â†’ Project Settings â†’ Cloud Messaging â†’ Web Push certificates â†’ <b>Generate key pair</b></div>
+    <div style="font-size:13px;font-weight:900;color:#92400e;margin-bottom:6px">🔑 Keys Setup (Required Once)</div>
+    <div style="font-size:11px;color:#b45309;font-weight:600;margin-bottom:10px;line-height:1.5">Firebase Console → Project Settings → Cloud Messaging → Web Push certificates → <b>Generate key pair</b></div>
     <div style="font-size:11px;font-weight:800;color:#92400e;margin-bottom:4px">VAPID Key (Web Push)</div>
     <input id="fcmVapidInput" type="text" placeholder="Paste VAPID key pair here..."
       style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #FED7AA;font-size:11px;font-family:monospace;font-weight:600;background:#fffbf5;color:#0f172a;outline:none;box-sizing:border-box;margin-bottom:10px"
       oninput="this.style.borderColor=this.value.length>20?'#22c55e':'#FED7AA'" />
     <div style="font-size:11px;font-weight:800;color:#92400e;margin-bottom:4px">Server Key (for sending via REST)</div>
-    <div style="font-size:10px;color:#b45309;font-weight:600;margin-bottom:6px">Project Settings â†’ Cloud Messaging â†’ Cloud Messaging API (Legacy) â†’ Server key</div>
+    <div style="font-size:10px;color:#b45309;font-weight:600;margin-bottom:6px">Project Settings → Cloud Messaging → Cloud Messaging API (Legacy) → Server key</div>
     <input id="fcmServerKeyInput" type="password" placeholder="AIza...your server key..."
       style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #FED7AA;font-size:11px;font-family:monospace;font-weight:600;background:#fffbf5;color:#0f172a;outline:none;box-sizing:border-box;margin-bottom:10px"
       oninput="this.style.borderColor=this.value.length>20?'#22c55e':'#FED7AA'" />
-    <button onclick="saveFCMKeys()" style="width:100%;padding:11px;border-radius:10px;border:none;background:linear-gradient(135deg,#f97316,#fb923c);color:#fff;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer">ðŸ’¾ Save Keys</button>
-    <div id="fcmKeysSavedMsg" style="display:none;font-size:11px;color:#16a34a;font-weight:800;text-align:center;margin-top:8px">âœ… Keys saved! Reload app for VAPID key to take effect.</div>
+    <button onclick="saveFCMKeys()" style="width:100%;padding:11px;border-radius:10px;border:none;background:linear-gradient(135deg,#f97316,#fb923c);color:#fff;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer">💾 Save Keys</button>
+    <div id="fcmKeysSavedMsg" style="display:none;font-size:11px;color:#16a34a;font-weight:800;text-align:center;margin-top:8px">✅ Keys saved! Reload app for VAPID key to take effect.</div>
   </div>
 
   <!-- Service Worker setup instructions -->
   <div style="background:#F0F9FF;border:1.5px solid #BAE6FD;border-radius:16px;padding:16px;margin-bottom:12px">
-    <div style="font-size:13px;font-weight:900;color:#075985;margin-bottom:8px">ðŸ“„ Service Worker File (One-time)</div>
+    <div style="font-size:13px;font-weight:900;color:#075985;margin-bottom:8px">📄 Service Worker File (One-time)</div>
     <div style="font-size:11px;color:#0369a1;font-weight:600;margin-bottom:8px;line-height:1.5">
       Create <code style="background:#e0f2fe;padding:2px 5px;border-radius:4px">firebase-messaging-sw.js</code> in the <b>same folder</b> as your HTML, with this content:
     </div>
@@ -300,29 +300,29 @@ messaging.onBackgroundMessage(payload => {
     data: payload.data || {}
   });
 });</pre>
-    <button onclick="copyFCMSWCode()" style="width:100%;padding:10px;border-radius:10px;border:1.5px solid #BAE6FD;background:#fff;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#0369a1">ðŸ“‹ Copy Service Worker Code</button>
+    <button onclick="copyFCMSWCode()" style="width:100%;padding:10px;border-radius:10px;border:1.5px solid #BAE6FD;background:#fff;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#0369a1">📋 Copy Service Worker Code</button>
   </div>
 
   <!-- Compose push notification -->
   <div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 8px rgba(0,0,0,0.04)">
-    <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:12px">âœï¸ Compose Push Notification</div>
+    <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:12px">�� Compose Push Notification</div>
 
     <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Quick Templates</div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
-      <button onclick="setPushTemplate('flash')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">âš¡ Flash Sale</button>
-      <button onclick="setPushTemplate('scheme')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ”¥ New Scheme</button>
-      <button onclick="setPushTemplate('stock')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ“¦ Restock</button>
-      <button onclick="setPushTemplate('payment')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ’° Payment Due</button>
-      <button onclick="setPushTemplate('order')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">ðŸ“‹ Order Ready</button>
+      <button onclick="setPushTemplate('flash')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">⚡ Flash Sale</button>
+      <button onclick="setPushTemplate('scheme')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">🔥 New Scheme</button>
+      <button onclick="setPushTemplate('stock')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">📦 Restock</button>
+      <button onclick="setPushTemplate('payment')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">💰 Payment Due</button>
+      <button onclick="setPushTemplate('order')" style="padding:6px 12px;border-radius:20px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;color:#475569">📋 Order Ready</button>
     </div>
 
     <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Notification Title</div>
-    <input id="pushTitle" type="text" placeholder="e.g. ðŸ”¥ Flash Sale on Alkem Products!"
+    <input id="pushTitle" type="text" placeholder="e.g. 🔥 Flash Sale on Alkem Products!"
       style="width:100%;padding:11px 14px;border-radius:10px;border:2px solid #E2E8F0;font-size:14px;font-family:inherit;font-weight:600;outline:none;color:#1E293B;background:#F8FAFC;box-sizing:border-box;margin-bottom:10px"
       oninput="updatePushPreview()" />
 
     <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Message Body</div>
-    <textarea id="pushBody" rows="3" placeholder="e.g. Limited stock â€” order in the next 2 hours to avail the scheme!"
+    <textarea id="pushBody" rows="3" placeholder="e.g. Limited stock — order in the next 2 hours to avail the scheme!"
       style="width:100%;padding:11px 14px;border-radius:10px;border:2px solid #E2E8F0;font-size:13px;font-family:inherit;font-weight:600;outline:none;color:#1E293B;background:#F8FAFC;box-sizing:border-box;resize:none;margin-bottom:12px"
       oninput="updatePushPreview()"></textarea>
 
@@ -342,31 +342,31 @@ messaging.onBackgroundMessage(payload => {
 
     <!-- Subscriber count -->
     <div id="pushSubscriberBar" style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between">
-      <div style="font-size:12px;font-weight:700;color:#166534">ðŸ“± Retailers with push enabled</div>
-      <div id="pushSubscriberCount" style="font-size:14px;font-weight:900;color:#059669">â€”</div>
+      <div style="font-size:12px;font-weight:700;color:#166534">📱 Retailers with push enabled</div>
+      <div id="pushSubscriberCount" style="font-size:14px;font-weight:900;color:#059669">—</div>
     </div>
 
     <button onclick="sendFCMPush()" id="fcmSendBtn"
       style="width:100%;padding:16px;border-radius:16px;border:none;background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(15,23,42,0.35);display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px">
-      ðŸ”” Send Push to All Retailers
+      🔔 Send Push to All Retailers
     </button>
     <div style="font-size:11px;color:#94A3B8;text-align:center;font-weight:600;margin-bottom:12px">Retailers must have opened the app once &amp; allowed notifications to receive pushes</div>
     <div id="fcmSendResult" style="display:none;border-radius:12px;padding:12px 14px;font-size:12px;font-weight:700;margin-bottom:8px"></div>
   </div>
 </div>
 
-<!-- â”€â”€ SR TEAM PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SR TEAM PANEL ─────────────────────────────────────── -->
 <div class="admin-tab-panel" id="apanel-sr">
   <!-- Header card -->
   <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:18px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden">
-    <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">ðŸ§‘â€ðŸ’¼</div>
+    <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:52px;opacity:0.12">🧑�💼</div>
     <div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Field Team Management</div>
     <div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">SR Team</div>
     <div style="color:rgba(255,255,255,0.5);font-size:12px">Manage Sales Representatives &amp; their shop routes</div>
   </div>
   <!-- Add SR form -->
   <div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;border:1.5px solid #E2E8F0;box-shadow:0 2px 6px rgba(0,0,0,0.04)">
-    <div style="font-size:14px;font-weight:900;color:#1E293B;margin-bottom:12px;display:flex;align-items:center;gap:8px">âž• Add New SR</div>
+    <div style="font-size:14px;font-weight:900;color:#1E293B;margin-bottom:12px;display:flex;align-items:center;gap:8px">➕ Add New SR</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
       <div>
         <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px">SR Name *</div>
@@ -392,7 +392,7 @@ messaging.onBackgroundMessage(payload => {
       <textarea id="srAddShops" placeholder="Gupta Medical&#10;Sharma Medicos&#10;City Pharma&#10;..." rows="4" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E2E8F0;font-size:13px;font-weight:700;font-family:inherit;outline:none;box-sizing:border-box;resize:none" onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='#E2E8F0'"></textarea>
       <div style="font-size:11px;color:#94A3B8;font-weight:600;margin-top:4px">Enter shop names the SR will visit on their route</div>
     </div>
-    <button onclick="adminAddSR()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 3px 12px rgba(99,102,241,0.3)">ðŸ§‘â€ðŸ’¼ Add SR</button>
+    <button onclick="adminAddSR()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 3px 12px rgba(99,102,241,0.3)">🧑�💼 Add SR</button>
   </div>
   <!-- SR List -->
   <div style="font-size:13px;font-weight:900;color:#1E293B;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between">
@@ -403,13 +403,13 @@ messaging.onBackgroundMessage(payload => {
 </div>
 
 </div>
-<div id="form-view"><div class="form-header"><div class="form-title" id="formTitle">Add New Product</div><button class="back-btn" style="margin-top:10px;padding:8px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px" onclick="closeForm()">â† Back</button></div><div class="form-body"><div class="form-card"><label class="field-label">Medicine Name *</label><input class="field-input" id="fName" placeholder="e.g. PARACETAMOL 500MG" /><label class="field-label">Company Name *</label><select class="field-select" id="fCompany"><option value="">â€” Select Company â€”</option></select><label class="field-label">Division</label><input class="field-input" id="fDivision" placeholder="e.g. Cipla" /><label class="field-label">Formula / Composition</label><input class="field-input" id="fFormula" list="formulaDatalist" placeholder="Type or select formulaâ€¦" autocomplete="off" /><datalist id="formulaDatalist"></datalist><label class="field-label">Packing</label><input class="field-input" id="fPacking" placeholder="e.g. 15T, 100ML, 30GM" /><label class="field-label">Category</label><select class="field-select" id="fCategory"><option>Tablet</option><option>Capsule</option><option>Syrup</option><option>Injection</option><option>Cream</option><option>Ointment</option><option>Gel</option><option>Drops</option><option>Inhaler</option><option>Suspension</option><option>Powder</option><option>Solution</option><option>Liquid</option><option>Soap</option><option>Rotacap</option><option>Device</option></select><label class="field-label">MRP (â‚¹)</label><input class="field-input" id="fMrp" placeholder="e.g. 45.00" type="number" /><label class="field-label">PTR / PTS (â‚¹)</label><input class="field-input" id="fPtr" placeholder="e.g. 38.00" type="number" /><label class="field-label">HSN Code</label><input class="field-input" id="fHsn" placeholder="e.g. 30049099" maxlength="8" /><label class="field-label">GST % <span style="color:#94A3B8;font-weight:600">(for invoice)</span></label><select class="field-select" id="fGst"><option value="">â€” Select GST â€”</option><option value="0">0% (Exempt)</option><option value="5" selected>5%</option><option value="12">12%</option><option value="18">18%</option></select><div style="display:flex;gap:10px"><div style="flex:1"><label class="field-label">Batch No.</label><input class="field-input" id="fBatch" placeholder="e.g. BT2410A" style="text-transform:uppercase" /></div><div style="flex:1"><label class="field-label">Expiry Date</label><input class="field-input" id="fExpiry" placeholder="MM/YY" maxlength="5" /></div></div><label class="field-label">MOQ <span style="color:#94A3B8;font-weight:600">(Min. Order Qty â€” strips/units)</span></label><input class="field-input" id="fMoq" placeholder="e.g. 5 (leave blank = no minimum)" type="number" min="1" /><label class="field-label">Current Scheme</label><input class="field-input" id="fScheme" placeholder="e.g. 10+1 Free, 5% discount" /><div class="toggle-row"><button class="toggle-switch on" id="fStockToggle" onclick="toggleFormStock()"><div class="toggle-knob"></div></button><span class="toggle-label" id="fStockLabel">In Stock</span></div><div class="form-btns"><button class="btn-cancel" onclick="closeForm()">Cancel</button><button class="btn-save" onclick="saveProduct()" id="saveBtn">Add Product</button></div></div></div>
+<div id="form-view"><div class="form-header"><div class="form-title" id="formTitle">Add New Product</div><button class="back-btn" style="margin-top:10px;padding:8px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px" onclick="closeForm()">� Back</button></div><div class="form-body"><div class="form-card"><label class="field-label">Medicine Name *</label><input class="field-input" id="fName" placeholder="e.g. PARACETAMOL 500MG" /><label class="field-label">Company Name *</label><select class="field-select" id="fCompany"><option value="">— Select Company —</option></select><label class="field-label">Division</label><input class="field-input" id="fDivision" placeholder="e.g. Cipla" /><label class="field-label">Formula / Composition</label><input class="field-input" id="fFormula" list="formulaDatalist" placeholder="Type or select formula…" autocomplete="off" /><datalist id="formulaDatalist"></datalist><label class="field-label">Packing</label><input class="field-input" id="fPacking" placeholder="e.g. 15T, 100ML, 30GM" /><label class="field-label">Category</label><select class="field-select" id="fCategory"><option>Tablet</option><option>Capsule</option><option>Syrup</option><option>Injection</option><option>Cream</option><option>Ointment</option><option>Gel</option><option>Drops</option><option>Inhaler</option><option>Suspension</option><option>Powder</option><option>Solution</option><option>Liquid</option><option>Soap</option><option>Rotacap</option><option>Device</option></select><label class="field-label">MRP (₹)</label><input class="field-input" id="fMrp" placeholder="e.g. 45.00" type="number" /><label class="field-label">PTR / PTS (₹)</label><input class="field-input" id="fPtr" placeholder="e.g. 38.00" type="number" /><label class="field-label">HSN Code</label><input class="field-input" id="fHsn" placeholder="e.g. 30049099" maxlength="8" /><label class="field-label">GST % <span style="color:#94A3B8;font-weight:600">(for invoice)</span></label><select class="field-select" id="fGst"><option value="">— Select GST —</option><option value="0">0% (Exempt)</option><option value="5" selected>5%</option><option value="12">12%</option><option value="18">18%</option></select><div style="display:flex;gap:10px"><div style="flex:1"><label class="field-label">Batch No.</label><input class="field-input" id="fBatch" placeholder="e.g. BT2410A" style="text-transform:uppercase" /></div><div style="flex:1"><label class="field-label">Expiry Date</label><input class="field-input" id="fExpiry" placeholder="MM/YY" maxlength="5" /></div></div><label class="field-label">MOQ <span style="color:#94A3B8;font-weight:600">(Min. Order Qty — strips/units)</span></label><input class="field-input" id="fMoq" placeholder="e.g. 5 (leave blank = no minimum)" type="number" min="1" /><label class="field-label">Current Scheme</label><input class="field-input" id="fScheme" placeholder="e.g. 10+1 Free, 5% discount" /><div class="toggle-row"><button class="toggle-switch on" id="fStockToggle" onclick="toggleFormStock()"><div class="toggle-knob"></div></button><span class="toggle-label" id="fStockLabel">In Stock</span></div><div class="form-btns"><button class="btn-cancel" onclick="closeForm()">Cancel</button><button class="btn-save" onclick="saveProduct()" id="saveBtn">Add Product</button></div></div></div>
 </div>
-<div id="orders-view"><div class="header" style="flex-shrink:0"><div class="header-top"><div><div class="brand-sub">Jain Agencies Â· Rajnandgaon</div><div class="brand-name" style="color:#fff;font-size:19px;font-weight:700">ðŸ“¦ My Orders</div></div></div></div><div id="ordersViewList" style="padding-bottom:80px"></div>
+<div id="orders-view"><div class="header" style="flex-shrink:0"><div class="header-top"><div><div class="brand-sub">Jain Agencies · Rajnandgaon</div><div class="brand-name" style="color:#fff;font-size:19px;font-weight:700">📦 My Orders</div></div></div></div><div id="ordersViewList" style="padding-bottom:80px"></div>
 </div>
 
-<!-- â”€â”€ SCHEME VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-<!-- â•â•â•â•â•â•â•â•â•â•â•â• ACCOUNT VIEW â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ── SCHEME VIEW ─────────────────────────────────────────── -->
+<!-- ������������ ACCOUNT VIEW ������������ -->
 <div class="view" id="account-view" style="display:none;flex-direction:column;position:fixed;inset:0;z-index:100;background:var(--bg,#F0F4F8);overflow:hidden">
 
   <!-- Header -->
@@ -417,9 +417,9 @@ messaging.onBackgroundMessage(payload => {
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
       <div style="flex:1">
         <div style="color:rgba(255,255,255,0.65);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase">Jain Agencies</div>
-        <div style="color:#fff;font-size:17px;font-weight:900">ðŸ‘¤ Account</div>
+        <div style="color:#fff;font-size:17px;font-weight:900">👤 Account</div>
       </div>
-      <button class="dark-toggle-btn" onclick="toggleDarkMode()" title="Toggle dark mode">ðŸŒ™</button>
+      <button class="dark-toggle-btn" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
     </div>
     <!-- Profile card inside header -->
     <div id="accHeaderProfile" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px">
@@ -440,27 +440,27 @@ messaging.onBackgroundMessage(payload => {
       <div id="accProfileRows"></div>
       <div style="border-top:1px solid var(--border,#F1F5F9)">
         <button onclick="openEditProfile()" style="width:100%;padding:14px 16px;background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:12px;text-align:left">
-          <span style="font-size:18px">âœï¸</span>
+          <span style="font-size:18px">��</span>
           <span style="font-size:13px;font-weight:800;color:#00897b">Edit My Profile</span>
-          <span style="margin-left:auto;color:#CBD5E1;font-size:16px">â€º</span>
+          <span style="margin-left:auto;color:#CBD5E1;font-size:16px">›</span>
         </button>
       </div>
     </div>
 
     <!-- Jain Agencies Info -->
-    <div style="font-size:10px;font-weight:900;color:#94A3B8;letter-spacing:1.5px;text-transform:uppercase;margin:4px 2px 8px">Jain Agencies â€” Supplier Info</div>
+    <div style="font-size:10px;font-weight:900;color:#94A3B8;letter-spacing:1.5px;text-transform:uppercase;margin:4px 2px 8px">Jain Agencies — Supplier Info</div>
     <div style="background:var(--card-bg,#fff);border-radius:16px;overflow:hidden;border:1.5px solid var(--border,#F1F5F9);box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:16px">
       <!-- Address -->
       <div style="padding:14px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ“</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">�</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px">Address</div>
-          <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);line-height:1.5">Kila Para, Near Digvijay College<br>Rajnandgaon (C.G.) â€” 491441</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);line-height:1.5">Kila Para, Near Digvijay College<br>Rajnandgaon (C.G.) — 491441</div>
         </div>
       </div>
       <!-- Drug License -->
       <div style="padding:14px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ’Š</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">💊</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Drug License (DL)</div>
           <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);font-family:monospace">CG-RJN-39750</div>
@@ -468,33 +468,33 @@ messaging.onBackgroundMessage(payload => {
       </div>
       <!-- Phone -->
       <div onclick="window.open('tel:919086291862')" style="padding:14px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:center;cursor:pointer">
-        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ“ž</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📞</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone / WhatsApp</div>
           <div style="font-size:13px;font-weight:800;color:#00897b">+91 90862 91862</div>
         </div>
-        <span style="color:#CBD5E1;font-size:16px">â€º</span>
+        <span style="color:#CBD5E1;font-size:16px">›</span>
       </div>
       <!-- WhatsApp -->
       <div onclick="window.open('https://wa.me/919086291862')" style="padding:14px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:center;cursor:pointer">
-        <div style="width:38px;height:38px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ’¬</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">💬</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">WhatsApp</div>
           <div style="font-size:13px;font-weight:800;color:#25D366">Chat on WhatsApp</div>
         </div>
-        <span style="color:#CBD5E1;font-size:16px">â€º</span>
+        <span style="color:#CBD5E1;font-size:16px">›</span>
       </div>
       <!-- Timing -->
       <div style="padding:14px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ•—</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🕗</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Business Hours</div>
-          <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);line-height:1.5">Monâ€“Sat: 9:00 AM â€“ 8:00 PM<br>Sunday: Closed</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);line-height:1.5">Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: Closed</div>
         </div>
       </div>
       <!-- GST -->
       <div style="padding:14px 16px;display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#FFF1F2;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ¢</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#FFF1F2;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">��</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">GST No.</div>
           <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);font-family:monospace">22AAFFJ4955J1Z9</div>
@@ -502,7 +502,7 @@ messaging.onBackgroundMessage(payload => {
       </div>
       <!-- PAN -->
       <div style="padding:14px 16px;border-top:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸªª</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🪪</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">PAN No.</div>
           <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);font-family:monospace">AAFFJ4955J</div>
@@ -510,7 +510,7 @@ messaging.onBackgroundMessage(payload => {
       </div>
       <!-- TAN -->
       <div style="padding:14px 16px;border-top:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#F0FFF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">ðŸ“‹</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#F0FFF4;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📋</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">TAN No.</div>
           <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B);font-family:monospace">JBPJ00898C</div>
@@ -518,7 +518,7 @@ messaging.onBackgroundMessage(payload => {
       </div>
       <!-- Email -->
       <div style="padding:14px 16px;border-top:1px solid var(--border,#F1F5F9);display:flex;gap:12px;align-items:flex-start">
-        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">âœ‰ï¸</div>
+        <div style="width:38px;height:38px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✉�</div>
         <div style="flex:1">
           <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div>
           <div style="font-size:13px;font-weight:700;color:var(--text,#1E293B)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c3c8c0c7c8ceccc7cac0ccdadbc3c7e9cec4c8c0c587cac6c4">[email&#160;protected]</a></div>
@@ -531,10 +531,10 @@ messaging.onBackgroundMessage(payload => {
     <!-- SBI Bank -->
     <div style="background:var(--card-bg,#fff);border-radius:16px;overflow:hidden;border:1.5px solid var(--border,#F1F5F9);box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:12px">
       <div style="background:linear-gradient(135deg,#1a237e,#283593);padding:14px 16px;display:flex;align-items:center;gap:10px">
-        <span style="font-size:22px">ðŸ¦</span>
+        <span style="font-size:22px">��</span>
         <div>
           <div style="color:#fff;font-size:14px;font-weight:900">State Bank of India</div>
-          <div style="color:rgba(255,255,255,0.6);font-size:11px;font-weight:600">SME Branch Â· Rajnandgaon</div>
+          <div style="color:rgba(255,255,255,0.6);font-size:11px;font-weight:600">SME Branch · Rajnandgaon</div>
         </div>
       </div>
       <div>
@@ -561,7 +561,7 @@ messaging.onBackgroundMessage(payload => {
     <!-- IDFC Bank -->
     <div style="background:var(--card-bg,#fff);border-radius:16px;overflow:hidden;border:1.5px solid var(--border,#F1F5F9);box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:16px">
       <div style="background:linear-gradient(135deg,#b71c1c,#c62828);padding:14px 16px;display:flex;align-items:center;gap:10px">
-        <span style="font-size:22px">ðŸ¦</span>
+        <span style="font-size:22px">��</span>
         <div>
           <div style="color:#fff;font-size:14px;font-weight:900">IDFC FIRST Bank</div>
           <div style="color:rgba(255,255,255,0.6);font-size:11px;font-weight:600">Rajnandgaon Branch</div>
@@ -595,19 +595,19 @@ messaging.onBackgroundMessage(payload => {
         </div>
         <!-- UPI QR Code Section -->
         <div style="padding:16px;border-top:1px solid var(--border,#F1F5F9);background:linear-gradient(135deg,#fff7f7,#fff)">
-          <div style="font-size:11px;font-weight:900;color:#94A3B8;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;text-align:center">ðŸ“± UPI / QR Payment</div>
+          <div style="font-size:11px;font-weight:900;color:#94A3B8;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;text-align:center">📱 UPI / QR Payment</div>
           <div style="display:flex;align-items:center;gap:14px">
             <!-- QR Code rendered via Google Charts API -->
             <div style="flex-shrink:0;background:#fff;border-radius:12px;padding:6px;border:2px solid #fee2e2;box-shadow:0 2px 8px rgba(183,28,28,0.1)">
               <img id="idfcQrImg"
                 src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi%3A%2F%2Fpay%3Fpa%3Djainagencies.rajnandgaon%40idfcfirst%26pn%3DJain%20Agencies%20Rajnandgaon%26cu%3DINR"
-                onerror="this.parentElement.innerHTML='<div style=\'width:100px;height:100px;border-radius:8px;background:#fef2f2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px\'><div style=\'font-size:28px\'>ðŸ“·</div><div style=\'font-size:9px;color:#b71c1c;font-weight:700;text-align:center\'>Scan UPI<br>QR Code</div></div>'"
+                onerror="this.parentElement.innerHTML='<div style=\'width:100px;height:100px;border-radius:8px;background:#fef2f2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px\'><div style=\'font-size:28px\'>📷</div><div style=\'font-size:9px;color:#b71c1c;font-weight:700;text-align:center\'>Scan UPI<br>QR Code</div></div>'"
                 alt="IDFC UPI QR Code"
                 style="width:100px;height:100px;border-radius:8px;display:block" />
             </div>
             <div style="flex:1;min-width:0">
               <div style="font-size:13px;font-weight:900;color:var(--text,#1E293B);margin-bottom:6px">Pay via UPI</div>
-              <div style="font-size:11px;color:#64748B;font-weight:600;margin-bottom:8px;line-height:1.5">Scan QR with any UPI app â€” PhonePe, GPay, Paytm, etc.</div>
+              <div style="font-size:11px;color:#64748B;font-weight:600;margin-bottom:8px;line-height:1.5">Scan QR with any UPI app — PhonePe, GPay, Paytm, etc.</div>
               <div style="background:#F1F5F9;border-radius:8px;padding:6px 10px;margin-bottom:6px">
                 <div style="font-size:10px;color:#94A3B8;font-weight:700;margin-bottom:2px">UPI ID</div>
                 <div style="display:flex;align-items:center;gap:6px">
@@ -625,15 +625,15 @@ messaging.onBackgroundMessage(payload => {
     <div style="font-size:10px;font-weight:900;color:#94A3B8;letter-spacing:1.5px;text-transform:uppercase;margin:4px 2px 8px">Payment Terms</div>
     <div style="background:var(--card-bg,#fff);border-radius:16px;overflow:hidden;border:1.5px solid var(--border,#F1F5F9);box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:16px">
       <div style="padding:12px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:10px;align-items:flex-start">
-        <span style="font-size:18px;flex-shrink:0">ðŸ’µ</span>
+        <span style="font-size:18px;flex-shrink:0">💵</span>
         <div><div style="font-size:13px;font-weight:800;color:var(--text,#1E293B)">Cash Payment</div><div style="font-size:12px;color:#64748B;font-weight:600;margin-top:1px">Extra discount on payment within 7 days</div></div>
       </div>
       <div style="padding:12px 16px;border-bottom:1px solid var(--border,#F1F5F9);display:flex;gap:10px;align-items:flex-start">
-        <span style="font-size:18px;flex-shrink:0">ðŸ“…</span>
+        <span style="font-size:18px;flex-shrink:0">📅</span>
         <div><div style="font-size:13px;font-weight:800;color:var(--text,#1E293B)">Credit Limit</div><div style="font-size:12px;color:#64748B;font-weight:600;margin-top:1px">Standard credit period: 15 days</div></div>
       </div>
       <div style="padding:12px 16px;display:flex;gap:10px;align-items:flex-start">
-        <span style="font-size:18px;flex-shrink:0">ðŸšš</span>
+        <span style="font-size:18px;flex-shrink:0">🚚</span>
         <div><div style="font-size:13px;font-weight:800;color:var(--text,#1E293B)">Delivery</div><div style="font-size:12px;color:#64748B;font-weight:600;margin-top:1px">Bus, Auto, Transport or Own delivery available</div></div>
       </div>
     </div>
@@ -645,7 +645,7 @@ messaging.onBackgroundMessage(payload => {
         <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#00897b,#26a69a);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0">JA</div>
         <div>
           <div style="font-size:15px;font-weight:900;color:var(--text,#1E293B)">Jain Agencies</div>
-          <div style="font-size:12px;color:#64748B;font-weight:600">Est. 1979 Â· Rajnandgaon</div>
+          <div style="font-size:12px;color:#64748B;font-weight:600">Est. 1979 · Rajnandgaon</div>
         </div>
       </div>
       <div style="font-size:13px;color:var(--text-sub,#475569);font-weight:600;line-height:1.65">
@@ -668,7 +668,7 @@ messaging.onBackgroundMessage(payload => {
     </div>
 
     <!-- App Version -->
-    <div style="text-align:center;padding:8px 0 4px;color:#CBD5E1;font-size:11px;font-weight:700">Jain Agencies App Â· v2.0 Â· Rajnandgaon</div>
+    <div style="text-align:center;padding:8px 0 4px;color:#CBD5E1;font-size:11px;font-weight:700">Jain Agencies App · v2.0 · Rajnandgaon</div>
   </div>
 </div>
 
@@ -676,7 +676,7 @@ messaging.onBackgroundMessage(payload => {
 <div id="editProfileOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;align-items:flex-end;justify-content:center">
   <div style="background:var(--card-bg,#fff);border-radius:24px 24px 0 0;padding:24px 20px 40px;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;box-shadow:0 -8px 40px rgba(0,0,0,0.25);animation:slide-up 0.3s ease">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-      <div style="font-size:17px;font-weight:900;color:var(--text,#1E293B)">âœï¸ Edit Profile</div>
+      <div style="font-size:17px;font-weight:900;color:var(--text,#1E293B)">�� Edit Profile</div>
       <button onclick="closeEditProfile()" style="background:#F1F5F9;border:none;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:800;cursor:pointer;color:#64748B;font-family:inherit">Close</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
@@ -709,29 +709,29 @@ messaging.onBackgroundMessage(payload => {
         <input id="epGST" placeholder="15-digit GST No." style="width:100%;padding:11px 14px;border-radius:10px;border:2px solid var(--border,#E2E8F0);font-size:14px;font-family:inherit;font-weight:600;outline:none;color:var(--text,#1E293B);background:var(--input-bg,#F8FAFC);box-sizing:border-box" onfocus="this.style.borderColor='#00897b'" onblur="this.style.borderColor='var(--border,#E2E8F0)'">
       </div>
     </div>
-    <button onclick="saveEditProfile()" style="width:100%;margin-top:20px;padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(0,137,123,0.3)">ðŸ’¾ Save Profile</button>
+    <button onclick="saveEditProfile()" style="width:100%;margin-top:20px;padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(0,137,123,0.3)">💾 Save Profile</button>
   </div>
 </div>
 
 <div class="view" id="scheme-view" style="display:none;flex-direction:column;position:fixed;inset:0;z-index:100;background:var(--bg,#F0F4F8);overflow:hidden">
   <div style="background:linear-gradient(135deg,#0a1628 0%,#00897b 60%,#26a69a 100%);padding:max(48px,calc(40px + env(safe-area-inset-top))) 16px 14px;display:flex;align-items:center;gap:12px;flex-shrink:0;box-shadow:0 2px 12px rgba(0,0,0,0.15)">
-    <button onclick="navTo('search-view',document.getElementById('navHome'))" style="background:rgba(255,255,255,0.18);border:none;border-radius:10px;padding:8px 10px;color:#fff;font-size:18px;cursor:pointer;flex-shrink:0">â†</button>
+    <button onclick="navTo('search-view',document.getElementById('navHome'))" style="background:rgba(255,255,255,0.18);border:none;border-radius:10px;padding:8px 10px;color:#fff;font-size:18px;cursor:pointer;flex-shrink:0">�</button>
     <div style="flex:1">
       <div style="color:rgba(255,255,255,0.65);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase">Jain Agencies</div>
-      <div style="color:#fff;font-size:17px;font-weight:900">ðŸŽ Free Product Scheme</div>
+      <div style="color:#fff;font-size:17px;font-weight:900">� Free Product Scheme</div>
     </div>
   </div>
   <div id="schemeViewBody" style="flex:1;overflow:hidden;padding:0"></div>
 </div>
 
-<div class="voice-overlay" id="voiceOverlay"><div id="voiceListeningState"><div class="voice-circle">ðŸŽ¤</div><div class="voice-hint">Listeningâ€¦</div><div class="voice-result" id="voiceResult">Say a medicine name</div></div><div id="voiceBlockedState" style="display:none;text-align:center;padding:0 24px"><div style="font-size:56px;margin-bottom:16px">ðŸ“µ</div><div style="color:#fff;font-size:17px;font-weight:900;margin-bottom:8px">Mic blocked in WhatsApp</div><div style="color:rgba(255,255,255,0.7);font-size:13px;line-height:1.7;margin-bottom:22px">
+<div class="voice-overlay" id="voiceOverlay"><div id="voiceListeningState"><div class="voice-circle">🎤</div><div class="voice-hint">Listening…</div><div class="voice-result" id="voiceResult">Say a medicine name</div></div><div id="voiceBlockedState" style="display:none;text-align:center;padding:0 24px"><div style="font-size:56px;margin-bottom:16px">📵</div><div style="color:#fff;font-size:17px;font-weight:900;margin-bottom:8px">Mic blocked in WhatsApp</div><div style="color:rgba(255,255,255,0.7);font-size:13px;line-height:1.7;margin-bottom:22px">
  WhatsApp's browser doesn't allow microphone access.<br>
  Open the file in <strong style="color:#00e5cc">Chrome</strong> to use voice search.
  </div><div style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(0,229,204,0.4);border-radius:14px;padding:14px 18px;text-align:left;margin-bottom:20px"><div style="color:#00e5cc;font-size:11px;font-weight:900;letter-spacing:1px;margin-bottom:10px">HOW TO OPEN IN CHROME</div><div style="color:#fff;font-size:13px;line-height:2">
- 1ï¸âƒ£ Tap <strong>â‹® Menu</strong> (top right)<br>
- 2ï¸âƒ£ Tap <strong>"Open in Chrome"</strong><br>
- 3ï¸âƒ£ ðŸŽ¤ Voice search will work!
- </div></div></div><button class="voice-cancel-btn" onclick="stopVoiceSearch()">âœ• Close</button>
+ 1�⃣ Tap <strong>⋮ Menu</strong> (top right)<br>
+ 2�⃣ Tap <strong>"Open in Chrome"</strong><br>
+ 3�⃣ 🎤 Voice search will work!
+ </div></div></div><button class="voice-cancel-btn" onclick="stopVoiceSearch()">✕ Close</button>
 </div>
 <!-- Notification Centre Overlay -->
 <div id="notifCentreOverlay" onclick="if(event.target===this)closeNotifCentre()" style="display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.5);align-items:flex-end;justify-content:center;">
@@ -740,26 +740,26 @@ messaging.onBackgroundMessage(payload => {
     <div style="width:40px;height:4px;background:#E2E8F0;border-radius:2px;margin:16px auto 0;flex-shrink:0"></div>
     <!-- Header -->
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;flex-shrink:0">
-      <div style="font-size:18px;font-weight:900;color:var(--text,#0f172a)">ðŸ”” Notifications</div>
-      <button onclick="closeNotifCentre()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#94A3B8;padding:4px;line-height:1">Ã—</button>
+      <div style="font-size:18px;font-weight:900;color:var(--text,#0f172a)">🔔 Notifications</div>
+      <button onclick="closeNotifCentre()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#94A3B8;padding:4px;line-height:1">×</button>
     </div>
     <!-- Tabs -->
     <div style="display:flex;gap:0;padding:0 20px 12px;flex-shrink:0;border-bottom:1px solid var(--border,#E2E8F0)">
-      <button id="tabAlerts" onclick="switchNotifTab('alerts')" class="active" style="flex:1;padding:8px;border-radius:10px 0 0 10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569;transition:all 0.2s">ðŸ“¦ Stock Alerts</button>
-      <button id="tabWatching" onclick="switchNotifTab('watching')" style="flex:1;padding:8px;border-radius:0 10px 10px 0;border:1.5px solid #E2E8F0;border-left:none;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569;transition:all 0.2s">ðŸ‘ï¸ Watching</button>
+      <button id="tabAlerts" onclick="switchNotifTab('alerts')" class="active" style="flex:1;padding:8px;border-radius:10px 0 0 10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569;transition:all 0.2s">📦 Stock Alerts</button>
+      <button id="tabWatching" onclick="switchNotifTab('watching')" style="flex:1;padding:8px;border-radius:0 10px 10px 0;border:1.5px solid #E2E8F0;border-left:none;background:#F8FAFC;font-family:inherit;font-size:12px;font-weight:800;cursor:pointer;color:#475569;transition:all 0.2s">�� Watching</button>
     </div>
     <!-- List -->
     <div id="notifCentreList" style="flex:1;overflow-y:auto;padding:12px 16px 32px"></div>
   </div>
 </div>
 
-<div id="pwaBanner" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:440px;background:#1E293B;color:#fff;border-radius:20px;padding:16px 18px;z-index:800;box-shadow:0 8px 32px rgba(0,0,0,0.35);flex-direction:column;gap:10px"><div style="display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;background:linear-gradient(135deg,#00897b,#26a69a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">ðŸ’Š</div><div style="flex:1"><div style="font-size:14px;font-weight:900;margin-bottom:2px">Install Jain Agencies App</div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:600">Add to home screen for quick access</div></div><button onclick="dismissPWA()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:20px;cursor:pointer;padding:4px;line-height:1">Ã—</button></div><button onclick="installPWA()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer">Install App</button>
+<div id="pwaBanner" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:440px;background:#1E293B;color:#fff;border-radius:20px;padding:16px 18px;z-index:800;box-shadow:0 8px 32px rgba(0,0,0,0.35);flex-direction:column;gap:10px"><div style="display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;background:linear-gradient(135deg,#00897b,#26a69a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">💊</div><div style="flex:1"><div style="font-size:14px;font-weight:900;margin-bottom:2px">Install Jain Agencies App</div><div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:600">Add to home screen for quick access</div></div><button onclick="dismissPWA()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:20px;cursor:pointer;padding:4px;line-height:1">×</button></div><button onclick="installPWA()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#00897b,#26a69a);color:#fff;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer">Install App</button>
 </div>
 
 
 
 <div class="scanner-overlay" id="scannerOverlay">
-  <button class="scanner-close-btn" onclick="closeScanner()">âœ•</button>
+  <button class="scanner-close-btn" onclick="closeScanner()">✕</button>
   <div class="scanner-frame" id="scannerFrame">
     <video id="scannerVideo" playsinline autoplay muted></video>
     <div class="scanner-line"></div>
@@ -771,20 +771,20 @@ messaging.onBackgroundMessage(payload => {
   <div class="scanner-tip">Point camera at medicine barcode</div>
   <div class="scanner-sub">Or type name / barcode below</div>
   <div class="scanner-manual">
-    <input class="scanner-input" id="scannerInput" placeholder="Type medicine nameâ€¦" oninput="scannerLiveSearch()" />
+    <input class="scanner-input" id="scannerInput" placeholder="Type medicine name…" oninput="scannerLiveSearch()" />
     <button class="scanner-go" onclick="scannerSearch()">Search</button>
   </div>
 </div>
 <div class="invoice-overlay" id="invoiceOverlay">
   <div class="invoice-sheet">
     <div class="invoice-sheet-header">
-      <div class="invoice-sheet-title">ðŸ§¾ Invoice</div>
-      <button class="invoice-sheet-close" onclick="closeInvoice()">âœ• Close</button>
+      <div class="invoice-sheet-title">🧾 Invoice</div>
+      <button class="invoice-sheet-close" onclick="closeInvoice()">✕ Close</button>
     </div>
     <div class="invoice-preview" id="invoicePreview"></div>
     <div class="invoice-sheet-foot">
-      <button class="inv-share-wa" onclick="shareInvoiceWA()">ðŸ’¬ Share on WhatsApp</button>
-      <button class="inv-print-btn" onclick="window.print()">ðŸ–¨ï¸ Print</button>
+      <button class="inv-share-wa" onclick="shareInvoiceWA()">💬 Share on WhatsApp</button>
+      <button class="inv-print-btn" onclick="window.print()">🖨� Print</button>
     </div>
   </div>
 </div><!-- Profit Calculator Modal -->
@@ -792,28 +792,28 @@ messaging.onBackgroundMessage(payload => {
   <div style="background:var(--card-bg,#fff);border-radius:24px 24px 0 0;width:100%;max-width:480px;padding:20px 20px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 40px rgba(0,0,0,0.25)">
     <div style="width:40px;height:4px;background:#E2E8F0;border-radius:2px;margin:0 auto 16px"></div>
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
-      <div style="width:44px;height:44px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">ðŸ§®</div>
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🧮</div>
       <div>
         <div style="font-size:17px;font-weight:900;color:var(--text,#0f172a)">Profit Calculator</div>
         <div style="font-size:12px;color:#64748B;font-weight:600">Know your margin before you order</div>
       </div>
-      <button onclick="closeProfitCalc()" style="margin-left:auto;background:none;border:none;font-size:20px;cursor:pointer;color:#94A3B8;padding:4px">âœ•</button>
+      <button onclick="closeProfitCalc()" style="margin-left:auto;background:none;border:none;font-size:20px;cursor:pointer;color:#94A3B8;padding:4px">✕</button>
     </div>
     <div style="height:1px;background:#f1f5f9;margin:14px 0"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div>
-        <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">MRP (â‚¹)</div>
+        <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">MRP (₹)</div>
         <div style="position:relative">
-          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:800;color:#94A3B8">â‚¹</span>
+          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:800;color:#94A3B8">₹</span>
           <input id="calcMRP" type="number" min="0" placeholder="e.g. 120" oninput="calcProfit()"
             style="width:100%;border:2px solid #E2E8F0;border-radius:12px;padding:12px 12px 12px 28px;font-family:inherit;font-size:16px;font-weight:800;color:var(--text,#0f172a);background:var(--input-bg,#F8FAFC);outline:none;box-sizing:border-box;transition:border-color 0.2s"
             onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='#E2E8F0'" />
         </div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">PTR (â‚¹)</div>
+        <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">PTR (₹)</div>
         <div style="position:relative">
-          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:800;color:#94A3B8">â‚¹</span>
+          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:800;color:#94A3B8">₹</span>
           <input id="calcPTR" type="number" min="0" placeholder="e.g. 70" oninput="calcProfit()"
             style="width:100%;border:2px solid #E2E8F0;border-radius:12px;padding:12px 12px 12px 28px;font-family:inherit;font-size:16px;font-weight:800;color:var(--text,#0f172a);background:var(--input-bg,#F8FAFC);outline:none;box-sizing:border-box;transition:border-color 0.2s"
             onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='#E2E8F0'" />
@@ -825,7 +825,7 @@ messaging.onBackgroundMessage(payload => {
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
           <div>
             <div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Retail Profit</div>
-            <div id="calcProfitVal" style="font-size:32px;font-weight:900;color:#fff;margin-top:2px">â‚¹0</div>
+            <div id="calcProfitVal" style="font-size:32px;font-weight:900;color:#fff;margin-top:2px">₹0</div>
           </div>
           <div style="text-align:right">
             <div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px">Margin</div>
@@ -840,15 +840,15 @@ messaging.onBackgroundMessage(payload => {
       <div style="background:var(--card-bg,#fff);border:2px solid #f1f5f9;border-top:none;border-radius:0 0 16px 16px;padding:14px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center">
         <div>
           <div style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.4px">You Buy At</div>
-          <div id="calcBuyAt" style="font-size:16px;font-weight:900;color:var(--text,#0f172a);margin-top:3px">â€”</div>
+          <div id="calcBuyAt" style="font-size:16px;font-weight:900;color:var(--text,#0f172a);margin-top:3px">—</div>
         </div>
         <div style="border-left:1px solid #f1f5f9;border-right:1px solid #f1f5f9">
           <div style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.4px">You Sell At</div>
-          <div id="calcSellAt" style="font-size:16px;font-weight:900;color:var(--text,#0f172a);margin-top:3px">â€”</div>
+          <div id="calcSellAt" style="font-size:16px;font-weight:900;color:var(--text,#0f172a);margin-top:3px">—</div>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.4px">On â‚¹1000 Sales</div>
-          <div id="calcOn1000" style="font-size:16px;font-weight:900;color:#16a34a;margin-top:3px">â€”</div>
+          <div style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.4px">On ₹1000 Sales</div>
+          <div id="calcOn1000" style="font-size:16px;font-weight:900;color:#16a34a;margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -856,10 +856,10 @@ messaging.onBackgroundMessage(payload => {
     <div style="margin-top:14px">
       <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Quick Examples</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button onclick="setCalcPreset(120,70)" class="sp-chip">â‚¹120 / â‚¹70</button>
-        <button onclick="setCalcPreset(200,130)" class="sp-chip">â‚¹200 / â‚¹130</button>
-        <button onclick="setCalcPreset(500,320)" class="sp-chip">â‚¹500 / â‚¹320</button>
-        <button onclick="setCalcPreset(50,32)" class="sp-chip">â‚¹50 / â‚¹32</button>
+        <button onclick="setCalcPreset(120,70)" class="sp-chip">₹120 / ₹70</button>
+        <button onclick="setCalcPreset(200,130)" class="sp-chip">₹200 / ₹130</button>
+        <button onclick="setCalcPreset(500,320)" class="sp-chip">₹500 / ₹320</button>
+        <button onclick="setCalcPreset(50,32)" class="sp-chip">₹50 / ₹32</button>
       </div>
     </div>
   </div>
@@ -872,10 +872,10 @@ messaging.onBackgroundMessage(payload => {
     <div style="width:40px;height:4px;background:#E2E8F0;border-radius:2px;margin:0 auto 18px"></div>
     <!-- Title -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
-      <div style="width:44px;height:44px;background:linear-gradient(135deg,#f97316,#fb923c);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">ðŸ“‹</div>
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#f97316,#fb923c);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📋</div>
       <div>
         <div style="font-size:17px;font-weight:900;color:var(--text,#0f172a)">Special Order Request</div>
-        <div style="font-size:12px;color:#64748B;font-weight:600">Bulk Â· Govt Tender Â· Out of Stock Â· Custom</div>
+        <div style="font-size:12px;color:#64748B;font-weight:600">Bulk · Govt Tender · Out of Stock · Custom</div>
       </div>
     </div>
     <div style="height:1px;background:#f1f5f9;margin:14px 0"></div>
@@ -883,11 +883,11 @@ messaging.onBackgroundMessage(payload => {
     <!-- Request Type chips -->
     <div style="font-size:11px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Request Type</div>
     <div id="spReqTypeChips" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-      <button class="sp-chip active" onclick="selectSpChip(this,'Bulk Order')">ðŸ“¦ Bulk Order</button>
-      <button class="sp-chip" onclick="selectSpChip(this,'Govt / Tender Supply')">ðŸ›ï¸ Govt Supply</button>
-      <button class="sp-chip" onclick="selectSpChip(this,'Out of Stock Item')">âš ï¸ Out of Stock</button>
-      <button class="sp-chip" onclick="selectSpChip(this,'Special Rate Request')">ðŸ’° Special Rate</button>
-      <button class="sp-chip" onclick="selectSpChip(this,'Other')">âœï¸ Other</button>
+      <button class="sp-chip active" onclick="selectSpChip(this,'Bulk Order')">📦 Bulk Order</button>
+      <button class="sp-chip" onclick="selectSpChip(this,'Govt / Tender Supply')">��� Govt Supply</button>
+      <button class="sp-chip" onclick="selectSpChip(this,'Out of Stock Item')">⚠� Out of Stock</button>
+      <button class="sp-chip" onclick="selectSpChip(this,'Special Rate Request')">💰 Special Rate</button>
+      <button class="sp-chip" onclick="selectSpChip(this,'Other')">�� Other</button>
     </div>
 
     <!-- Medicine name with autocomplete -->
@@ -915,7 +915,7 @@ messaging.onBackgroundMessage(payload => {
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px">
       <button onclick="closeSpecialOrderModal()" style="padding:14px;border:1.5px solid #E2E8F0;border-radius:14px;background:none;font-family:inherit;font-size:14px;font-weight:800;color:#64748B;cursor:pointer">Cancel</button>
       <button onclick="submitSpecialOrder()" style="padding:14px;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:14px;color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
-        <span style="font-size:18px">ðŸ’¬</span> Send via WhatsApp
+        <span style="font-size:18px">💬</span> Send via WhatsApp
       </button>
     </div>
   </div>
@@ -924,7 +924,7 @@ messaging.onBackgroundMessage(payload => {
 
 <div class="confirm-overlay" id="confirmDel" onclick="if(event.target===this)closeConfirmDel()">
   <div class="modal-box">
-    <div class="modal-title">ðŸ—‘ï¸ Delete Product?</div>
+    <div class="modal-title">🗑� Delete Product?</div>
     <div class="modal-sub">This action cannot be undone. The product will be permanently removed.</div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeConfirmDel()">Cancel</button>
@@ -935,7 +935,7 @@ messaging.onBackgroundMessage(payload => {
 
 <div class="scheme-modal-overlay" id="schemeModal" onclick="if(event.target===this)closeSchemeModal()">
   <div class="scheme-modal-box">
-    <div class="scheme-modal-title" id="schemeModalTitle">ðŸ”¥ Add Hot Deal</div>
+    <div class="scheme-modal-title" id="schemeModalTitle">🔥 Add Hot Deal</div>
     <div class="scheme-modal-sub">Highlight a special scheme for retailers</div>
     <input type="hidden" id="sEditId" value="" />
     <label class="scheme-field-label">Medicine Name *</label>
