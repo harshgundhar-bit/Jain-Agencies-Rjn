@@ -931,3 +931,152 @@ html, body {
   .stock-preview-row { align-items:flex-start; }
 }
 /* === END JAIN AGENCIES LIVE STOCK CSS === */
+
+/* === JAIN AGENCIES TEAL WHITE MOBILE SAFE OVERRIDE === */
+:root,
+[data-theme="dark"],
+[data-theme="light"] {
+  --bg:#f3fbf9 !important;
+  --card-bg:#ffffff !important;
+  --text:#12312f !important;
+  --text-sub:#5f7773 !important;
+  --border:#d7ebe7 !important;
+  --accent:#00897b !important;
+  --accent-2:#26a69a !important;
+  --header-bg:linear-gradient(135deg,#00897b 0%,#19a394 58%,#ffffff 145%) !important;
+  --nav-bg:#ffffff !important;
+  --filter-bg:#ffffff !important;
+  --input-bg:#ffffff !important;
+  --shadow:rgba(0,137,123,.10) !important;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#f3fbf9 !important;
+    --card-bg:#ffffff !important;
+    --text:#12312f !important;
+    --text-sub:#5f7773 !important;
+    --border:#d7ebe7 !important;
+    --header-bg:linear-gradient(135deg,#00897b 0%,#19a394 58%,#ffffff 145%) !important;
+    --nav-bg:#ffffff !important;
+    --filter-bg:#ffffff !important;
+    --input-bg:#ffffff !important;
+    --shadow:rgba(0,137,123,.10) !important;
+  }
+}
+html, body { background:#f3fbf9 !important; color:#12312f !important; }
+#app { background:#f3fbf9 !important; padding-top:0 !important; }
+.header,
+.detail-header,
+.admin-header,
+.form-header,
+.account-hero,
+.profile-hero,
+#account-view .header,
+#profile-view .header {
+  background:var(--header-bg) !important;
+  color:#fff !important;
+  padding-top:calc(18px + env(safe-area-inset-top, 0px)) !important;
+}
+.offline-banner {
+  top:calc(8px + env(safe-area-inset-top, 0px)) !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+  width:calc(100% - 28px) !important;
+  max-width:452px !important;
+  background:#ffffff !important;
+  color:#00695c !important;
+  border:1px solid rgba(0,137,123,.18) !important;
+  box-shadow:0 10px 28px rgba(0,77,64,.16) !important;
+  border-radius:8px !important;
+  z-index:1000 !important;
+}
+.offline-banner.is-offline { background:#fff7f7 !important; color:#b42318 !important; border-color:#fecaca !important; }
+.offline-banner.is-local { background:#fffbeb !important; color:#92400e !important; border-color:#fde68a !important; }
+.product-card,
+.detail-card,
+.form-card,
+.admin-card,
+.profile-card,
+.account-card,
+.retailer-card,
+.order-card,
+.scheme-card,
+.stock-update-panel,
+.modal-box {
+  background:#ffffff !important;
+  color:#12312f !important;
+  border-color:#d7ebe7 !important;
+  box-shadow:0 8px 24px rgba(0,137,123,.08) !important;
+}
+.prod-name,
+.row-value,
+.admin-card-name,
+.section-title,
+.section-head,
+.profile-value,
+.account-title { color:#12312f !important; }
+.prod-company,
+.row-label,
+.admin-card-sub,
+.filter-label,
+.profile-label { color:#5f7773 !important; }
+.search-input,
+.field-input,
+.field-select,
+.company-select,
+.modal-input {
+  background:#ffffff !important;
+  color:#12312f !important;
+  border-color:#d7ebe7 !important;
+}
+.add-cart-btn,
+.btn-save,
+.btn-edit,
+.modal-ok,
+.stock-actions button.primary,
+.sr-realtime-panel button,
+.sr-export-btn,
+.pwa-install-btn {
+  background:linear-gradient(135deg,#00897b,#26a69a) !important;
+  color:#fff !important;
+  border-color:#00897b !important;
+}
+.bottom-nav,
+.nav-bar {
+  background:#ffffff !important;
+  color:#12312f !important;
+  border:1px solid #d7ebe7 !important;
+  bottom:calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  box-shadow:0 -8px 26px rgba(0,77,64,.12) !important;
+}
+.nav-label.active,
+.nav-btn.active-tab .nav-label,
+.nav-btn.active-tab,
+.nav-btn.active { color:#00897b !important; }
+.nav-btn.active-tab::after { background:#00897b !important; }
+#search-view,
+#detail-view,
+#admin-view,
+#form-view,
+#cart-view,
+#orders-view,
+#scheme-view,
+#account-view,
+#profile-view {
+  padding-bottom:calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+}
+.modal-overlay,
+.voice-overlay,
+.scanner-overlay {
+  padding-top:calc(24px + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px)) !important;
+}
+.cart-fab,
+#pendingSyncBadge {
+  bottom:calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+}
+.dark-toggle-btn { display:none !important; }
+.live-stock-pill strong { font-weight:1000 !important; }
+/* === END JAIN AGENCIES TEAL WHITE MOBILE SAFE OVERRIDE === */

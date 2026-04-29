@@ -1,7 +1,7 @@
 ﻿(function(){
   var _q = [];
   window.showToast = function(msg, type) { _q.push([msg, type || "success"]); };
-  // Called once the real showToast loads â€” drains queue via _showToastImpl
+  // Called once the real showToast loads — drains queue via _showToastImpl
   window._flushToastQueue = function() {
     _q.forEach(function(a){
       if (typeof _showToastImpl === "function") _showToastImpl(a[0], a[1]);
@@ -14,7 +14,7 @@
   var s = document.createElement("script");
   s.src = "https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js";
   s.onerror = function() {
-    // Primary CDN failed â€” try unpkg fallback
+    // Primary CDN failed — try unpkg fallback
     var f = document.createElement("script");
     f.src = "https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js";
     document.head.appendChild(f);
@@ -35,9 +35,9 @@ const CAT_COLORS = {
   Liquid:"#118AB2",Soap:"#FFD166",Rotacap:"#3D405B",Device:"#8D99AE"
 };
 const CAT_ICONS = {
-  Tablet:"ðŸ’Š",Capsule:"ðŸ’Š",Syrup:"ðŸ§ª",Injection:"ðŸ’‰",Cream:"ðŸ§´",Ointment:"ðŸ§´",
-  Gel:"ðŸ§´",Drops:"ðŸ’§",Inhaler:"ðŸŒ¬ï¸",Suspension:"ðŸ§ª",Powder:"âš—ï¸",Solution:"ðŸ§ª",
-  Liquid:"ðŸ§ª",Soap:"ðŸ§¼",Rotacap:"ðŸŒ¬ï¸",Device:"âš•ï¸"
+  Tablet:"💊",Capsule:"💊",Syrup:"🧪",Injection:"💉",Cream:"🧴",Ointment:"🧴",
+  Gel:"🧴",Drops:"💧",Inhaler:"ðŸŒ¬ï¸",Suspension:"🧪",Powder:"âš—ï¸",Solution:"🧪",
+  Liquid:"🧪",Soap:"🧼",Rotacap:"ðŸŒ¬ï¸",Device:"âš•ï¸"
 };
 const CATS = ["All","Tablet","Capsule","Syrup","Injection","Cream","Ointment","Gel","Drops","Inhaler","Suspension","Powder","Solution","Liquid","Soap","Rotacap","Device"];
 
@@ -98,7 +98,7 @@ function updateDarkBtn(theme) {
   if (!btn) return;
   // Update only the emoji text node, preserve tooltip span
   const tip = document.getElementById("darkToggleTip");
-  btn.textContent = theme === "dark" ? "â˜€ï¸" : "ðŸŒ™";
+  btn.textContent = theme === "dark" ? "â˜€ï¸" : "🌙";
   if (tip) btn.appendChild(tip);
 }
 
@@ -209,7 +209,7 @@ function init() {
   buildSearchIndex();
   buildCatChips();
   buildCompanySelect();
-  // Always start fresh â€” no stale filters
+  // Always start fresh — no stale filters
   filterCat = "All";
   const _s = document.getElementById("companySelect"); if (_s) _s.value = "All";
   const _i = document.getElementById("searchInput");   if (_i) _i.value  = "";
@@ -221,7 +221,7 @@ function init() {
   updateCountBtn();
   if (isAdmin) {
     document.getElementById("adminNavBtn").style.display = "flex";
-    document.querySelector(".admin-btn").textContent = "âš™ï¸ Admin âœ“";
+    document.querySelector(".admin-btn").textContent = "âš™ï¸ Admin ✓";
   }
   // Restore SR session
   const savedSR = localStorage.getItem("ja_sr_session");
@@ -238,7 +238,7 @@ function init() {
   if (srBtnEl) {
     const hasSRs = loadSRList().length > 0 || srMode;
     if (hasSRs) srBtnEl.style.display = "flex";
-    if (srMode) srBtnEl.textContent = "ðŸ§‘â€ðŸ’¼ " + (currentSR ? currentSR.name.split(" ")[0] : "SR");
+    if (srMode) srBtnEl.textContent = "ðŸ§‘â€💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR");
   }
   // Show Firebase sync status
   setTimeout(() => {
@@ -247,7 +247,7 @@ function init() {
     const ok = window._fb && window._fb.FB_OK;
     if (dot) {
       dot.style.background = ok ? "#22c55e" : "#f97316";
-      dot.title = ok ? "ðŸ”¥ Live sync ON" : "âš ï¸ Offline â€” local only";
+      dot.title = ok ? "🔥 Live sync ON" : "âš ï¸ Offline — local only";
     }
     if (banner && ok) banner.style.display = "none";
   }, 1800);
@@ -286,7 +286,7 @@ function populateFormDropdowns(selectedCompany, selectedFormula) {
       ...products.map(p => p.company),
       ...customCompanies
     ])].filter(Boolean).sort((a,b) => a.localeCompare(b));
-    coSel.innerHTML = '<option value="">â€” Select Company â€”</option>' +
+    coSel.innerHTML = '<option value="">— Select Company —</option>' +
       allCos.map(c => `<option value="${c}"${c === selectedCompany ? ' selected' : ''}>${c}</option>`).join("");
   }
   // Formula datalist
@@ -360,7 +360,7 @@ let _fuse = null;
 function buildSearchIndex() {
   const fuseOptions = {
     includeScore: true,
-    threshold: 0.35,          // 0=exact, 1=anything â€” 0.35 is comfortably fuzzy
+    threshold: 0.35,          // 0=exact, 1=anything — 0.35 is comfortably fuzzy
     ignoreLocation: true,     // search anywhere in string, not just start
     minMatchCharLength: 2,
     keys: [
@@ -391,7 +391,7 @@ function getFiltered() {
   if (!q) {
     results = products;
   } else if (_fuse) {
-    // Fuse.js fuzzy search â€” returns scored results
+    // Fuse.js fuzzy search — returns scored results
     results = _fuse.search(q).map(r => r.item);
   } else {
     // Fallback substring search if Fuse didn't load
@@ -415,7 +415,7 @@ function getFiltered() {
 // â”€â”€ Search Analytics â”€â”€
 const _searchDebounceMap = {};
 function trackSearch(q) {
-  // Debounce per-query â€” only record after 800ms without change (user paused)
+  // Debounce per-query — only record after 800ms without change (user paused)
   clearTimeout(_searchDebounceMap._t);
   _searchDebounceMap._t = setTimeout(() => {
     try {
@@ -469,7 +469,7 @@ function cardHTML(p) {
   if (p.expiry) {
     const [mm, yy] = p.expiry.split("/").map(Number);
     const daysLeft = Math.floor((new Date(2000+yy, mm-1, 1) - new Date()) / 86400000);
-    if (daysLeft < 0)       expiryBadge = `<span class="tag" style="background:#FEE2E2;color:#be123c">â›” EXPIRED</span>`;
+    if (daysLeft < 0)       expiryBadge = `<span class="tag" style="background:#FEE2E2;color:#be123c">⛔ EXPIRED</span>`;
     else if (daysLeft <= 90) expiryBadge = `<span class="tag" style="background:#FEF9C3;color:#b45309">âš ï¸ Exp ${p.expiry}</span>`;
   }
 
@@ -481,23 +481,23 @@ function cardHTML(p) {
   const hasScheme = !!schemeBar;
 
   return `<div class="pc-wrap ${hasScheme?'has-scheme':''}" id="pcw_${p.id}">
-    <div class="pc-swipe-bg"><span>${CAT_ICONS[p.category]||"ðŸ’Š"}</span><span>${inCart?"ADDED":"ADD"}</span></div>
+    <div class="pc-swipe-bg"><span>${CAT_ICONS[p.category]||"💊"}</span><span>${inCart?"ADDED":"ADD"}</span></div>
     <div class="product-card" onclick="openDetail(${p.id})" style="align-items:center" data-id="${p.id}">
-      <div class="cat-icon" style="background:${color}22">${CAT_ICONS[p.category]||"ðŸ’Š"}</div>
+      <div class="cat-icon" style="background:${color}22">${CAT_ICONS[p.category]||"💊"}</div>
       <div style="flex:1;min-width:0">
         <div class="prod-name" style="display:flex;align-items:center;gap:6px">${p.name}${isFav?' <span style="font-size:12px">â­</span>':'' }</div>
         <div class="prod-company">${p.company}</div>
         <div class="tags">
           <span class="tag" style="background:${color}22;color:${color}">${p.category}</span>
           <span class="tag tag-pack">${p.packing}</span>
-          <span class="tag ${p.stock?"tag-stock-in":"tag-stock-out"}">${p.stock?"âœ“ In Stock":"âœ— Unavailable"}</span>
+          <span class="tag ${p.stock?"tag-stock-in":"tag-stock-out"}">${p.stock?"✓ In Stock":"âœ— Unavailable"}</span>
           ${expiryBadge}${moqBadge}
         </div>
         ${schemeBar}
       </div>
       ${p.stock
-        ? `<button class="add-cart-btn ${inCart?"in-cart":""}" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"âœ“ Added":"+ Cart"}</button>`
-        : `<button class="notify-me-btn ${isWatching(p.id)?"watching":""}" onclick="event.stopPropagation();toggleWatch(${p.id})">${isWatching(p.id)?"ðŸ”” Watching":"ðŸ”” Notify Me"}</button>`
+        ? `<button class="add-cart-btn ${inCart?"in-cart":""}" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"✓ Added":"+ Cart"}</button>`
+        : `<button class="notify-me-btn ${isWatching(p.id)?"watching":""}" onclick="event.stopPropagation();toggleWatch(${p.id})">${isWatching(p.id)?"🔔 Watching":"🔔 Notify Me"}</button>`
       }
     </div>
   </div>`;
@@ -546,7 +546,7 @@ function renderProductList() {
   // Show skeletons instantly while debouncing
   if (q.length > 0) {
     list.innerHTML = makeSkeleton(5);
-    ri.innerHTML   = "Searchingâ€¦";
+    ri.innerHTML   = "Searching…";
   }
   clearTimeout(_debTimer);
   _debTimer = setTimeout(() => {
@@ -564,7 +564,7 @@ function renderProductList() {
     renderChunk(list, vsFiltered, 0, VS_PAGE);
     vsOffset = VS_PAGE;
 
-    // Infinite scroll â€” load more as user scrolls
+    // Infinite scroll — load more as user scrolls
     if (_vsScrollEl) _vsScrollEl.removeEventListener("scroll", vsScroll);
     _vsScrollEl = document.getElementById("search-view");
     _vsScrollEl.addEventListener("scroll", vsScroll, {passive:true});
@@ -583,7 +583,7 @@ function vsScroll() {
 }
 
 function updateCountBtn() {
-  // Catalogue button removed â€” no-op
+  // Catalogue button removed — no-op
 }
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -600,11 +600,11 @@ function openDetail(id) {
   document.getElementById("dName").textContent = p.name;
   document.getElementById("dCompany").textContent = p.company;
   const sb = document.getElementById("dStock");
-  sb.textContent = p.stock ? "âœ“ In Stock" : "âœ— Out of Stock";
+  sb.textContent = p.stock ? "✓ In Stock" : "âœ— Out of Stock";
   sb.style.background = p.stock ? "rgba(255,255,255,0.25)" : "rgba(239,68,68,0.4)";
 
   // Expiry status
-  let expiryDisplay = "â€”";
+  let expiryDisplay = "—";
   let expiryWarn = "";
   if (p.expiry) {
     const [mm, yy] = p.expiry.split("/").map(Number);
@@ -612,10 +612,10 @@ function openDetail(id) {
     const now = new Date();
     const daysLeft = Math.floor((expDate - now) / 86400000);
     if (daysLeft < 0) {
-      expiryDisplay = `â›” EXPIRED (${p.expiry})`;
+      expiryDisplay = `⛔ EXPIRED (${p.expiry})`;
       expiryWarn = "expired";
     } else if (daysLeft <= 90) {
-      expiryDisplay = `âš ï¸ ${p.expiry} â€” ${Math.ceil(daysLeft/30)}M left`;
+      expiryDisplay = `âš ï¸ ${p.expiry} — ${Math.ceil(daysLeft/30)}M left`;
       expiryWarn = "short";
     } else {
       expiryDisplay = p.expiry;
@@ -629,26 +629,26 @@ function openDetail(id) {
   if (mrpN && ptrN && mrpN > ptrN) {
     const marginPct = (((mrpN - ptrN) / mrpN) * 100).toFixed(1);
     const marginAmt = (mrpN - ptrN).toFixed(2);
-    marginHtml = `<div class="detail-margin-pill">ðŸ“ˆ Retailer Margin: â‚¹${marginAmt} &nbsp;(${marginPct}%)</div>`;
+    marginHtml = `<div class="detail-margin-pill">📈 Retailer Margin: ₹${marginAmt} &nbsp;(${marginPct}%)</div>`;
   }
 
   const rows = [
-    {icon:"ðŸ’Š",label:"Medicine Name",val:p.name},
+    {icon:"💊",label:"Medicine Name",val:p.name},
     {icon:"ðŸ¢",label:"Company",val:p.company},
-    {icon:"ðŸ·ï¸",label:"Division",val:p.division||"â€”"},
-    {icon:"ðŸ§ª",label:"Formula / Composition",val:p.formula||"â€”"},
-    {icon:"ðŸ“¦",label:"Packing",val:p.packing},
+    {icon:"ðŸ·ï¸",label:"Division",val:p.division||"—"},
+    {icon:"🧪",label:"Formula / Composition",val:p.formula||"—"},
+    {icon:"📦",label:"Packing",val:p.packing},
     {icon:"ðŸ”–",label:"Category",val:p.category},
-    {icon:"â‚¹",label:"MRP",val:p.mrp?`â‚¹${p.mrp}`:"Contact Agency"},
-    {icon:"ðŸ’°",label:"PTR / Trade Price",val:p.ptr?`â‚¹${p.ptr}`:"Contact Agency"},
-    ...(p.moq > 1 ? [{icon:"ðŸ“‹",label:"Min. Order Qty (MOQ)",val:`${p.moq} strips`}] : []),
-    {icon:"ðŸ·ï¸",label:"HSN Code",val:p.hsn||"â€”"},
-    {icon:"ðŸ“Š",label:"GST",val:p.gst ? `${p.gst}%` : "â€”"},
-    {icon:"ðŸ”¢",label:"Batch No.",val:p.batch||"â€”"},
-    {icon:"ðŸ“…",label:"Expiry Date",val:expiryDisplay, warn: expiryWarn},
+    {icon:"₹",label:"MRP",val:p.mrp?`₹${p.mrp}`:"Contact Agency"},
+    {icon:"💰",label:"PTR / Trade Price",val:p.ptr?`₹${p.ptr}`:"Contact Agency"},
+    ...(p.moq > 1 ? [{icon:"📋",label:"Min. Order Qty (MOQ)",val:`${p.moq} strips`}] : []),
+    {icon:"ðŸ·ï¸",label:"HSN Code",val:p.hsn||"—"},
+    {icon:"📊",label:"GST",val:p.gst ? `${p.gst}%` : "—"},
+    {icon:"🔢",label:"Batch No.",val:p.batch||"—"},
+    {icon:"📅",label:"Expiry Date",val:expiryDisplay, warn: expiryWarn},
   ];
 
-  // Build scheme banner separately â€” big and prominent
+  // Build scheme banner separately — big and prominent
   const schemeBanner = getSchemeHTML(p, false);
 
   document.getElementById("detailCard").innerHTML =
@@ -663,7 +663,7 @@ function openDetail(id) {
 
   // Fav button
   const favBtn = document.getElementById("detailFavBtn");
-  if (favBtn) favBtn.textContent = isFavourite(id) ? "â­" : "â˜†";
+  if (favBtn) favBtn.textContent = isFavourite(id) ? "â­" : "☆";
 
   // Cart vs Notify button based on stock
   const cartBtn = document.getElementById("detailCartBtn");
@@ -672,14 +672,14 @@ function openDetail(id) {
     const inCart = cart.some(c => c.id === id);
     cartBtn.style.display = "block";
     notifyBtn.style.display = "none";
-    cartBtn.textContent = inCart ? "âœ“ In Cart â€” Remove" : "+ Add to Cart";
+    cartBtn.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
     cartBtn.style.background = inCart ? "#00897b" : "#fff";
     cartBtn.style.color = inCart ? "#fff" : "#00897b";
   } else {
     cartBtn.style.display = "none";
     notifyBtn.style.display = "block";
     const watching = isWatching(id);
-    notifyBtn.textContent = watching ? "ðŸ”” Watching â€” Unwatch" : "ðŸ”” Notify Me When In Stock";
+    notifyBtn.textContent = watching ? "🔔 Watching — Unwatch" : "🔔 Notify Me When In Stock";
     notifyBtn.style.background = watching ? "#fff7ed" : "#fff";
     notifyBtn.style.color = watching ? "#c2410c" : "#c2410c";
     notifyBtn.style.borderColor = watching ? "#c2410c" : "#f97316";
@@ -709,7 +709,7 @@ function toggleStockFromDetail() {
   p.stock = !p.stock;
   saveData();
   if (p.stock && wasOut) fireStockAlert(p);
-  showToast(p.stock ? "Marked In Stock âœ“" : "Marked Out of Stock");
+  showToast(p.stock ? "Marked In Stock ✓" : "Marked Out of Stock");
   openDetail(currentDetailId);
 }
 
@@ -749,7 +749,7 @@ function checkSRLogin() {
   closeSRLoginModal();
   updateSRBanner();
   openSRShopModal();
-  showToast(`Welcome, ${sr.name}! ðŸ§‘â€ðŸ’¼`);
+  showToast(`Welcome, ${sr.name}! ðŸ§‘â€💼`);
 }
 
 function srLogout() {
@@ -761,7 +761,7 @@ function srLogout() {
   updateSRBanner();
   const srBtn = document.getElementById("srLoginBtn");
   if (srBtn) {
-    srBtn.textContent = "ðŸ§‘â€ðŸ’¼ SR";
+    srBtn.textContent = "ðŸ§‘â€💼 SR";
     // Hide if no SRs configured
     if (!loadSRList().length) srBtn.style.display = "none";
   }
@@ -770,7 +770,7 @@ function srLogout() {
 
 function openSRShopModal() {
   if (!currentSR) { openSRLoginModal(); return; }
-  document.getElementById("srShopModalName").textContent = `${currentSR.name} Â· ${currentSR.code}`;
+  document.getElementById("srShopModalName").textContent = `${currentSR.name} · ${currentSR.code}`;
   document.getElementById("srShopSearch").value = "";
   renderSRShopList();
   const modal = document.getElementById("srShopModal");
@@ -798,10 +798,10 @@ function renderSRShopList() {
   el.innerHTML = filtered.map((shop, i) => {
     const isActive = srActiveShop === shop;
     return `<div onclick="selectSRShop('${shop.replace(/'/g,"\\'")}') " style="background:${isActive ? 'linear-gradient(135deg,#eef2ff,#e0e7ff)' : '#fff'};border:${isActive ? '2px solid #6366f1' : '1.5px solid #F1F5F9'};border-radius:14px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.15s">
-      <div style="width:40px;height:40px;border-radius:12px;background:${isActive ? '#6366f1' : '#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${isActive ? 'âœ…' : 'ðŸª'}</div>
+      <div style="width:40px;height:40px;border-radius:12px;background:${isActive ? '#6366f1' : '#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${isActive ? '✅' : 'ðŸª'}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:14px;font-weight:900;color:${isActive ? '#4338ca' : '#1E293B'};margin-bottom:2px">${shop}</div>
-        <div style="font-size:11px;color:${isActive ? '#6366f1' : '#94A3B8'};font-weight:600">${isActive ? 'âœ“ Currently ordering for this shop' : 'Tap to select'}</div>
+        <div style="font-size:11px;color:${isActive ? '#6366f1' : '#94A3B8'};font-weight:600">${isActive ? '✓ Currently ordering for this shop' : 'Tap to select'}</div>
       </div>
       ${isActive ? `<div style="font-size:18px">âž¡ï¸</div>` : ''}
     </div>`;
@@ -838,10 +838,10 @@ function updateSRBanner() {
     }
   }
   banner.style.display = "flex";
-  banner.innerHTML = `<span style="font-size:16px">ðŸ§‘â€ðŸ’¼</span><div style="flex:1;min-width:0"><div style="font-weight:900;font-size:12px">${currentSR ? currentSR.name : 'SR'} Â· ${currentSR ? currentSR.code : ''}</div><div style="color:rgba(255,255,255,0.75);font-size:11px">Ordering for: <strong>${srActiveShop}</strong> Â· Tap to switch shop</div></div><div onclick="event.stopPropagation();srLogout()" style="background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:6px 10px;color:#fff;font-size:11px;font-weight:800;cursor:pointer">Logout</div>`;
+  banner.innerHTML = `<span style="font-size:16px">ðŸ§‘â€💼</span><div style="flex:1;min-width:0"><div style="font-weight:900;font-size:12px">${currentSR ? currentSR.name : 'SR'} · ${currentSR ? currentSR.code : ''}</div><div style="color:rgba(255,255,255,0.75);font-size:11px">Ordering for: <strong>${srActiveShop}</strong> · Tap to switch shop</div></div><div onclick="event.stopPropagation();srLogout()" style="background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:6px 10px;color:#fff;font-size:11px;font-weight:800;cursor:pointer">Logout</div>`;
   // Update header SR button
   const srBtn = document.getElementById("srLoginBtn");
-  if (srBtn) { srBtn.style.display = "flex"; srBtn.textContent = "ðŸ§‘â€ðŸ’¼ " + (currentSR ? currentSR.name.split(" ")[0] : "SR"); }
+  if (srBtn) { srBtn.style.display = "flex"; srBtn.textContent = "ðŸ§‘â€💼 " + (currentSR ? currentSR.name.split(" ")[0] : "SR"); }
 }
 
 // â”€â”€ SR VISIT LOG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -924,7 +924,7 @@ function openSRDashboard() {
         <div id="srDashHeader" style="background:linear-gradient(135deg,#4338ca,#6366f1);padding:20px 18px 16px;border-radius:24px 24px 0 0;flex-shrink:0"></div>
         <div id="srDashBody" style="overflow-y:auto;flex:1;padding:14px 14px 24px"></div>
         <div style="padding:12px 16px 20px;border-top:1px solid #E2E8F0;flex-shrink:0;background:#fff">
-          <button onclick="closeSRDashboard()" style="width:100%;padding:13px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;font-family:inherit;font-size:14px;font-weight:800;color:#64748B;cursor:pointer">âœ• Close</button>
+          <button onclick="closeSRDashboard()" style="width:100%;padding:13px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;font-family:inherit;font-size:14px;font-weight:800;color:#64748B;cursor:pointer">✕ Close</button>
         </div>
       </div>`;
     document.body.appendChild(dash);
@@ -959,7 +959,7 @@ function renderSRDashboard() {
   header.innerHTML = `
     <div style="color:rgba(255,255,255,0.6);font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px">SR Dashboard</div>
     <div style="color:#fff;font-size:20px;font-weight:900;margin-bottom:2px">${sr.name}</div>
-    <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600">${sr.code}${sr.area ? ' Â· '+sr.area : ''} Â· ${today}</div>`;
+    <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600">${sr.code}${sr.area ? ' · '+sr.area : ''} · ${today}</div>`;
 
   const body = document.getElementById("srDashBody");
   body.innerHTML = `
@@ -967,8 +967,8 @@ function renderSRDashboard() {
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
       ${[
         { icon:"ðŸª", val: visitedShops.length, label:"Shops\nVisited" },
-        { icon:"ðŸ“¦", val: todayOrders.length, label:"Orders\nToday" },
-        { icon:"ðŸ’Š", val: todayQty, label:"Units\nToday" }
+        { icon:"📦", val: todayOrders.length, label:"Orders\nToday" },
+        { icon:"💊", val: todayQty, label:"Units\nToday" }
       ].map(s => `
         <div style="background:#fff;border-radius:14px;padding:12px 8px;text-align:center;border:1.5px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,0.04)">
           <div style="font-size:22px;margin-bottom:4px">${s.icon}</div>
@@ -981,7 +981,7 @@ function renderSRDashboard() {
     ${target.monthly > 0 ? `
     <div style="background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,0.04)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:13px;font-weight:900;color:#1E293B">ðŸŽ¯ Monthly Target</div>
+        <div style="font-size:13px;font-weight:900;color:#1E293B">🎯 Monthly Target</div>
         <div style="font-size:12px;font-weight:800;color:${progressVal>=100?'#059669':progressVal>=60?'#f97316':'#6366f1'}">
           ${target.unit === "qty" ? progress.qty : progress.orders} / ${target.monthly} ${target.unit === "qty" ? "units" : "orders"}
         </div>
@@ -989,10 +989,10 @@ function renderSRDashboard() {
       <div style="height:10px;background:#F1F5F9;border-radius:5px;overflow:hidden;margin-bottom:6px">
         <div style="height:100%;width:${progressVal}%;background:${progressVal>=100?'linear-gradient(90deg,#059669,#10b981)':progressVal>=60?'linear-gradient(90deg,#f97316,#fb923c)':'linear-gradient(90deg,#6366f1,#8b5cf6)'};border-radius:5px;transition:width 0.8s ease"></div>
       </div>
-      <div style="font-size:11px;color:#94A3B8;font-weight:700">${progressVal}% achieved this month ${progressVal>=100?'ðŸŽ‰':''}</div>
+      <div style="font-size:11px;color:#94A3B8;font-weight:700">${progressVal}% achieved this month ${progressVal>=100?'🎉':''}</div>
     </div>` : `
     <div style="background:#EEF2FF;border-radius:14px;padding:12px 16px;margin-bottom:12px;border:1.5px solid #C7D2FE;font-size:12px;color:#4338ca;font-weight:700">
-      ðŸŽ¯ No target set yet â€” ask Admin to set your monthly target
+      🎯 No target set yet — ask Admin to set your monthly target
     </div>`}
 
     <!-- Today's route -->
@@ -1002,10 +1002,10 @@ function renderSRDashboard() {
       const visited = visits.length > 0;
       const shopOrders = todayOrders.filter(o => o.srShop === shop || o.retailer === shop);
       return `<div style="background:#fff;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:1.5px solid ${visited?'#C7D2FE':'#F1F5F9'};display:flex;align-items:center;gap:10px;cursor:pointer" onclick="selectSRShopFromDash('${shop.replace(/'/g,"\\'")}')">
-        <div style="width:32px;height:32px;border-radius:8px;background:${visited?'#6366f1':'#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">${visited?'âœ…':'ðŸª'}</div>
+        <div style="width:32px;height:32px;border-radius:8px;background:${visited?'#6366f1':'#F1F5F9'};display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">${visited?'✅':'ðŸª'}</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:13px;font-weight:800;color:${visited?'#4338ca':'#1E293B'}">${shop}</div>
-          <div style="font-size:11px;font-weight:600;color:#94A3B8">${visited ? `Visited ${visits.length}x Â· ${shopOrders.length} order(s)` : 'Not yet visited'}</div>
+          <div style="font-size:11px;font-weight:600;color:#94A3B8">${visited ? `Visited ${visits.length}x · ${shopOrders.length} order(s)` : 'Not yet visited'}</div>
         </div>
         <div style="font-size:10px;font-weight:800;color:${visited?'#6366f1':'#CBD5E1'}">${visited?'DONE':'PENDING'}</div>
       </div>`;
@@ -1013,13 +1013,13 @@ function renderSRDashboard() {
 
     <!-- Recent orders by this SR today -->
     ${todayOrders.length ? `
-    <div style="font-size:13px;font-weight:900;color:#1E293B;margin:14px 0 8px">ðŸ“¦ Orders Punched Today</div>
+    <div style="font-size:13px;font-weight:900;color:#1E293B;margin:14px 0 8px">📦 Orders Punched Today</div>
     ${todayOrders.slice(0,10).map(o => `
       <div style="background:#fff;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:1.5px solid #F1F5F9;display:flex;align-items:center;gap:10px">
-        <div style="font-size:18px;flex-shrink:0">ðŸ“¦</div>
+        <div style="font-size:18px;flex-shrink:0">📦</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:13px;font-weight:800;color:#1E293B">${o.retailer || o.srShop || 'Unknown'}</div>
-          <div style="font-size:11px;color:#94A3B8;font-weight:600">${o.items ? o.items.length+' items' : ''} Â· Qty: ${o.totalQty||0} Â· ${o.status}</div>
+          <div style="font-size:11px;color:#94A3B8;font-weight:600">${o.items ? o.items.length+' items' : ''} · Qty: ${o.totalQty||0} · ${o.status}</div>
         </div>
         <div style="font-size:10px;font-weight:800;padding:4px 8px;border-radius:8px;background:${o.status==='WhatsApp Sent'?'#D1FAE5':'#DBEAFE'};color:${o.status==='WhatsApp Sent'?'#065F46':'#1e40af'}">${o.status==='WhatsApp Sent'?'WA':'DIR'}</div>
       </div>`).join('')}` : ''}
@@ -1045,7 +1045,7 @@ function adminAddSR() {
   list.push({ id: Date.now(), name, code, mobile: mob, area, shops, createdAt: new Date().toLocaleString("en-IN") });
   saveSRList(list);
   ["srAddName","srAddCode","srAddMobile","srAddArea","srAddShops"].forEach(id => { const el = document.getElementById(id); if(el) el.value = ""; });
-  showToast(`SR ${name} (${code}) added âœ“`);
+  showToast(`SR ${name} (${code}) added ✓`);
   const srBtn = document.getElementById("srLoginBtn");
   if (srBtn) srBtn.style.display = "flex";
   renderSRAdminPanel();
@@ -1062,7 +1062,7 @@ function adminSaveTarget(srCode) {
   const unitEl = document.getElementById("srTargetUnit_" + srCode);
   if (!valEl) return;
   setSRTarget(srCode, valEl.value, unitEl ? unitEl.value : "orders");
-  showToast("Target saved âœ“");
+  showToast("Target saved ✓");
   renderSRAdminPanel();
 }
 function renderSRAdminPanel() {
@@ -1072,7 +1072,7 @@ function renderSRAdminPanel() {
   const el = document.getElementById("srAdminList");
   if (!el) return;
   if (!list.length) {
-    el.innerHTML = `<div style="text-align:center;padding:32px 20px;background:#fff;border-radius:16px;border:1.5px solid #E2E8F0"><div style="font-size:44px;margin-bottom:12px">ðŸ§‘â€ðŸ’¼</div><div style="font-size:15px;font-weight:800;color:#64748B;margin-bottom:6px">No SRs added yet</div><div style="font-size:13px;color:#94A3B8">Add your first sales representative above</div></div>`;
+    el.innerHTML = `<div style="text-align:center;padding:32px 20px;background:#fff;border-radius:16px;border:1.5px solid #E2E8F0"><div style="font-size:44px;margin-bottom:12px">ðŸ§‘â€💼</div><div style="font-size:15px;font-weight:800;color:#64748B;margin-bottom:6px">No SRs added yet</div><div style="font-size:13px;color:#94A3B8">Add your first sales representative above</div></div>`;
     return;
   }
   const today = new Date().toLocaleDateString("en-IN");
@@ -1090,7 +1090,7 @@ function renderSRAdminPanel() {
     <div style="background:#fff;border-radius:16px;padding:0;margin-bottom:12px;border:1.5px solid #E2E8F0;box-shadow:0 2px 6px rgba(0,0,0,0.04);overflow:hidden">
       <!-- SR Header -->
       <div style="background:linear-gradient(135deg,#4338ca,#6366f1);padding:14px 16px;display:flex;align-items:center;gap:12px">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">ðŸ§‘â€ðŸ’¼</div>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">ðŸ§‘â€💼</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:15px;font-weight:900;color:#fff">${sr.name}</div>
           <div style="display:flex;gap:6px;margin-top:3px;flex-wrap:wrap">
@@ -1104,8 +1104,8 @@ function renderSRAdminPanel() {
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid #F1F5F9">
         ${[
           { icon:"ðŸª", val: visitedToday, label:"Shops\nToday", color:"#4338ca" },
-          { icon:"ðŸ“¦", val: allOrders.length, label:"Total\nOrders", color:"#059669" },
-          { icon:"ðŸŽ¯", val: progressVal + "%", label:"Monthly\nTarget", color: progressVal>=100?"#059669":progressVal>=60?"#f97316":"#6366f1" },
+          { icon:"📦", val: allOrders.length, label:"Total\nOrders", color:"#059669" },
+          { icon:"🎯", val: progressVal + "%", label:"Monthly\nTarget", color: progressVal>=100?"#059669":progressVal>=60?"#f97316":"#6366f1" },
         ].map((s,i) => `
           <div style="padding:12px 8px;text-align:center;${i<2?'border-right:1px solid #F1F5F9':''}">
             <div style="font-size:18px;margin-bottom:2px">${s.icon}</div>
@@ -1126,7 +1126,7 @@ function renderSRAdminPanel() {
       </div>` : ''}
       <!-- Set Target row -->
       <div style="padding:10px 14px;background:#F8FAFC;border-bottom:1px solid #F1F5F9">
-        <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">ðŸŽ¯ Monthly Target</div>
+        <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">🎯 Monthly Target</div>
         <div style="display:flex;gap:8px;align-items:center">
           <input id="srTarget_${sr.code}" type="number" placeholder="e.g. 50" value="${target.monthly || ''}" style="flex:1;padding:8px 10px;border-radius:8px;border:1.5px solid #E2E8F0;font-size:13px;font-weight:700;font-family:inherit;outline:none;min-width:0;box-sizing:border-box" />
           <select id="srTargetUnit_${sr.code}" style="padding:8px 10px;border-radius:8px;border:1.5px solid #E2E8F0;font-size:13px;font-weight:700;font-family:inherit;background:#fff;outline:none;cursor:pointer">
@@ -1138,13 +1138,13 @@ function renderSRAdminPanel() {
       </div>
       <!-- Route shops + contacts -->
       <div style="padding:10px 14px">
-        ${sr.mobile ? `<div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;display:flex;align-items:center;gap:6px"><span>ðŸ“±</span>${sr.mobile}</div>` : ''}
+        ${sr.mobile ? `<div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;display:flex;align-items:center;gap:6px"><span>📱</span>${sr.mobile}</div>` : ''}
         <div style="font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Route Shops (${sr.shops ? sr.shops.length : 0})</div>
         <div style="max-height:120px;overflow-y:auto">
           ${sr.shops && sr.shops.length ? sr.shops.map(s => {
             const visited = todayVisits.some(v => v.shop === s);
             return `<div style="font-size:12px;font-weight:700;color:${visited?'#4338ca':'#475569'};padding:3px 0;border-bottom:1px solid #F8FAFC;display:flex;align-items:center;gap:6px">
-              <span>${visited?'âœ…':'ðŸª'}</span>${s}${visited?` <span style="font-size:10px;color:#6366f1;font-weight:700;margin-left:auto">visited</span>`:''}
+              <span>${visited?'✅':'ðŸª'}</span>${s}${visited?` <span style="font-size:10px;color:#6366f1;font-weight:700;margin-left:auto">visited</span>`:''}
             </div>`;
           }).join('') : `<div style="font-size:12px;color:#CBD5E1;font-weight:600">No shops assigned</div>`}
         </div>
@@ -1163,7 +1163,7 @@ function openAddShopsModal(srId) {
   sr.shops = newShops.split('\n').map(s => s.trim()).filter(Boolean);
   saveSRList(list);
   renderSRAdminPanel();
-  showToast("Route updated âœ“");
+  showToast("Route updated ✓");
 }
 
 function goToAdmin() {
@@ -1172,7 +1172,7 @@ function goToAdmin() {
   showView("admin-view");
 }
 
-// â”€â”€ Special / Bulk Order Request â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€ Special / Bulk Order Request â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 let _spSelectedType = "Bulk Order";
 
 function openSpecialOrderModal() {
@@ -1207,7 +1207,7 @@ function spMedSearch(val) {
 
   if (!q) { dd.style.display = "none"; return; }
 
-  // Starts-with first, then contains â€” better ranking
+  // Starts-with first, then contains — better ranking
   var starts = [], contains = [];
   for (var i = 0; i < products.length; i++) {
     var n = products[i].name.toUpperCase();
@@ -1222,7 +1222,7 @@ function spMedSearch(val) {
   for (var j = 0; j < matches.length; j++) {
     var prod = matches[j];
     var subLine = (prod.company || prod.packing)
-      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + (prod.company || "") + (prod.packing ? " Â· " + prod.packing : "") + "</div>"
+      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + (prod.company || "") + (prod.packing ? " · " + prod.packing : "") + "</div>"
       : "";
     html += '<div data-idx="' + j + '" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9" onmouseover="this.style.background=\'#f8fafc\'" onmouseout="this.style.background=\'\'">'
       + '<div style="font-size:13px;font-weight:800;color:var(--text,#0f172a)">' + prod.name + "</div>"
@@ -1307,19 +1307,19 @@ function calcProfit() {
 
   // Color based on margin
   let bg, label;
-  if (margin >= 30) { bg = "linear-gradient(135deg,#16a34a,#15803d)"; label = "ðŸ”¥ Excellent margin!"; }
-  else if (margin >= 20) { bg = "linear-gradient(135deg,#0891b2,#0e7490)"; label = "âœ… Good margin"; }
-  else if (margin >= 12) { bg = "linear-gradient(135deg,#d97706,#b45309)"; label = "âš¡ Average margin"; }
-  else { bg = "linear-gradient(135deg,#dc2626,#b91c1c)"; label = "âš ï¸ Low margin â€” negotiate better PTR"; }
+  if (margin >= 30) { bg = "linear-gradient(135deg,#16a34a,#15803d)"; label = "🔥 Excellent margin!"; }
+  else if (margin >= 20) { bg = "linear-gradient(135deg,#0891b2,#0e7490)"; label = "✅ Good margin"; }
+  else if (margin >= 12) { bg = "linear-gradient(135deg,#d97706,#b45309)"; label = "⚡ Average margin"; }
+  else { bg = "linear-gradient(135deg,#dc2626,#b91c1c)"; label = "âš ï¸ Low margin — negotiate better PTR"; }
 
   document.getElementById("calcResultBg").style.background = bg;
-  document.getElementById("calcProfitVal").textContent = "â‚¹" + profit.toFixed(profit % 1 === 0 ? 0 : 2);
+  document.getElementById("calcProfitVal").textContent = "₹" + profit.toFixed(profit % 1 === 0 ? 0 : 2);
   document.getElementById("calcMarginVal").textContent = margin.toFixed(1) + "%";
   document.getElementById("calcProgressBar").style.width = Math.min(margin, 100) + "%";
   document.getElementById("calcMarginLabel").textContent = label;
-  document.getElementById("calcBuyAt").textContent = "â‚¹" + ptr.toFixed(ptr % 1 === 0 ? 0 : 2);
-  document.getElementById("calcSellAt").textContent = "â‚¹" + mrp.toFixed(mrp % 1 === 0 ? 0 : 2);
-  document.getElementById("calcOn1000").textContent = "â‚¹" + on1000;
+  document.getElementById("calcBuyAt").textContent = "₹" + ptr.toFixed(ptr % 1 === 0 ? 0 : 2);
+  document.getElementById("calcSellAt").textContent = "₹" + mrp.toFixed(mrp % 1 === 0 ? 0 : 2);
+  document.getElementById("calcOn1000").textContent = "₹" + on1000;
 
   resultEl.style.display = "block";
   tipEl.style.display = "none";
@@ -1347,7 +1347,7 @@ function submitSpecialOrder() {
   let msg = `================================\n  JAIN AGENCIES - RAJNANDGAON\n================================\n`;
   msg += `*${retailerName}*\n`;
   msg += `Date: ${today}\n\n`;
-  msg += `*ðŸ“‹ SPECIAL ORDER REQUEST*\n`;
+  msg += `*📋 SPECIAL ORDER REQUEST*\n`;
   msg += `--------------------------------\n`;
   msg += `Type: *${_spSelectedType}*\n`;
   msg += `Medicine: *${med}*\n`;
@@ -1360,7 +1360,7 @@ function submitSpecialOrder() {
   const waNum = typeof JAIN_WA_NUMBER !== "undefined" ? JAIN_WA_NUMBER : "919086291862";
   window.open(`https://wa.me/${waNum}?text=${encoded}`, "_blank");
   closeSpecialOrderModal();
-  showToast("âœ… Opening WhatsAppâ€¦");
+  showToast("✅ Opening WhatsApp…");
 }
 
 
@@ -1390,10 +1390,10 @@ function renderAccountView() {
   if (r) {
     const initials = (r.name || "?").split(" ").map(w => w[0]).slice(0,2).join("").toUpperCase();
     avatarEl.textContent = initials;
-    nameEl.textContent   = r.name || "â€”";
-    shopEl.textContent   = r.shop || r.city || "â€”";
+    nameEl.textContent   = r.name || "—";
+    shopEl.textContent   = r.shop || r.city || "—";
     const statusMap = {
-      approved: { text:"âœ“ APPROVED", bg:"rgba(22,163,74,0.25)", color:"#86efac" },
+      approved: { text:"✓ APPROVED", bg:"rgba(22,163,74,0.25)", color:"#86efac" },
       pending:  { text:"â³ PENDING",  bg:"rgba(234,179,8,0.25)",  color:"#fde68a" },
       rejected: { text:"âœ— REJECTED", bg:"rgba(239,68,68,0.25)",  color:"#fca5a5" }
     };
@@ -1412,13 +1412,13 @@ function renderAccountView() {
 
   // â”€â”€ Profile rows â”€â”€
   const fields = [
-    { icon:"ðŸª", label:"Shop Name",  val: r?.shop    || "â€”" },
-    { icon:"ðŸ‘¤", label:"Your Name",  val: r?.name    || "â€”" },
-    { icon:"ðŸ“±", label:"Mobile",     val: r?.mobile  || "â€”" },
-    { icon:"âœ‰ï¸", label:"Email",      val: r?.email   || "â€”" },
-    { icon:"ðŸ“", label:"Address",    val: r?.address || r?.city || "â€”" },
-    { icon:"ðŸ’Š", label:"DL Number",  val: r?.dl      || "â€”" },
-    { icon:"ðŸ“‹", label:"GST Number", val: r?.gst     || "â€”" },
+    { icon:"ðŸª", label:"Shop Name",  val: r?.shop    || "—" },
+    { icon:"👤", label:"Your Name",  val: r?.name    || "—" },
+    { icon:"📱", label:"Mobile",     val: r?.mobile  || "—" },
+    { icon:"âœ‰ï¸", label:"Email",      val: r?.email   || "—" },
+    { icon:"ðŸ“", label:"Address",    val: r?.address || r?.city || "—" },
+    { icon:"💊", label:"DL Number",  val: r?.dl      || "—" },
+    { icon:"📋", label:"GST Number", val: r?.gst     || "—" },
   ];
   document.getElementById("accProfileRows").innerHTML = fields.map((f, i) =>
     `<div style="padding:12px 16px;display:flex;align-items:center;gap:12px;${i < fields.length-1 ? "border-bottom:1px solid var(--border,#F1F5F9)" : ""}">
@@ -1442,7 +1442,7 @@ function _renderDocBadge(type, fileInfo) {
   const badgeEl  = document.getElementById("acc" + type.charAt(0).toUpperCase() + type.slice(1) + "Badge");
   if (!statusEl || !badgeEl) return;
   if (fileInfo && fileInfo.name) {
-    statusEl.textContent    = "âœ“ " + fileInfo.name;
+    statusEl.textContent    = "✓ " + fileInfo.name;
     statusEl.style.color    = "#16a34a";
     badgeEl.textContent     = "Uploaded";
     badgeEl.style.background = "#DCFCE7";
@@ -1481,7 +1481,7 @@ function accDocFileSelected(input) {
   }
   _renderDocBadge(_accDocType, docs[_accDocType]);
   const labels = { dl:"Drug License", gst:"GST Certificate", pan:"PAN Card" };
-  showToast("âœ… " + (labels[_accDocType] || "Document") + " uploaded!");
+  showToast("✅ " + (labels[_accDocType] || "Document") + " uploaded!");
   _accDocType = null;
 }
 
@@ -1534,7 +1534,7 @@ function saveEditProfile() {
       Object.assign(currentRetailer, updates);
     }
   } else {
-    // Guest â€” save locally so fields persist across sessions
+    // Guest — save locally so fields persist across sessions
     const guest = { id: "guest_" + Date.now(), status: "guest", ...updates };
     currentRetailer = guest;
     saveRetailerSession(guest);
@@ -1546,11 +1546,11 @@ function saveEditProfile() {
 
   closeEditProfile();
   renderAccountView();
-  showToast("âœ… Profile saved!");
+  showToast("✅ Profile saved!");
 }
 
 function copyToClipboard(text, label) {
-  var msg = "ðŸ“‹ " + (label || "Copied") + "!";
+  var msg = "📋 " + (label || "Copied") + "!";
   function fallback() {
     var el = document.createElement("textarea");
     el.value = text;
@@ -1559,7 +1559,7 @@ function copyToClipboard(text, label) {
     document.body.appendChild(el);
     el.focus(); el.select();
     try { document.execCommand("copy"); showToast(msg); }
-    catch(e) { showToast("âš ï¸ Copy failed â€” select & copy manually"); }
+    catch(e) { showToast("âš ï¸ Copy failed — select & copy manually"); }
     document.body.removeChild(el);
   }
   if (navigator.clipboard && window.isSecureContext) {
@@ -1571,7 +1571,7 @@ function copyToClipboard(text, label) {
 
 
 
-// â”€â”€â”€ Scheme View State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Scheme View State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 let _svActiveTab = "all";
 
 function renderSchemeView() {
@@ -1586,13 +1586,13 @@ function renderSchemeView() {
     body.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94A3B8">
       <div style="font-size:48px;margin-bottom:12px">ðŸŽ</div>
       <div style="font-size:16px;font-weight:800">No active schemes</div>
-      <div style="font-size:13px;margin-top:6px">Admin can add schemes from Admin â†’ Schemes</div>
+      <div style="font-size:13px;margin-top:6px">Admin can add schemes from Admin → Schemes</div>
     </div>`;
     return;
   }
 
-  // âš¡ Improvement 1 â€” use index for O(1) scheme lookup per product
-  // âš¡ Improvement 2 â€” lazy render: collect all rows but render first 15, append more on scroll
+  // ⚡ Improvement 1 — use index for O(1) scheme lookup per product
+  // ⚡ Improvement 2 — lazy render: collect all rows but render first 15, append more on scroll
   function findProducts(medName) {
     const upper = medName.toUpperCase();
     const result = [];
@@ -1631,7 +1631,7 @@ function renderSchemeView() {
   }
 
   // Build ordered tab list: View All first, then unique labels sorted by product count desc
-  const tabMap = {}; // label â†’ [schemes]
+  const tabMap = {}; // label → [schemes]
   enriched.forEach(s => {
     const lbl = schemeTabLabel(s);
     if (!tabMap[lbl]) tabMap[lbl] = [];
@@ -1656,7 +1656,7 @@ function renderSchemeView() {
     : (tabMap[_svActiveTab] || []);
 
   // â”€â”€ SIDEBAR HTML â”€â”€
-  // Sidebar tab builder â€” uses data-tab attribute to avoid quote escaping issues in onclick
+  // Sidebar tab builder — uses data-tab attribute to avoid quote escaping issues in onclick
   const buildSidebarItem = (label, count, isActive) => {
     const escaped = label.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
     return `<div data-svtab="${escaped}" style="
@@ -1716,10 +1716,10 @@ function renderSchemeView() {
       rowsHtml += `
       <div style="background:#fff;border-bottom:1px solid #f1f5f9;padding:14px 12px 14px 14px;display:flex;align-items:center;gap:12px">
 
-        <!-- Icon thumbnail (no image â€” styled box) -->
+        <!-- Icon thumbnail (no image — styled box) -->
         <div style="width:70px;height:70px;min-width:70px;border-radius:10px;background:${bg};display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:1px solid rgba(0,0,0,0.06)">
           <div style="font-size:11px;font-weight:900;color:${fg};text-align:center;padding:4px;line-height:1.2;word-break:break-all">${initials}</div>
-          <div style="font-size:18px;margin-top:2px">ðŸ’Š</div>
+          <div style="font-size:18px;margin-top:2px">💊</div>
         </div>
 
         <!-- Info -->
@@ -1735,13 +1735,13 @@ function renderSchemeView() {
 
           <!-- PTR + MRP -->
           <div style="display:flex;align-items:center;gap:8px">
-            ${ptr ? `<span style="font-size:13px;font-weight:800;color:#111827">PTR : â‚¹${ptr}</span>` : ""}
-            ${mrp ? `<span style="font-size:12px;color:#9ca3af;font-weight:500;text-decoration:line-through">â‚¹${mrp}</span>` : ""}
+            ${ptr ? `<span style="font-size:13px;font-weight:800;color:#111827">PTR : ₹${ptr}</span>` : ""}
+            ${mrp ? `<span style="font-size:12px;color:#9ca3af;font-weight:500;text-decoration:line-through">₹${mrp}</span>` : ""}
           </div>
-          ${inCart ? `<div style="font-size:11px;color:#16a34a;font-weight:800;margin-top:4px">âœ“ In cart â€” Qty: ${cartItem.qty}</div>` : ""}
+          ${inCart ? `<div style="font-size:11px;color:#16a34a;font-weight:800;margin-top:4px">✓ In cart — Qty: ${cartItem.qty}</div>` : ""}
         </div>
 
-        <!-- Add button â€” outlined, right side -->
+        <!-- Add button — outlined, right side -->
         <button onclick="openQtyPicker(${p.id})" style="
           background:#fff;
           color:${inCart ? "#16a34a" : "#00897b"};
@@ -1756,7 +1756,7 @@ function renderSchemeView() {
           flex-shrink:0;
           min-width:64px;
           text-align:center;
-        ">${inCart ? "âœ“ Edit" : "Add"}</button>
+        ">${inCart ? "✓ Edit" : "Add"}</button>
       </div>`;
     });
 
@@ -1783,7 +1783,7 @@ function renderSchemeView() {
   body.innerHTML = `
     <div style="display:flex;height:100%;overflow:hidden">
 
-      <!-- LEFT SIDEBAR â€” event delegation handles tab clicks -->
+      <!-- LEFT SIDEBAR — event delegation handles tab clicks -->
       <div id="svSidebar" onclick="var t=event.target.closest('[data-svtab]');if(t){window._svSetTab(t.getAttribute('data-svtab'));}" style="
         width:95px;min-width:95px;
         background:#fff;
@@ -1843,7 +1843,7 @@ function switchAdminTab(tab) {
   if (tab === "sr") { renderSRAdminPanel(); }
 }
 
-// â”€â”€â”€ DASHBOARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ DASHBOARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderDashboard() {
   // Time
   const now = new Date();
@@ -1863,9 +1863,9 @@ function renderDashboard() {
 
   const statsGrid = document.getElementById("dashStatsGrid");
   if (statsGrid) statsGrid.innerHTML = [
-    { label:"Total Products", val: products.length, sub: `${inStock} in stock`, icon:"ðŸ’Š", cls:"" },
+    { label:"Total Products", val: products.length, sub: `${inStock} in stock`, icon:"💊", cls:"" },
     { label:"Total Retailers", val: approved, sub: `${pending} pending approval`, icon:"ðŸª", cls:"blue" },
-    { label:"Orders Today", val: orders.length, sub: "All time total", icon:"ðŸ“¦", cls:"green" },
+    { label:"Orders Today", val: orders.length, sub: "All time total", icon:"📦", cls:"green" },
     { label:"Out of Stock", val: outStock, sub: "Need restocking", icon:"âš ï¸", cls: outStock > 0 ? "red" : "" },
   ].map(s => `
     <div class="dash-stat-card ${s.cls}" data-icon="${s.icon}">
@@ -1882,12 +1882,12 @@ function renderDashboard() {
     } else {
       ordersList.innerHTML = orders.slice(0,5).map(o => `
         <div class="dash-order-row">
-          <span class="dash-order-icon">${o.status === "WhatsApp Sent" ? "ðŸ’¬" : "ðŸ“‹"}</span>
+          <span class="dash-order-icon">${o.status === "WhatsApp Sent" ? "💬" : "📋"}</span>
           <div style="flex:1">
             <div class="dash-order-shop">ðŸª ${o.retailer}</div>
-            <div class="dash-order-meta">${o.items.length} items Â· ${o.totalQty} strips Â· ${o.timestamp}</div>
+            <div class="dash-order-meta">${o.items.length} items · ${o.totalQty} strips · ${o.timestamp}</div>
           </div>
-          <span class="dash-order-badge ${o.status === "WhatsApp Sent" ? "wa" : "pending"}">${o.status === "WhatsApp Sent" ? "ðŸ’¬ WA" : "â³ Pending"}</span>
+          <span class="dash-order-badge ${o.status === "WhatsApp Sent" ? "wa" : "pending"}">${o.status === "WhatsApp Sent" ? "💬 WA" : "â³ Pending"}</span>
         </div>`).join("");
     }
   }
@@ -1898,14 +1898,14 @@ function renderDashboard() {
     const freq = {};
     orders.forEach(o => o.items.forEach(i => { freq[i.name] = (freq[i.name]||0) + i.qty; }));
     const hot = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,5);
-    const medals = ["ðŸ¥‡","ðŸ¥ˆ","ðŸ¥‰","4ï¸âƒ£","5ï¸âƒ£"];
+    const medals = ["🥇","🥈","🥉","4ï¸⃣","5ï¸⃣"];
     if (!hot.length) {
       hotEl.innerHTML = '<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px;font-weight:600">Place some orders to see hot products!</div>';
     } else {
       hotEl.innerHTML = hot.map(([name, qty], i) => {
         const p = products.find(x => x.name === name);
         return `<div class="hot-product-row">
-          <span class="hot-rank">${medals[i]||"â€¢"}</span>
+          <span class="hot-rank">${medals[i]||"•"}</span>
           <div style="flex:1"><div class="hot-name">${name}</div><div class="hot-company">${p ? p.company : ""}</div></div>
           <span class="hot-orders">${qty} strips ordered</span>
         </div>`;
@@ -1918,17 +1918,17 @@ function renderDashboard() {
   if (pendEl) {
     const pendingR = retailers.filter(r => r.status === "pending");
     if (!pendingR.length) {
-      pendEl.innerHTML = '<div style="text-align:center;padding:16px;color:#94A3B8;font-size:13px;font-weight:600">âœ… No pending approvals</div>';
+      pendEl.innerHTML = '<div style="text-align:center;padding:16px;color:#94A3B8;font-size:13px;font-weight:600">✅ No pending approvals</div>';
     } else {
       pendEl.innerHTML = pendingR.slice(0,3).map(r => `
         <div class="dash-order-row">
           <span class="dash-order-icon">ðŸª</span>
           <div style="flex:1">
-            <div class="dash-order-shop">${r.name} Â· ${r.shop}</div>
-            <div class="dash-order-meta">DL: ${r.dl} Â· GST: ${r.gst}</div>
+            <div class="dash-order-shop">${r.name} · ${r.shop}</div>
+            <div class="dash-order-meta">DL: ${r.dl} · GST: ${r.gst}</div>
           </div>
-          <button style="padding:7px 12px;border:none;border-radius:8px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:11px;font-weight:900;cursor:pointer;font-family:inherit" onclick="approveRetailer('${r.id}');renderDashboard()">âœ… Approve</button>
-        </div>`).join("") + (pendingR.length > 3 ? `<div style="text-align:center;padding:8px;font-size:12px;color:#00897b;font-weight:800;cursor:pointer" onclick="switchAdminTab('retailers')">+ ${pendingR.length - 3} more â†’</div>` : "");
+          <button style="padding:7px 12px;border:none;border-radius:8px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:11px;font-weight:900;cursor:pointer;font-family:inherit" onclick="approveRetailer('${r.id}');renderDashboard()">✅ Approve</button>
+        </div>`).join("") + (pendingR.length > 3 ? `<div style="text-align:center;padding:8px;font-size:12px;color:#00897b;font-weight:800;cursor:pointer" onclick="switchAdminTab('retailers')">+ ${pendingR.length - 3} more →</div>` : "");
     }
   }
   // â”€â”€ Analytics: Today's Searches + Top Terms â”€â”€
@@ -1964,12 +1964,12 @@ function renderDashboard() {
           </div>
         </div>
         ${topTerms.length ? `
-        <div class="dash-section-title" style="margin-top:12px">ðŸ”¥ Top Searched Medicines</div>
+        <div class="dash-section-title" style="margin-top:12px">🔥 Top Searched Medicines</div>
         ${topTerms.map(([term,count],i) => {
           const pct = Math.round((count / (topTerms[0][1]||1)) * 100);
-          const medals = ["ðŸ¥‡","ðŸ¥ˆ","ðŸ¥‰","4ï¸âƒ£","5ï¸âƒ£"];
+          const medals = ["🥇","🥈","🥉","4ï¸⃣","5ï¸⃣"];
           return `<div class="dash-search-bar-row">
-            <span style="font-size:14px;flex-shrink:0">${medals[i]||"â€¢"}</span>
+            <span style="font-size:14px;flex-shrink:0">${medals[i]||"•"}</span>
             <div style="flex:1;min-width:0">
               <div style="display:flex;justify-content:space-between;margin-bottom:3px">
                 <span style="font-size:12px;font-weight:800;color:#1E293B;text-transform:capitalize">${term}</span>
@@ -2000,7 +2000,7 @@ function renderAdminListV2() {
   if (bannerEl) {
     if (coFilter) {
       bannerEl.style.display = "flex";
-      bannerEl.innerHTML = `<span>ðŸ¢ Filtering: <strong>${coFilter}</strong> â€” ${filtered.length} products</span><button onclick="_adminCompanyFilter='';renderAdminListV2()" style="background:none;border:none;color:#dc2626;font-size:16px;cursor:pointer;font-weight:900">âœ•</button>`;
+      bannerEl.innerHTML = `<span>ðŸ¢ Filtering: <strong>${coFilter}</strong> — ${filtered.length} products</span><button onclick="_adminCompanyFilter='';renderAdminListV2()" style="background:none;border:none;color:#dc2626;font-size:16px;cursor:pointer;font-weight:900">✕</button>`;
     } else {
       bannerEl.style.display = "none";
     }
@@ -2012,17 +2012,17 @@ function renderAdminListV2() {
   el.innerHTML = filtered.map(p => `
     <div class="admin-card-v2">
       <div class="admin-card-v2-top">
-        <div class="admin-cat-dot" style="background:${color(p)}22">${CAT_ICONS[p.category]||"ðŸ’Š"}</div>
+        <div class="admin-cat-dot" style="background:${color(p)}22">${CAT_ICONS[p.category]||"💊"}</div>
         <div style="flex:1;min-width:0">
           <div class="admin-card-name-v2">${p.name}</div>
-          <div class="admin-card-co">${p.company} Â· ${p.packing}${p.mrp ? " Â· â‚¹"+p.mrp : ""}</div>
+          <div class="admin-card-co">${p.company} · ${p.packing}${p.mrp ? " · ₹"+p.mrp : ""}</div>
         </div>
       </div>
       <div class="admin-card-v2-foot">
         <span class="admin-tag-stock ${p.stock?"in":"out"}">${p.stock?"â— In Stock":"â—‹ Out"}</span>
         ${p.scheme ? `<span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px">ðŸŽ ${p.scheme}</span>` : ""}
         <div class="admin-card-v2-actions">
-          <button class="adm-btn adm-btn-stock ${p.stock?"active":""}" onclick="toggleStockAdmin(${p.id})">${p.stock?"âœ“ In":"âœ— Out"}</button>
+          <button class="adm-btn adm-btn-stock ${p.stock?"active":""}" onclick="toggleStockAdmin(${p.id})">${p.stock?"✓ In":"âœ— Out"}</button>
           <button class="adm-btn adm-btn-edit" onclick="openEditFormById(${p.id})">âœï¸</button>
           <button class="adm-btn adm-btn-del" onclick="openConfirmDel(${p.id})">ðŸ—‘ï¸</button>
         </div>
@@ -2034,7 +2034,7 @@ function renderAdminListV2() {
 function renderAdminList() { renderAdminListV2(); }
 function renderAdminStats() { if (currentAdminTab === "dashboard") renderDashboard(); }
 
-// â”€â”€â”€ SCHEMES (admin) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ SCHEMES (admin) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderAdminSchemes() {
   const el = document.getElementById("adminSchemesList");
   if (!el) return;
@@ -2049,11 +2049,11 @@ function renderAdminSchemes() {
     const expired = s.validity && s.validity < today;
     const isDefault = DEFAULT_SCHEMES.find(d => d.id === s.id) && !schemes.find(x => x.id === s.id);
     return `<div class="scheme-admin-card">
-      <span style="font-size:24px;flex-shrink:0">${expired ? "âš ï¸" : "ðŸ”¥"}</span>
+      <span style="font-size:24px;flex-shrink:0">${expired ? "âš ï¸" : "🔥"}</span>
       <div class="scheme-admin-info">
         <div class="scheme-admin-name">${s.med} ${isDefault ? '<span style="font-size:10px;background:#e0f2fe;color:#0369a1;padding:2px 6px;border-radius:6px;font-weight:700">DEFAULT</span>' : ''}</div>
         <div class="scheme-admin-deal">ðŸŽ ${s.deal}</div>
-        <div class="scheme-admin-meta">${s.company || "â€”"}${s.validity ? " Â· Valid till " + s.validity : " Â· No expiry"}</div>
+        <div class="scheme-admin-meta">${s.company || "—"}${s.validity ? " · Valid till " + s.validity : " · No expiry"}</div>
       </div>
       <div class="scheme-admin-actions" style="display:flex;flex-direction:column;gap:6px">
         <button class="adm-btn" style="background:#e0f2fe;color:#0369a1;border:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer" onclick="openSchemeModal(${s.id})">âœï¸ Edit</button>
@@ -2063,7 +2063,7 @@ function renderAdminSchemes() {
   }).join("");
 }
 
-// â”€â”€â”€ COMPANIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ COMPANIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let customCompanies = [];
 function loadCustomCompanies() {
   try { customCompanies = JSON.parse(localStorage.getItem("ja_companies") || "[]"); } catch { customCompanies = []; }
@@ -2084,7 +2084,7 @@ function addCompany() {
   input.value = "";
   renderCompaniesList();
   buildCompanySelect();
-  showToast("âœ… Company added â€” " + name);
+  showToast("✅ Company added — " + name);
 }
 
 function renderCompaniesList() {
@@ -2101,9 +2101,9 @@ function renderCompaniesList() {
       <div class="company-card-icon">ðŸ¢</div>
       <div style="flex:1">
         <div class="company-card-name">${co}</div>
-        <div class="company-card-count">${count} product${count !== 1 ? "s" : ""} Â· <span style="color:#00897b;font-weight:800">Tap to view</span></div>
+        <div class="company-card-count">${count} product${count !== 1 ? "s" : ""} · <span style="color:#00897b;font-weight:800">Tap to view</span></div>
       </div>
-      ${isCustomOnly ? `<button class="company-card-del" onclick="event.stopPropagation();deleteCustomCompany('${co.replace(/'/g,"\\'")}')">âœ•</button>` : '<span style="font-size:16px">â€º</span>'}
+      ${isCustomOnly ? `<button class="company-card-del" onclick="event.stopPropagation();deleteCustomCompany('${co.replace(/'/g,"\\'")}')">✕</button>` : '<span style="font-size:16px">›</span>'}
     </div>`;
   }).join("");
 }
@@ -2114,7 +2114,7 @@ function filterAdminByCompany(co) {
   // Set a filter variable and re-render
   _adminCompanyFilter = co;
   renderAdminListV2();
-  showToast("ðŸ“¦ Showing " + co);
+  showToast("📦 Showing " + co);
 }
 
 function deleteCustomCompany(name) {
@@ -2124,14 +2124,14 @@ function deleteCustomCompany(name) {
   buildCompanySelect();
 }
 
-// â”€â”€â”€ EXCEL IMPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ EXCEL IMPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 let excelParsedRows = [];
 
 function handleExcelFile(input) {
   const file = input.files[0];
   if (!file) return;
-  document.getElementById("excelZoneFile").textContent = "ðŸ“„ " + file.name;
-  document.getElementById("excelZoneIcon").textContent = "âœ…";
+  document.getElementById("excelZoneFile").textContent = "📄 " + file.name;
+  document.getElementById("excelZoneIcon").textContent = "✅";
   document.getElementById("excelZoneTitle").textContent = "File loaded!";
   document.getElementById("excelZone").classList.add("has-file");
 
@@ -2153,7 +2153,7 @@ function handleExcelFile(input) {
   if (file.name.endsWith(".csv")) {
     reader.readAsText(file);
   } else {
-    // For xlsx â€” basic fallback message
+    // For xlsx — basic fallback message
     reader.readAsText(file);
     showToast("For .xlsx files, please save as .csv first for best results", "error");
   }
@@ -2185,9 +2185,9 @@ function showExcelPreview(rows, headers) {
       ${preview.map(r => `
         <div class="excel-preview-row">
           <span style="font-weight:900;color:#1E293B">${r.name || r["medicine name"] || "?"}</span>
-          <span>Â·</span>
+          <span>·</span>
           <span>${r.company || "?"}</span>
-          <span>Â·</span>
+          <span>·</span>
           <span style="color:#94A3B8">${r.packing || r.pack || ""}</span>
         </div>`).join("")}
       ${rows.length > 5 ? `<div style="font-size:11px;color:#94A3B8;padding:5px 0;font-weight:700">+ ${rows.length-5} more rows...</div>` : ""}
@@ -2229,10 +2229,10 @@ function importExcelData() {
   document.getElementById("excelPreview").innerHTML = "";
   document.getElementById("excelImportBtn").style.display = "none";
   document.getElementById("excelZone").classList.remove("has-file");
-  document.getElementById("excelZoneIcon").textContent = "ðŸ“Š";
+  document.getElementById("excelZoneIcon").textContent = "📊";
   document.getElementById("excelZoneTitle").textContent = "Upload Excel / CSV File";
   document.getElementById("excelZoneFile").textContent = "";
-  showToast(`âœ… Imported ${added} products${skipped ? ", " + skipped + " skipped" : ""}!`);
+  showToast(`✅ Imported ${added} products${skipped ? ", " + skipped + " skipped" : ""}!`);
   switchAdminTab("products");
 }
 
@@ -2265,7 +2265,7 @@ function toggleStockAdmin(id) {
   if (p.stock && wasOut) fireStockAlert(p);
   if (currentAdminTab === "dashboard") renderDashboard();
   if (currentAdminTab === "products") renderAdminListV2();
-  showToast(p.stock ? "In Stock âœ“" : "Out of Stock");
+  showToast(p.stock ? "In Stock ✓" : "Out of Stock");
 }
 
 function openConfirmDel(id) {
@@ -2348,7 +2348,7 @@ function saveProduct() {
   if (!name) { showToast("Medicine name required!", "error"); return; }
   if (!company) { showToast("Company name required!", "error"); return; }
 
-  // Expiry validation â€” must be MM/YY and not already expired
+  // Expiry validation — must be MM/YY and not already expired
   const expiryRaw = document.getElementById("fExpiry").value.trim();
   if (expiryRaw) {
     const expiryOk = /^\d{2}\/\d{2}$/.test(expiryRaw);
@@ -2377,11 +2377,11 @@ function saveProduct() {
   if (editingId) {
     const idx = products.findIndex(p => p.id === editingId);
     if (idx !== -1) products[idx] = { ...products[idx], ...prod };
-    showToast("Product updated âœ“");
+    showToast("Product updated ✓");
   } else {
     prod.id = Date.now();
     products.push(prod);
-    showToast("Product added âœ“");
+    showToast("Product added ✓");
   }
   saveData();
   buildCompanySelect();
@@ -2474,7 +2474,7 @@ function parseSchemeRatio(deal) {
 function calcScheme(deal, qty) {
   if (!deal || qty <= 0) return null;
 
-  // Type 1: Free qty â€” "100+30 Free" or "Buy 5 Get 1 Free"
+  // Type 1: Free qty — "100+30 Free" or "Buy 5 Get 1 Free"
   const r = parseSchemeRatio(deal);
   if (r) {
     const freeQty = Math.floor(qty * r.free / r.base);
@@ -2482,7 +2482,7 @@ function calcScheme(deal, qty) {
     return `${qty}+${freeQty} Free`;
   }
 
-  // Type 2: PTR X% â€” "PTR 15%" â†’ show saving per strip
+  // Type 2: PTR X% — "PTR 15%" → show saving per strip
   const ptrMatch = deal.match(/ptr\s*([\d.]+)\s*%?/i);
   if (ptrMatch) {
     const pct = parseFloat(ptrMatch[1]);
@@ -2496,13 +2496,13 @@ function calcScheme(deal, qty) {
     return `${pct}% off on ${qty} strips`;
   }
 
-  // Type 4: Flat â‚¹X
-  const flatMatch = deal.match(/flat\s*â‚¹?\s*([\d.]+)/i);
+  // Type 4: Flat ₹X
+  const flatMatch = deal.match(/flat\s*₹?\s*([\d.]+)/i);
   if (flatMatch) {
-    return `Flat â‚¹${flatMatch[1]} off`;
+    return `Flat ₹${flatMatch[1]} off`;
   }
 
-  // Fallback â€” show deal text as-is
+  // Fallback — show deal text as-is
   return deal;
 }
 
@@ -2527,7 +2527,7 @@ function parseSchemeType(deal) {
   // PTR 15% / PTR15
   if (/ptr\s*[\d.]+\s*%?/i.test(d)) {
     const m = d.match(/([\d.]+)/);
-    return { type:"ptr", icon:"ðŸ’°", label:"PTR Scheme",
+    return { type:"ptr", icon:"💰", label:"PTR Scheme",
       short: `PTR ${m[1]}%`,
       css:"sh-type-ptr" };
   }
@@ -2538,16 +2538,16 @@ function parseSchemeType(deal) {
       short: `${m[1]}% Off`,
       css:"sh-type-percent" };
   }
-  // Flat â‚¹X off
-  if (/flat\s*â‚¹?\s*[\d.]+/i.test(d)) {
+  // Flat ₹X off
+  if (/flat\s*₹?\s*[\d.]+/i.test(d)) {
     const m = d.match(/([\d.]+)/);
-    return { type:"flat", icon:"âš¡", label:"Flat Discount",
-      short: `Flat â‚¹${m[1]} Off`,
+    return { type:"flat", icon:"⚡", label:"Flat Discount",
+      short: `Flat ₹${m[1]} Off`,
       css:"sh-type-flat" };
   }
   // Anything else
-  return { type:"other", icon:"âœ¨", label:"Special Offer",
-    short: d.length > 22 ? d.slice(0,20)+"â€¦" : d,
+  return { type:"other", icon:"✨", label:"Special Offer",
+    short: d.length > 22 ? d.slice(0,20)+"…" : d,
     css:"sh-type-other" };
 }
 
@@ -2583,7 +2583,7 @@ let _schemesOnlyFilter = false;
 
 function getProductScheme(p) {
   if (!p) return null;
-  // âš¡ Improvement 1 â€” O(1) index lookup instead of O(N) .find() on every call
+  // ⚡ Improvement 1 — O(1) index lookup instead of O(N) .find() on every call
   const s = _schemeForProduct(p);
   return s ? s.deal : (p.scheme || null);
 }
@@ -2604,12 +2604,12 @@ function loadSchemes() {
     const s = localStorage.getItem("ja_schemes");
     schemes = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_SCHEMES));
   } catch { schemes = JSON.parse(JSON.stringify(DEFAULT_SCHEMES)); }
-  _buildSchemeIndex(); // âš¡ build index immediately after load
+  _buildSchemeIndex(); // ⚡ build index immediately after load
 }
 
 function saveSchemes() {
   try { localStorage.setItem("ja_schemes", JSON.stringify(schemes)); } catch {}
-  // âš¡ Improvement 3 â€” single batch write instead of N individual writes
+  // ⚡ Improvement 3 — single batch write instead of N individual writes
   if (window._fb && window._fb.FB_OK) {
     window._fb.saveSchemesBatch(schemes);
   }
@@ -2617,10 +2617,10 @@ function saveSchemes() {
   _buildSchemeIndex();
 }
 
-// â”€â”€â”€ Improvement 1: Scheme lookup index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Improvement 1: Scheme lookup index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Built once, O(1) lookup instead of O(N) find() on every product render
-let _schemeIndex = {}; // UPPERCASE_MED_NAME â†’ scheme object
-let _productByName = {}; // UPPERCASE_NAME â†’ product (built alongside scheme index)
+let _schemeIndex = {}; // UPPERCASE_MED_NAME → scheme object
+let _productByName = {}; // UPPERCASE_NAME → product (built alongside scheme index)
 
 function _buildSchemeIndex() {
   _schemeIndex = {};
@@ -2633,13 +2633,13 @@ function _buildSchemeIndex() {
   products.forEach(p => { if (p.name) _productByName[p.name.toUpperCase()] = p; });
 }
 
-// Fast O(1) lookup â€” checks exact key first, then partial match fallback
+// Fast O(1) lookup — checks exact key first, then partial match fallback
 function _schemeForProduct(p) {
   if (!p) return null;
   const name = p.name.toUpperCase();
   // 1. Exact match
   if (_schemeIndex[name]) return _schemeIndex[name];
-  // 2. Partial match â€” check if any scheme med is contained in product name
+  // 2. Partial match — check if any scheme med is contained in product name
   for (const key of Object.keys(_schemeIndex)) {
     if (name.includes(key)) return _schemeIndex[key];
   }
@@ -2665,11 +2665,11 @@ function updateSchemeTicker() {
     inner.innerHTML = '<div class="scheme-ticker-item">No active deals right now</div>';
     return;
   }
-  // Show up to 3 scheme names in ticker â€” duplicate only if enough items for loop to make sense
+  // Show up to 3 scheme names in ticker — duplicate only if enough items for loop to make sense
   const items = schemes.slice(0,3).map(s =>
-    `<div class="scheme-ticker-item">ðŸŽ ${s.med} â€” ${s.deal}</div>`
+    `<div class="scheme-ticker-item">ðŸŽ ${s.med} — ${s.deal}</div>`
   ).join("") + (schemes.length > 3
-    ? schemes.slice(0,3).map(s => `<div class="scheme-ticker-item">ðŸŽ ${s.med} â€” ${s.deal}</div>`).join("")
+    ? schemes.slice(0,3).map(s => `<div class="scheme-ticker-item">ðŸŽ ${s.med} — ${s.deal}</div>`).join("")
     : "");
   inner.innerHTML = items;
 }
@@ -2694,12 +2694,12 @@ function renderSchemes() {
     const badgeLabel = isExpired ? "Expired" : "HOT DEAL";
     const validityText = s.validity
       ? (isExpired ? "âš ï¸ Expired" : "â³ Valid till " + formatDate(s.validity))
-      : "ðŸŸ¢ Active Now";
+      : "🟢 Active Now";
     const isCustom = schemes.find(x => x.id === s.id);
     return `
       <div class="scheme-card" onclick="schemeCardClick(${s.id})">
         <span class="scheme-card-badge">${badgeLabel}</span>
-        <button class="scheme-admin-del ${isAdmin && isCustom ? 'show' : ''}" onclick="event.stopPropagation();deleteScheme(${s.id})">âœ•</button>
+        <button class="scheme-admin-del ${isAdmin && isCustom ? 'show' : ''}" onclick="event.stopPropagation();deleteScheme(${s.id})">✕</button>
         <div class="scheme-card-name">${s.med}</div>
         <div class="scheme-card-company">${s.company}</div>
         <div class="scheme-card-deal">
@@ -2732,9 +2732,9 @@ function schemeCardClick(id) {
   if (p) {
     const inCart = cart.some(c => c.id === p.id);
     if (inCart) {
-      // Already in cart â€” go to cart
+      // Already in cart — go to cart
       openCart();
-      showToast("Already in order â€” adjust qty in cart");
+      showToast("Already in order — adjust qty in cart");
     } else {
       // Open qty picker directly
       openQtyPicker(p.id);
@@ -2760,14 +2760,14 @@ function openSchemeModal(editId) {
     document.getElementById("sDeal").value = s.deal;
     document.getElementById("sValidity").value = s.validity || "";
     titleEl.textContent = "âœï¸ Edit Scheme";
-    saveBtn.textContent = "ðŸ’¾ Save Changes";
+    saveBtn.textContent = "💾 Save Changes";
   } else {
     document.getElementById("sMedName").value = "";
     document.getElementById("sCompany").value = "";
     document.getElementById("sDeal").value = "";
     document.getElementById("sValidity").value = "";
-    titleEl.textContent = "ðŸ”¥ Add Hot Deal";
-    saveBtn.textContent = "ðŸ”¥ Add Deal";
+    titleEl.textContent = "🔥 Add Hot Deal";
+    saveBtn.textContent = "🔥 Add Deal";
   }
   document.getElementById("schemeModal").classList.add("open");
   setTimeout(() => document.getElementById("sMedName").focus(), 100);
@@ -2793,7 +2793,7 @@ function sMedSearch(val) {
   for (var j = 0; j < matches.length; j++) {
     var prod = matches[j];
     var subLine = prod.company
-      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + prod.company + (prod.packing ? " Â· " + prod.packing : "") + "</div>"
+      ? '<div style="font-size:11px;color:#64748B;font-weight:600">' + prod.company + (prod.packing ? " · " + prod.packing : "") + "</div>"
       : "";
     html += '<div data-idx="' + j + '" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9">'
       + '<div style="font-size:13px;font-weight:800;color:var(--text,#0f172a)">' + prod.name + "</div>"
@@ -2825,7 +2825,7 @@ function closeSchemeModal() {
 }
 
 function saveScheme() {
-  if (!isAdmin) { showToast("â›” Admin only", "error"); return; }
+  if (!isAdmin) { showToast("⛔ Admin only", "error"); return; }
   const med = document.getElementById("sMedName").value.trim();
   const deal = document.getElementById("sDeal").value.trim();
   if (!med) { showToast("Medicine name required!", "error"); return; }
@@ -2843,13 +2843,13 @@ function saveScheme() {
     if (idx !== -1) {
       schemes[idx] = { ...schemes[idx], ...schemeData };
     } else {
-      // Was a DEFAULT_SCHEME â€” add as custom override (Fix 3: Number() to avoid type mismatch)
+      // Was a DEFAULT_SCHEME — add as custom override (Fix 3: Number() to avoid type mismatch)
       schemes.push({ id: Number(editId), ...schemeData });
     }
-    showToast("âœ… Scheme updated!");
+    showToast("✅ Scheme updated!");
   } else {
     schemes.push({ id: Date.now(), ...schemeData });
-    showToast("ðŸ”¥ Deal added successfully!");
+    showToast("🔥 Deal added successfully!");
   }
   saveSchemes();
   closeSchemeModal();
@@ -2914,13 +2914,13 @@ function updateCartUI() {
     if (pill) {
       pill.style.display = "flex";
       pillCount.textContent = `${totalQty} Item's`;
-      // Try to show a â‚¹ total if PTR available
+      // Try to show a ₹ total if PTR available
       let rupeeTotal = 0;
       cart.forEach(item => {
         const p = products.find(x => x.id === item.id);
         if (p && p.ptr) rupeeTotal += p.ptr * item.qty;
       });
-      pillTotal.textContent = rupeeTotal > 0 ? `â‚¹${rupeeTotal.toFixed(2)}` : `${count} product${count !== 1 ? 's' : ''}`;
+      pillTotal.textContent = rupeeTotal > 0 ? `₹${rupeeTotal.toFixed(2)}` : `${count} product${count !== 1 ? 's' : ''}`;
     }
   } else {
     countEl.classList.remove("show");
@@ -2931,7 +2931,7 @@ function updateCartUI() {
 function toggleCart(productId) {
   const existing = cart.findIndex(c => c.id === productId);
   if (existing !== -1) {
-    // Already in cart â€” remove it
+    // Already in cart — remove it
     cart.splice(existing, 1);
     saveCart();
     updateCartUI();
@@ -2943,7 +2943,7 @@ function toggleCart(productId) {
   }
 }
 
-// â”€â”€ Qty Picker â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€ Qty Picker â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 let _qtyPickerProductId = null;
 
 function openQtyPicker(productId) {
@@ -2959,7 +2959,7 @@ function openQtyPicker(productId) {
   let html = `
     <div style="padding:0 4px 8px">
       <div style="font-size:16px;font-weight:900;color:#1E293B;margin-bottom:2px">${p.name}</div>
-      <div style="font-size:12px;color:#64748B;font-weight:600;margin-bottom:${deal ? '10px' : '16px'}">${p.company} Â· ${p.packing}</div>
+      <div style="font-size:12px;color:#64748B;font-weight:600;margin-bottom:${deal ? '10px' : '16px'}">${p.company} · ${p.packing}</div>
       ${deal ? `<div style="background:#fef3c7;color:#92400e;font-size:13px;font-weight:800;padding:8px 12px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;gap:6px;"><span>ðŸŽ</span> Scheme: ${deal}</div>` : ""}
     </div>`;
 
@@ -2976,7 +2976,7 @@ function openQtyPicker(productId) {
 
   html += `
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-      <button onclick="adjPickerQty(-1)" style="width:44px;height:44px;border-radius:12px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:20px;font-weight:900;color:#00897b;cursor:pointer;font-family:inherit;flex-shrink:0">âˆ’</button>
+      <button onclick="adjPickerQty(-1)" style="width:44px;height:44px;border-radius:12px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:20px;font-weight:900;color:#00897b;cursor:pointer;font-family:inherit;flex-shrink:0">−</button>
       <input id="pickerQtyInput" type="number" value="${suggestedQty}" min="1" inputmode="numeric"
         style="flex:1;padding:11px;border-radius:12px;border:2px solid #00897b;font-size:20px;font-weight:900;text-align:center;font-family:inherit;outline:none;color:#1E293B"
         oninput="updatePickerScheme()" />
@@ -3037,7 +3037,7 @@ function confirmQtyPicker(boxQty, unit) {
   updateCartUI();
   updateCardBtn(p.id, true);
   closeQtyPicker();
-  showToast(`âœ“ ${p.name.substring(0,20)} added â€” ${qty} ${itemUnit === "box" ? (qty===1?"box":"boxes") : "strips"}${schemeText ? " Â· " + schemeText : ""}`);
+  showToast(`✓ ${p.name.substring(0,20)} added — ${qty} ${itemUnit === "box" ? (qty===1?"box":"boxes") : "strips"}${schemeText ? " · " + schemeText : ""}`);
   const fab = document.getElementById("cartFab");
   fab.classList.add("has-items");
   setTimeout(() => fab.classList.remove("has-items"), 500);
@@ -3057,14 +3057,14 @@ function updateCardBtn(id, inCart) {
     const btn = wrap.querySelector(".add-cart-btn");
     if (btn) {
       btn.className = "add-cart-btn" + (inCart ? " in-cart" : "");
-      btn.innerHTML = inCart ? "âœ“ Added" : "+ Cart";
+      btn.innerHTML = inCart ? "✓ Added" : "+ Cart";
     }
   }
   // In detail view
   if (typeof currentDetailId !== "undefined" && currentDetailId === id) {
     const db = document.getElementById("detailCartBtn");
     if (db) {
-      db.textContent = inCart ? "âœ“ In Cart â€” Remove" : "+ Add to Cart";
+      db.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
       db.style.background = inCart ? "#00897b" : "#fff";
       db.style.color = inCart ? "#fff" : "#00897b";
     }
@@ -3077,7 +3077,7 @@ function toggleCartFromDetail() {
   // refresh detail button
   const inCart = cart.some(c => c.id === currentDetailId);
   const btn = document.getElementById("detailCartBtn");
-  btn.textContent = inCart ? "âœ“ In Cart â€” Remove" : "+ Add to Cart";
+  btn.textContent = inCart ? "✓ In Cart — Remove" : "+ Add to Cart";
   btn.style.background = inCart ? "#00897b" : "#fff";
   btn.style.color = inCart ? "#fff" : "#00897b";
 }
@@ -3126,14 +3126,14 @@ function renderCartItems() {
   if (boxItems > 0 && stripItems > 0) totalLabel = `${stripItems} strips + ${boxItems} boxes`;
   else if (boxItems > 0) totalLabel = `${boxItems} ${boxItems === 1 ? "box" : "boxes"}`;
   else totalLabel = `${totalQty} strips`;
-  subtitleEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} Â· ${totalLabel}`;
+  subtitleEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} · ${totalLabel}`;
   totalItemsEl.textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""}`;
   totalQtyEl.textContent = totalLabel;
 
   if (!cart.length) {
     wrap.innerHTML = `
       <div class="cart-empty">
-        <div class="cart-empty-icon">ðŸ›’</div>
+        <div class="cart-empty-icon">🛒</div>
         <div class="cart-empty-title">Order is empty</div>
         <div class="cart-empty-sub">Go back and tap "+ Cart" on any medicine</div>
       </div>`;
@@ -3149,11 +3149,11 @@ function renderCartItems() {
     <div class="cart-item-card" id="cartItem_${item.id}">
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-meta">${item.company} Â· ${item.packing}</div>
+        <div class="cart-item-meta">${item.company} · ${item.packing}</div>
         ${schemeText ? `<div style="margin-top:4px;display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">ðŸŽ ${schemeText}</div>` : ""}
       </div>
       <div class="qty-stepper">
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">âˆ’</button>
+        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
         <span class="qty-val" id="qty_${item.id}">${item.qty}</span>
         <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
       </div>
@@ -3203,7 +3203,7 @@ function changeQty(productId, delta) {
   else if (boxItems > 0) totalLabel = `${boxItems} ${boxItems === 1 ? "box" : "boxes"}`;
   else totalLabel = `${totalQty} strips`;
   document.getElementById("cartTotalQty").textContent = totalLabel;
-  document.getElementById("cartSubtitle").textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} Â· ${totalLabel}`;
+  document.getElementById("cartSubtitle").textContent = `${cart.length} item${cart.length !== 1 ? "s" : ""} · ${totalLabel}`;
   // Update pill bar too
   const pill = document.getElementById("cartPillBar");
   const pillCount = document.getElementById("cartPillCount");
@@ -3215,7 +3215,7 @@ function changeQty(productId, delta) {
       const p = products.find(x => x.id === item.id);
       if (p && p.ptr) rupeeTotal += p.ptr * item.qty;
     });
-    if (pillTotal) pillTotal.textContent = rupeeTotal > 0 ? `â‚¹${rupeeTotal.toFixed(2)}` : `${cart.length} product${cart.length !== 1 ? 's' : ''}`;
+    if (pillTotal) pillTotal.textContent = rupeeTotal > 0 ? `₹${rupeeTotal.toFixed(2)}` : `${cart.length} product${cart.length !== 1 ? 's' : ''}`;
   }
 }
 
@@ -3227,7 +3227,7 @@ function removeCartItem(productId) {
   renderProductList();
 }
 
-// â”€â”€â”€ ORDER SENDING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ ORDER SENDING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function openOrderOptions() {
   if (!cart.length) { showToast("Add items to your order first!", "error"); return; }
   document.getElementById("orderOptionsOverlay").classList.add("open");
@@ -3260,7 +3260,7 @@ function buildOrderText() {
   const totalQty = cart.reduce((s, c) => s + c.qty, 0);
   const addrPart = address ? ` | Addr: ${address}` : "";
   const srPart = (srMode && currentSR && srActiveShop)
-    ? `\nðŸ§‘â€ðŸ’¼ SR: ${currentSR.name} (${currentSR.code}) â€” ordering for *${srActiveShop}*`
+    ? `\nðŸ§‘â€💼 SR: ${currentSR.name} (${currentSR.code}) — ordering for *${srActiveShop}*`
     : "";
 
   const noteEl = document.getElementById("cartOrderNote");
@@ -3294,7 +3294,7 @@ function sendWhatsApp() {
   // Show success after short delay
   setTimeout(() => {
     showOrderSuccess(
-      "ðŸ’¬",
+      "💬",
       "WhatsApp Opened!",
       "Your order has been prepared.\nSend the message to complete the order."
     );
@@ -3320,9 +3320,9 @@ function sendDirectOrder() {
   recordOrderHistory(JSON.parse(JSON.stringify(cart)));
   closeOrderOptions();
   showOrderSuccess(
-    "âœ…",
+    "✅",
     "Order Placed!",
-    `Order #${orderData.id}\nRecorded for ${name}\n${orderData.items.length} items Â· ${orderData.totalQty} strips\n\nJain Agencies will confirm shortly.`
+    `Order #${orderData.id}\nRecorded for ${name}\n${orderData.items.length} items · ${orderData.totalQty} strips\n\nJain Agencies will confirm shortly.`
   );
   // Clear cart after direct order
   cart = [];
@@ -3367,7 +3367,7 @@ function updateReorderBanner() {
   banner.classList.add("show");
   document.getElementById("reorderName").textContent = last.retailer || "Your Shop";
   document.getElementById("reorderMeta").textContent =
-    `${last.items.length} items Â· ${last.totalQty} strips Â· ${last.timestamp}`;
+    `${last.items.length} items · ${last.totalQty} strips · ${last.timestamp}`;
 }
 
 function reorderLast() {
@@ -3386,7 +3386,7 @@ function reorderLast() {
   updateReorderBanner();
   renderCartItems();
 
-  showToast("â†º Last order reloaded!");
+  showToast("↺ Last order reloaded!");
 
   // Bounce FAB
   const fab = document.getElementById("cartFab");
@@ -3410,7 +3410,7 @@ function renderHistoryList() {
   if (!orders.length) {
     wrap.innerHTML = `
       <div class="history-empty">
-        <div class="history-empty-icon">ðŸ“‹</div>
+        <div class="history-empty-icon">📋</div>
         <div class="history-empty-text">No order history yet.<br>Place your first order!</div>
       </div>`;
     return;
@@ -3438,13 +3438,13 @@ function renderHistoryList() {
           </div>
           <div>
             <div class="history-order-time">${order.timestamp}</div>
-            <div class="history-order-meta">${order.items.length} items Â· ${order.totalQty} strips</div>
+            <div class="history-order-meta">${order.items.length} items · ${order.totalQty} strips</div>
           </div>
         </div>
         <div class="history-order-items">${itemsHtml}</div>
         <div class="history-order-foot">
           <button class="history-reorder-btn" onclick="reorderFromHistory('${order.id}')">
-            â†º Reorder This
+            ↺ Reorder This
           </button>
           <div class="history-status-badge">â³ ${order.status || "Pending"}</div>
         </div>
@@ -3467,7 +3467,7 @@ function reorderFromHistory(orderId) {
   renderCartItems();
 
   closeHistory();
-  showToast(`â†º Order from ${order.retailer} reloaded!`);
+  showToast(`↺ Order from ${order.retailer} reloaded!`);
 
   const fab = document.getElementById("cartFab");
   fab.classList.add("has-items");
@@ -3492,7 +3492,7 @@ function loadStockAlerts() {
   updateBellDot();
 }
 
-// â”€â”€ FCM PUSH NOTIFICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€ FCM PUSH NOTIFICATIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 
 // Add a push notification into the in-app notification centre
 function addInAppNotification(title, body, type) {
@@ -3539,7 +3539,7 @@ async function initFCMForRetailer(retailerId) {
     if (token) {
       localStorage.setItem("ja_fcm_token", token);
       localStorage.setItem("ja_fcm_req", String(Date.now()));
-      console.log("ðŸ”” Push notifications enabled");
+      console.log("🔔 Push notifications enabled");
     }
   }, 3000);
 }
@@ -3570,7 +3570,7 @@ function toggleWatch(productId) {
     const p = products.find(x => x.id === productId);
     if (!p) return;
     watchList.push(productId);
-    showToast("ðŸ”” You'll be notified when back in stock!");
+    showToast("🔔 You'll be notified when back in stock!");
   }
   saveStockAlerts();
   renderProductList();
@@ -3584,7 +3584,7 @@ function toggleWatchFromDetail() {
   if (!p) return;
   const btn = document.getElementById("detailNotifyBtn");
   const watching = isWatching(currentDetailId);
-  btn.textContent = watching ? "ðŸ”” Watching â€” Unwatch" : "ðŸ”” Notify Me When In Stock";
+  btn.textContent = watching ? "🔔 Watching — Unwatch" : "🔔 Notify Me When In Stock";
   btn.style.background = watching ? "#fff7ed" : "#fff";
 }
 
@@ -3619,12 +3619,12 @@ function fireStockAlert(product) {
   renderProductList();
 }
 
-// â”€â”€â”€ PUSH NOTIFICATION BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ PUSH NOTIFICATION BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function showPushNotif(product, timeStr) {
   pendingPushProductId = product.id;
-  document.getElementById("pushTitle").textContent = product.name + " is back in stock! ðŸŽ‰";
+  document.getElementById("pushTitle").textContent = product.name + " is back in stock! 🎉";
   document.getElementById("pushSub").textContent =
-    `${product.company} Â· ${product.packing} Â· Available now`;
+    `${product.company} · ${product.packing} · Available now`;
   document.getElementById("pushTime").textContent = timeStr || "just now";
 
   const notif = document.getElementById("stockPushNotif");
@@ -3650,7 +3650,7 @@ function pushAddToCart() {
   closePushNotif();
 }
 
-// â”€â”€â”€ BELL DOT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ BELL DOT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function updateBellDot() {
   const unread = stockAlerts.filter(a => a.unread).length;
   const dot = document.getElementById("bellDot");
@@ -3658,7 +3658,7 @@ function updateBellDot() {
   else dot.classList.remove("show");
 }
 
-// â”€â”€â”€ NOTIFICATION CENTRE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ NOTIFICATION CENTRE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function openNotifCentre() {
   stockAlerts.forEach(a => a.unread = false);
   saveStockAlerts();
@@ -3686,7 +3686,7 @@ function renderNotifCentre() {
     if (!stockAlerts.length) {
       wrap.innerHTML = `
         <div class="notif-empty">
-          <div class="notif-empty-icon">ðŸ””</div>
+          <div class="notif-empty-icon">🔔</div>
           <div class="notif-empty-text">No stock alerts yet.<br>Watch out-of-stock items<br>to get notified!</div>
         </div>`;
       return;
@@ -3694,13 +3694,13 @@ function renderNotifCentre() {
     wrap.innerHTML = stockAlerts.map(a => `
       <div class="notif-item-card ${a.unread ? "unread" : ""}">
         ${a.unread ? '<div class="notif-unread-dot"></div>' : '<div style="width:8px;flex-shrink:0"></div>'}
-        <div class="notif-item-icon">âœ…</div>
+        <div class="notif-item-icon">✅</div>
         <div class="notif-item-text">
           <div class="notif-item-title">${a.productName} is back in stock!</div>
-          <div class="notif-item-sub">${a.company} Â· ${a.packing}</div>
+          <div class="notif-item-sub">${a.company} · ${a.packing}</div>
           <div class="notif-item-time">ðŸ• ${a.time}</div>
         </div>
-        <button class="notif-item-remove" onclick="removeAlert(${a.id})">âœ•</button>
+        <button class="notif-item-remove" onclick="removeAlert(${a.id})">✕</button>
       </div>`).join("");
 
   } else {
@@ -3710,18 +3710,18 @@ function renderNotifCentre() {
       wrap.innerHTML = `
         <div class="notif-empty">
           <div class="notif-empty-icon">ðŸ‘ï¸</div>
-          <div class="notif-empty-text">Not watching any products.<br>Tap ðŸ”” Notify Me on<br>out-of-stock items!</div>
+          <div class="notif-empty-text">Not watching any products.<br>Tap 🔔 Notify Me on<br>out-of-stock items!</div>
         </div>`;
       return;
     }
     wrap.innerHTML = watched.map(p => `
       <div class="notif-watching-card">
-        <span class="notif-watching-icon">ðŸ’Š</span>
+        <span class="notif-watching-icon">💊</span>
         <div style="flex:1;min-width:0">
           <div class="notif-watching-name">${p.name}</div>
           <div class="notif-watching-company">${p.company}</div>
         </div>
-        <button class="notif-unwatch-btn" onclick="removeWatch(${p.id})">âœ• Unwatch</button>
+        <button class="notif-unwatch-btn" onclick="removeWatch(${p.id})">✕ Unwatch</button>
       </div>`).join("");
   }
 }
@@ -3748,13 +3748,13 @@ let currentRetailer = null;   // logged-in retailer object
 let dlUploaded = false;
 let gstUploaded = false;
 
-// â”€â”€â”€ Storage helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Storage helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function getRetailers() {
   try { return JSON.parse(localStorage.getItem("ja_retailers") || "[]"); } catch { return []; }
 }
 function saveRetailers(list) {
   try { localStorage.setItem("ja_retailers", JSON.stringify(list)); } catch {}
-  // Firebase sync â€” write each changed retailer
+  // Firebase sync — write each changed retailer
   if (window._fb && window._fb.FB_OK) {
     list.forEach(r => window._fb.saveRetailer(r));
   }
@@ -3770,14 +3770,14 @@ function saveRetailerSession(r) {
   }
 }
 
-// â”€â”€â”€ Boot: check if retailer is already logged in â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Boot: check if retailer is already logged in â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function checkRetailerAuth() {
-  // TRIAL MODE: no login required â€” always allow access
+  // TRIAL MODE: no login required — always allow access
   document.getElementById("retailer-gate").style.display = "none";
   return true;
 }
 
-// â”€â”€â”€ Gate tab switcher â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Gate tab switcher â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function switchGateTab(tab) {
   document.getElementById("gateTabLogin").classList.toggle("active", tab === "login");
   document.getElementById("gateTabRegister").classList.toggle("active", tab === "register");
@@ -3794,7 +3794,7 @@ function showGateLoginPanel() {
   document.getElementById("gateTabRegister").classList.remove("active");
 }
 
-// â”€â”€â”€ FILE UPLOAD HANDLER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ FILE UPLOAD HANDLER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function handleFileUpload(type, input) {
   const file = input.files[0];
   if (!file) return;
@@ -3802,18 +3802,18 @@ function handleFileUpload(type, input) {
   if (file.size > maxSize) { showToast("File too large! Max 5MB", "error"); input.value = ""; return; }
   if (type === "dl") {
     dlUploaded = true;
-    document.getElementById("dlFileName").textContent = "âœ“ " + file.name;
+    document.getElementById("dlFileName").textContent = "✓ " + file.name;
     document.getElementById("dlUploadBox").classList.add("uploaded");
-    document.getElementById("dlUploadBox").querySelector(".gate-upload-icon").textContent = "âœ…";
+    document.getElementById("dlUploadBox").querySelector(".gate-upload-icon").textContent = "✅";
   } else {
     gstUploaded = true;
-    document.getElementById("gstFileName").textContent = "âœ“ " + file.name;
+    document.getElementById("gstFileName").textContent = "✓ " + file.name;
     document.getElementById("gstUploadBox").classList.add("uploaded");
-    document.getElementById("gstUploadBox").querySelector(".gate-upload-icon").textContent = "âœ…";
+    document.getElementById("gstUploadBox").querySelector(".gate-upload-icon").textContent = "✅";
   }
 }
 
-// â”€â”€â”€ REGISTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ REGISTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function doRetailerRegister() {
   const errEl = document.getElementById("regError");
   errEl.classList.remove("show");
@@ -3832,7 +3832,7 @@ function doRetailerRegister() {
   const gst     = document.getElementById("regGST").value.trim().toUpperCase();
   const consent = document.getElementById("regConsent").checked;
 
-  // No mandatory fields â€” only need a name to identify the retailer
+  // No mandatory fields — only need a name to identify the retailer
   if (!name) {
     errEl.textContent = "âš ï¸ Please enter your name to continue.";
     errEl.classList.add("show"); return;
@@ -3841,7 +3841,7 @@ function doRetailerRegister() {
   const retailers = getRetailers();
   // Only block duplicate mobile if user actually filled it in
   if (mobile && retailers.find(r => r.mobile === mobile)) {
-    errEl.textContent = "âš ï¸ This mobile is already registered â€” please login instead.";
+    errEl.textContent = "âš ï¸ This mobile is already registered — please login instead.";
     errEl.classList.add("show"); return;
   }
 
@@ -3865,7 +3865,7 @@ function doRetailerRegister() {
   retailers.push(retailer);
   // Save locally first (instant)
   try { localStorage.setItem("ja_retailers", JSON.stringify(retailers)); } catch {}
-  // Push to Firestore â€” admin sees it immediately on their device
+  // Push to Firestore — admin sees it immediately on their device
   if (window._fb && window._fb.FB_OK) {
     window._fb.saveRetailer(retailer).then(() => {
       // Signal pending screen to switch to Firebase polling
@@ -3888,7 +3888,7 @@ function doRetailerRegister() {
   showToast("Registration submitted! Awaiting approval.");
 }
 
-// â”€â”€â”€ LOGIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ LOGIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function doRetailerLogin() {
   const errEl = document.getElementById("loginError");
   errEl.classList.remove("show");
@@ -3902,7 +3902,7 @@ function doRetailerLogin() {
     document.getElementById("loginId").focus();
     return;
   }
-  // Basic format check â€” must be 10-digit number or contain @
+  // Basic format check — must be 10-digit number or contain @
   const isMobile = /^\d{10}$/.test(id);
   const isEmail  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(id);
   if (!isMobile && !isEmail) {
@@ -3936,7 +3936,7 @@ function doRetailerLogin() {
     if (nameInput && !nameInput.value) nameInput.value = r.shop;
     renderOutstandingBanner();
     showView("search-view");
-    showToast("Welcome back, " + r.name.split(" ")[0] + "! ðŸ‘‹");
+    showToast("Welcome back, " + r.name.split(" ")[0] + "! 👋");
   } else if (r.status === "rejected") {
     showGateRejected(r);
   } else {
@@ -3944,7 +3944,7 @@ function doRetailerLogin() {
   }
 }
 
-// â”€â”€â”€ LOGOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ LOGOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function doRetailerLogout() {
   saveRetailerSession(null);
   currentRetailer = null;
@@ -3954,7 +3954,7 @@ function doRetailerLogout() {
   document.getElementById("loginPwd").value = "";
 }
 
-// â”€â”€â”€ PENDING SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ PENDING SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function showGatePending(r) {
   document.getElementById("retailer-gate").classList.add("show");
   document.getElementById("gatePanelLogin").style.display = "none";
@@ -3963,12 +3963,12 @@ function showGatePending(r) {
 
   document.getElementById("pendingDetailsCard").innerHTML = `
     <div class="gate-pending-row"><span class="gate-pending-key">Name</span><span class="gate-pending-val">${r.name}</span></div>
-    <div class="gate-pending-row"><span class="gate-pending-key">Shop</span><span class="gate-pending-val">${r.shop||"â€”"}</span></div>
-    <div class="gate-pending-row"><span class="gate-pending-key">Mobile</span><span class="gate-pending-val">${r.mobile||"â€”"}</span></div>
+    <div class="gate-pending-row"><span class="gate-pending-key">Shop</span><span class="gate-pending-val">${r.shop||"—"}</span></div>
+    <div class="gate-pending-row"><span class="gate-pending-key">Mobile</span><span class="gate-pending-val">${r.mobile||"—"}</span></div>
     <div class="gate-pending-row"><span class="gate-pending-key">Submitted</span><span class="gate-pending-val">${r.submittedAt}</span></div>
   `;
 
-  // Auto-poll every 3s â€” dismiss immediately when admin approves
+  // Auto-poll every 3s — dismiss immediately when admin approves
   clearInterval(window._pendingPoller);
   window._pendingPoller = setInterval(() => {
     const list  = getRetailers();
@@ -3980,7 +3980,7 @@ function showGatePending(r) {
       saveRetailerSession(fresh);
       currentRetailer = fresh;
       document.getElementById("retailer-gate").classList.remove("show");
-      showToast("âœ… Approved! Welcome to Jain Agencies.");
+      showToast("✅ Approved! Welcome to Jain Agencies.");
     } else if (fresh.status === "rejected") {
       clearInterval(window._pendingPoller);
       showGateRejected(fresh);
@@ -4003,7 +4003,7 @@ function showGateRejected(r) {
   document.querySelector(".gate-pending-badge").textContent = "âŒ Application Rejected";
 }
 
-// â”€â”€â”€ ADMIN: Retailer Requests â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ ADMIN: Retailer Requests â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderRetailerRequests() {
   const section = document.getElementById("retailerRequestsSection");
   const listEl = document.getElementById("rrList");
@@ -4033,29 +4033,29 @@ function renderRetailerRequests() {
     <div class="rr-card">
       <div class="rr-card-head">
         <div>
-          <div class="rr-name">ðŸ‘¤ ${r.name}</div>
+          <div class="rr-name">👤 ${r.name}</div>
           <div class="rr-shop">ðŸª ${r.shop}</div>
         </div>
         <span class="rr-status-pill ${r.status}">${
           r.status === "pending" ? "â³ Pending" :
-          r.status === "approved" ? "âœ… Approved" : "âŒ Rejected"
+          r.status === "approved" ? "✅ Approved" : "âŒ Rejected"
         }</span>
       </div>
       <div class="rr-card-body">
-        <div class="rr-detail-row"><span class="rr-detail-key">Mobile</span><span class="rr-detail-val">${r.mobile}${r.email ? ' Â· ' + r.email : ''}</span></div>
+        <div class="rr-detail-row"><span class="rr-detail-key">Mobile</span><span class="rr-detail-val">${r.mobile}${r.email ? ' · ' + r.email : ''}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Address</span><span class="rr-detail-val">${r.address}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Drug Lic.</span><span class="rr-detail-val">${r.dl}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">GST No.</span><span class="rr-detail-val">${r.gst}</span></div>
         <div class="rr-detail-row"><span class="rr-detail-key">Submitted</span><span class="rr-detail-val">${r.submittedAt}</span></div>
         ${r.approvedAt ? `<div class="rr-detail-row"><span class="rr-detail-key">Approved</span><span class="rr-detail-val">${r.approvedAt}</span></div>` : ""}
         <div class="rr-docs">
-          <span class="rr-doc-chip ${r.dlUploaded ? 'uploaded' : ''}">ðŸ“‘ Drug License ${r.dlUploaded ? 'âœ“ Uploaded' : 'â€” Not uploaded'}</span>
-          <span class="rr-doc-chip ${r.gstUploaded ? 'uploaded' : ''}">ðŸ§¾ GST Cert ${r.gstUploaded ? 'âœ“ Uploaded' : 'â€” Not uploaded'}</span>
+          <span class="rr-doc-chip ${r.dlUploaded ? 'uploaded' : ''}">📑 Drug License ${r.dlUploaded ? '✓ Uploaded' : '— Not uploaded'}</span>
+          <span class="rr-doc-chip ${r.gstUploaded ? 'uploaded' : ''}">🧾 GST Cert ${r.gstUploaded ? '✓ Uploaded' : '— Not uploaded'}</span>
         </div>
         
         <div class="rr-b2b-row">
           <div class="rr-b2b-field">
-            <div class="rr-b2b-label">ðŸ’¸ Outstanding (â‚¹)</div>
+            <div class="rr-b2b-label">💸 Outstanding (₹)</div>
             <input class="rr-b2b-input ${(r.outstanding||0) > 0 ? 'has-balance' : ''}" type="number" min="0" step="0.01"
               value="${r.outstanding || ''}" placeholder="0.00"
               onchange="setRetailerField('${r.id}','outstanding',parseFloat(this.value)||0);this.className='rr-b2b-input'+(this.value>0?' has-balance':'')"
@@ -4067,21 +4067,21 @@ function renderRetailerRequests() {
               onchange="setRetailerField('${r.id}','beat',this.value.trim())" />
           </div>
           <div class="rr-b2b-field">
-            <div class="rr-b2b-label">ðŸ‘¤ Salesman</div>
+            <div class="rr-b2b-label">👤 Salesman</div>
             <input class="rr-b2b-input" type="text" value="${r.salesman || ''}" placeholder="e.g. Rahul"
               onchange="setRetailerField('${r.id}','salesman',this.value.trim())" />
           </div>
         </div>
       </div>
       <div class="rr-card-foot">
-        ${r.status !== "approved" ? `<button class="rr-approve-btn" onclick="approveRetailer('${r.id}')">âœ… Approve</button>` : ""}
+        ${r.status !== "approved" ? `<button class="rr-approve-btn" onclick="approveRetailer('${r.id}')">✅ Approve</button>` : ""}
         ${r.status !== "rejected" ? `<button class="rr-reject-btn" onclick="rejectRetailer('${r.id}')">âŒ Reject</button>` : ""}
-        ${r.status !== "pending" ? `<button class="rr-revoke-btn" onclick="revokeRetailer('${r.id}')">â†© Reset</button>` : ""}
+        ${r.status !== "pending" ? `<button class="rr-revoke-btn" onclick="revokeRetailer('${r.id}')">↩ Reset</button>` : ""}
       </div>
     </div>`).join("");
 }
 
-// â”€â”€â”€ Set a single field on a retailer (outstanding, beat, salesman) â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Set a single field on a retailer (outstanding, beat, salesman) â”€â”€â”€â”€â”€â”€─
 function setRetailerField(id, field, value) {
   const retailers = getRetailers();
   const r = retailers.find(x => x.id === id);
@@ -4097,7 +4097,7 @@ function setRetailerField(id, field, value) {
   showToast(`Retailer ${field} updated`);
 }
 
-// â”€â”€â”€ Outstanding banner shown to logged-in retailer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Outstanding banner shown to logged-in retailer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 function renderOutstandingBanner() {
   const sess = getRetailerSession();
   const banner = document.getElementById("outstandingBanner");
@@ -4108,7 +4108,7 @@ function renderOutstandingBanner() {
   const amt = parseFloat(r?.outstanding || 0);
   if (amt > 0) {
     banner.style.display = "flex";
-    document.getElementById("outstandingAmt").textContent = `â‚¹${amt.toLocaleString("en-IN")}`;
+    document.getElementById("outstandingAmt").textContent = `₹${amt.toLocaleString("en-IN")}`;
   } else {
     banner.style.display = "none";
   }
@@ -4122,7 +4122,7 @@ function approveRetailer(id) {
   r.approvedAt = new Date().toLocaleString("en-IN");
   // Save locally
   try { localStorage.setItem("ja_retailers", JSON.stringify(retailers)); } catch {}
-  // Firebase â€” direct field update (fast, triggers onSnapshot on all devices)
+  // Firebase — direct field update (fast, triggers onSnapshot on all devices)
   if (window._fb && window._fb.FB_OK) {
     window._fb.updateRetailer(id, { status: "approved", approvedAt: r.approvedAt });
   } else {
@@ -4136,7 +4136,7 @@ function approveRetailer(id) {
   try { localStorage.setItem("ja_approval_ping", id + "_" + Date.now()); } catch {}
   renderRetailerRequests();
   if (typeof renderDashboard === "function") renderDashboard();
-  showToast("âœ… Retailer approved â€” " + r.name);
+  showToast("✅ Retailer approved — " + r.name);
   triggerApprovalWA(r);
 }
 
@@ -4156,7 +4156,7 @@ function rejectRetailer(id) {
     saveRetailers(retailers);
   }
   renderRetailerRequests();
-  showToast("Retailer rejected â€” " + r.name);
+  showToast("Retailer rejected — " + r.name);
 }
 
 function revokeRetailer(id) {
@@ -4169,7 +4169,7 @@ function revokeRetailer(id) {
   r.rejectionReason = "";
   saveRetailers(retailers);
   renderRetailerRequests();
-  showToast("Reset to pending â€” " + r.name);
+  showToast("Reset to pending — " + r.name);
 }
 
 function showRetailerMenu() {
@@ -4183,12 +4183,12 @@ function showRetailerMenu() {
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const ORDER_STATUSES = ["Pending","Confirmed","Packed","Dispatched","Delivered"];
-const STATUS_EMOJIS  = { Pending:"â³", Confirmed:"âœ…", Packed:"ðŸ“¦", Dispatched:"ðŸšš", Delivered:"ðŸŽ‰", "WhatsApp Sent":"ðŸ’¬" };
+const STATUS_EMOJIS  = { Pending:"â³", Confirmed:"✅", Packed:"📦", Dispatched:"🚚", Delivered:"🎉", "WhatsApp Sent":"💬" };
 const STATUS_CSS     = { Pending:"pending", Confirmed:"confirmed", Packed:"packed", Dispatched:"dispatched", Delivered:"delivered", "WhatsApp Sent":"wa" };
 
 function saveOrders(orders) {
   try { localStorage.setItem("ja_orders", JSON.stringify(orders.slice(0,50))); } catch {}
-  // Firebase â€” sync all orders (individual writes handled in send functions)
+  // Firebase — sync all orders (individual writes handled in send functions)
 }
 
 async function fbSaveOrder(order) {
@@ -4225,11 +4225,11 @@ function updateOrderStatus(orderId, newStatus) {
   o.status = newStatus;
   o.statusUpdatedAt = new Date().toLocaleString("en-IN");
   saveOrders(orders); // localStorage cache
-  // Firebase live update â€” retailer sees status change instantly
+  // Firebase live update — retailer sees status change instantly
   if (window._fb && window._fb.FB_OK) {
     window._fb.updateOrder(orderId, { status: newStatus, statusUpdatedAt: o.statusUpdatedAt });
   }
-  showToast(`Order ${orderId} â†’ ${newStatus}`);
+  showToast(`Order ${orderId} → ${newStatus}`);
   if (currentAdminTab === "orders") renderAdminOrders();
   renderMyOrders();
   updateOrdersNavDot();
@@ -4268,7 +4268,7 @@ function renderMyOrders() {
   const wrap = document.getElementById("ordersViewList");
   if (!wrap) return;
   if (!orders.length) {
-    wrap.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94A3B8"><div style="font-size:52px;margin-bottom:12px">ðŸ“¦</div><div style="font-size:16px;font-weight:800;color:#64748B;margin-bottom:6px">No orders yet</div><div style="font-size:13px">Place your first order from the cart!</div></div>`;
+    wrap.innerHTML = `<div style="text-align:center;padding:60px 20px;color:#94A3B8"><div style="font-size:52px;margin-bottom:12px">📦</div><div style="font-size:16px;font-weight:800;color:#64748B;margin-bottom:6px">No orders yet</div><div style="font-size:13px">Place your first order from the cart!</div></div>`;
     return;
   }
   wrap.innerHTML = orders.map(o => buildOrderCard(o, false)).join("");
@@ -4281,7 +4281,7 @@ function buildOrderCard(o, adminMode) {
     const done   = statusIdx > i;
     const active = statusIdx === i;
     return `<div class="step-item ${done?"done":""} ${active?"active":""}">
-      <div class="step-circle">${done ? "âœ“" : (i+1)}</div>
+      <div class="step-circle">${done ? "✓" : (i+1)}</div>
       <div class="step-label">${s}</div>
     </div>`;
   }).join("");
@@ -4291,7 +4291,7 @@ function buildOrderCard(o, adminMode) {
       <select class="admin-status-select" style="flex:1" onchange="handleAdminStatusChange('${o.id}', this.value)">
         ${[...ORDER_STATUSES, "WhatsApp Sent"].map(s => `<option value="${s}" ${o.status===s?"selected":""}>${STATUS_EMOJIS[s]||""} ${s}</option>`).join("")}
       </select>
-      ${o.status !== "Dispatched" && o.status !== "Delivered" ? `<button onclick="openDispatchModal('${o.id}')" style="padding:10px 14px;border:none;border-radius:10px;background:linear-gradient(135deg,#f97316,#fb923c);color:#fff;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer;white-space:nowrap;flex-shrink:0">ðŸšš Dispatch</button>` : ""}
+      ${o.status !== "Dispatched" && o.status !== "Delivered" ? `<button onclick="openDispatchModal('${o.id}')" style="padding:10px 14px;border:none;border-radius:10px;background:linear-gradient(135deg,#f97316,#fb923c);color:#fff;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer;white-space:nowrap;flex-shrink:0">🚚 Dispatch</button>` : ""}
     </div>` : "";
 
   const itemsId = "oi_" + o.id.replace(/[^a-z0-9]/gi,"");
@@ -4301,7 +4301,7 @@ function buildOrderCard(o, adminMode) {
         <div>
           <div class="order-status-id">${o.id}</div>
           <div class="order-status-shop">ðŸª ${o.retailer}</div>
-          <div class="order-status-meta">${o.items.length} items Â· ${o.totalQty} strips Â· ${o.timestamp}</div>
+          <div class="order-status-meta">${o.items.length} items · ${o.totalQty} strips · ${o.timestamp}</div>
         </div>
         <span class="status-pill ${STATUS_CSS[o.status]||"pending"}">${STATUS_EMOJIS[o.status]||"â³"} ${o.status}</span>
       </div>
@@ -4311,21 +4311,21 @@ function buildOrderCard(o, adminMode) {
         <span class="dispatch-info-icon">${o.dispatch.icon}</span>
         <div style="flex:1">
           <div class="dispatch-info-text">Dispatched via ${o.dispatch.label}</div>
-          ${o.dispatch.details ? `<div class="dispatch-info-detail">ðŸ“‹ ${o.dispatch.details}</div>` : ""}
+          ${o.dispatch.details ? `<div class="dispatch-info-detail">📋 ${o.dispatch.details}</div>` : ""}
           ${o.dispatch.eta ? `<div class="dispatch-info-detail">â° ETA: ${o.dispatch.eta}</div>` : ""}
           <div class="dispatch-info-detail">ðŸ• ${o.dispatch.dispatchedAt}</div>
         </div>
       </div>` : ""}
       <div class="order-items-toggle" onclick="toggleOrderItems('${itemsId}')">
-        ðŸ“‹ ${o.items.length} items <span id="arr_${itemsId}" style="font-size:14px">â–¼</span>
+        📋 ${o.items.length} items <span id="arr_${itemsId}" style="font-size:14px">â–¼</span>
       </div>
       <div class="order-items-list" id="${itemsId}">
         ${o.items.map(i => `<div class="order-item-row"><span class="order-item-name">${i.name}</span><span class="order-item-qty">Ã—${i.qty}</span></div>`).join("")}
       </div>
       ${adminStatusHtml}
       <div class="order-card-foot">
-        <button class="order-invoice-btn" onclick="openInvoice('${o.id}')">ðŸ§¾ Invoice</button>
-        <button class="order-reorder-mini" onclick="reorderFromHistory('${o.id}');${!adminMode?"showView('search-view')":""}">â†º Reorder</button>
+        <button class="order-invoice-btn" onclick="openInvoice('${o.id}')">🧾 Invoice</button>
+        <button class="order-reorder-mini" onclick="reorderFromHistory('${o.id}');${!adminMode?"showView('search-view')":""}">↺ Reorder</button>
       </div>
     </div>`;
 }
@@ -4357,7 +4357,7 @@ function openInvoice(orderId) {
   const date    = o.timestamp || new Date().toLocaleString("en-IN");
 
   // Detect if inter-state (simplification: IGST if retailer state != CG)
-  // Default: intra-state CG â†’ CGST + SGST split
+  // Default: intra-state CG → CGST + SGST split
   const isIGST = false; // extend later with retailer state detection
 
   // Build table rows with HSN + GST breakup per line
@@ -4372,12 +4372,12 @@ function openInvoice(orderId) {
     if (ptr) { subtotal += lineAmt; totalGST += lineGST; }
     const half   = (lineGST / 2).toFixed(2);
     return `<tr>
-      <td style="font-weight:700">${i+1}. ${item.name}${p.batch ? `<br><span style="font-size:9px;color:#94A3B8;font-weight:600">Batch: ${p.batch} Â· Exp: ${p.expiry||"â€”"}</span>` : ""}</td>
+      <td style="font-weight:700">${i+1}. ${item.name}${p.batch ? `<br><span style="font-size:9px;color:#94A3B8;font-weight:600">Batch: ${p.batch} · Exp: ${p.expiry||"—"}</span>` : ""}</td>
       <td>${item.qty}</td>
-      <td>${p.packing || item.packing || "â€”"}</td>
-      <td style="font-size:10px">${p.hsn || "â€”"}</td>
-      <td>${ptr ? "â‚¹" + ptr.toFixed(2) : "â€”"}</td>
-      <td style="font-weight:800">${ptr ? "â‚¹" + lineAmt.toFixed(2) : "â€”"}</td>
+      <td>${p.packing || item.packing || "—"}</td>
+      <td style="font-size:10px">${p.hsn || "—"}</td>
+      <td>${ptr ? "₹" + ptr.toFixed(2) : "—"}</td>
+      <td style="font-weight:800">${ptr ? "₹" + lineAmt.toFixed(2) : "—"}</td>
     </tr>`;
   }).join("");
 
@@ -4385,7 +4385,7 @@ function openInvoice(orderId) {
 
   // Get retailer GST from session
   const sess = getRetailerSession();
-  const buyerGST = sess?.gst || "â€”";
+  const buyerGST = sess?.gst || "—";
   const buyerName = o.retailer;
 
   const invoiceHTML = `
@@ -4393,9 +4393,9 @@ function openInvoice(orderId) {
       <div class="inv-letterhead">
         <div>
           <div class="inv-brand-name">Jain Agencies</div>
-          <div class="inv-brand-tagline">Pharmaceutical Distributors Â· Rajnandgaon (C.G.)</div>
-          <div style="font-size:10px;color:#64748B;font-weight:700;margin-top:3px">GST: 22XXXXX0000X1ZX &nbsp;Â·&nbsp; DL No.: CG/DL/2024/XXXX</div>
-          <div style="font-size:9px;color:#94A3B8;margin-top:2px">ðŸ“ Kila Para, Near Digvijay College, Rajnandgaon (C.G.) &nbsp;Â·&nbsp; ðŸ“ž 90862-91862</div>
+          <div class="inv-brand-tagline">Pharmaceutical Distributors · Rajnandgaon (C.G.)</div>
+          <div style="font-size:10px;color:#64748B;font-weight:700;margin-top:3px">GST: 22XXXXX0000X1ZX &nbsp;·&nbsp; DL No.: CG/DL/2024/XXXX</div>
+          <div style="font-size:9px;color:#94A3B8;margin-top:2px">ðŸ“ Kila Para, Near Digvijay College, Rajnandgaon (C.G.) &nbsp;·&nbsp; 📞 90862-91862</div>
         </div>
         <div style="text-align:right">
           <div style="font-size:9px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px">Tax Invoice</div>
@@ -4425,16 +4425,16 @@ function openInvoice(orderId) {
 
       ${subtotal ? `
       <div class="inv-totals">
-        <div class="inv-total-row grand"><span>Grand Total</span><span>â‚¹${subtotal.toFixed(2)}</span></div>
+        <div class="inv-total-row grand"><span>Grand Total</span><span>₹${subtotal.toFixed(2)}</span></div>
       </div>` : `
       <div style="text-align:center;font-size:12px;color:#94A3B8;padding:12px">
-        (Add PTR prices in Admin â†’ Products for invoice totals)
+        (Add PTR prices in Admin → Products for invoice totals)
       </div>`}
 
       <div class="inv-footer">
-        E. &amp; O.E. Â· Subject to Rajnandgaon jurisdiction Â· Payment due within 15 days<br>
+        E. &amp; O.E. · Subject to Rajnandgaon jurisdiction · Payment due within 15 days<br>
         Goods once sold will not be taken back except for genuine quality complaints<br>
-        <strong>Jain Agencies Â· Rajnandgaon Â· 90862-91862</strong>
+        <strong>Jain Agencies · Rajnandgaon · 90862-91862</strong>
       </div>
     </div>`;
 
@@ -4452,7 +4452,7 @@ function shareInvoiceWA() {
   const o = orders.find(x => x.id === currentInvoiceOrderId);
   if (!o) return;
   const lines = o.items.map(i => `${i.name} Ã— ${i.qty}`).join("\n");
-  const text = `ðŸ§¾ Invoice from Jain Agencies\n\nBill To: ${o.retailer}\nOrder: ${o.id}\nDate: ${o.timestamp}\n\n${lines}\n\nTotal: ${o.items.length} items Â· ${o.totalQty} strips\n\nðŸ“ž Jain Agencies: 90862-91862\nðŸ“ Kila Para, Rajnandgaon`;
+  const text = `🧾 Invoice from Jain Agencies\n\nBill To: ${o.retailer}\nOrder: ${o.id}\nDate: ${o.timestamp}\n\n${lines}\n\nTotal: ${o.items.length} items · ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862\nðŸ“ Kila Para, Rajnandgaon`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
 }
 
@@ -4461,7 +4461,7 @@ function shareInvoiceWA() {
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const ANN_COLORS  = { info:"#3b82f6", warning:"#f59e0b", success:"#059669", urgent:"#ef4444" };
-const ANN_EMOJIS  = { info:"â„¹ï¸", warning:"âš ï¸", success:"âœ…", urgent:"ðŸ”´" };
+const ANN_EMOJIS  = { info:"â„¹ï¸", warning:"âš ï¸", success:"✅", urgent:"🔴" };
 let selectedAnnType = "info";
 let announcements = [];
 
@@ -4502,7 +4502,7 @@ function postAnnouncement() {
   document.getElementById("annBody").value  = "";
   renderNoticesBanner();
   renderAdminAnnList();
-  showToast("ðŸ“¢ Announcement posted!");
+  showToast("📢 Announcement posted!");
   triggerAnnouncementWA(ann);
 }
 
@@ -4522,11 +4522,11 @@ function renderNoticesBanner() {
   if (!announcements.length) { banner.classList.remove("show"); return; }
   banner.classList.add("show");
   scroll.innerHTML = announcements.slice(0,5).map(a => `
-    <div class="notice-card ${a.type}" data-emoji="${ANN_EMOJIS[a.type]||"ðŸ“¢"}">
+    <div class="notice-card ${a.type}" data-emoji="${ANN_EMOJIS[a.type]||"📢"}">
       <div class="notice-type-label">${ANN_EMOJIS[a.type]} ${a.type.toUpperCase()}</div>
       <div class="notice-title">${a.title}</div>
       ${a.body ? `<div class="notice-body">${a.body}</div>` : ""}
-      <div class="notice-date">ðŸ“… ${a.date}</div>
+      <div class="notice-date">📅 ${a.date}</div>
     </div>`).join("");
 }
 
@@ -4597,15 +4597,15 @@ function toggleWASetting(key) {
   waSettings[key] = !waSettings[key];
   saveWASettings();
   syncWAToggleUI();
-  showToast(waSettings[key] ? `ðŸ’¬ WA ${key} notifications ON` : `WA ${key} notifications OFF`);
+  showToast(waSettings[key] ? `💬 WA ${key} notifications ON` : `WA ${key} notifications OFF`);
 }
 
-// â”€â”€â”€ Core WA preview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ Core WA preview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function showWAPreview({ sub, recipientName, recipientPhone, message, onConfirm }) {
   const now = new Date().toLocaleTimeString("en-IN", { hour:"2-digit", minute:"2-digit" });
   document.getElementById("waPreviewSub").textContent   = sub || "Preview before sending";
   document.getElementById("waRecipientName").textContent = recipientName || "Retailer";
-  document.getElementById("waRecipientNum").textContent  = recipientPhone ? "ðŸ“ž " + recipientPhone : "No number on file";
+  document.getElementById("waRecipientNum").textContent  = recipientPhone ? "📞 " + recipientPhone : "No number on file";
   document.getElementById("waBubbleText").textContent    = message;
   document.getElementById("waBubbleTime").textContent    = now + " âœ“âœ“";
   waPendingAction = { phone: recipientPhone, message, onConfirm };
@@ -4627,56 +4627,56 @@ function confirmSendWA() {
   if (onConfirm) onConfirm();
 }
 
-// â”€â”€â”€ BUILD MESSAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ BUILD MESSAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildApprovalMessage(retailer) {
-  return `âœ… *Jain Agencies - Account Approved!*
+  return `✅ *Jain Agencies - Account Approved!*
 
 Dear ${retailer.name},
 
-Your retailer account for *${retailer.shop}* has been verified and approved! ðŸŽ‰
+Your retailer account for *${retailer.shop}* has been verified and approved! 🎉
 
 You now have full access to:
-â€¢ Wholesale pricing & PTR rates
-â€¢ Hot deals & schemes
-â€¢ Direct ordering system
+• Wholesale pricing & PTR rates
+• Hot deals & schemes
+• Direct ordering system
 
-ðŸ“± Login with your mobile: *${retailer.mobile}*
+📱 Login with your mobile: *${retailer.mobile}*
 
 ðŸ“ Jain Agencies
 Kila Para, Near Digvijay College
 Rajnandgaon (C.G.)
-ðŸ“ž 90862-91862`;
+📞 90862-91862`;
 }
 
 function buildOrderStatusMessage(order, newStatus) {
   const statusMsg = {
-    Confirmed:  `âœ… *Order Confirmed!*\nYour order *${order.id}* has been confirmed. We are processing it.`,
-    Packed:     `ðŸ“¦ *Order Packed!*\nYour order *${order.id}* is packed and ready for dispatch.`,
-    Dispatched: `ðŸšš *Order Dispatched!*\nYour order *${order.id}* is on the way! Expect delivery soon.`,
-    Delivered:  `ðŸŽ‰ *Order Delivered!*\nYour order *${order.id}* has been delivered. Thank you for your business!`
+    Confirmed:  `✅ *Order Confirmed!*\nYour order *${order.id}* has been confirmed. We are processing it.`,
+    Packed:     `📦 *Order Packed!*\nYour order *${order.id}* is packed and ready for dispatch.`,
+    Dispatched: `🚚 *Order Dispatched!*\nYour order *${order.id}* is on the way! Expect delivery soon.`,
+    Delivered:  `🎉 *Order Delivered!*\nYour order *${order.id}* has been delivered. Thank you for your business!`
   };
-  const base = statusMsg[newStatus] || `ðŸ“‹ Order *${order.id}* status: *${newStatus}*`;
+  const base = statusMsg[newStatus] || `📋 Order *${order.id}* status: *${newStatus}*`;
   return `${base}
 
 ðŸª *${order.retailer}*
-ðŸ“¦ ${order.items.length} items Â· ${order.totalQty} strips
-ðŸ“… ${order.timestamp}
+📦 ${order.items.length} items · ${order.totalQty} strips
+📅 ${order.timestamp}
 
-ðŸ“ž Jain Agencies: 90862-91862
+📞 Jain Agencies: 90862-91862
 _Thank you for choosing Jain Agencies!_`;
 }
 
 function buildAnnouncementMessage(ann) {
-  const emoji = { info:"â„¹ï¸", warning:"âš ï¸", success:"âœ…", urgent:"ðŸ”´" }[ann.type] || "ðŸ“¢";
+  const emoji = { info:"â„¹ï¸", warning:"âš ï¸", success:"✅", urgent:"🔴" }[ann.type] || "📢";
   return `${emoji} *Jain Agencies - ${ann.title}*
 
 ${ann.body || ""}
 
-ðŸ“… ${ann.date}
-ðŸ“ž 90862-91862 | Rajnandgaon`;
+📅 ${ann.date}
+📞 90862-91862 | Rajnandgaon`;
 }
 
-// â”€â”€â”€ TRIGGER POINTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€─ TRIGGER POINTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€─
 
 // Called when admin approves a retailer
 function triggerApprovalWA(retailer) {
@@ -4684,7 +4684,7 @@ function triggerApprovalWA(retailer) {
   const msg = buildApprovalMessage(retailer);
   showWAPreview({
     sub: "Sending approval confirmation to retailer",
-    recipientName: retailer.name + " Â· " + retailer.shop,
+    recipientName: retailer.name + " · " + retailer.shop,
     recipientPhone: retailer.mobile,
     message: msg
   });
@@ -4715,18 +4715,18 @@ function triggerAnnouncementWA(ann) {
     showToast("No approved retailers with phone numbers yet", "error");
     return;
   }
-  // Show WA for first retailer â€” admin can repeat for others
+  // Show WA for first retailer — admin can repeat for others
   const r = retailers[0];
   const msg = buildAnnouncementMessage(ann);
   showWAPreview({
     sub: `Sending to ${retailers.length} approved retailer${retailers.length>1?"s":""} (1 at a time)`,
-    recipientName: r.name + " Â· " + r.shop,
+    recipientName: r.name + " · " + r.shop,
     recipientPhone: r.mobile,
     message: msg,
     onConfirm: () => {
       // Queue remaining retailers one by one
       if (retailers.length > 1) {
-        showToast(`ðŸ’¬ ${retailers.length - 1} more retailer(s) to notify`);
+        showToast(`💬 ${retailers.length - 1} more retailer(s) to notify`);
       }
     }
   });
@@ -4761,7 +4761,7 @@ function toggleFavourite(productId) {
   // Refresh detail page star if open
   if (currentDetailId === productId) {
     const starBtn = document.getElementById("detailFavBtn");
-    if (starBtn) starBtn.textContent = isFavourite(productId) ? "â­ Favourited" : "â˜† Add to Favourites";
+    if (starBtn) starBtn.textContent = isFavourite(productId) ? "â­ Favourited" : "☆ Add to Favourites";
   }
 }
 
@@ -4778,13 +4778,13 @@ function renderFavourites() {
     const color = CAT_COLORS[p.category] || "#64748B";
     const inCart = cart.some(c => c.id === p.id);
     return `<div class="fav-chip" onclick="openDetail(${p.id})">
-      <span class="fav-chip-icon" style="background:${color}22;border-radius:8px;padding:4px">${CAT_ICONS[p.category]||"ðŸ’Š"}</span>
+      <span class="fav-chip-icon" style="background:${color}22;border-radius:8px;padding:4px">${CAT_ICONS[p.category]||"💊"}</span>
       <div style="min-width:0">
         <div class="fav-chip-name">${p.name}</div>
         <div class="fav-chip-co">${p.company}</div>
       </div>
       ${p.stock
-        ? `<button class="fav-chip-add" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"âœ“":"+ Cart"}</button>`
+        ? `<button class="fav-chip-add" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"✓":"+ Cart"}</button>`
         : `<span style="font-size:10px;color:#ef4444;font-weight:700;flex-shrink:0">Out</span>`
       }
     </div>`;
@@ -4834,16 +4834,16 @@ function renderAdminRequests() {
     <div class="prod-req-card">
       <div class="prod-req-head">
         <div>
-          <div class="prod-req-name">ðŸ’Š ${r.medName}${r.company ? " Â· " + r.company : ""}</div>
-          <div class="prod-req-retailer">ðŸª ${r.retailer} Â· ${r.retailerName} Â· ðŸ“ž ${r.retailerMobile}</div>
+          <div class="prod-req-name">💊 ${r.medName}${r.company ? " · " + r.company : ""}</div>
+          <div class="prod-req-retailer">ðŸª ${r.retailer} · ${r.retailerName} · 📞 ${r.retailerMobile}</div>
         </div>
-        <span class="prod-req-badge ${r.status}">${r.status === "new" ? "ðŸ†• New" : "âœ“ Reviewed"}</span>
+        <span class="prod-req-badge ${r.status}">${r.status === "new" ? "🆕 New" : "✓ Reviewed"}</span>
       </div>
-      ${r.qty ? `<div class="prod-req-note">ðŸ“¦ Qty needed: ${r.qty}</div>` : ""}
+      ${r.qty ? `<div class="prod-req-note">📦 Qty needed: ${r.qty}</div>` : ""}
       ${r.notes ? `<div class="prod-req-note">ðŸ“ ${r.notes}</div>` : ""}
-      <div class="prod-req-date" style="margin-bottom:10px">ðŸ“… ${r.timestamp}</div>
+      <div class="prod-req-date" style="margin-bottom:10px">📅 ${r.timestamp}</div>
       <div class="prod-req-actions">
-        ${r.status === "new" ? `<button class="prod-req-add-btn" onclick="markRequestReviewed('${r.id}')">âœ“ Mark Reviewed</button>` : ""}
+        ${r.status === "new" ? `<button class="prod-req-add-btn" onclick="markRequestReviewed('${r.id}')">✓ Mark Reviewed</button>` : ""}
         <button class="prod-req-add-btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7)" onclick="openAddFormFromRequest('${r.id}')">+ Add to Products</button>
         <button class="prod-req-dismiss-btn" onclick="dismissRequest('${r.id}')">ðŸ—‘ï¸</button>
       </div>
@@ -4881,9 +4881,9 @@ function openAddFormFromRequest(id) {
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const DISPATCH_LABELS = {
-  bus:       { icon:"ðŸšŒ", label:"Bus",         sub:"State/private bus" },
-  auto:      { icon:"ðŸ›º", label:"Auto / Taxi", sub:"Local auto or cab" },
-  transport: { icon:"ðŸš›", label:"Transport",   sub:"Courier / logistics" },
+  bus:       { icon:"🚌", label:"Bus",         sub:"State/private bus" },
+  auto:      { icon:"🛺", label:"Auto / Taxi", sub:"Local auto or cab" },
+  transport: { icon:"🚛", label:"Transport",   sub:"Courier / logistics" },
   own:       { icon:"ðŸï¸", label:"Own Delivery", sub:"Our staff delivers" }
 };
 
@@ -4947,12 +4947,12 @@ function confirmDispatch() {
 
   // WA notification with dispatch details
   if (o) {
-    showToast(`ðŸšš Dispatched via ${dm.label}!`);
+    showToast(`🚚 Dispatched via ${dm.label}!`);
     // Trigger WA with dispatch info
     const retailers = getRetailers();
     const r = retailers.find(x => x.shop === o.retailer || x.name === o.retailer);
     const phone = r ? r.mobile : null;
-    const msg = `ðŸšš *Order Dispatched!*\n\nOrder *${o.id}* for *${o.retailer}* is on its way!\n\n${dm.icon} *Via: ${dm.label}*${details ? "\nðŸ“‹ Details: " + details : ""}${eta ? "\nâ° ETA: " + eta : ""}\n\nðŸ“¦ ${o.items.length} items Â· ${o.totalQty} strips\n\nðŸ“ž Jain Agencies: 90862-91862`;
+    const msg = `🚚 *Order Dispatched!*\n\nOrder *${o.id}* for *${o.retailer}* is on its way!\n\n${dm.icon} *Via: ${dm.label}*${details ? "\n📋 Details: " + details : ""}${eta ? "\nâ° ETA: " + eta : ""}\n\n📦 ${o.items.length} items · ${o.totalQty} strips\n\n📞 Jain Agencies: 90862-91862`;
     if (waSettings.order) {
       showWAPreview({
         sub: `Notifying ${o.retailer} about dispatch`,
@@ -4999,20 +4999,20 @@ function renderRecent() {
     const color  = CAT_COLORS[p.category] || "#64748B";
     const inCart = cart.some(c => c.id === p.id);
     return `<div class="recent-chip" onclick="openDetail(${p.id})">
-      <span class="recent-chip-icon">${CAT_ICONS[p.category]||"ðŸ’Š"}</span>
+      <span class="recent-chip-icon">${CAT_ICONS[p.category]||"💊"}</span>
       <div class="recent-chip-body">
         <div class="recent-chip-name">${p.name}</div>
         <div class="recent-chip-co">${p.company}</div>
       </div>
       ${p.stock
-        ? `<button class="recent-chip-add ${inCart?"added":""}" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"âœ“":"+ Cart"}</button>`
+        ? `<button class="recent-chip-add ${inCart?"added":""}" onclick="event.stopPropagation();toggleCart(${p.id})">${inCart?"✓":"+ Cart"}</button>`
         : `<span class="recent-chip-out">Out</span>`}
     </div>`;
   }).join("");
 }
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// ðŸ§¾ ORDER HISTORY (customer side â€” localStorage)
+// 🧾 ORDER HISTORY (customer side — localStorage)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const ORDER_HISTORY_KEY = "ja_order_history";
 const ORDER_HISTORY_MAX = 20; // keep last 20 items
@@ -5056,12 +5056,12 @@ function renderOrderHistory() {
     sec.classList.add("show");
     list.innerHTML = hist.slice(0, 6).map(h => {
       const p = products.find(x => x.id === h.id);
-      const icon = p ? (CAT_ICONS[p.category] || "ðŸ’Š") : "ðŸ’Š";
+      const icon = p ? (CAT_ICONS[p.category] || "💊") : "💊";
       return `<div class="order-history-card" onclick="${p ? `openDetail(${h.id})` : ""}">
         <div class="order-history-icon">${icon}</div>
         <div style="flex:1;min-width:0">
           <div class="order-history-name">${h.name}</div>
-          <div class="order-history-meta">${h.company || ""} Â· ${h.time}</div>
+          <div class="order-history-meta">${h.company || ""} · ${h.time}</div>
         </div>
         <div class="order-history-qty">${h.qty} ${h.packing || "strip"}${h.qty > 1 ? "s" : ""}</div>
       </div>`;
@@ -5109,7 +5109,7 @@ function attachSwipe(wrapEl) {
       const p = products.find(x => x.id === id);
       if (p && p.stock && !cart.some(c => c.id === id)) {
         toggleCart(id);
-        showToast(`${p.name.substring(0,22)}â€¦ added to cart ðŸ›’`);
+        showToast(`${p.name.substring(0,22)}… added to cart 🛒`);
       }
     }
     card.style.transform = "";
@@ -5151,7 +5151,7 @@ async function openScanner() {
   overlay.classList.add("open");
   document.getElementById("scannerInput").value = "";
 
-  // Detect in-app browser â€” camera will be blocked
+  // Detect in-app browser — camera will be blocked
   if (isInAppBrowser() || window.location.protocol === "content:") {
     showScannerInAppMsg();
     return;
@@ -5182,9 +5182,9 @@ async function openScanner() {
 
 function showScannerInAppMsg() {
   document.getElementById("scannerVideo").style.display = "none";
-  document.querySelector(".scanner-tip").textContent = "ðŸ“µ Camera blocked in WhatsApp";
+  document.querySelector(".scanner-tip").textContent = "📵 Camera blocked in WhatsApp";
   document.querySelector(".scanner-sub").innerHTML =
-    `<span style="color:#00e5cc;font-weight:800">Save file to phone â†’ Open with Chrome</span>`;
+    `<span style="color:#00e5cc;font-weight:800">Save file to phone → Open with Chrome</span>`;
   // Show instructions inside scanner frame
   const frame = document.getElementById("scannerFrame");
   if (!document.getElementById("scanOpenBrowserBtn")) {
@@ -5196,9 +5196,9 @@ function showScannerInAppMsg() {
     instr.innerHTML =
       `<div style="color:#00e5cc;font-size:12px;font-weight:900;margin-bottom:6px">HOW TO USE CAMERA</div>` +
       `<div style="color:#fff;font-size:11px;line-height:1.6">` +
-      `1ï¸âƒ£ Tap <b style="color:#fff">â‹® Menu</b> â†’ <b style="color:#fff">Open in Chrome</b><br>` +
-      `2ï¸âƒ£ Or save the HTML file â†’ open it from <b style="color:#fff">Files app</b><br>` +
-      `3ï¸âƒ£ Camera will work in Chrome âœ…` +
+      `1ï¸⃣ Tap <b style="color:#fff">⋮ Menu</b> → <b style="color:#fff">Open in Chrome</b><br>` +
+      `2ï¸⃣ Or save the HTML file → open it from <b style="color:#fff">Files app</b><br>` +
+      `3ï¸⃣ Camera will work in Chrome ✅` +
       `</div>`;
     frame.appendChild(instr);
   }
@@ -5314,16 +5314,16 @@ function parseFbConfig() {
 
   let cfg;
   try {
-    // Firebase config uses bare keys â€” parse safely
-    // Convert JS object literal â†’ JSON
+    // Firebase config uses bare keys — parse safely
+    // Convert JS object literal → JSON
     const jsonReady = jsonStr
       .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')   // quote keys
-      .replace(/'/g, '"');                              // singleâ†’double quotes
+      .replace(/'/g, '"');                              // single→double quotes
     cfg = JSON.parse(jsonReady);
   } catch(e) {
     ta.classList.add("err");
     msg.className = "fbwiz-parse-msg err";
-    msg.textContent = "âš ï¸ Parse error â€” make sure you copied the full config block.";
+    msg.textContent = "âš ï¸ Parse error — make sure you copied the full config block.";
     return;
   }
 
@@ -5346,13 +5346,13 @@ function parseFbConfig() {
   // All good
   ta.classList.add("ok");
   msg.className = "fbwiz-parse-msg ok";
-  msg.textContent = "âœ… Config looks valid!";
+  msg.textContent = "✅ Config looks valid!";
 
   rows.innerHTML = [
     ["Project",  cfg.projectId],
-    ["API Key",  cfg.apiKey.slice(0,12) + "â€¦"],
-    ["App ID",   cfg.appId.slice(0,20) + "â€¦"],
-  ].map(([k,v]) => `<div class="fbwiz-preview-row">âœ“ <b>${k}:</b> ${v}</div>`).join("");
+    ["API Key",  cfg.apiKey.slice(0,12) + "…"],
+    ["App ID",   cfg.appId.slice(0,20) + "…"],
+  ].map(([k,v]) => `<div class="fbwiz-preview-row">✓ <b>${k}:</b> ${v}</div>`).join("");
   prev.classList.add("show");
 
   btn.disabled = false;
@@ -5368,7 +5368,7 @@ function saveFbConfig() {
   const cfg = btn._cfg;
   if (!cfg) return;
 
-  // Save to localStorage â€” app reads this on next load
+  // Save to localStorage — app reads this on next load
   localStorage.setItem("ja_fb_config", JSON.stringify(cfg));
 
   // Update progress
@@ -5409,11 +5409,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!navigator.onLine) {
       banner.classList.add("show");
       dot.className = "offline-dot";
-      msg.textContent = "ðŸ“¡ Offline â€” showing cached data";
+      msg.textContent = "📡 Offline — showing cached data";
     } else {
       if (banner.classList.contains("show")) {
         dot.className = "offline-dot online-dot";
-        msg.textContent = "âœ“ Back online";
+        msg.textContent = "✓ Back online";
         setTimeout(() => banner.classList.remove("show"), 2200);
       }
     }
@@ -5431,11 +5431,11 @@ window.addEventListener("DOMContentLoaded", () => {
           document.getElementById("rrList")) {
         renderRetailerRequests();
       }
-      showToast("ðŸ”” New retailer request!", "success");
+      showToast("🔔 New retailer request!", "success");
     }
   });
 
-  // 2. Same-tab polling every 4 seconds â€” catches registrations from
+  // 2. Same-tab polling every 4 seconds — catches registrations from
   //    the SAME tab (retailer opens same file, registers, admin was already open)
   let _lastRetailerCount = getRetailers().length;
   setInterval(() => {
@@ -5455,7 +5455,7 @@ window.addEventListener("DOMContentLoaded", () => {
         void badge.offsetWidth;
         badge.style.animation = "badge-pop 0.35s cubic-bezier(0.34,1.56,0.64,1) both";
       }
-      showToast("ðŸ”” New retailer request received!");
+      showToast("🔔 New retailer request received!");
     }
   }, 4000);
   // Dismiss keyboard when scrolling
@@ -5475,11 +5475,11 @@ window.addEventListener("DOMContentLoaded", () => {
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const BC_TEMPLATES = {
-  scheme: `ðŸŽ *JAIN AGENCIES - NEW SCHEME ALERT*\n\nDear Retailer,\n\nWe have an exciting new scheme available! Contact us now to place your order.\n\nðŸ“ž 90862-91862\nðŸ“ Kila Para, Near Digvijay College, Rajnandgaon\n\n_Jain Agencies, Rajnandgaon_`,
-  holiday: `ðŸ–ï¸ *JAIN AGENCIES - HOLIDAY NOTICE*\n\nDear Retailer,\n\nPlease note our office will be closed on [DATE] for [HOLIDAY].\n\nFor urgent requirements, contact:\nðŸ“ž 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
-  discount: `ðŸ’° *JAIN AGENCIES - SPECIAL DISCOUNT*\n\nDear Retailer,\n\nSpecial cash discount offer available this week! Pay within 7 days and avail extra discount.\n\nHurry â€” limited period offer!\nðŸ“ž 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
-  reminder: `ðŸ”” *JAIN AGENCIES - PAYMENT REMINDER*\n\nDear [SHOP NAME],\n\nKindly clear your outstanding balance at the earliest.\n\nFor any queries:\nðŸ“ž 90862-91862\nðŸ“ Kila Para, Rajnandgaon\n\nThank you for your business!\n_Jain Agencies_`,
-  restock: `ðŸ“¦ *JAIN AGENCIES - RESTOCK ALERT*\n\nDear Retailer,\n\nGood news! The following products are back in stock:\n\nâ€¢ [PRODUCT NAME]\n\nPlace your order now before stock runs out!\nðŸ“ž 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  scheme: `ðŸŽ *JAIN AGENCIES - NEW SCHEME ALERT*\n\nDear Retailer,\n\nWe have an exciting new scheme available! Contact us now to place your order.\n\n📞 90862-91862\nðŸ“ Kila Para, Near Digvijay College, Rajnandgaon\n\n_Jain Agencies, Rajnandgaon_`,
+  holiday: `ðŸ–ï¸ *JAIN AGENCIES - HOLIDAY NOTICE*\n\nDear Retailer,\n\nPlease note our office will be closed on [DATE] for [HOLIDAY].\n\nFor urgent requirements, contact:\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  discount: `💰 *JAIN AGENCIES - SPECIAL DISCOUNT*\n\nDear Retailer,\n\nSpecial cash discount offer available this week! Pay within 7 days and avail extra discount.\n\nHurry — limited period offer!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
+  reminder: `🔔 *JAIN AGENCIES - PAYMENT REMINDER*\n\nDear [SHOP NAME],\n\nKindly clear your outstanding balance at the earliest.\n\nFor any queries:\n📞 90862-91862\nðŸ“ Kila Para, Rajnandgaon\n\nThank you for your business!\n_Jain Agencies_`,
+  restock: `📦 *JAIN AGENCIES - RESTOCK ALERT*\n\nDear Retailer,\n\nGood news! The following products are back in stock:\n\n• [PRODUCT NAME]\n\nPlace your order now before stock runs out!\n📞 90862-91862\n\n_Jain Agencies, Rajnandgaon_`,
   custom: ``
 };
 
@@ -5545,9 +5545,9 @@ function renderBCRecipients() {
       <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0">${(r.shop||r.name||'?')[0].toUpperCase()}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:13px;font-weight:800;color:#1E293B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${r.shop||r.name||'Unknown'}</div>
-        <div style="font-size:11px;color:#94A3B8;font-weight:600">${r.mobile}${r.city ? ' Â· '+r.city : ''}</div>
+        <div style="font-size:11px;color:#94A3B8;font-weight:600">${r.mobile}${r.city ? ' · '+r.city : ''}</div>
       </div>
-      <div style="font-size:10px;font-weight:800;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:20px">âœ“</div>
+      <div style="font-size:10px;font-weight:800;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:20px">✓</div>
     </div>`).join('');
 }
 
@@ -5573,7 +5573,7 @@ function startBroadcast() {
   if (!msg) { showToast('Please write a message first', 'error'); return; }
   const recipients = getBCRecipients();
   if (!recipients.length) { showToast('No recipients found', 'error'); return; }
-  if (!confirm(`Send broadcast to ${recipients.length} retailer${recipients.length !== 1 ? 's' : ''}?\n\nWhatsApp will open for each one â€” tap Send in WhatsApp, then come back to continue.`)) return;
+  if (!confirm(`Send broadcast to ${recipients.length} retailer${recipients.length !== 1 ? 's' : ''}?\n\nWhatsApp will open for each one — tap Send in WhatsApp, then come back to continue.`)) return;
   _bcQueue = recipients;
   _bcQueueIdx = 0;
   document.getElementById('bcSentLog').style.display = 'block';
@@ -5583,8 +5583,8 @@ function startBroadcast() {
 
 function sendNextBroadcast(msg) {
   if (_bcQueueIdx >= _bcQueue.length) {
-    showToast(`âœ… Broadcast sent to ${_bcQueue.length} retailers!`, 'success');
-    document.getElementById('bcSendBtn').textContent = 'âœ… Broadcast Complete!';
+    showToast(`✅ Broadcast sent to ${_bcQueue.length} retailers!`, 'success');
+    document.getElementById('bcSendBtn').textContent = '✅ Broadcast Complete!';
     return;
   }
   const r = _bcQueue[_bcQueueIdx];
@@ -5597,7 +5597,7 @@ function sendNextBroadcast(msg) {
   const idx = _bcQueueIdx;
   logEl.innerHTML += `<div id="bclog_${idx}" style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #BBF7D0;font-size:12px">
     <span id="bclog_icon_${idx}">â³</span>
-    <span style="flex:1;font-weight:700;color:#166534">${r.shop||r.name} Â· ${r.mobile}</span>
+    <span style="flex:1;font-weight:700;color:#166534">${r.shop||r.name} · ${r.mobile}</span>
     <span id="bclog_status_${idx}" style="font-size:10px;font-weight:800;color:#64748B">Opening...</span>
   </div>`;
 
@@ -5608,7 +5608,7 @@ function sendNextBroadcast(msg) {
   setTimeout(() => {
     const icon = document.getElementById(`bclog_icon_${idx}`);
     const status = document.getElementById(`bclog_status_${idx}`);
-    if (icon) icon.textContent = 'âœ…';
+    if (icon) icon.textContent = '✅';
     if (status) { status.textContent = 'Sent'; status.style.color = '#059669'; }
     _bcQueueIdx++;
     // Small pause between each to avoid spam detection
@@ -5617,7 +5617,7 @@ function sendNextBroadcast(msg) {
 }
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// ðŸ”” FCM PUSH NOTIFICATION FUNCTIONS
+// 🔔 FCM PUSH NOTIFICATION FUNCTIONS
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 function loadFCMKeys() {
@@ -5637,19 +5637,19 @@ function saveFCMKeys() {
   if (window._fb) window._fb.VAPID_KEY = vapid.trim();
   const msg = document.getElementById("fcmKeysSavedMsg");
   if (msg) { msg.style.display = "block"; setTimeout(() => msg.style.display = "none", 3000); }
-  showToast("âœ… FCM keys saved!");
+  showToast("✅ FCM keys saved!");
   refreshFCMStatus();
 }
 
 function copyFCMSWCode() {
   const code = (document.getElementById("fcmSWCode") || {}).textContent || "";
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(code).then(() => showToast("ðŸ“‹ Copied to clipboard!"));
+    navigator.clipboard.writeText(code).then(() => showToast("📋 Copied to clipboard!"));
   } else {
     const ta = document.createElement("textarea");
     ta.value = code; document.body.appendChild(ta); ta.select();
     document.execCommand("copy"); document.body.removeChild(ta);
-    showToast("ðŸ“‹ Copied!");
+    showToast("📋 Copied!");
   }
 }
 
@@ -5668,7 +5668,7 @@ async function refreshFCMStatus() {
   if (si && keys.serverKey) si.value = keys.serverKey;
 
   // Count FCM tokens in Firestore
-  let tokenCount = "â€”";
+  let tokenCount = "—";
   if (fbOk) {
     try {
       const tokens = await window._fb.getAllFCMTokens();
@@ -5680,19 +5680,19 @@ async function refreshFCMStatus() {
 
   const row = (icon, label, ok, note) =>
     `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F1F5F9">
-      <div style="font-size:18px">${ok ? "âœ…" : "âŒ"}</div>
+      <div style="font-size:18px">${ok ? "✅" : "âŒ"}</div>
       <div style="flex:1"><div style="font-size:12px;font-weight:800;color:#1E293B">${label}</div>
       ${note ? `<div style="font-size:11px;color:#64748B;font-weight:600">${note}</div>` : ""}</div>
     </div>`;
 
   el.innerHTML =
-    row("ðŸ”¥", "Firebase connected", fbOk, fbOk ? "Firestore live" : "Check FB_CONFIG") +
-    row("ðŸ”‘", "VAPID key", !!keys.vapid, keys.vapid ? "Saved âœ“" : "Paste in Keys Setup below") +
-    row("ðŸ—ï¸", "Server key", !!keys.serverKey, keys.serverKey ? "Saved âœ“" : "Paste in Keys Setup below") +
-    row("ðŸ“„", "Service Worker API", swOk, swOk ? "Supported" : "Requires HTTPS") +
-    row("ðŸ””", "Notification API", notifOk, notifOk ? `Permission: ${Notification.permission}` : "Not supported") +
+    row("🔥", "Firebase connected", fbOk, fbOk ? "Firestore live" : "Check FB_CONFIG") +
+    row("🔑", "VAPID key", !!keys.vapid, keys.vapid ? "Saved ✓" : "Paste in Keys Setup below") +
+    row("ðŸ—ï¸", "Server key", !!keys.serverKey, keys.serverKey ? "Saved ✓" : "Paste in Keys Setup below") +
+    row("📄", "Service Worker API", swOk, swOk ? "Supported" : "Requires HTTPS") +
+    row("🔔", "Notification API", notifOk, notifOk ? `Permission: ${Notification.permission}` : "Not supported") +
     `<div style="display:flex;align-items:center;gap:10px;padding:8px 0">
-      <div style="font-size:18px">ðŸ“±</div>
+      <div style="font-size:18px">📱</div>
       <div style="flex:1"><div style="font-size:12px;font-weight:800;color:#1E293B">Subscribed devices</div>
       <div style="font-size:11px;color:#64748B;font-weight:600">${tokenCount} retailer${tokenCount===1?"":"s"} with push enabled</div></div>
     </div>`;
@@ -5709,11 +5709,11 @@ function renderFCMPushPanel() {
 }
 
 const PUSH_TEMPLATES = {
-  flash:   { title: "âš¡ Flash Sale â€” Limited Time!",    body: "Exclusive discount on select products for the next 2 hours. Open the app now to order!" },
-  scheme:  { title: "ðŸ”¥ New Scheme Available",           body: "Check out the latest hot deals on Alkem, Abbott & more. Valid this week only!" },
-  stock:   { title: "ðŸ“¦ Fresh Stock Arrived",            body: "Items you frequently order are back in stock. Place your order now!" },
-  payment: { title: "ðŸ’° Payment Reminder",               body: "Your outstanding balance is due. Please clear it at your earliest convenience." },
-  order:   { title: "ðŸ“‹ Your Order is Ready",            body: "Your latest order has been packed and is ready for dispatch. Thank you!" }
+  flash:   { title: "⚡ Flash Sale — Limited Time!",    body: "Exclusive discount on select products for the next 2 hours. Open the app now to order!" },
+  scheme:  { title: "🔥 New Scheme Available",           body: "Check out the latest hot deals on Alkem, Abbott & more. Valid this week only!" },
+  stock:   { title: "📦 Fresh Stock Arrived",            body: "Items you frequently order are back in stock. Place your order now!" },
+  payment: { title: "💰 Payment Reminder",               body: "Your outstanding balance is due. Please clear it at your earliest convenience." },
+  order:   { title: "📋 Your Order is Ready",            body: "Your latest order has been packed and is ready for dispatch. Thank you!" }
 };
 
 function setPushTemplate(key) {
@@ -5738,7 +5738,7 @@ function updatePushPreview() {
 async function sendFCMPush() {
   const keys = loadFCMKeys();
   if (!keys.serverKey) {
-    showToast("âš ï¸ Server key not set â€” go to Keys Setup", "error");
+    showToast("âš ï¸ Server key not set — go to Keys Setup", "error");
     return;
   }
   const title = (document.getElementById("pushTitle") || {}).value.trim();
@@ -5753,8 +5753,8 @@ async function sendFCMPush() {
     // Get all FCM tokens from Firestore
     const tokenDocs = await window._fb.getAllFCMTokens();
     if (!tokenDocs.length) {
-      showToast("â„¹ï¸ No subscribers yet â€” retailers need to open the app once", "error");
-      if (btn) { btn.disabled = false; btn.innerHTML = "ðŸ”” Send Push to All Retailers"; }
+      showToast("â„¹ï¸ No subscribers yet — retailers need to open the app once", "error");
+      if (btn) { btn.disabled = false; btn.innerHTML = "🔔 Send Push to All Retailers"; }
       return;
     }
 
@@ -5807,10 +5807,10 @@ async function sendFCMPush() {
       resultEl.style.border = `1.5px solid ${success ? "#BBF7D0" : "#FECACA"}`;
       resultEl.style.color  = success ? "#166534" : "#991B1B";
       resultEl.textContent = success
-        ? `âœ… Push sent! ${sent} delivered Â· ${failed} failed`
-        : `âŒ All ${failed} sends failed â€” check server key`;
+        ? `✅ Push sent! ${sent} delivered · ${failed} failed`
+        : `âŒ All ${failed} sends failed — check server key`;
     }
-    showToast(success ? `ðŸ”” Push sent to ${sent} retailers!` : "âŒ Push failed â€” check server key", success ? "success" : "error");
+    showToast(success ? `🔔 Push sent to ${sent} retailers!` : "âŒ Push failed — check server key", success ? "success" : "error");
 
     // Log to Firestore announcements for audit trail
     if (window._fb && window._fb.FB_OK) {
@@ -5818,7 +5818,7 @@ async function sendFCMPush() {
         id: Date.now(),
         type: "info",
         title: `[PUSH] ${title}`,
-        body: `${body} â€” Sent to ${sent}/${tokens.length} devices`,
+        body: `${body} — Sent to ${sent}/${tokens.length} devices`,
         date: new Date().toLocaleDateString("en-IN")
       });
     }
@@ -5827,7 +5827,7 @@ async function sendFCMPush() {
     console.error("FCM sendFCMPush error:", e);
     showToast("âŒ Error sending push: " + e.message, "error");
   } finally {
-    if (btn) { btn.disabled = false; btn.innerHTML = "ðŸ”” Send Push to All Retailers"; }
+    if (btn) { btn.disabled = false; btn.innerHTML = "🔔 Send Push to All Retailers"; }
   }
 }
 let _voiceActive = false;
@@ -5850,7 +5850,7 @@ function startVoiceSearch() {
   document.getElementById("voiceListeningState").style.display = "";
   document.getElementById("voiceBlockedState").style.display = "none";
   document.getElementById("voiceOverlay").classList.add("open");
-  document.getElementById("voiceResult").textContent = "Say a medicine nameâ€¦";
+  document.getElementById("voiceResult").textContent = "Say a medicine name…";
   document.getElementById("voiceBtn").classList.add("listening");
   _voiceActive = true;
 
@@ -5869,7 +5869,7 @@ function startVoiceSearch() {
       else interim += t;
     }
     const text = final || interim;
-    document.getElementById("voiceResult").textContent = text || "Listeningâ€¦";
+    document.getElementById("voiceResult").textContent = text || "Listening…";
     if (final) {
       document.getElementById("searchInput").value = final.trim();
       document.getElementById("clearBtn").style.display = "block";
@@ -5885,8 +5885,8 @@ function startVoiceSearch() {
       showVoiceBlocked();
     } else {
       const msgs = {
-        "no-speech"    : "No speech detected â€” try again",
-        "network"      : "Network error â€” check connection",
+        "no-speech"    : "No speech detected — try again",
+        "network"      : "Network error — check connection",
         "audio-capture": "Microphone not found on this device"
       };
       showToast(msgs[e.error] || "Voice error: " + e.error, "error");
@@ -5914,7 +5914,7 @@ function showVoiceBlocked(reason) {
 
   if (isNotSupported) {
     blockedEl.innerHTML =
-      `<div style="font-size:56px;margin-bottom:16px">ðŸš«</div>` +
+      `<div style="font-size:56px;margin-bottom:16px">🚫</div>` +
       `<div style="color:#fff;font-size:17px;font-weight:900;margin-bottom:8px">Voice not supported</div>` +
       `<div style="color:rgba(255,255,255,0.7);font-size:13px;line-height:1.7">` +
       `This browser doesn't support voice search.<br>Use <strong style="color:#00e5cc">Chrome on Android</strong> for voice.` +
@@ -5944,12 +5944,12 @@ let _pwaPrompt = null;
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: '/' })
     .then(reg => {
-      console.log('âœ… SW registered, scope:', reg.scope);
+      console.log('✅ SW registered, scope:', reg.scope);
       reg.addEventListener('updatefound', () => {
         const w = reg.installing;
         w.addEventListener('statechange', () => {
           if (w.state === 'installed' && navigator.serviceWorker.controller) {
-            showToast('ðŸ”„ App updated â€” reload for latest version');
+            showToast('🔄 App updated — reload for latest version');
           }
         });
       });
@@ -5974,7 +5974,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
 window.addEventListener("appinstalled", () => {
   document.getElementById("pwaBanner").classList.remove("show");
   _pwaPrompt = null;
-  showToast("âœ… App installed! Open from home screen", "success");
+  showToast("✅ App installed! Open from home screen", "success");
   localStorage.setItem("ja_pwa_dismissed", "1");
 });
 
@@ -5983,7 +5983,7 @@ async function triggerPWAInstall() {
     _pwaPrompt.prompt();
     const { outcome } = await _pwaPrompt.userChoice;
     if (outcome === "accepted") {
-      showToast("âœ… Installing Jain Agenciesâ€¦");
+      showToast("✅ Installing Jain Agencies…");
       _pwaPrompt = null;
     }
     document.getElementById("pwaBanner").classList.remove("show");
@@ -6004,11 +6004,11 @@ function showIOSInstallGuide() {
   const isAndroid = /Android/.test(navigator.userAgent);
   let msg = "";
   if (isIOS) {
-    msg = "ðŸ“± iOS: Tap Share (â–¡â†‘) â†’ 'Add to Home Screen'";
+    msg = "📱 iOS: Tap Share (â–¡↑) → 'Add to Home Screen'";
   } else if (isAndroid) {
-    msg = "ðŸ“± Tap Chrome Menu (â‹®) â†’ 'Add to Home screen'";
+    msg = "📱 Tap Chrome Menu (⋮) → 'Add to Home screen'";
   } else {
-    msg = "ðŸ“± Browser Menu â†’ 'Install App' or 'Add to Home Screen'";
+    msg = "📱 Browser Menu → 'Install App' or 'Add to Home Screen'";
   }
   showToast(msg, "info");
 }
@@ -6016,7 +6016,7 @@ function showIOSInstallGuide() {
 function showPWABanner() {
 
   if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) {
-    showToast("âœ… App is already installed!", "success");
+    showToast("✅ App is already installed!", "success");
     return;
   }
   if (_pwaPrompt) {
@@ -6151,7 +6151,7 @@ function showExcelPreview(rows, headers) {
         <div class="import-row ${item.ok ? 'ok' : 'err'}">
           <div class="import-row-main">
             <strong>${item.name || '?'}</strong>
-            <span>${item.company || '?'}${item.packing ? ' Â· ' + item.packing : ''}</span>
+            <span>${item.company || '?'}${item.packing ? ' · ' + item.packing : ''}</span>
           </div>
           <div class="import-row-flags">
             ${item.errors.map(e => `<span class="flag err">${e}</span>`).join('')}
@@ -6203,7 +6203,7 @@ function importExcelData() {
   const zone = document.getElementById('excelZone');
   if (zone) zone.classList.remove('has-file');
   const icon = document.getElementById('excelZoneIcon');
-  if (icon) icon.textContent = 'ðŸ“Š';
+  if (icon) icon.textContent = '📊';
   const title = document.getElementById('excelZoneTitle');
   if (title) title.textContent = 'Upload Excel / CSV File';
   const file = document.getElementById('excelZoneFile');
@@ -6248,7 +6248,7 @@ function updateOrderStatus(orderId, newStatus) {
   if (window._fb && window._fb.FB_OK) {
     window._fb.updateOrder(orderId, { status: newStatus, statusUpdatedAt: o.statusUpdatedAt, statusHistory: o.statusHistory });
   }
-  showToast(`Order ${orderId} â†’ ${newStatus}`);
+  showToast(`Order ${orderId} → ${newStatus}`);
   if (typeof currentAdminTab !== 'undefined' && currentAdminTab === 'orders') renderAdminOrders();
   renderMyOrders();
   updateOrdersNavDot();
@@ -6261,7 +6261,7 @@ function buildOrderCard(o, adminMode) {
   const history = (o.statusHistory || []).slice(-6).map(h => `
     <div class="order-history-step">
       <span class="order-history-dot"></span>
-      <div><strong>${h.status}</strong><small>${h.at || ''}${h.note ? ' Â· ' + h.note : ''}</small></div>
+      <div><strong>${h.status}</strong><small>${h.at || ''}${h.note ? ' · ' + h.note : ''}</small></div>
     </div>`).join('');
   const html = jaOriginalBuildOrderCard(o, adminMode);
   const timeline = history ? `<div class="order-history-timeline"><div class="order-history-title">Status history</div>${history}</div>` : '';
@@ -6300,10 +6300,10 @@ function jaEnhanceSyncIndicators() {
   if (banner && msg) {
     if (!navigator.onLine) {
       banner.classList.add('show', 'is-offline');
-      msg.textContent = 'Offline â€” orders and catalog changes are cached on this device';
+      msg.textContent = 'Offline — orders and catalog changes are cached on this device';
     } else if (!fbOk) {
       banner.classList.add('show', 'is-local');
-      msg.textContent = 'Local-only mode â€” configure Firebase for live sync across devices';
+      msg.textContent = 'Local-only mode — configure Firebase for live sync across devices';
     } else {
       banner.classList.remove('show', 'is-offline', 'is-local');
     }
@@ -6721,7 +6721,7 @@ async function sendSRWhatsAppOrder() {
   updateCartUI();
   localStorage.removeItem('ja_cart_context_key');
   setTimeout(() => {
-    showOrderSuccess('ðŸ’¬', 'SR WhatsApp Order Ready!', `Order prepared for ${ctx.srShop}\nPlaced by ${ctx.srName} (${ctx.srCode})\nSend the WhatsApp message to complete it.`);
+    showOrderSuccess('💬', 'SR WhatsApp Order Ready!', `Order prepared for ${ctx.srShop}\nPlaced by ${ctx.srName} (${ctx.srCode})\nSend the WhatsApp message to complete it.`);
   }, 400);
 }
 
@@ -7067,7 +7067,7 @@ function cardHTML(p) {
     <div class="product-card premium-stock-card" onclick="openDetail(${p.id})" style="align-items:center" data-id="${p.id}">
       <div class="cat-icon" style="background:${color}22">${CAT_ICONS[p.category] || ''}</div>
       <div style="flex:1;min-width:0">
-        <div class="prod-name" style="display:flex;align-items:center;gap:6px">${p.name}${isFav ? ' <span style="font-size:12px">â˜…</span>' : ''}</div>
+        <div class="prod-name" style="display:flex;align-items:center;gap:6px">${p.name}${isFav ? ' <span style="font-size:12px">★</span>' : ''}</div>
         <div class="prod-company">${p.company}</div>
         <div class="tags">
           <span class="tag" style="background:${color}22;color:${color}">${p.category}</span>
@@ -7136,3 +7136,91 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 /* === END JAIN AGENCIES LIVE STOCK CSV SYNC === */
 
+
+/* === JAIN AGENCIES MOBILE AUDIT HOTFIX === */
+function jaRepairVisibleText(root = document.body) {
+  if (!root) return;
+  const replacements = [
+    [/ðŸ“¡/g, '📡'], [/ðŸ‘¤/g, '👤'], [/ðŸ /g, '🏠'], [/ðŸ“¦/g, '📦'], [/ðŸ›’/g, '🛒'],
+    [/ðŸŽ/g, '🎁'], [/ðŸ§®/g, '🧮'], [/ðŸŒ™/g, '🌙'], [/â€”/g, '—'], [/â†’/g, '→'], [/Â·/g, '·'], [/Â /g, ' ']
+  ];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    let value = node.nodeValue;
+    replacements.forEach(([from, to]) => { value = value.replace(from, to); });
+    node.nodeValue = value;
+  });
+}
+
+function jaHasLiveQty(p) {
+  return p && p.stockQty !== undefined && p.stockQty !== null && p.stockQty !== '';
+}
+
+function jaCanAddProductToCart(p) {
+  if (!p) return { ok:false, reason:'Product not found' };
+  if (jaHasLiveQty(p)) {
+    const qty = jaStockNumber(p.stockQty);
+    if (qty <= 0 || p.stockStatus === 'out_of_stock') return { ok:false, reason:'This product is unavailable in live stock' };
+    return { ok:true, qtyKnown:true, qty };
+  }
+  if (p.stock === false) return { ok:false, reason:'This product is marked unavailable' };
+  return { ok:true, qtyKnown:false, qty:null };
+}
+
+function jaLiveStockLabel(p) {
+  const live = jaCanAddProductToCart(p);
+  const qtyKnown = jaHasLiveQty(p);
+  const qty = qtyKnown ? jaStockNumber(p.stockQty) : 0;
+  const status = qtyKnown ? (qty <= 0 ? 'out_of_stock' : (qty <= 10 ? 'low_stock' : 'available')) : (p.stock === false ? 'out_of_stock' : 'available');
+  return { qtyKnown, qty, status, canOrder: live.ok };
+}
+
+function jaCheckCartContextBeforeAdd() {
+  if (!srMode || !currentSR) return true;
+  if (!jaRequireSRShop()) return false;
+  const key = jaCartContextKey();
+  const saved = localStorage.getItem('ja_cart_context_key');
+  if (cart.length && saved && saved !== key) {
+    if (!confirm('Cart has items for another retailer. Clear cart and continue with this shop?')) return false;
+    cart = [];
+    saveCart();
+    updateCartUI();
+  }
+  localStorage.setItem('ja_cart_context_key', key);
+  return true;
+}
+
+const jaAuditedToggleCart = toggleCart;
+function toggleCart(productId) {
+  const existing = cart.findIndex(c => c.id === productId);
+  if (existing !== -1) return jaAuditedToggleCart(productId);
+  const product = products.find(p => p.id === productId);
+  const canAdd = jaCanAddProductToCart(product);
+  if (!canAdd.ok) { showToast(canAdd.reason, 'error'); return; }
+  if (!jaCheckCartContextBeforeAdd()) return;
+  openQtyPicker(productId);
+}
+
+const jaAuditedConfirmQtyPicker = confirmQtyPicker;
+function confirmQtyPicker(boxQty, unit) {
+  const product = products.find(p => p.id === _qtyPickerProductId);
+  const canAdd = jaCanAddProductToCart(product);
+  if (!canAdd.ok) { showToast(canAdd.reason, 'error'); return; }
+  const requested = unit === 'box' ? boxQty : (parseInt(document.getElementById('pickerQtyInput')?.value) || 1);
+  if (canAdd.qtyKnown && requested > canAdd.qty) {
+    const inp = document.getElementById('pickerQtyInput');
+    if (inp) inp.value = canAdd.qty;
+    showToast(`Only ${canAdd.qty} available in live stock`, 'error');
+    return;
+  }
+  jaAuditedConfirmQtyPicker(boxQty, unit);
+  setTimeout(() => jaRepairVisibleText(), 0);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  jaRepairVisibleText();
+  setTimeout(jaRepairVisibleText, 400);
+});
+/* === END JAIN AGENCIES MOBILE AUDIT HOTFIX === */
