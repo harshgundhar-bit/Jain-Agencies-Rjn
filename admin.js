@@ -44,7 +44,7 @@ function exportOrdersCSV() {
   if (!orders.length) { showToast("No orders to export", "error"); return; }
   const rows = [["Order ID","Retailer","Date","Status","Items","Total Qty"]];
   orders.forEach(o => {
-    const items = (o.items||[]).map(i=>i.name+"�"+i.qty).join("; ");
+    const items = (o.items||[]).map(i=>i.name+"×"+i.qty).join("; ");
     const qty = (o.items||[]).reduce((s,i)=>s+i.qty,0);
     rows.push([o.id||"",o.retailer||"",o.timestamp||"",o.status||"",items,qty]);
   });
@@ -128,7 +128,7 @@ function renderDbFirebase() {
       <div style="width:10px;height:10px;border-radius:50%;background:${fbOk?"#00897b":"#ef4444"}"></div>
       <div>
         <div style="font-size:13px;font-weight:700;color:var(--text,#0f172a)">${fbOk?"Firebase Connected":"Firebase Offline"}</div>
-        <div style="font-size:11px;color:var(--text-sub,#64748B)">${fbOk?"Real-time sync active � Project: jain-agencies":"Orders saved locally only"}</div>
+        <div style="font-size:11px;color:var(--text-sub,#64748B)">${fbOk?"Real-time sync active · Project: jain-agencies":"Orders saved locally only"}</div>
       </div>
     </div>`;
 }

@@ -1,4 +1,4 @@
-// ── Firebase config (free Spark plan — no credit card needed) ──
+// ─ Firebase config (free Spark plan — no credit card needed) ─
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, setDoc, onSnapshot,
          updateDoc, serverTimestamp, query, orderBy, limit,
@@ -7,11 +7,11 @@ import { getFirestore, collection, doc, setDoc, onSnapshot,
 import { getMessaging, getToken, onMessage }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
 
-// ──────────────────────────────────────────────────────────
+// ────────────
 // 🔑  PASTE YOUR OWN CONFIG HERE (takes 2 min — see README)
 //     1. Go to https://console.firebase.google.com
 //     2. Create project → Add Web App → Copy config below
-// ──────────────────────────────────────────────────────────
+// ────────────
 const FB_CONFIG = {
   apiKey:            "AIzaSyBbis6yErteIOHYWt5F6GgvrFcu6X0hcYM",
   authDomain:        "jain-agencies.firebaseapp.com",
@@ -41,11 +41,11 @@ try {
   console.warn("Firebase init failed — offline mode", e);
 }
 
-// ── Expose to global scope for non-module code ──
+// ─ Expose to global scope for non-module code ─
 window._fb = {
   db, FB_OK,
 
-  // ── RETAILERS ──────────────────────────────────────────
+  // ─ RETAILERS ─────────
   async saveRetailer(r) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "retailers", r.id), { ...r, _ts: serverTimestamp() }); }
@@ -73,7 +73,7 @@ window._fb = {
     return unsub;
   },
 
-  // ── ORDERS ─────────────────────────────────────────────
+  // ─ ORDERS ─────────
   async saveOrder(order) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "orders", order.id), { ...order, _ts: serverTimestamp() }); }
@@ -130,7 +130,7 @@ window._fb = {
     );
     return unsub;
   },
-  // SCHEMES ────────────────────────────────────────────
+  // SCHEMES ─────────
   async saveScheme(scheme) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "schemes", String(scheme.id)), { ...scheme, _ts: serverTimestamp() }); }
@@ -172,7 +172,7 @@ window._fb = {
     return unsub;
   },
 
-  // ── ANNOUNCEMENTS ──────────────────────────────────────
+  // ─ ANNOUNCEMENTS ────────
   async saveAnnouncement(ann) {
     if (!FB_OK) return;
     try { await setDoc(doc(db, "announcements", String(ann.id)), { ...ann, _ts: serverTimestamp() }); }
@@ -199,7 +199,7 @@ window._fb = {
     return unsub;
   },
 
-  // ── FCM PUSH TOKENS ────────────────────────────────────
+  // ─ FCM PUSH TOKENS ────────
   // VAPID key from Firebase Console → Project Settings → Cloud Messaging → Web Push certificates
   // Replace the placeholder below with your actual VAPID key
   VAPID_KEY: "BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDkBWAVArdpr6mvBY3VKYt5R4bLZk6BKEK_JRMY4yjAY",
@@ -250,7 +250,7 @@ window._fb = {
   }
 };
 
-// ── Start live listeners as soon as Firebase is ready ──
+// ─ Start live listeners as soon as Firebase is ready ─
 if (FB_OK) {
 
   // SCHEMES — all devices get live scheme updates when admin adds/removes
